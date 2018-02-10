@@ -35,3 +35,4 @@
 - cross-env
 - lint-staged
 - prettier
+- husky
