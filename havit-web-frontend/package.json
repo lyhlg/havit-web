@@ -14,11 +14,14 @@
     "redux": "^3.7.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "build-css": "node-sass-chokidar src/styles/ -o src/styles/css",
+    "watch-css": "yarn run build-css --watch --recursive",
+    "start-js": "cross-env NODE_PATH=src react-scripts start",
+    "start-node": "nodemon server/main.js",
+    "start": "npm-run-all -p watch-css start-js start-node",
+    "build": "cross-env NODE_PATH=src react-scripts build",
+    "test": "cross-env NODE_PATH=src react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
   },
   "lint-staged": {
     "*.js": [
@@ -33,5 +36,6 @@
     "prettier": "^1.10.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0"
-  }
+  },
+  "proxy": "http://localhost:5000"
 }
