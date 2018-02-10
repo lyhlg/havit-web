@@ -1,0 +1,45 @@
+.nav {
+  width: 1200px;
+  height: 130px;
+  background-color: #00cae6;
+}
+
+.nav__wrapper {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.nav__top {
+  height: 70px;
+  line-height: 70px;
+  vertical-align: middle;
+
+  .nav__home {
+    display: inline-block;
+    margin-left: 100px;
+    margin-right: 200px;
+    width: 137px;
+    height: 56px;
+  }
+  .nav__logo {
+    width: 137px;
+    height: 56px;
+  }
+
+  .nav__search {
+    width: 160px;
+    height: 20px;
+    vertical-align: middle;
+  }
+}
+
+
+.nav__bottom {
+  margin-top: 20px;
+  text-align: center;
+
+  .nav__list {
+    margin: 0 20px;
+    color: white;
+  }
+}
