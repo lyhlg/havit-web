@@ -3,10 +3,12 @@ const router = require('./routes/routes.js');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
-const mypageRoutes = require('./routes/mypage-routes');
+// const mypageRoutes = require('./routes/mypage-routes');
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
+import bodyParser from 'body-parser';
+import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 
 const app = express();
 
@@ -28,14 +30,20 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // connect to mongodb
-mongoose.connect(keys.mongodb.dbURI, () =>{
+mongoose.connect(keys.mongodb.dbURI)
+.then (()=> {
   console.log('connected to mongodb');
-})
+}).catch((err)=>{
+  console.error('ERROR!!');
+});
 
 app.use((req, res, next) => {
   res.header(defaultHeader);
   next();
 })
+
+// app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
+app.use('/graphiql', graphiqlExpress({endpointURL:'/graphql'}));
 
 // set up routes
 app.use('/auth', authRoutes);
@@ -45,6 +53,7 @@ app.use('/auth', authRoutes);
 app.get('/', (req, res) => {
   res.send('/에 대한건 구현안했지유?');
 });
+
 
 
 app.listen(port, () => console.log(` Starting Server at port ${port} :) `));
