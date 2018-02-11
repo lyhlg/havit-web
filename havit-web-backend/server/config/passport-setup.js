@@ -1,4 +1,5 @@
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const NaverStrategy = require('passport-naver').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
@@ -16,6 +17,32 @@ passport.deserializeUser((id, done) => {
   });
 });
 
+passport.use(
+  new LocalStrategy({
+    usernameField: 'usermail', // form data의 name값으로 날라오는거  ex) name='username'
+    passwordField: 'password',
+    passReqToCallback: true
+  }, (req, usermail, password, done) => {
+    User.findOne({ user_id_email: usermail }).then((currentUser) => {
+      if (currentUser) {
+        // already have this user
+        console.log('user is: ', currentUser);
+        done(null, currentUser);
+      } else {
+        // if not, create user in our db
+        new User({
+          password: password,
+          user_id_email: usermail,
+          auth: 'local'
+          // thumbnail: profile._json.image.url
+        }).save().then((newUser) => {
+          console.log('created new user: ', newUser);
+          done(null, newUser);
+        });
+      }
+    });
+  })
+)
 
 passport.use(
   new GoogleStrategy({
