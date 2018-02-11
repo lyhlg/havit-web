@@ -1,4 +1,4 @@
-const controller = require('../controllers');
+// const controller = require('../controllers');
 const router = require('express').Router();
 import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express'; // converting graphql to express
@@ -13,6 +13,8 @@ router.use(bodyParser.json());
 // For dev test
 router.use('/graphiql', graphiqlExpress({ endpointURL: "/graphql" }));
 
-// Implement Authentication  using passport
+
+
+
 
 module.exports = router;

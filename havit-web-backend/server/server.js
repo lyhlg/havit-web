@@ -1,5 +1,12 @@
 const express = require('express');
 const router = require('./routes/routes.js');
+const cookieSession = require('cookie-session');
+const passport = require('passport');
+const authRoutes = require('./routes/auth-routes');
+const mypageRoutes = require('./routes/mypage-routes');
+const passportSetup = require('./config/passport-setup');
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
 
 const app = express();
 
@@ -11,12 +18,34 @@ const defaultHeader = {
   'access-control-max-age': 10,
 };
 
+app.use(cookieSession({
+  maxAge: 24 * 60 * 60 * 1000,
+  keys: [keys.session.cookieKey]
+}));
+
+// initialize passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+// connect to mongodb
+mongoose.connect(keys.mongodb.dbURI, () =>{
+  console.log('connected to mongodb');
+})
+
 app.use((req, res, next) => {
   res.header(defaultHeader);
   next();
 })
 
-app.use('/', router);
+// set up routes
+app.use('/auth', authRoutes);
+// app.use('/mypage', mypageRoutes);
+
+// create home route
+app.get('/', (req, res) => {
+  res.send('/에 대한건 구현안했지유?');
+});
+
 
 app.listen(port, () => console.log(` Starting Server at port ${port} :) `));
 

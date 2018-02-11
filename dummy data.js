@@ -165,3 +165,39 @@
 //     hospitalCode: null
 //   }
 // ];
+
+
+
+// google format
+// profile: {
+//   id: '117078934628329850232',
+//     displayName: '이용현',
+//       name: { familyName: '이', givenName: '용현' },
+//   emails: [{ value: 'lyhlg0201@gmail.com', type: 'account' }],
+//     photos:
+//   [{ value: 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50' }],
+//     gender: 'male',
+//       provider: 'google',
+//         _raw: '{\n "kind": "plus#person",\n "etag": "\\"_Ek1oAZn65JmcnNnmHdEAQCMkKA/PR-ybQMfKqwB4h414Wj0-IYPQYs\\"",\n "gender": "male",\n "emails": [\n  {\n   "value": "lyhlg0201@gmail.com",\n   "type": "account"\n  }\n ],\n "objectType": "person",\n "id": "117078934628329850232",\n "displayName": "이용현",\n "name": {\n  "familyName": "이",\n  "givenName": "용현"\n },\n "url": "https://plus.google.com/117078934628329850232",\n "image": {\n  "url": "https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50",\n  "isDefault": true\n },\n "isPlusUser": true,\n "language": "ko",\n "circledByCount": 0,\n "verified": false\n}\n',
+//           _json:
+//   {
+//     kind: 'plus#person',
+//       etag: '"_Ek1oAZn65JmcnNnmHdEAQCMkKA/PR-ybQMfKqwB4h414Wj0-IYPQYs"',
+//         gender: 'male',
+//           emails: [[Object]],
+//             objectType: 'person',
+//               id: '117078934628329850232',
+//                 displayName: '이용현',
+//                   name: { familyName: '이', givenName: '용현' },
+//     url: 'https://plus.google.com/117078934628329850232',
+//       image:
+//     {
+//       url: 'https://lh3.googleusercontent.com/-XdUIqdMkCWA/AAAAAAAAAAI/AAAAAAAAAAA/4252rscbv5M/photo.jpg?sz=50',
+//         isDefault: true
+//     },
+//     isPlusUser: true,
+//       language: 'ko',
+//         circledByCount: 0,
+//           verified: false
+//   }
+// }

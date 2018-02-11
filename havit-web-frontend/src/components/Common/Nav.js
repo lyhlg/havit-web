@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import { logo2 } from 'assets/img';
-import 'styles/css/Common/Nav.css';
+import '../../styles/Common/Nav.scss';
 
 class Nav extends Component {
   render() {
