@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server/server.js --exec babel-node"
+    "start": "nodemon server.js --exec babel-node"
   },
   "dependencies": {
     "apollo-server-express": "^1.3.2",
@@ -23,5 +23,8 @@
     "passport-kakao": "^0.0.5",
     "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6"
+  },
+  "devDependencies": {
+    "cross-env": "^5.1.3"
   }
 }
