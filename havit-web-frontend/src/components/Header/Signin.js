@@ -9,7 +9,9 @@ class Signin extends Component {
 
   handleSubmitEmail(email) {
     window.open(
-      `http://localhost:8080?to=${document.getElementById('email').value}`
+      `http://localhost:8080/auth/mailauth?to=${
+        document.getElementById('email').value
+      }`
     );
   }
 
@@ -20,7 +22,7 @@ class Signin extends Component {
         <h3>이메일</h3>
         <input type="email" />
         <input id="email" type="email" />
-        <button type="submit" onClick={this.handleSubmitEmail}>
+        <button type="submit" method="get" onClick={this.handleSubmitEmail}>
           이메일 인증하기
         </button>
         <h4>이메일 인증번호</h4>
