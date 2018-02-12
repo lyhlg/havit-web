@@ -7,6 +7,7 @@ const KakaoStrategy = require('passport-kakao').Strategy;
 const keys = require('./keys');
 const User = require('../models/user-model');
 
+console.log("User: ", User);
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });
