@@ -4,6 +4,10 @@
 havit-web-backend/node_modules
 havit-web-frontend/node_modules
 
+## package-json
+havit-web-backend/package-lock.json
+havit-web-frontend/package-lock.json
+
 # testing
 /coverage
 
