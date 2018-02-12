@@ -47,44 +47,49 @@ router.get('/kakao/redirect', passport.authenticate('kakao', {
 );
 
 router.get('/mailauth', (res, req) => {
-  console.log('mailAuth!!!!!!!!!!!!!!!!!!!!');
+  console.log('mailAuth!!!!!!!!!!!!!!!!!!!!',req.req.headers.host);
   rand = Math.floor((Math.random() * 100))*999;
-  host = req.get('host');
-  link = "http://" + req.get('host') + "/verify?id=" + rand;
-  mailAuth.findOne({mail_account:req.query.to}).then((currentUser) => {
+  host = req.req.headers.host;
+  // link = "http://" + req.req.headers.host + "/verify?id=" + rand;
+  // console.log(' 이거확인 ', host, rand, link,req.req.query.to );
+  mailAuth.findOne({ mail_account: req.req.query.to}).then((currentUser) => {
     if ( currentUser){
-      console.log('인증 절차중에 있습니다. 메일을 확인해주세요.');
+      console.log('인증 절차중에 있습니다. 메일을 확인해주세요.', currentUser.Auth_number);
+      tomail(currentUser.Auth_number);
     } else {
+      console.log( ' 없어서 넣는다. ')
       new mailAuth({
-        mail_account: req.query.to,
+        mail_account: req.req.query.to,
         Auth_number: rand
       }).save().then((newmailAuth) =>{
-        console.log('new mail Auth !!', req.query.to, rand);
+        console.log('new mail Auth !!', req.req.query.to, rand);
       })
+      tomail(rand);
     }
   });
-  mailOptions = {
-    to: req.query.to,
-    subject: "Please confirm your Email account",
-    html: `안녕하세요,<br> Havit 웹 사이트 입니다. 아래 인증 번호를 회원가입 창의 인증번호에 입력해주세요<br> 인증번호 : ${rand} </a>`
+  const tomail = (code) => {
+    mailOptions = {
+      to: req.req.query.to,
+      subject: "[havit] 홈페이지 회원가입을 위해 인증번호를 기입해주세요",
+      html: `안녕하세요,<br> Havit 웹 사이트 입니다. 아래 인증 번호를 회원가입 창의 인증번호에 입력해주세요<br> <h3>인증번호<h3> : ${code} </a>`
+    }
+    console.log(mailOptions);
+    smtpTransport.sendMail(mailOptions, function (error, response) {
+      if (error) {
+        console.log(error);
+        res.end("error");
+      } else {
+        res.end("sent"); // 뭘 보여줘야 할지 ?
+      }
+    });
   }
-  console.log(mailOptions);
-  smtpTransport.sendMail(mailOptions, function (error, response) {
-    if (error) {
-      console.log(error);
-      res.end("error");
-    } else {
-      console.log("Message sent: " + response.message);
-      res.end("sent");
-    }
-  });
 });
 
 router.get('/verify', function (req, res) {
-  mailAuth.findOne({ mail_account: req.query.email, Auth_number: req.query.authcode}).then(auth => {
+  mailAuth.findOne({ mail_account: req.req.query.email, Auth_number: req.req.query.authcode}).then(auth => {
     if(auth) {
       console.log('인증완료');
-      mailAuth.remove({mail_account:req.query.email});
+      mailAuth.remove({mail_account:req.req.query.email});
       res.send('인증되었습니다.');
     } else {
       console.log('인증실패');
