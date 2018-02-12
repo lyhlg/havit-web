@@ -3,6 +3,7 @@ const router = require('./routes/routes.js');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
+const graphqlRoutes = require('./routes/graphql-routes');
 // const mypageRoutes = require('./routes/mypage-routes');
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
@@ -43,8 +44,9 @@ app.use((req, res, next) => {
 })
 
 // app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
-app.use('/graphiql', graphiqlExpress({endpointURL:'/graphql'}));
+// app.use('/graphiql', graphiqlExpress({endpointURL:'/graphql'}));
 
+// app.use('/graph*', graphqlRoutes);
 // set up routes
 app.use('/auth', authRoutes);
 // app.use('/mypage', mypageRoutes);
