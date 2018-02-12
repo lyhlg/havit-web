@@ -4,7 +4,7 @@ const passport = require('passport');
 // logout
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('/');
+  res.redirect('http://localhost:3000/');
 });
 
 // Local Login
