@@ -17,7 +17,7 @@
     "build-css": "node-sass-chokidar src/styles/ -o src/styles/css",
     "watch-css": "yarn run build-css --watch --recursive",
     "start-js": "cross-env NODE_PATH=src react-scripts start",
-    "start-node": "nodemon ../havit-web-backend/server/server.js --exec babel-node",
+    "start-node": "nodemon ../havit-web-backend/server.js --exec babel-node",
     "start-front": "npm-run-all -p watch-css start-js",
     "start": "npm-run-all -p watch-css start-js start-node",
     "build": "cross-env NODE_PATH=src react-scripts build",
