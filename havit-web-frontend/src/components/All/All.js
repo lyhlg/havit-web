@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Banner } from '../index';
 
-class Home extends Component {
+class All extends Component {
   render() {
     return (
       <main>
@@ -11,4 +11,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default All;

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Privacy extends Component {
   render() {
@@ -72,11 +73,15 @@ class Privacy extends Component {
         <label for="subscribeNews">미용주사</label>
         <hr />
         <h3>병원코드</h3>
-        <input type="text" placeholder="병원코드"/>
+        <input type="text" placeholder="병원코드" />
         <h4>병원 관리자 전용입니다</h4>
         <hr />
-        <h3>회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.</h3>
-        <button>회원가입 완료</button>
+        <h3>
+          회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
+        </h3>
+        <button>
+          <Link to="/signinend">회원가입 완료</Link>
+        </button>
       </div>
     );
   }
