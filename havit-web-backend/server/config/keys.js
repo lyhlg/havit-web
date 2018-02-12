@@ -15,7 +15,7 @@ module.exports = {
     callbackURL: '/auth/naver/redirect'
   },
   mongodb: {
-    dbURI: "mongodb://localhost:27017/passport_test"
+    dbURI: "mongodb://havit:havit@ds231758.mlab.com:31758/havit"
   },
   session: {
     cookieKey: "madebyhavitwebteam"
