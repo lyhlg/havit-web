@@ -2,14 +2,26 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class Signin extends Component {
+  constructor(props) {
+    super(props);
+    this.handleSubmitEmail = this.handleSubmitEmail.bind(this);
+  }
+
+  handleSubmitEmail(email) {
+    window.open(
+      `http://localhost:8080?to=${document.getElementById('email').value}`
+    );
+  }
+
   render() {
     return (
       <div>
         <h2>회원정보 입력</h2>
         <h3>이메일</h3>
+        <input type="email" />
         <input id="email" type="email" />
-        <button type="submit">
-          <a href="http://localhost:8080/auth/mailauth">이메일 인증하기</a>
+        <button type="submit" onClick={this.handleSubmitEmail}>
+          이메일 인증하기
         </button>
         <h4>이메일 인증번호</h4>
         <input type="text" />
