@@ -1,15 +1,13 @@
 const express = require('express');
-const router = require('./routes/routes.js');
+// const router = require('./routes/routes.js');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const graphqlRoutes = require('./routes/graphql-routes');
-// const mypageRoutes = require('./routes/mypage-routes');
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 import bodyParser from 'body-parser';
-import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 
 const app = express();
 
@@ -21,6 +19,7 @@ const defaultHeader = {
   'access-control-max-age': 10,
 };
 
+//  initialize Cookie Session value
 app.use(cookieSession({
   maxAge: 24 * 60 * 60 * 1000,
   keys: [keys.session.cookieKey]
@@ -38,26 +37,17 @@ mongoose.connect(keys.mongodb.dbURI)
   console.error('ERROR!!');
 });
 
+// Add Default Header for solve CROS(Cross Resource Origin Sharing)
 app.use((req, res, next) => {
   res.header(defaultHeader);
   next();
 })
 
-// app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
-// app.use('/graphiql', graphiqlExpress({endpointURL:'/graphql'}));
-
-// app.use('/graph*', graphqlRoutes);
-// set up routes
+// Router
 app.use('/auth', authRoutes);
-// app.use('/mypage', mypageRoutes);
+app.use('/', graphqlRoutes);
 
-// create home route
-app.get('/', (req, res) => {
-  res.send('/에 대한건 구현안했지유?');
-});
-
-
-
+// Run Server
 app.listen(port, () => console.log(` Starting Server at port ${port} :) `));
 
 export default app;
