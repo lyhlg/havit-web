@@ -10,8 +10,8 @@ const keys = require('./config/keys');
 import bodyParser from 'body-parser';
 
 const app = express();
-
 const port = 8080;
+
 const defaultHeader = {
   'access-control-allow-origin': '*',
   'access-control-allow-methods': 'GET, POST, PUT, DELETE, OPTIONS',

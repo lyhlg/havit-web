@@ -1,6 +1,7 @@
 const router = require('express').Router();
 import bodyParser from 'body-parser';
 const graphqlHTTP = require('express-graphql');
+import schema from '../graphql/schema.js';
 
 // // import {
 // //   graphqlExpress,
