@@ -9,6 +9,15 @@ export { default as Signin } from './Header/Signin';
 export { default as SigninEnd } from './Header/SigninEnd';
 export { default as Privacy } from './Header/Privacy';
 
+// MyPage
+
+export { default as MyPage } from './MyPage/MyPage';
+export { default as Menu } from './MyPage/Menu';
+export { default as ChangeInfo } from './MyPage/ChangeInfo';
+export { default as Reserve } from './MyPage/Reserve';
+export { default as WishList } from './MyPage/WishList';
+export { default as WishListEntry } from './MyPage/WishListEntry';
+
 // Home
 export { default as Home } from './Home/Home';
 
@@ -20,3 +29,7 @@ export { default as Skin } from './Skin/Skin';
 
 // Beauty
 export { default as Beauty } from './Beauty/Beauty';
+
+// Event
+
+export { default as Event } from './Event/Event';
