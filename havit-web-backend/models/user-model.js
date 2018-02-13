@@ -33,6 +33,7 @@ const userSchema = new Schema({
   bookingList: {
     bookingNumber: Number,
     clinicName: String,
+    bookingDate: Date,
     bookingTime: Date,
     status: {
       type: String, default: "전화예약 대기중"
