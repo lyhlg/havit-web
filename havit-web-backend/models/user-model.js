@@ -19,6 +19,14 @@ const userSchema = new Schema({
   likeArea: Array,
   likePoint: Array,
   hospitalCode: String,
+  bookingList: {
+    bookingNumber: Number,
+    clinicName: String,
+    bookingTime: Date,
+    status: {
+      type: String, default: "전화예약 대기중"
+    }
+  },
   likeProduct: [{
     title: String,
     description: String,
@@ -29,12 +37,12 @@ const userSchema = new Schema({
     thumbnail: String,
     review: [{
       name: String,
-      star: Number,
+      stars: Number,
       comment: String,
       createdOn: { type: Date, default: Date.now }
     }]
   }]
-})
+});
 
 module.exports=mongoose.model('user', userSchema, 'users');
 
