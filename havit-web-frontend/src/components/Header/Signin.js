@@ -20,7 +20,6 @@ class Signin extends Component {
       <div>
         <h2>회원정보 입력</h2>
         <h3>이메일</h3>
-        <input type="email" />
         <input id="email" type="email" />
         <button type="submit" method="get" onClick={this.handleSubmitEmail}>
           이메일 인증하기
