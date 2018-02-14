@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Banner } from '../index';
+import { Banner, Product } from '../index';
 
 class Skin extends Component {
   render() {
@@ -16,6 +16,7 @@ class Skin extends Component {
         </ul>
         <main>
           <Banner />
+          <Product />
         </main>
       </div>
     );

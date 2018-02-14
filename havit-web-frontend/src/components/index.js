@@ -2,6 +2,8 @@
 export { default as Nav } from './Common/Nav';
 export { default as Header } from './Common/Header';
 export { default as Banner } from './Common/Banner';
+export { default as Product } from './Common/Product';
+export { default as ProductEntry } from './Common/ProductEntry';
 
 // Header
 export { default as Login } from './Header/Login';
@@ -10,7 +12,6 @@ export { default as SigninEnd } from './Header/SigninEnd';
 export { default as Privacy } from './Header/Privacy';
 
 // MyPage
-
 export { default as MyPage } from './MyPage/MyPage';
 export { default as Menu } from './MyPage/Menu';
 export { default as ChangeInfo } from './MyPage/ChangeInfo';
