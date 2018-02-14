@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Banner } from '../index';
+import { Banner, Product } from '../index';
 
 class Beauty extends Component {
   render() {
@@ -14,6 +14,7 @@ class Beauty extends Component {
         </ul>
         <main>
           <Banner />
+          <Product />
         </main>
       </div>
     );
