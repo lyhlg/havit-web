@@ -27,24 +27,20 @@ router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.redirect('http://localhost:3000/');
+  res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
 });
 
 // Naver Login
 router.get('/naver', passport.authenticate('naver'));
-router.get('/naver/redirect', passport.authenticate('naver', {
-  successRedirect: 'http://localhost:3000/',
-  failureRedirect: 'http://localhost:3000/'
-  })
-);
+router.get('/naver/redirect', passport.authenticate('naver'), (req, res) => {
+  res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
+});
 
 // Kakao Login
 router.get('/kakao', passport.authenticate('kakao'));
-router.get('/kakao/redirect', passport.authenticate('kakao', {
-  successRedirect: 'http://localhost:3000/',
-  failureRedirect: 'http://localhost:3000/'
-  })
-);
+router.get('/kakao/redirect', passport.authenticate('kakao'), (req, res) => {
+  res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
+});
 
 router.get('/mailauth', (res, req) => {
   console.log('mailAuth!!!!!!!!!!!!!!!!!!!!',req.req.headers.host);
