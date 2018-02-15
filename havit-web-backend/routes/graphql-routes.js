@@ -1,7 +1,7 @@
 const router = require('express').Router();
 import bodyParser from 'body-parser';
 // import schema from '../graphql/schema.js';
-import { User } from '../db';
+import { User, Reservation } from '../db';
 import { makeExecutableSchema } from 'graphql-tools';
 import {
   graphqlExpress,
@@ -11,7 +11,8 @@ import {
 const typeDefs = `
   type Query {
     Users : [User],
-    Mypage(user_id_email:String) : [User]
+    Reservation : [Reservation],
+    ReservationList(user_id_email:String) : [Reservation]
   }
   type User {
     specId: Float,
@@ -75,16 +76,13 @@ const resolvers = {
     Users: async (obj, args, ctx) => {
       return await ctx.user.find();
     },
-    Mypage: async (obj,args, ctx) => {
-      console.log(args);
-      return await ctx.user.find({
-        user_id_email:args.user_id_email
-      },
-      {
-
-      }).then((data)=> {
-        console.log( data);
-      })
+    ReservationList: async (obj, args, ctx) => {
+      // return await ctx.reservation.find({user:args.user_id_email}).then((a)=>{
+      //   return a.filter(item => {
+      //     return item
+      //   })
+      // });
+      return await ctx.reservation.find({user:args.user_id_email});
     }
   }
 };
@@ -95,7 +93,7 @@ var schema = makeExecutableSchema({
 });
 
 // Using GraphQL
-router.use('/graphql', bodyParser.json(), graphqlExpress({ schema, context: { user: User } }));
+router.use('/graphql', bodyParser.json(), graphqlExpress({ schema, context: { user: User, reservation: Reservation } }));
 
 // For dev test
 router.use('/graphiql', graphiqlExpress({ endpointURL: "/graphql" }));

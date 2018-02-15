@@ -34,9 +34,9 @@ function reserNumCal() {
 }
 
 const reservationSchema = new Schema({
+  _id: { type: String, default: reserNumCal() },
   user: [String],
   hospital: [String],
-  reserveNum: { type: String, required: true, unique: true, default: reserNumCal() },
   userName: String,
   phone: String,
   productName: String,
@@ -55,6 +55,7 @@ module.exports = mongoose.model('reservation', reservationSchema);
 // Dummy
 /*
 db.reservations.insert([{
+  _id: 10000,
   user: 'lyhlg0201@gmail.com',
   hospital: '강남병원',
   userName: '이용현',
@@ -62,7 +63,8 @@ db.reservations.insert([{
   productName: '프락셀',
   reserveDate: '20180701',
 },{
-  user: 'ly123411@gmail.com',
+  _id: 10001,
+  user: 'lyhlg0201@gmail.com',
   hospital: '아산병원',
   userName: '이후후',
   phone: '01082145355',
