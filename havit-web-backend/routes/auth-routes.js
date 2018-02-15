@@ -4,7 +4,6 @@ const nodemailer = require('nodemailer');
 // const mailAuth = require('../models/mailauth-model');
 const bodyParser = require('body-parser');
 import { MailAuth } from '../db';
-console.log("mailAuth: ", MailAuth);
 
 const smtpTransport = nodemailer.createTransport({
   service: "Gmail",

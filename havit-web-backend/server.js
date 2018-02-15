@@ -49,6 +49,7 @@ app.use('/auth', authRoutes);
 app.use('/', graphqlRoutes);
 // app.use('/api',apiRoutes)
 
+
 // Run Server
 app.listen(port, () => console.log(` Starting Server at port ${port} :) `));
 
