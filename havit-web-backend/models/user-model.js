@@ -27,8 +27,8 @@ const userSchema = new Schema({
   phone: Number,
   birthday: Number,
   gender: String,
-  likeArea: Array,
-  likePoint: Array,
+  likeArea: [String],
+  likePoint: [String],
   hospitalCode: String,
   bookingList: {
     bookingNumber: Number,

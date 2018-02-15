@@ -4,6 +4,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
 const graphqlRoutes = require('./routes/graphql-routes');
+const apiRoutes = require('./routes/api-routes');
 const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
@@ -45,7 +46,8 @@ app.use((req, res, next) => {
 
 // Router
 app.use('/auth', authRoutes);
-app.use('/', graphqlRoutes);
+// app.use('/', graphqlRoutes);
+app.use('/api',apiRoutes)
 
 // Run Server
 app.listen(port, () => console.log(` Starting Server at port ${port} :) `));

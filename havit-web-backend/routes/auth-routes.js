@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 const mailAuth = require('../models/mailauth-model');
 const bodyParser = require('body-parser');
 
+const clientMain = "http://localhost:3000/"
 const smtpTransport = nodemailer.createTransport({
   service: "Gmail",
   auth: {
@@ -16,7 +17,7 @@ var rand, mailOptions, host, link;
 // logout
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('http://localhost:3000/');
+  res.redirect(clientMain);
 });
 
 // Local Login
@@ -27,22 +28,22 @@ router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-  res.redirect('http://localhost:3000/');
+  res.redirect(clientMain);
 });
 
 // Naver Login
 router.get('/naver', passport.authenticate('naver'));
 router.get('/naver/redirect', passport.authenticate('naver', {
-  successRedirect: 'http://localhost:3000/',
-  failureRedirect: 'http://localhost:3000/'
+  successRedirect: clientMain,
+  failureRedirect: clientMain
   })
 );
 
 // Kakao Login
 router.get('/kakao', passport.authenticate('kakao'));
 router.get('/kakao/redirect', passport.authenticate('kakao', {
-  successRedirect: 'http://localhost:3000/',
-  failureRedirect: 'http://localhost:3000/'
+  successRedirect: clientMain,
+  failureRedirect: clientMain
   })
 );
 
@@ -73,7 +74,6 @@ router.get('/mailauth', (res, req) => {
       subject: "[havit] 홈페이지 회원가입을 위해 인증번호를 기입해주세요",
       html: `안녕하세요,<br> Havit 웹 사이트 입니다. 아래 인증 번호를 회원가입 창의 인증번호에 입력해주세요<br> <h3>인증번호<h3> : ${code} </a>`
     }
-    console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function (error, response) {
       if (error) {
         console.log(error);
