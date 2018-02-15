@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const mailauthSchema = new Schema({
-  mail_account: String,
-  Auth_number: Number
+  account: String,
+  authCode: Number
 });
 
 module.exports = mongoose.model('mailauth', mailauthSchema);

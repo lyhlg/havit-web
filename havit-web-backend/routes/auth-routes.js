@@ -16,7 +16,7 @@ var rand, mailOptions, host, link;
 // logout
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect(clientMain);
+  res.redirect("http://localhost:3000");
 });
 
 // Local Login
