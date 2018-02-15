@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const passport = require('passport');
 const nodemailer = require('nodemailer');
-const mailAuth = require('../models/mailauth-model');
+// const mailAuth = require('../models/mailauth-model');
 const bodyParser = require('body-parser');
+import { MailAuth } from '../db';
+console.log("mailAuth: ", MailAuth);
 
 const smtpTransport = nodemailer.createTransport({
   service: "Gmail",
@@ -48,13 +50,13 @@ router.get('/mailauth', (res, req) => {
   host = req.req.headers.host;
   // link = "http://" + req.req.headers.host + "/verify?id=" + rand;
   // console.log(' 이거확인 ', host, rand, link,req.req.query.to );
-  mailAuth.findOne({ mail_account: req.req.query.to}).then((currentUser) => {
+  MailAuth.findOne({ mail_account: req.req.query.to}).then((currentUser) => {
     if ( currentUser){
       console.log('인증 절차중에 있습니다. 메일을 확인해주세요.', currentUser.Auth_number);
       tomail(currentUser.Auth_number);
     } else {
       console.log( ' 없어서 넣는다. ')
-      new mailAuth({
+      new MailAuth({
         mail_account: req.req.query.to,
         Auth_number: rand
       }).save().then((newmailAuth) =>{
@@ -81,10 +83,10 @@ router.get('/mailauth', (res, req) => {
 });
 
 router.get('/verify', function (req, res) {
-  mailAuth.findOne({ mail_account: req.req.query.email, Auth_number: req.req.query.authcode}).then(auth => {
+  MailAuth.findOne({ mail_account: req.req.query.email, Auth_number: req.req.query.authcode}).then(auth => {
     if(auth) {
       console.log('인증완료');
-      mailAuth.remove({mail_account:req.req.query.email});
+      MailAuth.remove({mail_account:req.req.query.email});
       res.send('인증되었습니다.');
     } else {
       console.log('인증실패');

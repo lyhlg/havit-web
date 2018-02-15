@@ -5,9 +5,8 @@ const NaverStrategy = require('passport-naver').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const KakaoStrategy = require('passport-kakao').Strategy;
 const keys = require('./keys');
-const User = require('../models/user-model');
+import { User } from '../db';
 
-console.log("User: ", User);
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });

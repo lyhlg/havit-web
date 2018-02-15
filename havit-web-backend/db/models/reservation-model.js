@@ -6,8 +6,9 @@ var count = 0;
 function reserNumCal() {
   var date = new Date();
   var year = date.getFullYear();
-  var month = date.getMonth();
+  var month = date.getMonth()+1;
   var today = date.getDate();
+  console.log( year, month, today)
   if (month < 10) {
     month = '0' + month.toString();
   }
