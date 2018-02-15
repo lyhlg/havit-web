@@ -1,24 +1,44 @@
 const router = require('express').Router();
-import bodyParser from 'body-parser';
-const graphqlHTTP = require('express-graphql');
-import schema from '../graphql/schema.js';
+// import bodyParser from 'body-parser';
+// // import schema from '../graphql/schema.js';
+// const User = require('../models/user-model');
+// import { makeExecutableSchema } from 'graphql-tools'
 
-// // import {
-// //   graphqlExpress,
-// //   graphiqlExpress
-// // } from "apollo-server-express";
+// import {
+//   graphqlExpress,
+//   graphiqlExpress
+// } from "apollo-server-express";
+
+// const typeDefs = `
+
+// `
+
 
 
 // // Using GraphQL
-// // router.use('/graphql', bodyParser.json(), graphqlExpress({schema,context:{users: Users}}));
+// router.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
 
 // // For dev test
-// // router.use('/graphiql', graphiqlExpress({ endpointURL: "/graphql" }));
+// router.use('/graphiql', graphiqlExpress({ endpointURL: "/graphql" }));
 
-// router.get('/graphql', graphqlHTTP({
-//   schema,
-//   graphiql: true,
-//   pretty: true
-// }));
+// const resolvers = {
+//   Query: {
+//     Users : () => {
+//       User.find().then(users => {
+//         console.log(users);
+//       })
+//     }
+//   },
+
+//   Mutation: {
+
+//   }
+// }
+
+// const schema = makeExecutableSchema({
+//   typeDefs,
+//   resolvers
+// })
+
 
 module.exports = router;

@@ -1,8 +1,10 @@
 const router = require('express').Router();
 const passport = require('passport');
 const nodemailer = require('nodemailer');
-const mailAuth = require('../models/mailauth-model');
+// const mailAuth = require('../models/mailauth-model');
 const bodyParser = require('body-parser');
+import { MailAuth } from '../db';
+console.log("mailAuth: ", MailAuth);
 
 const smtpTransport = nodemailer.createTransport({
   service: "Gmail",
@@ -16,7 +18,7 @@ var rand, mailOptions, host, link;
 // logout
 router.get('/logout', (req, res) => {
   req.logout();
-  res.redirect('http://localhost:3000/');
+  res.redirect("http://localhost:3000");
 });
 
 // Local Login
@@ -48,13 +50,13 @@ router.get('/mailauth', (res, req) => {
   host = req.req.headers.host;
   // link = "http://" + req.req.headers.host + "/verify?id=" + rand;
   // console.log(' 이거확인 ', host, rand, link,req.req.query.to );
-  mailAuth.findOne({ mail_account: req.req.query.to}).then((currentUser) => {
+  MailAuth.findOne({ mail_account: req.req.query.to}).then((currentUser) => {
     if ( currentUser){
       console.log('인증 절차중에 있습니다. 메일을 확인해주세요.', currentUser.Auth_number);
       tomail(currentUser.Auth_number);
     } else {
       console.log( ' 없어서 넣는다. ')
-      new mailAuth({
+      new MailAuth({
         mail_account: req.req.query.to,
         Auth_number: rand
       }).save().then((newmailAuth) =>{
@@ -69,7 +71,6 @@ router.get('/mailauth', (res, req) => {
       subject: "[havit] 홈페이지 회원가입을 위해 인증번호를 기입해주세요",
       html: `안녕하세요,<br> Havit 웹 사이트 입니다. 아래 인증 번호를 회원가입 창의 인증번호에 입력해주세요<br> <h3>인증번호<h3> : ${code} </a>`
     }
-    console.log(mailOptions);
     smtpTransport.sendMail(mailOptions, function (error, response) {
       if (error) {
         console.log(error);
@@ -82,10 +83,10 @@ router.get('/mailauth', (res, req) => {
 });
 
 router.get('/verify', function (req, res) {
-  mailAuth.findOne({ mail_account: req.req.query.email, Auth_number: req.req.query.authcode}).then(auth => {
+  MailAuth.findOne({ mail_account: req.req.query.email, Auth_number: req.req.query.authcode}).then(auth => {
     if(auth) {
       console.log('인증완료');
-      mailAuth.remove({mail_account:req.req.query.email});
+      MailAuth.remove({mail_account:req.req.query.email});
       res.send('인증되었습니다.');
     } else {
       console.log('인증실패');
