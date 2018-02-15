@@ -12,6 +12,7 @@ const typeDefs = `
   type Query {
     Users : [User],
     Reservation : [Reservation],
+    likeProduct: [Product],
     ReservationList(user_id_email:String) : [Reservation]
   }
   type User {
@@ -41,6 +42,7 @@ const typeDefs = `
     status: String
   }
   type Product {
+    _id: String,
     type: String,
     subType: String,
     img: String,
@@ -77,11 +79,6 @@ const resolvers = {
       return await ctx.user.find();
     },
     ReservationList: async (obj, args, ctx) => {
-      // return await ctx.reservation.find({user:args.user_id_email}).then((a)=>{
-      //   return a.filter(item => {
-      //     return item
-      //   })
-      // });
       return await ctx.reservation.find({user:args.user_id_email});
     }
   }
