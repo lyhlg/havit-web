@@ -12,7 +12,7 @@ const typeDefs = `
   type Query {
     Users : [User],
     Reservation : [Reservation],
-    likeProduct: [Product],
+    likeProduct(user_id_email:String): [Product],
     ReservationList(user_id_email:String) : [Reservation]
   }
   type User {
@@ -80,6 +80,12 @@ const resolvers = {
     },
     ReservationList: async (obj, args, ctx) => {
       return await ctx.reservation.find({user:args.user_id_email});
+    },
+    likeProduct: async (obj, args, ctx) => {
+      return await ctx.user.find({ user_id_email: args.user_id_email })
+        .then(oneUser => {
+
+        })
     }
   }
 };
