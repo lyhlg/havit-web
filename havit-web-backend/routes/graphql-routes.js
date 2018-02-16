@@ -14,6 +14,7 @@ const typeDefs = `
     Users : [User],
     Reservations : [Reservation],
     Products : [Product],
+    Reviews : [Review],
     EditInfo(user_id_email:String) : [User],
     LikeProducts(user_id_email:String) : [Product],
     ReservationLists(user_id_email:String) : [Reservation]
@@ -25,7 +26,7 @@ const typeDefs = `
     password: String,
     auth: String,
     phone: String,
-    birthday: Int,
+    birthday: String,
     gender: String,
     likeArea: [String],
     likePoint: [String],
@@ -58,10 +59,10 @@ const typeDefs = `
     review: [Review]
   }
   type Review {
-    name : String,
-    stars : Int,
+    user_id_email : String,
+    stars : Float,
     comment: String,
-    product: String
+    product: Product
   }
   type Hospital {
     code : String,
@@ -73,7 +74,30 @@ const typeDefs = `
     loc: String
   }
   type Mutation {
-    addReservation(productName: String, userName: String, phone: String, reserveDate: String) : Reservation
+    addReservation(
+      productName: String,
+      userName: String,
+      phone: String,
+      reserveDate: String
+    ) : Reservation,
+
+    addReview(
+      user_id_email: String,
+      stars: Float,
+      comment: String,
+      product: String
+    ) : Review,
+
+    addUserInfo(
+      user_id_email: String!,
+      name: String!,
+      phone: String!,
+      birthday: String!,
+      gender: String!,
+      likeArea: [String!],
+      likePoint: [String!],
+      code : String
+    ) : User
   }
 `;
 
@@ -100,13 +124,72 @@ const resolvers = {
           return await ctx.product.find({ _id: ObjectId(item) });
         })
     },
+    Products : async ( obj, args, ctx ) => {
+      console.log(obj);
+      return (await ctx.product.find({})).map(item =>{
+        console.log(item);
+        item.review.filter( async i => {
+          const a = await ctx.review.find({_id:ObjectId(i)});
+          console.log();
+        })
+        return prepare(item);
+      });
+    },
+
+    Reviews : async ( obj, args, ctx ) => {
+      return await ctx.review.find({});
+    },
     EditInfo : async (obj, args, ctx) => {
       return ctx.user.find({user_id_email: args.user_id_email});
     }
   },
+
   Mutation: {
-    addReservation: async (obj,args, ctx) => {
+    addReservation: async (obj, args, ctx) => {
       return await new ctx.reservation(args).save();
+    },
+
+    addReview : async (obj, args, ctx) => {
+      args.product = ObjectId(args.product);
+      // save() : 리뷰 작성시 해당 review 를 product에 연결한다.
+      var save = async () => {
+        return await ctx.product.update(
+          { _id: ObjectId(args.product) },
+          {
+            $push:
+              { review: args.product }
+          }
+        )
+      }
+      save();
+      return new ctx.review(args).save();
+    },
+
+    addUserInfo : async (obj, args, ctx) => {
+      console.log(args);
+      var userUpdate = async () => {
+        await ctx.user.update(
+          { user_id_email: args.user_id_email },
+          {
+            $set: {
+              name: args.name,
+              phone: args.phone,
+              birthday: args.birthday,
+              gender: args.gender
+            },
+            $push: {
+              likeArea: {
+                $each: args.likeArea
+              },
+              likePoint: {
+                $each: args.likePoint
+              }
+            }
+          }
+        )
+      }
+      userUpdate();
+      return await ctx.user.find({user_id_email: args.user_id_email});
     }
   }
 };
@@ -125,7 +208,8 @@ router.use('/graphql',
       context: {
         user: User,
         reservation: Reservation,
-        product: Product
+        product: Product,
+        review : Review
       }
     }
   )
