@@ -23,7 +23,7 @@ const userSchema = new Schema({
   createdOn: { type: Date, default: getCurrentDate() },
   auth: String,
   phone: String,
-  birthday: Number,
+  birthday: String,
   gender: String,
   likeArea: [String],
   likePoint: [String],
