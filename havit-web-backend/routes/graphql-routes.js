@@ -1,8 +1,9 @@
 const router = require('express').Router();
 import bodyParser from 'body-parser';
 // import schema from '../graphql/schema.js';
-import { User, Reservation } from '../db';
+import { User, Reservation, Product, Review } from '../db';
 import { makeExecutableSchema } from 'graphql-tools';
+var ObjectId = require('mongodb').ObjectID;
 import {
   graphqlExpress,
   graphiqlExpress
@@ -11,14 +12,16 @@ import {
 const typeDefs = `
   type Query {
     Users : [User],
-    Reservation : [Reservation],
-    likeProduct(user_id_email:String): [Product],
-    ReservationList(user_id_email:String) : [Reservation]
+    Reservations : [Reservation],
+    Products : [Product],
+    EditInfo(user_id_email:String) : [User],
+    LikeProducts(user_id_email:String) : [Product],
+    ReservationLists(user_id_email:String) : [Reservation]
   }
   type User {
     specId: Float,
     name: String,
-    user_id_email: String!,
+    user_id_email: String,
     password: String,
     auth: String,
     phone: String,
@@ -42,7 +45,6 @@ const typeDefs = `
     status: String
   }
   type Product {
-    _id: String,
     type: String,
     subType: String,
     img: String,
@@ -70,22 +72,41 @@ const typeDefs = `
     name: String,
     loc: String
   }
+  type Mutation {
+    addReservation(productName: String, userName: String, phone: String, reserveDate: String) : Reservation
+  }
 `;
 
+
+
+const prepare = (o) => {
+  o._id = o._id.toString();
+  return o;
+};
 
 const resolvers = {
   Query: {
     Users: async (obj, args, ctx) => {
       return await ctx.user.find();
     },
-    ReservationList: async (obj, args, ctx) => {
-      return await ctx.reservation.find({user:args.user_id_email});
+    ReservationLists: async (obj, args, ctx) => {
+      return await ctx.reservation.find({ user: args.user_id_email });
     },
-    likeProduct: async (obj, args, ctx) => {
-      return await ctx.user.find({ user_id_email: args.user_id_email })
-        .then(oneUser => {
-
+    LikeProducts: async (obj, args, ctx) => { // 잘안되네... data가 null로 나온다.
+      return (await ctx.user.findOne({user_id_email:args.user_id_email}))
+        .likeProduct
+        .map( async item => {
+          console.log(item);
+          return await ctx.product.find({ _id: ObjectId(item) });
         })
+    },
+    EditInfo : async (obj, args, ctx) => {
+      return ctx.user.find({user_id_email: args.user_id_email});
+    }
+  },
+  Mutation: {
+    addReservation: async (obj,args, ctx) => {
+      return await new ctx.reservation(args).save();
     }
   }
 };
@@ -96,14 +117,26 @@ var schema = makeExecutableSchema({
 });
 
 // Using GraphQL
-router.use('/graphql', bodyParser.json(), graphqlExpress({ schema, context: { user: User, reservation: Reservation } }));
+router.use('/graphql',
+  bodyParser.json(),
+  graphqlExpress(
+    {
+      schema,
+      context: {
+        user: User,
+        reservation: Reservation,
+        product: Product
+      }
+    }
+  )
+);
 
 // For dev test
-router.use('/graphiql', graphiqlExpress({ endpointURL: "/graphql" }));
-
-
-
-
+router.use('/graphiql',
+  graphiqlExpress({
+    endpointURL: "/graphql"
+  })
+);
 
 
 module.exports = router;

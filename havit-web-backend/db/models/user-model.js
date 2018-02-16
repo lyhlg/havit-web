@@ -27,9 +27,9 @@ const userSchema = new Schema({
   gender: String,
   likeArea: [String],
   likePoint: [String],
-  reservation: [Number],
-  likeProduct: [Number],
-  review: [Number]
+  reservation: [String],
+  likeProduct: [String],
+  review: [String]
 });
 
 

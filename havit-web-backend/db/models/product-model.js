@@ -15,11 +15,12 @@ const productSchema = new Schema({
   review: [String]
 });
 
+
 module.exports = mongoose.model('product', productSchema);
 
 // dummy
 /*
-db.product.insert([{
+db.products.insert([{
   type: 'skin',
   subType: 'lazer',
   img: './image/test.jpg',
@@ -45,3 +46,17 @@ db.product.insert([{
   review: []
 }])
 */
+
+// db.products.insert([{
+//   type: 'skin',
+//   subType: 'lazer',
+//   img: './image/test.jpg',
+//   hospitalLoc: '강남',
+//   hospitalName: '강남병원'
+// }, {
+//   type: 'skin',
+//   subType: 'lazer',
+//   img: './image/test2.jpg',
+//   hospitalLoc: '강남',
+//   hospitalName: '강남병원'
+// }])
