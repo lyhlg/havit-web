@@ -43,6 +43,7 @@ router.get('/kakao/redirect', passport.authenticate('kakao'), (req, res) => {
   res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
 });
 
+// mail auth
 router.get('/mailauth', (res, req) => {
   console.log('mailAuth!!!!!!!!!!!!!!!!!!!!',req.req.headers.host);
   rand = Math.floor((Math.random() * 100))*999;
