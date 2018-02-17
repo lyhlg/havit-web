@@ -23,13 +23,13 @@ const userSchema = new Schema({
   createdOn: { type: Date, default: getCurrentDate() },
   auth: String,
   phone: String,
-  birthday: Number,
+  birthday: String,
   gender: String,
   likeArea: [String],
   likePoint: [String],
-  reservation: [Number],
-  likeProduct: [Number],
-  review: [Number]
+  reservation: [String],
+  likeProduct: [String],
+  review: [String]
 });
 
 
