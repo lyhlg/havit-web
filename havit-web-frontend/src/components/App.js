@@ -13,6 +13,7 @@ import {
   Skin,
   Beauty,
   Event,
+  ProductDetail,
 } from './index';
 
 class App extends Component {
@@ -31,6 +32,7 @@ class App extends Component {
         <Route path="/skin" component={Skin} />
         <Route path="/beauty" component={Beauty} />
         <Route path="/event" component={Event} />
+        <Route path="/detail" component={ProductDetail} />
       </div>
     );
   }

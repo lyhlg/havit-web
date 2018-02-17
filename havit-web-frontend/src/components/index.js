@@ -4,6 +4,7 @@ export { default as Header } from './Common/Header';
 export { default as Banner } from './Common/Banner';
 export { default as Product } from './Common/Product';
 export { default as ProductEntry } from './Common/ProductEntry';
+export { default as ProductDetail } from './Common/ProductDetail';
 
 // Header
 export { default as Login } from './Header/Login';
