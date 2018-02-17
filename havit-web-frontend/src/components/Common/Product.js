@@ -8,12 +8,6 @@ class Product extends Component {
         <td>
           <ProductEntry />
         </td>
-        <td>
-          <ProductEntry />
-        </td>
-        <td>
-          <ProductEntry />
-        </td>
       </div>
     );
   }

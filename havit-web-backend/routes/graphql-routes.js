@@ -1,4 +1,5 @@
 const router = require('express').Router();
+import cors from 'cors';
 import bodyParser from 'body-parser';
 // import schema from '../graphql/schema.js';
 import { User, Reservation, Product, Review } from '../db';
@@ -241,6 +242,7 @@ var schema = makeExecutableSchema({
 
 // Using GraphQL
 router.use('/graphql',
+  cors(),
   bodyParser.json(),
   graphqlExpress(
     {
