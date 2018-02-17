@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bannerSchema = new Schema({
-  totalBanner : Array,
-  skinBanner: Array,
-  beautyBanner: Array
+  totalBanner : [String],
+  skinBanner: [String],
+  beautyBanner: [String]
 });
 
 module.exports = mongoose.model('banner', bannerSchema);

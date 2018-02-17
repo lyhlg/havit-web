@@ -13,22 +13,23 @@ module.exports = mongoose.model('review', reviewSchema);
 
 // dummy
 /*
-db.review.insert([{
+db.reviews.insert([{
   user_id_email: 'lyhlg0201@gmail.com',
   stars: '4.5',
   comment: '좋았다',
-  product: db.product.findOne({title: "프락셀"})._id
+  product: ObjectId("5a86d25270ecb115bc27859a")
 },
 {
   user_id_email: 'lyhlg0201@gmail.com',
   stars: '3.5',
   comment: '안좋았다.',
-  product: db.product.findOne({title: "프락셀2"})._id
+  product: ObjectId("5a86d25270ecb115bc27859a")
 },
 {
-  name: 'unknown',
-  stars: 5,
-  comment: '여기는 괜찮다..',
-  product: db.product.findOne({title: "프락셀"})._id
+  user_id_email: 'iam.yonghyun@gmail.com',
+  stars: '3.5',
+  comment: '안좋았다.',
+  product: ObjectId("5a86d25270ecb115bc27859a")
 }])
 */
+//db.product.findOne({title: "프락셀"})._id

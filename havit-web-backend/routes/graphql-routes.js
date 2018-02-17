@@ -9,12 +9,13 @@ import {
   graphiqlExpress
 } from "apollo-server-express";
 
+
 const typeDefs = `
   type Query {
     Users : [User],
     Reservations : [Reservation],
-    Products : [Product],
-    Reviews : [Review],
+    Products (type: String, subType: String) : [Product],
+    Reviews: [Review],
     EditInfo(user_id_email:String) : [User],
     LikeProducts(user_id_email:String) : [Product],
     ReservationLists(user_id_email:String) : [Reservation]
@@ -32,7 +33,7 @@ const typeDefs = `
     likePoint: [String],
     reservation: [Reservation],
     likeProduct: [Product],
-    review: [Review]
+    reviews: [Review]
   }
   type Reservation {
     _id: String,
@@ -46,6 +47,7 @@ const typeDefs = `
     status: String
   }
   type Product {
+    _id: ID,
     type: String,
     subType: String,
     img: String,
@@ -56,7 +58,7 @@ const typeDefs = `
     price: Int,
     purchased: Int,
     productDetail: String,
-    review: [Review]
+    reviews: [Review]
   }
   type Review {
     user_id_email : String,
@@ -73,7 +75,9 @@ const typeDefs = `
     name: String,
     loc: String
   }
+
   type Mutation {
+
     addReservation(
       productName: String,
       userName: String,
@@ -110,9 +114,7 @@ const prepare = (o) => {
 
 const resolvers = {
   Query: {
-    Users: async (obj, args, ctx) => {
-      return await ctx.user.find();
-    },
+    Users: async (obj,args,ctx) => await ctx.user.find(),
     ReservationLists: async (obj, args, ctx) => {
       return await ctx.reservation.find({ user: args.user_id_email });
     },
@@ -124,25 +126,63 @@ const resolvers = {
           return await ctx.product.find({ _id: ObjectId(item) });
         })
     },
+
     Products : async ( obj, args, ctx ) => {
-      console.log(obj);
-      return (await ctx.product.find({})).map(item =>{
-        console.log(item);
-        item.review.filter( async i => {
-          const a = await ctx.review.find({_id:ObjectId(i)});
-          console.log();
-        })
-        return prepare(item);
-      });
+      console.log(Object.keys(args).length);
+      switch (Object.keys(args).length) {
+        case 1:
+          return (await ctx.product.find({ type: args.type })).map(item => {
+            // console.log(item);
+            item.review.filter(async i => {
+              const a = await ctx.review.find({ _id: ObjectId(i) });
+              // console.log();
+            })
+            return prepare(item);
+          });
+          break;
+        case 2:
+          return (await ctx.product.find({ type: args.type, subType: args.subType })).map(item => {
+            // console.log(item);
+            item.review.filter(async i => {
+              const a = await ctx.review.find({ _id: ObjectId(i) });
+              // console.log();
+            })
+            return prepare(item);
+          });
+          break;
+        default:
+          return (await ctx.product.find({})).map(item => {
+            // console.log(item);
+            item.review.filter(async i => {
+              const a = await ctx.review.find({ _id: ObjectId(i) });
+              // console.log();
+            })
+            return prepare(item);
+          });
+          break;
+      }
     },
 
-    Reviews : async ( obj, args, ctx ) => {
-      return await ctx.review.find({});
-    },
     EditInfo : async (obj, args, ctx) => {
       return ctx.user.find({user_id_email: args.user_id_email});
+    },
+    Reviews: async (obj,args,ctx) => {
+      return await ctx.review.find();
     }
   },
+  Product: {
+    reviews : async (obj, args, ctx ) => {
+      // console.log("product-review[obj] :", obj);
+      console.log(obj)
+      const a = await obj.review.filter(item => console.log("item:",item))
+    }
+  },
+  // Review: {
+  //   product : async (obj, args, ctx ) => {
+  //     console.log("Review[obj]:", obj);
+  //     return [{ type: " 더미 타입 "}];
+  //   }
+  // },
 
   Mutation: {
     addReservation: async (obj, args, ctx) => {
