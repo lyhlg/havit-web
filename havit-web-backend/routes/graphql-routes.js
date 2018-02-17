@@ -144,13 +144,9 @@ const resolvers = {
       return await ctx.review.find();
     }
   },
+
   Product: {
     reviews : async (obj, args, ctx ) => {
-      // console.log("product-review[obj] :", obj);
-      // console.log(obj.review)
-      // return await ctx.product.review
-      // console.log(obj);
-
       return  await obj.review.map( async item => {
         const a = await ctx.review.findOne({_id:ObjectId(item)})
         console.log("a :", a)
@@ -158,12 +154,6 @@ const resolvers = {
       });
     }
   },
-  // Review: {
-  //   product : async (obj, args, ctx ) => {
-  //     console.log("Review[obj]:", obj);
-  //     return [{ type: " 더미 타입 "}];
-  //   }
-  // },
 
   Mutation: {
     addReservation: async (obj, args, ctx) => {
@@ -223,6 +213,7 @@ var schema = makeExecutableSchema({
 // Using GraphQL
 router.use('/graphql',
   bodyParser.json(),
+  cors(),
   graphqlExpress(
     {
       schema,
