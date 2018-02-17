@@ -1,6 +1,6 @@
 const router = require('express').Router();
-import cors from 'cors';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 // import schema from '../graphql/schema.js';
 import { User, Reservation, Product, Review } from '../db';
 import { makeExecutableSchema } from 'graphql-tools';
@@ -129,39 +129,12 @@ const resolvers = {
     },
 
     Products : async ( obj, args, ctx ) => {
-      console.log(Object.keys(args).length);
-      switch (Object.keys(args).length) {
-        case 1:
-          return (await ctx.product.find({ type: args.type })).map(item => {
-            // console.log(item);
+      return (await ctx.product.find(args)).map(item => {
             item.review.filter(async i => {
               const a = await ctx.review.find({ _id: ObjectId(i) });
-              // console.log();
             })
             return prepare(item);
           });
-          break;
-        case 2:
-          return (await ctx.product.find({ type: args.type, subType: args.subType })).map(item => {
-            // console.log(item);
-            item.review.filter(async i => {
-              const a = await ctx.review.find({ _id: ObjectId(i) });
-              // console.log();
-            })
-            return prepare(item);
-          });
-          break;
-        default:
-          return (await ctx.product.find({})).map(item => {
-            // console.log(item);
-            item.review.filter(async i => {
-              const a = await ctx.review.find({ _id: ObjectId(i) });
-              // console.log();
-            })
-            return prepare(item);
-          });
-          break;
-      }
     },
 
     EditInfo : async (obj, args, ctx) => {
@@ -174,8 +147,15 @@ const resolvers = {
   Product: {
     reviews : async (obj, args, ctx ) => {
       // console.log("product-review[obj] :", obj);
-      console.log(obj)
-      const a = await obj.review.filter(item => console.log("item:",item))
+      // console.log(obj.review)
+      // return await ctx.product.review
+      // console.log(obj);
+
+      return  await obj.review.map( async item => {
+        const a = await ctx.review.findOne({_id:ObjectId(item)})
+        console.log("a :", a)
+        return a;
+      });
     }
   },
   // Review: {
@@ -242,7 +222,6 @@ var schema = makeExecutableSchema({
 
 // Using GraphQL
 router.use('/graphql',
-  cors(),
   bodyParser.json(),
   graphqlExpress(
     {
@@ -263,6 +242,5 @@ router.use('/graphiql',
     endpointURL: "/graphql"
   })
 );
-
 
 module.exports = router;
