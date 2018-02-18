@@ -25,13 +25,7 @@ export default {
         })
     },
     Products: async (obj, args, ctx) => {
-      return (await ctx.product.find(args)).map(item => {
-        item.review.filter(async i => {
-          const a = await ctx.review.find({ _id: ObjectId(i) });
-        })
-        // return prepare(item);
-        return item;
-      });
+      return (await ctx.product.find(args));
     },
 
     EditInfo: async (obj, args, ctx) => {
@@ -63,10 +57,9 @@ export default {
 
   Product: {
     reviews: async (obj, args, ctx) => {
-      return await obj.review.map(async item => {
-        const res = await ctx.review.findOne({ _id: ObjectId(item) })
-        return res;
-      });
+      return obj.reviews.map(async item => {
+          return await ctx.review.findOne({ _id: ObjectId(item) });
+        })
     }
   },
 
@@ -86,6 +79,8 @@ export default {
       })
     }
   },
+
+
   Review : {
     product: async (obj, args, ctx) => {
       const convert = obj._id.toString();
