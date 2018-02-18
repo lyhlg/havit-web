@@ -6,6 +6,7 @@ const typeDefs = `
     Reviews: [Review],
     EditInfo(user_id_email:String) : [User],
     LikeProducts(user_id_email:String) : [Product],
+    reviews: [Review],
     ReservationLists(user_id_email:String) : [Reservation],
     Hospitals(adminAccount: String) : [Hospital]
   }
@@ -51,6 +52,7 @@ const typeDefs = `
     reviews: [Review]
   }
   type Review {
+    _id: ID,
     user_id_email : String,
     stars : Float,
     comment: String,
@@ -95,6 +97,11 @@ const typeDefs = `
       likeArea: [String!],
       likePoint: [String!],
       code : String
+    ) : User,
+
+    addLikeProducts(
+      user_id_email: String!,
+      productId : String!,
     ) : User
   }
 `;

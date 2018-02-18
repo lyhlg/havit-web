@@ -12,6 +12,14 @@ const smtpTransport = nodemailer.createTransport({
     pass: "codestateshavit"
   }
 });
+
+const checkFirstLogin = (req, res, next) => {
+  if (req.user.phone) next();
+  else {
+    res.send('<script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>')
+  }
+};
+
 var rand, mailOptions, host, link;
 
 // logout
@@ -27,19 +35,19 @@ router.get('local', passport.authenticate('{strategy}'));
 router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
-router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
+router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin, (req, res) => {
   res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
 });
 
 // Naver Login
 router.get('/naver', passport.authenticate('naver'));
-router.get('/naver/redirect', passport.authenticate('naver'), (req, res) => {
+router.get('/naver/redirect', passport.authenticate('naver'), checkFirstLogin, (req, res) => {
   res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
 });
 
 // Kakao Login
 router.get('/kakao', passport.authenticate('kakao'));
-router.get('/kakao/redirect', passport.authenticate('kakao'), (req, res) => {
+router.get('/kakao/redirect', passport.authenticate('kakao'), checkFirstLogin, (req, res) => {
   res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
 });
 
