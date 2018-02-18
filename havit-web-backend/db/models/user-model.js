@@ -29,7 +29,7 @@ const userSchema = new Schema({
   likePoint: [String],
   reservation: [String],
   likeProduct: [String],
-  review: [String]
+  reviews: [String]
 });
 
 
