@@ -17,12 +17,17 @@ import {
 } from './index';
 
 class App extends Component {
+  componentDidMount() {
+    this.props.getProductsList();
+  }
+
   render() {
     return (
       <div>
+        {console.log(this.props)}
         <Header />
         <Nav />
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" render={props => <Home {...this.props} />} />
         <Route path="/login" component={Login} />
         <Route path="/signin" component={Signin} />
         <Route path="/mypage" component={MyPage} />
