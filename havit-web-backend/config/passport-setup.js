@@ -26,7 +26,7 @@ passport.use(
     User.findOne({ user_id_email: usermail }).then((currentUser) => {
       if (currentUser) {
         // already have this user
-        console.log('user is: ', currentUser);
+        // console.log('user is: ', currentUser);
         done(null, currentUser);
       } else {
         // if not, create user in our db
@@ -51,13 +51,13 @@ passport.use(
     clientSecret: keys.google.clientSecret,
     callbackURL: keys.google.callbackURL
   }, (accessToken, refreshToken, profile, done) => {
-    console.log("profile:", profile._json);
+    // console.log("profile:", profile._json);
     const _profile = profile._json;
     // check if user already exists in our own db
     User.findOne({ user_id_email: _profile.emails[0].value }).then((currentUser) => {
       if (currentUser) {
         // already have this user
-        console.log('user is: ', currentUser);
+        // console.log('user is: ', currentUser);
         done(null, currentUser);
       } else {
         // if not, create user in our db
@@ -68,7 +68,7 @@ passport.use(
           auth: 'google'
           // thumbnail: profile._json.image.url
         }).save().then((newUser) => {
-          console.log('created new user: ', newUser);
+          // console.log('created new user: ', newUser);
           done(null, newUser);
         });
       }
@@ -82,12 +82,12 @@ passport.use(
     clientSecret: keys.naver.clientSecret,
     callbackURL: keys.naver.callbackURL
   }, (accessToken, refreshToken, profile, done) => {
-    console.log("Naver profile:", profile._json);
+    // console.log("Naver profile:", profile._json);
     const _profile = profile._json;
     User.findOne({ user_id_email: _profile.email }).then((currentUser) => {
-      console.log('currentUser: ', currentUser);
+      // console.log('currentUser: ', currentUser);
       if (currentUser) {
-        console.log('user is: ', currentUser);
+        // console.log('user is: ', currentUser);
         done(null, currentUser);
       } else {
         // if not, create user in our db
@@ -97,7 +97,7 @@ passport.use(
           user_id_email: _profile.email,
           auth: 'naver'
         }).save().then((newUser) => {
-          console.log('created new user: ', newUser);
+          // console.log('created new user: ', newUser);
           done(null, newUser);
         });
       }
@@ -116,7 +116,7 @@ passport.use(
     User.findOne({ user_id_email: _profile.kaccount_email }).then((currentUser) => {
       console.log('currentUser: ', currentUser);
       if (currentUser) {
-        console.log('user is: ', currentUser);
+        // console.log('user is: ', currentUser);
         done(null, currentUser);
       } else {
         // if not, create user in our db
