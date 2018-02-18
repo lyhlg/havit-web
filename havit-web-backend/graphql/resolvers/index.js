@@ -87,20 +87,20 @@ export default {
       return await new ctx.reservation(new_args).save();
     },
     addReview: async (obj, args, ctx) => {
-      // Client 쪽에서 product의 oid를 전달함
       args.product = ObjectId(args.product);
       // save() : 리뷰 작성시 해당 review 를 product에 연결한다.
-      var save = async () => {
+      const targetReviewId = (await new ctx.review(args).save());
+      const save = async (id) => {
         return await ctx.product.update(
           { _id: ObjectId(args.product) },
           {
             $push:
-              { review: args.product }
+              { review: id }
           }
         )
       }
-      save();
-      return new ctx.review(args).save();
+      save(targetReviewId._id)
+      return targetReviewId;
     },
 
     addUserInfo: async (obj, args, ctx) => {
