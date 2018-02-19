@@ -1,5 +1,5 @@
 const ObjectId = require('mongodb').ObjectID;
-import reserveNum from '../../jsFunction';
+import reserveNum from '../../utils';
 
 const prepare = (o) => {
   o._id = o._id.toString();
@@ -15,8 +15,8 @@ export default {
     },
     LikeProducts: async (obj, args, ctx) => {
       return (await ctx.user.findOne(args)).likeProduct
-      .map ( async item => {
-        return await ctx.product.findOne({_id:ObjectId(item)});
+        .map ( async item => {
+          return await ctx.product.findOne({_id:ObjectId(item)});
       })
     },
     Products: async (obj, args, ctx) => {
@@ -104,7 +104,7 @@ export default {
     },
     addReview: async (obj, args, ctx) => {
       args.product = ObjectId(args.product);
-      const targetReviewId = (await new ctx.review(args).save());
+      const targetReview = (await new ctx.review(args).save());
       const save = async (id) => {
         await ctx.user.update(
           { user_id_email: args.user_id_email },
@@ -122,7 +122,7 @@ export default {
         )
       }
       save(targetReviewId._id);
-      return targetReviewId;
+      return targetReview;
     },
 
     addUserInfo: async (obj, args, ctx) => {

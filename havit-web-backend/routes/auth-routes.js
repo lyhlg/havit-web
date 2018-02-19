@@ -20,6 +20,12 @@ const checkFirstLogin = (req, res, next) => {
   }
 };
 
+// const cookie = (req, res, next) => {
+//   console.log("cookie", res);
+//   res.send(res.headers);
+//   next();
+// };
+
 var rand, mailOptions, host, link;
 
 // logout
@@ -35,7 +41,7 @@ router.get('local', passport.authenticate('{strategy}'));
 router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
-router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin, (req, res) => {
+router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin,  (req, res) => {
   res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
 });
 
