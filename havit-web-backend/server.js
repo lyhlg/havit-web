@@ -1,5 +1,6 @@
 const express = require('express');
 // const router = require('./routes/routes.js');
+const session = require('express-session');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const authRoutes = require('./routes/auth-routes');
@@ -21,9 +22,12 @@ const defaultHeader = {
 };
 
 //  initialize Cookie Session value
-app.use(cookieSession({
-  maxAge: 24 * 60 * 60 * 1000,
-  keys: [keys.session.cookieKey]
+app.use(session({
+  key: keys.session.cookieKey,
+  secret: keys.session.secret,
+  cookie: {
+    maxAge: 60 * 60 * 1000
+  }
 }));
 
 // initialize passport

@@ -1,5 +1,6 @@
 const ObjectId = require('mongodb').ObjectID;
-import reserveNum from '../../utils';
+import { reserveNumCal } from '../../utils';
+console.log(reserveNumCal);
 
 const prepare = (o) => {
   o._id = o._id.toString();
@@ -38,7 +39,7 @@ export default {
         {adminAccount: obj.adminAccount},
         {reservations:1}))
         .reservations.map(async item => {
-        return await ctx.reservation.findOne({ reserveNum: item });
+        return await ctx.reservation.findOne({ reserveNumCal: item });
       });
     },
 
@@ -88,7 +89,7 @@ export default {
 
   Mutation: {
     addReservation: async (obj, args, ctx) => {
-      let obj_reserveNum = { reserveNum: reserveNum() };
+      let obj_reserveNum = { reserveNum: reserveNumCal() };
       let new_args = Object.assign(args, obj_reserveNum);
 
       const addToHospitalReserveLists = async (id) => {

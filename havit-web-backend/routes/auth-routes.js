@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 // const mailAuth = require('../models/mailauth-model');
 const bodyParser = require('body-parser');
 import { MailAuth } from '../db';
+const keys = require('../config/keys');
 
 const smtpTransport = nodemailer.createTransport({
   service: "Gmail",
@@ -30,8 +31,13 @@ var rand, mailOptions, host, link;
 
 // logout
 router.get('/logout', (req, res) => {
-  req.logout();
-  res.redirect("http://localhost:3000");
+    res.clearCookie(keys.session.cookieKey);
+    req.session.destroy(err => {
+      if (err) console.error(err);
+      else {
+        res.redirect("http://localhost:3000");
+      }
+    });
 });
 
 // Local Login
