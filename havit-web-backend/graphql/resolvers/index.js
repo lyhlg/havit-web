@@ -145,10 +145,9 @@ export default {
         } else {
           code = null;
         }
-        console.log(code);
       }
+
       let userUpdate = async () => {
-        console.log('userUpdate', args.code);
         await ctx.user.update(
           { user_id_email: args.user_id_email },
           {
