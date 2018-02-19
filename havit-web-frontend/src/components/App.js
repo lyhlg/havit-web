@@ -19,6 +19,7 @@ import {
 class App extends Component {
   componentDidMount() {
     this.props.getProductsList();
+    this.props.getReservationsList();
   }
 
   render() {

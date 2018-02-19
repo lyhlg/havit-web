@@ -40,13 +40,9 @@ export const getReservations = () => {
   return client.query({
     query: gql`
       {
-        ReservationLists {
+        Reservations {
           _id
-          reserveNum
-          userName
-          phone
-          productName
-          reserveDate
+          careDate
           status
         }
       }

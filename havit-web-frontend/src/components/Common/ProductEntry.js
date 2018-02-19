@@ -4,7 +4,6 @@ import { ProductDetail } from '../index';
 
 class ProductEntry extends Component {
   render() {
-    console.log(this.props);
     return (
       <div>
         <Link to="/detail" className="header__link">

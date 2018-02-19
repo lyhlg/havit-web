@@ -116,11 +116,9 @@ class Product extends Component {
   render() {
     return (
       <div>
-        <td>
-          {dummy.map((ssup, index) => (
-            <ProductEntry ssupDummy={ssup} i={index} />
-          ))}
-        </td>
+        {dummy.map((ssup, index) => (
+          <ProductEntry ssupDummy={ssup} key={index} />
+        ))}
       </div>
     );
   }
