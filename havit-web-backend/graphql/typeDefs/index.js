@@ -5,7 +5,7 @@ const typeDefs = `
     Products (type: String, subType: String) : [Product],
     Reviews: [Review],
     Hospitals(adminAccount: String) : [Hospital],
-    EditInfo(user_id_email:String) : [User],
+    HospitalAdmin : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product]
   }
   type User {

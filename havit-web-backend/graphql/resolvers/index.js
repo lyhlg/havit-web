@@ -13,20 +13,14 @@ export default {
     Reservations : async (obj, args, ctx) => {
       return await ctx.reservation.find(args);
     },
-    LikeProducts: async (obj, args, ctx) => { // 잘안되네... data가 null로 나온다.
-      return (await ctx.user.findOne({ user_id_email: args.user_id_email }))
-        .likeProduct
-        .map(async item => {
-          console.log(item);
-          return await ctx.product.find({ _id: ObjectId(item) });
-        })
+    LikeProducts: async (obj, args, ctx) => {
+      return (await ctx.user.findOne(args)).likeProduct
+      .map ( async item => {
+        return await ctx.product.findOne({_id:ObjectId(item)});
+      })
     },
     Products: async (obj, args, ctx) => {
-      return (await ctx.product.find(args));
-    },
-
-    EditInfo: async (obj, args, ctx) => {
-      return ctx.user.find({ user_id_email: args.user_id_email });
+      return await ctx.product.find(args);
     },
     Reviews: async (obj, args, ctx) => {
       return await ctx.review.find();
@@ -34,7 +28,9 @@ export default {
     Hospitals: async (obj, args, ctx) => {
       return await ctx.hospital.find(args);
     },
-    // HospitalAdmin : async ( obj, args, ctx )
+    HospitalAdmin : async ( obj, args, ctx ) => {
+      return await ctx.hospitalAdmin.find();
+    }
   },
   Hospital : {
     reservations: async (obj, args, ctx) => {
