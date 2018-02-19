@@ -41,7 +41,7 @@ const dummy = [
   {
     type: 'Skin',
     subType: '필링',
-    img: 'https://dummyimage.com/200x200',
+    img: 'https://dummyimage.com/200x200/00c3a3',
     hospitalLoc: '[강남/신사역] 제이디클리닉',
     title: '레가토2 피부재생 패키지',
     description: '모공+흉터+잔주름+튼살 피부탄력 개선!',
@@ -53,7 +53,7 @@ const dummy = [
   {
     type: 'Skin',
     subType: '반영구',
-    img: 'https://dummyimage.com/200x200',
+    img: 'https://dummyimage.com/200x200/00c3a3',
     hospitalLoc: '[신사역] 엔젤미의원',
     title: '크고 또렷한 눈매! 아이라인 반영구',
     description: '쌩얼도 예쁘다! 뚜렷하고 커보이는 눈매 만들기!',
@@ -65,7 +65,7 @@ const dummy = [
   {
     type: 'Skin',
     subType: '미용주사',
-    img: 'https://dummyimage.com/200x200',
+    img: 'https://dummyimage.com/200x200/00c3a3',
     hospitalLoc: '[천호역] 코코클리닉',
     title: '리쥬란힐러 1cc',
     description: '피부세포 재생 촉진제 리쥬란힐러! 탁월한 피부재생!',
@@ -77,7 +77,7 @@ const dummy = [
   {
     type: 'Beauty',
     subType: '보톡스',
-    img: 'https://dummyimage.com/200x200',
+    img: 'https://dummyimage.com/200x200/fd6977',
     hospitalLoc: '[천호역] 코코클리닉',
     title: '작은얼굴 아큐주사!',
     description: '숨어있는 브이라인 찾기! 턱라인+광대+이중턱!',
@@ -89,7 +89,7 @@ const dummy = [
   {
     type: 'Beauty',
     subType: '보톡스',
-    img: 'https://dummyimage.com/200x200',
+    img: 'https://dummyimage.com/200x200/fd6977',
     hospitalLoc: '[강남역] 포에버성형외과',
     title: '포에버 부위별 맞춤 보톡스',
     description: '부위별로 예뻐지기! 미간+눈가+이마+사각턱!',
@@ -101,7 +101,7 @@ const dummy = [
   {
     type: 'Beauty',
     subType: '리프팅',
-    img: 'https://dummyimage.com/200x200',
+    img: 'https://dummyimage.com/200x200/fd6977',
     hospitalLoc: '[하남] 제이디클리닉',
     title: '슬림라인 비키니주사',
     description: '지방분해와 바디 리프팅을 동시에 원하는 당신의 선택!',
@@ -116,8 +116,8 @@ class Product extends Component {
   render() {
     return (
       <div>
-        {dummy.map((ssup, index) => (
-          <ProductEntry ssupDummy={ssup} key={index} />
+        {dummy.map((product, index) => (
+          <ProductEntry product={product} key={index} />
         ))}
       </div>
     );
