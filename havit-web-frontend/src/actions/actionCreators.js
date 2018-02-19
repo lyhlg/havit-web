@@ -41,12 +41,12 @@ const requestLikeProductsList = () => ({
   type: types.REQUEST_LIKEPRODUCTS_LIST,
 });
 
-const successLikeProductsList = products => ({
+const successLikeProductsList = likeProducts => ({
   type: types.SUCCESS_LIKEPRODUCTS_LIST,
-  products,
+  likeProducts,
 });
 
-export const likeProductsList = () => {
+export const getLikeProductsList = () => {
   return dispatch => {
     dispatch(requestLikeProductsList());
     return api.getLikeProducts().then(res => {

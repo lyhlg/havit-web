@@ -23,8 +23,8 @@ class Login extends Component {
     this.loginPopup = this.loginPopup.bind(this);
   }
 
-  loginPopup(url) {
-    window.open(`${url.API_DEV}/auth/${url}`, '', 'width=500, height=500');
+  loginPopup(social) {
+    window.open(`${url.API_DEV}/auth/${social}`, '', 'width=500, height=500');
   }
 
   render() {
@@ -36,9 +36,9 @@ class Login extends Component {
         <button type="submit">
           <a href={`${url.API_DEV}/auth/logout`}>로그아웃</a>
         </button>
-        {this.state.socials.map(social => {
+        {this.state.socials.map((social, i) => {
           return (
-            <button onClick={() => this.loginPopup(social.url)}>
+            <button onClick={() => this.loginPopup(social.url)} key={i}>
               {social.name}
             </button>
           );
