@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as url from 'utils';
+import 'styles/css/Common/Login.css';
 
 class Login extends Component {
   constructor(props) {
@@ -29,23 +30,35 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
-        <input type="text" placeholder="아이디" />
-        <input type="text" placeholder="비밀번호" />
-        <button type="submit">로그인</button>
-        <button type="submit">
-          <a href={`${url.API_DEV}/auth/logout`}>로그아웃</a>
-        </button>
-        <button type="submit">이메일 찾기</button>
-        <button type="submit">비밀번호 찾기</button>
-        <button type="submit">회원가입</button>
-        {this.state.socials.map(social => {
-          return (
-            <button onClick={() => this.loginPopup(social.url)}>
-              {social.name}
+      <div className="login">
+        <div className="login__find">
+          <button type="submit">이메일 찾기</button>
+          <button type="submit">비밀번호 찾기</button>
+          <button type="submit">회원가입</button>
+        </div>
+        <div className="login__wrapper">
+          <div className="login__input">
+            <h3>이메일 주소</h3>
+            <input type="text" placeholder="이메일@도메인" />
+            <h3>비밀번호 입력</h3>
+            <input type="text" placeholder="비밀번호" />
+          </div>
+          <div className="login__button">
+            <button type="submit">로그인</button>
+            <button type="submit">
+              <a href={`${url.API_DEV}/auth/logout`}>로그아웃</a>
             </button>
-          );
-        })}
+          </div>
+          <div className="social__button">
+            {this.state.socials.map(social => {
+              return (
+                <button onClick={() => this.loginPopup(social.url)}>
+                  {social.name}
+                </button>
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }

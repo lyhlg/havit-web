@@ -1,3 +1,35 @@
-body {
-  font-size:10px;
+.login {
+  width: 1200px;
+  height: 720px;
+  background-color: #647dff;
+  margin: 0 auto;
+  padding-left: 10px;
+  .login__find {
+    font-size: 15px;
+    text-align: right;
+    line-height: 30px;
+  }
+  .login__wrapper {
+    width: 360px;
+    height: 440px;
+    margin: 0 auto;
+    font-size: 15px;
+    background-color: #ffffff;
+    box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3);
+    .login__input {
+      width: 240px;
+      height: 50;
+      margin: 0 auto;
+    }
+    .login__button {
+      width: 240px;
+      height: 50;
+      margin: 0 auto;
+    }
+    .social__button {
+      width: 240px;
+      height: 50;
+      margin: 0 auto;
+    }
+  }
 }
