@@ -1,0 +1,108 @@
+.productDetail {
+  width : 1200px;
+  margin: 0 auto;
+
+  .productDetail__category {
+    margin: 0, 120px;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    padding-left: 10px;
+    font-size: 20px;
+    color: #647dff;
+  }
+
+  .productDetail__info {
+    width: 1200px;
+    height: 520px;
+
+    // vertical-align: middle;
+
+    .productDetail__img {
+      padding-top: 20px;
+      padding-left: 10px;
+      // margin: 10px;
+    }
+
+    .productDetail__text {
+      display: inline-block;
+      width: 500px;
+      height: 400px;
+      margin-left : 60px;
+
+      .productDetail__hospital {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        color: #647dff;
+      }
+      .productDetail__title {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 40px;
+        font-weight: bold;
+        color: #414d6b;
+      }
+      .productDetail__description {
+        font-size: 20px;
+        color: #414d6b;
+      }
+      .productDetail__sales {
+        margin-top: 40px;
+
+        .productDetail__price {
+          float: left;
+          font-size: 40px;
+          font-weight: bold;
+          text-align: right;
+          margin-right : 10px;
+          color: #647dff;
+        }
+
+        .productDetail__purchased {
+          float: left;
+          margin-top: 10px;
+          color: #414d6b;
+          font-size: 20px;
+          font-weight: bold;
+          margin-top: 17px;
+          span {
+            color: #647dff;
+          }
+        }
+        &::after {
+          display: block;
+          content: '';
+          clear: both;
+        }
+      }
+      .productDetail__divider {
+        margin-top: 40px;
+        width: 640px;
+        height: 1px;
+        border: 0.3px solid #dce2eb;
+      }
+      .productDetail__option {
+        margin-top: 20px;
+      }
+      .productDetail__purchaseBtn{
+        margin-top: 80px;
+        width: 160px;
+        height: 50px;
+        border-radius: 2px;
+        background-color: #647dff;
+        border: solid 1px #647dff;
+        color: white;
+        font-size: 15px;
+      }
+      .productDetail__likeBtn{
+        margin-top: 80px;
+        margin-left: 10px;
+        width: 50px;
+        height: 50px;
+        border: solid 1px #647dff;
+      }
+    }
+  }
+
+}
