@@ -1,0 +1,45 @@
+.productEntry {
+  display: inline-block;
+  width: 280px;
+  height: 470px;
+  margin-right: 20px;
+  border: solid 1px #dce2eb; }
+  .productEntry:last-child {
+    margin-right: 0; }
+  .productEntry .productEntry__link {
+    width: 280px;
+    height: 280px; }
+  .productEntry .productEntry__text {
+    padding: 20px; }
+    .productEntry .productEntry__text .productEntry__hospital {
+      margin-bottom: 20px;
+      font-size: 15px;
+      color: #647dff; }
+    .productEntry .productEntry__text .productEntry__title {
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #414d6b; }
+    .productEntry .productEntry__text .productEntry__description {
+      font-size: 15px;
+      color: #414d6b; }
+    .productEntry .productEntry__text .productEntry__sales {
+      margin-top: 40px; }
+      .productEntry .productEntry__text .productEntry__sales .productEntry__purchased {
+        float: left;
+        margin-top: 10px;
+        color: #414d6b;
+        font-size: 20px;
+        font-weight: bold; }
+        .productEntry .productEntry__text .productEntry__sales .productEntry__purchased span {
+          color: #647dff; }
+      .productEntry .productEntry__text .productEntry__sales .productEntry__price {
+        float: right;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: right;
+        color: #647dff; }
+      .productEntry .productEntry__text .productEntry__sales::after {
+        display: block;
+        content: '';
+        clear: both; }
