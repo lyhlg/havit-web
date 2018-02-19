@@ -13,7 +13,7 @@ const productSchema = new Schema({
   price: Number,
   purchased: Number,
   productDetail: String,
-  review: [String]
+  reviews: [String]
 });
 
 
@@ -33,7 +33,7 @@ db.products.insert([{
   price: 200000,
   purchased: 72,
   productDetail: './image/det2ail/test.jpg',
-  review: []
+  reviews: []
 },{
   type: 'beauty',
   subType: 'filler',
@@ -46,7 +46,7 @@ db.products.insert([{
   price: 85000,
   purchased: 4922,
   productDetail: './image/detail/filler.jpg',
-  review: []
+  reviews: []
 },{
   type: 'beauty',
   subType: 'lefting',
@@ -59,7 +59,7 @@ db.products.insert([{
   price: 139000,
   purchased: 22,
   productDetail: './image/detail/lefting.jpg',
-  review: []
+  reviews: []
 },
 {
   type: 'skin',
@@ -73,7 +73,7 @@ db.products.insert([{
   price: 99000,
   purchased: 22,
   productDetail: './image/detail/scaling.jpg',
-  review: []
+  reviews: []
 },{
   type: 'beauty',
   subType: 'lifting',
@@ -86,6 +86,6 @@ db.products.insert([{
   price: 99000,
   purchased: 399,
   productDetail: './image/det2ail/test.jpg',
-  review: []
+  reviews: []
 }])
 */

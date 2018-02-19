@@ -25,13 +25,7 @@ export default {
         })
     },
     Products: async (obj, args, ctx) => {
-      return (await ctx.product.find(args)).map(item => {
-        item.review.filter(async i => {
-          const a = await ctx.review.find({ _id: ObjectId(i) });
-        })
-        // return prepare(item);
-        return item;
-      });
+      return (await ctx.product.find(args));
     },
 
     EditInfo: async (obj, args, ctx) => {
@@ -63,10 +57,38 @@ export default {
 
   Product: {
     reviews: async (obj, args, ctx) => {
-      return await obj.review.map(async item => {
-        const a = await ctx.review.findOne({ _id: ObjectId(item) })
-        return a;
-      });
+      return obj.reviews.map(async item => {
+          return await ctx.review.findOne({ _id: ObjectId(item) });
+        })
+    }
+  },
+
+  User: {
+    reservation: async (obj, args, ctx) => {
+      return await ctx.reservation.find({user_id_email: obj.user_id_email});
+    },
+    likeProduct: async (obj, args, ctx) => {
+      return (await ctx.user.findOne({user_id_email:obj.user_id_email})).likeProduct
+        .map(async item => {
+          return await ctx.product.findOne({_id:ObjectId(item)});
+        })
+    },
+    reviews: async (obj, args, ctx) => {
+      return obj.reviews.map( async item => {
+        return await ctx.review.findOne({_id: ObjectId(item)});
+      })
+    }
+  },
+
+
+  Review : {
+    product: async (obj, args, ctx) => {
+      const convert = obj._id.toString();
+      return (await ctx.product.findOne({_id:ObjectId(obj.product)}))
+      a.reviews.filter(item => {
+          console.log(item);
+          if (item === convert) return a;
+        })
     }
   },
 
@@ -87,24 +109,29 @@ export default {
       return await new ctx.reservation(new_args).save();
     },
     addReview: async (obj, args, ctx) => {
-      // Client 쪽에서 product의 oid를 전달함
       args.product = ObjectId(args.product);
-      // save() : 리뷰 작성시 해당 review 를 product에 연결한다.
-      var save = async () => {
+      const targetReviewId = (await new ctx.review(args).save());
+      const save = async (id) => {
+        await ctx.user.update(
+          { user_id_email: args.user_id_email },
+          {
+            $push:
+              { reviews: id }
+          }
+        );
         return await ctx.product.update(
           { _id: ObjectId(args.product) },
           {
             $push:
-              { review: args.product }
+              { reviews: id }
           }
         )
       }
-      save();
-      return new ctx.review(args).save();
+      save(targetReviewId._id);
+      return targetReviewId;
     },
 
     addUserInfo: async (obj, args, ctx) => {
-
       var userUpdate = async () => {
         await ctx.user.update(
           { user_id_email: args.user_id_email },
@@ -128,6 +155,33 @@ export default {
       }
       userUpdate();
       return await ctx.user.find({ user_id_email: args.user_id_email });
+    },
+    addLikeProducts : async (obj, args, ctx) => {
+      let checkAlreadyLikeIt = false;
+      let userInfo = async () => {
+        var a = await ctx.user.findOne({ user_id_email: args.user_id_email });
+        return a;
+      };
+
+      (await ctx.user.findOne({user_id_email:args.user_id_email})).likeProduct
+        .forEach(item => {
+          console.log(item, args.productId);
+          if (item === args.productId) {
+            checkAlreadyLikeIt = !checkAlreadyLikeIt;
+            console.log(checkAlreadyLikeIt);
+          }
+        }
+      )
+      // 찜하기 상품이 이미 등록되어 없을 때에만 등록 (중복 추가 예외처리)
+      if ( !checkAlreadyLikeIt ) {
+        await ctx.user.update(
+        {user_id_email: args.user_id_email},
+        {$push:
+          { likeProduct: args.productId }
+        });
+      }
+
+      return userInfo();
     }
   }
 };
