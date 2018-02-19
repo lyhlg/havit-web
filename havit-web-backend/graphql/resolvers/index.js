@@ -121,7 +121,34 @@ export default {
     },
 
     addUserInfo: async (obj, args, ctx) => {
-      var userUpdate = async () => {
+      let code = args.code;
+      let userPreUpdate = async () => {
+        if (args.code) {
+          let chkHospitalCode = async ({ code }) => {
+            let findHospital = await ctx.hospitalAdmin.findOne({ code: code });
+            if (findHospital) {
+              let regUserToHospital = async ({ code, user_id_email }) => {
+                return await ctx.hospital.update(
+                  { code: code },
+                  {
+                    $set: {
+                      code: code, adminAccount: user_id_email
+                    }
+                  },
+                  { upsert: 1 }
+                )
+              }
+              regUserToHospital(args);
+            }
+          }
+          chkHospitalCode(args);
+        } else {
+          code = null;
+        }
+        console.log(code);
+      }
+      let userUpdate = async () => {
+        console.log('userUpdate', args.code);
         await ctx.user.update(
           { user_id_email: args.user_id_email },
           {
@@ -129,7 +156,8 @@ export default {
               name: args.name,
               phone: args.phone,
               birthday: args.birthday,
-              gender: args.gender
+              gender: args.gender,
+              hospitalCode: args.code
             },
             $push: {
               likeArea: {
@@ -142,8 +170,9 @@ export default {
           }
         )
       }
+      userPreUpdate();
       userUpdate();
-      return await ctx.user.find({ user_id_email: args.user_id_email });
+      return await ctx.user.findOne({ user_id_email: args.user_id_email });
     },
     addLikeProducts : async (obj, args, ctx) => {
       let checkAlreadyLikeIt = false;

@@ -29,7 +29,8 @@ const userSchema = new Schema({
   likePoint: [String],
   reservation: [String],
   likeProduct: [String],
-  reviews: [String]
+  reviews: [String],
+  hospitalCode: { type: String, default: null}
 });
 
 
