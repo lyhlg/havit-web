@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as url from 'utils';
 
-class Signin extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props);
     this.handleSubmitEmail = this.handleSubmitEmail.bind(this);
@@ -43,4 +43,4 @@ class Signin extends Component {
   }
 }
 
-export default Signin;
+export default Signup;
