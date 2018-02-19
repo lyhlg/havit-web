@@ -6,7 +6,7 @@ class Home extends Component {
     return (
       <main>
         <Banner />
-        <Product />
+        <Product products={this.props.products.productsList.data} />
       </main>
     );
   }

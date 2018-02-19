@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as url from 'utils';
 
 class Signin extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Signin extends Component {
 
   handleSubmitEmail(email) {
     window.open(
-      `http://localhost:8080/auth/mailauth?to=${
+      `${url.API_DEV}/auth/mailauth?to=${
         document.getElementById('email').value
       }`
     );
