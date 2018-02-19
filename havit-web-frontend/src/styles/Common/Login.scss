@@ -3,9 +3,9 @@
   height: 720px;
   background-color: #647dff;
   margin: 0 auto;
-  padding-left: 10px;
   .login__find {
-    margin: 30px;
+    padding-top: 30px;
+    padding-right: 10px;
     font-size: 15px;
     text-align: right;
     line-height: 30px;
@@ -13,20 +13,24 @@
   .login__wrapper {
     width: 360px;
     height: 440px;
-    margin: 204px 420px 76px;
+    margin-top: 140px;
+    margin-left: 420px;
     font-size: 15px;
     background-color: #ffffff;
     box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3);
     .login__input {
       width: 240px;
       height: 180px;
-      line-height: 1.8;
-      margin: 0 auto;
+      font-size: 15px;
+      line-height: 2.4;
+      padding-left: 60px;
+      padding-top: 40px;
     }
     .login__button {
       width: 240px;
       height: 50px;
-      margin: 0 auto;
+      padding-top: 30px;
+      padding-left: 100px;
       .login__btn {
         width: 160px;
         height: 50px;
@@ -37,8 +41,9 @@
     }
     .social__button {
       width: 240px;
-      height: 50;
-      margin: 0 auto;
+      height: 50px;
+      padding-top: 65px;
+      padding-left: 80px;
     }
   }
 }
