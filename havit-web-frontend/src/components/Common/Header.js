@@ -16,7 +16,7 @@ class Header extends Component {
           <Link to="/login" className="header__link">
             로그인
           </Link>
-          <Link to="/signin" className="header__link">
+          <Link to="/signup" className="header__link">
             회원가입
           </Link>
           <Link to="/service" className="header__link">
