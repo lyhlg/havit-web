@@ -50,12 +50,25 @@ export const getReservations = () => {
   });
 };
 
-export const getLikeProducts = () => {
+export const getLikeProducts = email => {
   return client.query({
     query: gql`{
-    LikeProducts {
-
-    }
+      Users(user_id_email: ${email}) {
+        likeProduct {
+          _id
+          type
+          subType
+          img
+          hospitalCode
+          hospitalLoc
+          hospitalName
+          title
+          description
+          price
+          purchased
+          productDetail
+        }
+      }
   }`,
   });
 };
