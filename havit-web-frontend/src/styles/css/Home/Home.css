@@ -1,0 +1,19 @@
+.home__category {
+  width: 1200px;
+  height: 80px;
+  line-height: 80px;
+  vertical-align: middle;
+  margin: 25px auto 40px auto;
+  padding: 0 10px; }
+  .home__category h2 {
+    float: left;
+    font-size: 30px;
+    font-weight: normal; }
+  .home__category p {
+    float: right;
+    font-size: 20px;
+    font-weight: 300; }
+  .home__category::after {
+    display: block;
+    content: '';
+    clear: both; }

@@ -7,11 +7,11 @@ class Header extends Component {
   render() {
     return (
       <header className="header">
-        <div className="header__left">
+        <h1 className="header__left">
           <Link to="/" className="header__home">
             <img src={logo} className="header__logo" alt="해빗 로고" />
           </Link>
-        </div>
+        </h1>
         <div className="header__right">
           <Link to="/login" className="header__link">
             로그인
