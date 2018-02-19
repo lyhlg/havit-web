@@ -1,0 +1,29 @@
+.productDetail {
+  width : 1200px;
+  margin: 0 auto;
+
+  .productDetail__category {
+    margin: 0, 120px, 0, 120px;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    padding-left: 10px;
+    font-size: 20px;
+    color: #647dff;
+  }
+
+  .productDetail__info {
+    display: inline-block;
+    width: 1200px;
+    height: 520px;
+
+    .productDetail__info__img {
+      margin: 10px;
+    }
+
+    .productDetail__info__description{
+      height: 480px;
+    }
+  }
+
+}
