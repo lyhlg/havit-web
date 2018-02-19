@@ -8,8 +8,8 @@ export { default as ProductDetail } from './Common/ProductDetail';
 
 // Header
 export { default as Login } from './Header/Login';
-export { default as Signin } from './Header/Signin';
-export { default as SigninEnd } from './Header/SigninEnd';
+export { default as Signup } from './Header/Signup';
+export { default as SignupEnd } from './Header/SignupEnd';
 export { default as Privacy } from './Header/Privacy';
 
 // MyPage

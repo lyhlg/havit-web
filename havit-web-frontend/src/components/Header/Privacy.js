@@ -81,7 +81,7 @@ class Privacy extends Component {
           회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
         </h6>
         <button>
-          <Link to="/signinend">회원가입 완료</Link>
+          <Link to="/signupend">회원가입 완료</Link>
         </button>
       </div>
     );

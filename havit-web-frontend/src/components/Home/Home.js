@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Banner, Product } from '../index';
+import { Nav, Banner, Product } from '../index';
 import { Link } from 'react-router-dom';
 import 'styles/css/Home/Home.css';
 
@@ -7,6 +7,7 @@ class Home extends Component {
   render() {
     return (
       <main>
+        <Nav />
         <Banner />
         {console.log(this.props.products)}
         <div className="home__category">

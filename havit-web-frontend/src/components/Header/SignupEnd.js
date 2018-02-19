@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class SigninEnd extends Component {
+class SignupEnd extends Component {
   render() {
     return (
       <div>
@@ -15,4 +15,4 @@ class SigninEnd extends Component {
   }
 }
 
-export default SigninEnd;
+export default SignupEnd;
