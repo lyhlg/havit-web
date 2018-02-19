@@ -7,9 +7,10 @@ const initialState = {
 const products = (state = initialState, action) => {
   switch (action.type) {
     case types.SUCCESS_PRODUCTS_LIST:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         productsList: action.products.data.Products,
-      });
+      };
     case types.REQUEST_PRODUCTS_LIST:
     default:
       return state;
