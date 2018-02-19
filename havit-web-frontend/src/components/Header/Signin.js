@@ -26,6 +26,7 @@ class Signin extends Component {
           이메일 인증하기
         </button>
         <h4>이메일 인증번호</h4>
+        <h6>이메일 인증번호를 입력해주세요.</h6>
         <input type="text" placeholder="인증번호" />
         <h3>비밀번호 (6~ 15자)</h3>
         <input type="password" placeholder="비밀번호" />
