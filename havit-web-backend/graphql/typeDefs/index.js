@@ -1,19 +1,17 @@
 const typeDefs = `
   type Query {
-    Users : [User],
-    Reservations : [Reservation],
+    Users(user_id_email: String) : [User],
+    Reservations(user_id_email:String) : [Reservation],
     Products (type: String, subType: String) : [Product],
     Reviews: [Review],
+    Hospitals(adminAccount: String) : [Hospital],
     EditInfo(user_id_email:String) : [User],
-    LikeProducts(user_id_email:String) : [Product],
-    reviews: [Review],
-    ReservationLists(user_id_email:String) : [Reservation],
-    Hospitals(adminAccount: String) : [Hospital]
+    LikeProducts(user_id_email:String) : [Product]
   }
   type User {
     specId: Float,
     name: String,
-    user_id_email: String,
+    user_id_email: String!,
     password: String,
     auth: String,
     phone: String,
@@ -26,7 +24,7 @@ const typeDefs = `
     reviews: [Review]
   }
   type Reservation {
-    _id: String,
+    _id: ID,
     user_id_email: String!,
     hospitalCode: String!,
     userName: String!,
@@ -107,3 +105,6 @@ const typeDefs = `
 `;
 
 export default [ typeDefs ];
+
+
+//reviews: [Review],
