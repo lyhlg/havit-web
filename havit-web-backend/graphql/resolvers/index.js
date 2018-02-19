@@ -122,7 +122,7 @@ export default {
 
     addUserInfo: async (obj, args, ctx) => {
       let code = args.code;
-      let userUpdate = async () => {
+      let userPreUpdate = async () => {
         if (args.code) {
           let chkHospitalCode = async ({ code }) => {
             let findHospital = await ctx.hospitalAdmin.findOne({ code: code });
@@ -146,6 +146,9 @@ export default {
           code = null;
         }
         console.log(code);
+      }
+      let userUpdate = async () => {
+        console.log('userUpdate', args.code);
         await ctx.user.update(
           { user_id_email: args.user_id_email },
           {
@@ -154,7 +157,7 @@ export default {
               phone: args.phone,
               birthday: args.birthday,
               gender: args.gender,
-              code: args.code
+              hospitalCode: args.code
             },
             $push: {
               likeArea: {
@@ -166,8 +169,8 @@ export default {
             }
           }
         )
-
       }
+      userPreUpdate();
       userUpdate();
       return await ctx.user.findOne({ user_id_email: args.user_id_email });
     },
