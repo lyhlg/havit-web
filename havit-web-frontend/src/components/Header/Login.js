@@ -23,13 +23,14 @@ class Login extends Component {
     this.loginPopup = this.loginPopup.bind(this);
   }
 
-  loginPopup(url) {
-    window.open(`${url.API_DEV}/auth/${url}`, '', 'width=500, height=500');
+  loginPopup(social) {
+    window.open(`${url.API_DEV}/auth/${social}`, '', 'width=500, height=500');
   }
 
   render() {
     return (
       <div>
+        {console.log('##################', url.API_DEV)}
         <input type="text" placeholder="아이디" />
         <input type="text" placeholder="비밀번호" />
         <button type="submit">로그인</button>
