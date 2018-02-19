@@ -8,7 +8,7 @@ class Privacy extends Component {
         <h2>회원가입</h2>
         <h3>이름</h3>
         <input type="text" placeholder="이름" />
-        <h4>실명 한글 이름을 입력해주세요.</h4>
+        <h6>실명 한글 이름을 입력해주세요.</h6>
         <h3>휴대폰번호</h3>
         <select id="txtMobile1">
           <option value="010">010</option>
@@ -40,6 +40,7 @@ class Privacy extends Component {
           <option>3</option>
         </select>
         <span>일</span>
+        <h6>로그인 정보를 찾을 때 이용됩니다. 정확히 입력해주세요.</h6>
         <h3>성별</h3>
         <input type="checkbox" />
         <label for="subscribeNews">남자</label>
@@ -47,17 +48,29 @@ class Privacy extends Component {
         <label for="subscribeNews">여자</label>
         <h3>관심 지역</h3>
         <input type="checkbox" />
-        <label for="subscribeNews">강남</label>
+        <label for="subscribeNews">강남구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">서초</label>
+        <label for="subscribeNews">강동구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">중구</label>
+        <label for="subscribeNews">강북구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">성동</label>
+        <label for="subscribeNews">강서구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">광진</label>
+        <label for="subscribeNews">관악구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">영등포구</label>
+        <label for="subscribeNews">광진구</label>
+        <input type="checkbox" />
+        <label for="subscribeNews">광진구</label>
+        <input type="checkbox" />
+        <label for="subscribeNews">광진구</label>
+        <input type="checkbox" />
+        <label for="subscribeNews">광진구</label>
+        <input type="checkbox" />
+        <label for="subscribeNews">광진구</label>
+        <input type="checkbox" />
+        <label for="subscribeNews">광진구</label>
+        <input type="checkbox" />
+        <label for="subscribeNews">광진구</label>
         <h3>관심 부위</h3>
         <input type="checkbox" />
         <label for="subscribeNews">피부</label>
