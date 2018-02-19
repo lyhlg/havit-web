@@ -5,24 +5,32 @@
   margin: 0 auto;
   padding-left: 10px; }
   .login .login__find {
+    margin: 30px;
     font-size: 15px;
     text-align: right;
     line-height: 30px; }
   .login .login__wrapper {
     width: 360px;
     height: 440px;
-    margin: 0 auto;
+    margin: 204px 420px 76px;
     font-size: 15px;
     background-color: #ffffff;
     box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3); }
     .login .login__wrapper .login__input {
       width: 240px;
-      height: 50;
+      height: 180px;
+      line-height: 1.8;
       margin: 0 auto; }
     .login .login__wrapper .login__button {
       width: 240px;
-      height: 50;
+      height: 50px;
       margin: 0 auto; }
+      .login .login__wrapper .login__button .login__btn {
+        width: 160px;
+        height: 50px;
+        border-radius: 2px;
+        background-color: #4cc8e5;
+        border: solid 1px #4cc8e5; }
     .login .login__wrapper .social__button {
       width: 240px;
       height: 50;

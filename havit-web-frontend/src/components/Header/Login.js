@@ -44,7 +44,9 @@ class Login extends Component {
             <input type="text" placeholder="비밀번호" />
           </div>
           <div className="login__button">
-            <button type="submit">로그인</button>
+            <button type="submit" className="login__btn">
+              로그인
+            </button>
             <button type="submit">
               <a href={`${url.API_DEV}/auth/logout`}>로그아웃</a>
             </button>
