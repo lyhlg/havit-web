@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-
+import 'styles/css/Common/Banner.css';
 class Banner extends Component {
   render() {
     return (
-      <div>
-        <img src="http://dummyimage.com/600x200/000/fff" alt="banner" />
+      <div className="banner">
+        <img src="http://dummyimage.com/1440x360/000/fff" alt="banner" />
       </div>
     );
   }
