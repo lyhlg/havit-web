@@ -15,6 +15,7 @@ import {
   Event,
   ProductDetail,
 } from './index';
+import 'styles/css/index.css';
 
 class App extends Component {
   componentDidMount() {
