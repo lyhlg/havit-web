@@ -9,12 +9,9 @@ const prepare = (o) => {
 
 export default {
   Query: {
-    Users: async (obj, args, ctx) => await ctx.user.find(),
+    Users: async (obj, args, ctx) => await ctx.user.find(args),
     Reservations : async (obj, args, ctx) => {
-      return await ctx.reservation.find();
-    },
-    ReservationLists: async (obj, args, ctx) => {
-      return await ctx.reservation.find({ user: args.user_id_email });
+      return await ctx.reservation.find(args);
     },
     LikeProducts: async (obj, args, ctx) => { // 잘안되네... data가 null로 나온다.
       return (await ctx.user.findOne({ user_id_email: args.user_id_email }))
@@ -36,7 +33,8 @@ export default {
     },
     Hospitals: async (obj, args, ctx) => {
       return await ctx.hospital.find(args);
-    }
+    },
+    // HospitalAdmin : async ( obj, args, ctx )
   },
   Hospital : {
     reservations: async (obj, args, ctx) => {
