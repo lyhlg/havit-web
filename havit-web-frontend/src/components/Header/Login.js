@@ -47,9 +47,6 @@ class Login extends Component {
             <button type="submit" className="login__btn">
               로그인
             </button>
-            <button type="submit">
-              <a href={`${url.API_DEV}/auth/logout`}>로그아웃</a>
-            </button>
           </div>
           <div className="social__button">
             {this.state.socials.map(social => {
