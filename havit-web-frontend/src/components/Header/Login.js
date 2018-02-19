@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as url from 'utils';
+import { reallogo } from 'assets/img';
 import 'styles/css/Common/Login.css';
 
 class Login extends Component {
@@ -31,23 +32,19 @@ class Login extends Component {
   render() {
     return (
       <div className="login">
-        <div className="login__find">
-          <button type="submit">이메일 찾기</button>
-          <button type="submit">비밀번호 찾기</button>
-          <button type="submit">회원가입</button>
-        </div>
+        <img src={reallogo} className="login__logo" alt="logo" />
         <div className="login__wrapper">
-          <div className="login__input">
-            <h3>이메일 주소</h3>
-            <input type="text" placeholder="이메일@도메인" />
-            <h3>비밀번호 입력</h3>
-            <input type="text" placeholder="비밀번호" />
-          </div>
-          <div className="login__button">
-            <button type="submit" className="login__btn">
-              로그인
-            </button>
-          </div>
+          <h3 className="login__emailword">이메일 주소</h3>
+          <input
+            type="text"
+            className="login__emailbox"
+            placeholder="이메일@도메인"
+          />
+          <h3 className="login__psw">비밀번호 입력</h3>
+          <input type="text" className="login__pswbox" placeholder="비밀번호" />
+          <button type="submit" className="login__btn">
+            로그인
+          </button>
           <div className="social__button">
             {this.state.socials.map(social => {
               return (

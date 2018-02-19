@@ -1,49 +1,87 @@
 .login {
-  width: 1200px;
+  width: 1440px;
   height: 720px;
-  background-color: #647dff;
+  background-color: hsl(230, 100%, 70%);
   margin: 0 auto;
-  .login__find {
-    padding-top: 30px;
-    padding-right: 10px;
-    font-size: 15px;
-    text-align: right;
-    line-height: 30px;
+
+  .login__logo {
+    width: 200px;
+    height: 64px;
+    margin-top: 100px;
+    margin-left: 620px;
   }
+
   .login__wrapper {
     width: 360px;
     height: 440px;
-    margin-top: 140px;
-    margin-left: 420px;
-    font-size: 15px;
     background-color: #ffffff;
     box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3);
-    .login__input {
-      width: 240px;
-      height: 180px;
+    margin: 0 auto;
+    margin-top: 40px;
+
+    .login__emailword {
+      width: 73px;
+      height: 20px;
+      font-family: SpoqaHanSans;
       font-size: 15px;
-      line-height: 2.4;
-      padding-left: 60px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: left;
+      color: #869ab7;
       padding-top: 40px;
+      padding-left: 60px;
     }
-    .login__button {
+
+    .login__emailbox {
       width: 240px;
       height: 50px;
-      padding-top: 30px;
-      padding-left: 100px;
-      .login__btn {
-        width: 160px;
-        height: 50px;
-        border-radius: 2px;
-        background-color: #4cc8e5;
-        border: solid 1px #4cc8e5;
-      }
+      background-color: #ffffff;
+      border: solid 1px #dce2eb;
+      margin-top: 10px;
+      margin-left: 60px;
     }
+
+    .login__psw {
+      width: 87px;
+      height: 20px;
+      font-family: SpoqaHanSans;
+      font-size: 15px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: left;
+      color: #869ab7;
+      padding-top: 40px;
+      padding-left: 60px;
+    }
+
+    .login__pswbox {
+      width: 240px;
+      height: 50px;
+      background-color: #ffffff;
+      border: solid 1px #dce2eb;
+      margin-top: 10px;
+      margin-left: 60px;
+    }
+
+    .login__btn {
+      width: 160px;
+      height: 50px;
+      border-radius: 2px;
+      background-color: #4cc8e5;
+      border: solid 1px #4cc8e5;
+      margin-top: 30px;
+      margin-left: 100px;
+    }
+
     .social__button {
-      width: 240px;
-      height: 50px;
-      padding-top: 65px;
-      padding-left: 80px;
+      margin-top: 30px;
+      margin-left: 110px;
     }
   }
 }
