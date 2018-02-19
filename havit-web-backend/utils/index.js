@@ -1,4 +1,4 @@
-const reserveNumCal = () => {
+export const reserveNumCal = () => {
   var date = new Date(),
     year = date.getFullYear(),
     month = date.getMonth() + 1,
@@ -24,4 +24,4 @@ const reserveNumCal = () => {
   return ChangeNumToStr(year, month, day, hour, minute, second, millisecond);
 };
 
-export default reserveNumCal;
+// // export redirect: <script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>

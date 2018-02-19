@@ -1,7 +1,14 @@
 const router = require('express').Router();
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { User, Reservation, Product, Review, Hospital } from '../db';
+import {
+  User,
+  Reservation,
+  Product,
+  Review,
+  Hospital,
+  HospitalAdmin
+ } from '../db';
 import schema from '../graphql';
 
 import {
@@ -17,7 +24,8 @@ router.use('/graphql', bodyParser.json(), cors(), graphqlExpress({
         reservation: Reservation,
         product: Product,
         review : Review,
-        hospital : Hospital
+        hospital : Hospital,
+        hospitalAdmin : HospitalAdmin
       }
     }
   )
