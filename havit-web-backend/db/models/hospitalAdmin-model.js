@@ -8,11 +8,11 @@ const hospitalAdminSchema = new Schema({
   createdOn: { type: Date, default: Date.now }
 });
 
-module.exports = mongoose.model('hospitalAdmin', hospitalAdminSchema);
+module.exports = mongoose.model('hospitalAdmin', hospitalAdminSchema, 'hospitalAdmins');
 
 //dummy -> Admin page에서 추가할 수 있도록 기능 추가 필요
 /*
-db.hospitalAdmin.insert([{
+db.hospitalAdmins.insert([{
   code: 'AAAA100000',
   name: '제이디클리닉',
   loc: "신사"
@@ -56,6 +56,11 @@ db.hospitalAdmin.insert([{
   code: 'AAAA100008',
   name: '강남피어리의원',
   loc: "신사"
+},
+{
+  code: 'AAAA100009',
+  name: '서울제일예쁜병원',
+  loc: "대치"
 }
 ])
 */

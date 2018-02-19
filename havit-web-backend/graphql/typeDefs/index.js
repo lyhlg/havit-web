@@ -19,6 +19,7 @@ const typeDefs = `
     gender: String,
     likeArea: [String],
     likePoint: [String],
+    hospitalCode: String,
     reservation: [Reservation],
     likeProduct: [Product],
     reviews: [Review]
@@ -116,7 +117,7 @@ const typeDefs = `
 
     confirmPurchase(
       reserveNum : String!
-    ) : Reservation
+    ) : Reservation,
   }
 `;
 

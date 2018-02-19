@@ -9,7 +9,7 @@ const hospitalSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('hospital', hospitalSchema);
+module.exports = mongoose.model('hospital', hospitalSchema, 'hospitals');
 
 // dummy
 /*
