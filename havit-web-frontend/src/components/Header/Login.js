@@ -30,16 +30,15 @@ class Login extends Component {
   render() {
     return (
       <div>
-        {console.log('##################', url.API_DEV)}
         <input type="text" placeholder="아이디" />
         <input type="text" placeholder="비밀번호" />
         <button type="submit">로그인</button>
         <button type="submit">
           <a href={`${url.API_DEV}/auth/logout`}>로그아웃</a>
         </button>
-        {this.state.socials.map(social => {
+        {this.state.socials.map((social, i) => {
           return (
-            <button onClick={() => this.loginPopup(social.url)}>
+            <button onClick={() => this.loginPopup(social.url)} key={i}>
               {social.name}
             </button>
           );

@@ -6,6 +6,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = state => ({
   products: state.products,
   reservations: state.reservations,
+  likeProducts: state.likeProducts,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -15,6 +16,10 @@ const mapDispatchToProps = dispatch => ({
 
   getReservationsList: () => {
     dispatch(actions.getReservationsList());
+  },
+
+  getLikeProductsList: email => {
+    dispatch(actions.getLikeProductsList(email));
   },
 });
 
