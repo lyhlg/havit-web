@@ -19,9 +19,6 @@ const reservationSchema = new Schema({
 
 module.exports = mongoose.model('reservation', reservationSchema);
 
-// module.exports = Users;
-
-
 // Dummy 밑에 필요 없음. addReservation을 통해서 추가하자.
 /*
 mutation{
