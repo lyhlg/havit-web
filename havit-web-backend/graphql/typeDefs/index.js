@@ -42,7 +42,7 @@ const typeDefs = `
     hospitalCode: String,
     hospitalLoc: String,
     hospitalName: String,
-    title: String,
+    productName: String,
     description: String,
     price: Int,
     purchased: Int,
@@ -100,11 +100,24 @@ const typeDefs = `
     addLikeProducts(
       user_id_email: String!,
       productId : String!,
-    ) : User
+    ) : User,
+
+    modifyReservation(
+      reserveNum : String!
+      userName : String
+      phone : String
+      reserveDate: String
+    ) : Reservation,
+
+    fixReservation(
+      reserveNum : String!
+      careDate : String!
+    ) : Reservation,
+
+    confirmPurchase(
+      reserveNum : String!
+    ) : Reservation
   }
 `;
 
 export default [ typeDefs ];
-
-
-//reviews: [Review],

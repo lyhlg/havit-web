@@ -1,12 +1,5 @@
 const ObjectId = require('mongodb').ObjectID;
 import { reserveNumCal } from '../../utils';
-console.log(reserveNumCal);
-
-const prepare = (o) => {
-  o._id = o._id.toString();
-  return o;
-};
-
 
 export default {
   Query: {
@@ -39,7 +32,8 @@ export default {
         {adminAccount: obj.adminAccount},
         {reservations:1}))
         .reservations.map(async item => {
-        return await ctx.reservation.findOne({ reserveNumCal: item });
+          console.log( item );
+        return await ctx.reservation.findOne({ reserveNum: item });
       });
     },
 
@@ -177,6 +171,81 @@ export default {
       }
 
       return userInfo();
+    },
+
+    modifyReservation : async (obj, args, ctx) => {
+      let updateUserReservation = async () => {
+        return await ctx.reservation.update(
+          {reserveNum: args.reserveNum},
+          {
+            $set : {
+              reserveDate: args.reserveDate,
+              userName: args.userName,
+              phone: args.phone
+            }}
+        )}
+      updateUserReservation();
+      return await ctx.reservation.findOne({ reserveNum: args.reserveNum })
+    },
+
+    fixReservation : async (obj, args, ctx) => {
+      let fixReserveCareDate = async () => {
+        return await ctx.reservation.update(
+          { reserveNum: args.reserveNum },
+          {
+            $set: {
+              careDate: args.careDate
+            }
+          }
+        )
+      }
+      let sellingCount = async () => {
+        let arg = await ctx.reservation.findOne(
+          { reserveNum: args.reserveNum },
+          { _id: 0, hospitalCode: 1, productName: 1 }
+        ).then ( async res => {
+          return await ctx.product.update(
+            { arg },
+            {
+              $inc: {
+                purchased: 1
+              }
+            })
+        })
+      }
+      fixReserveCareDate();
+      sellingCount();
+      return await ctx.reservation.findOne({ reserveNum: args.reserveNum })
+    },
+
+    confirmPurchase : async ( obj, args, ctx ) => {
+      let confirmUpdate = async () => {
+        return await ctx.reservation.update(
+          { reserveNum: args.reserveNum },
+          {
+            $set: {
+              status: "시술완료"
+            }
+          }
+        )
+      }
+      let sellingCount = async () => {
+        let arg = await ctx.reservation.findOne(
+          { reserveNum: args.reserveNum },
+          { _id: 0, hospitalCode: 1, productName: 1 }
+        ).then(async res => {
+          return await ctx.product.update(
+            { arg },
+            {
+              $inc: {
+                purchased: 1
+              }
+            })
+        })
+      }
+      confirmUpdate();
+      sellingCount();
+      return await ctx.reservation.findOne({reserveNum : args.reserveNum})
     }
   }
 };
