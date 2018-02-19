@@ -50,27 +50,15 @@ class Privacy extends Component {
         <input type="checkbox" />
         <label for="subscribeNews">강남구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">강동구</label>
+        <label for="subscribeNews">서초구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">강북구</label>
+        <label for="subscribeNews">중구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">강서구</label>
-        <input type="checkbox" />
-        <label for="subscribeNews">관악구</label>
+        <label for="subscribeNews">성동구</label>
         <input type="checkbox" />
         <label for="subscribeNews">광진구</label>
         <input type="checkbox" />
-        <label for="subscribeNews">광진구</label>
-        <input type="checkbox" />
-        <label for="subscribeNews">광진구</label>
-        <input type="checkbox" />
-        <label for="subscribeNews">광진구</label>
-        <input type="checkbox" />
-        <label for="subscribeNews">광진구</label>
-        <input type="checkbox" />
-        <label for="subscribeNews">광진구</label>
-        <input type="checkbox" />
-        <label for="subscribeNews">광진구</label>
+        <label for="subscribeNews">영등포구</label>
         <h3>관심 부위</h3>
         <input type="checkbox" />
         <label for="subscribeNews">피부</label>
@@ -87,11 +75,11 @@ class Privacy extends Component {
         <hr />
         <h3>병원코드</h3>
         <input type="text" placeholder="병원코드" />
-        <h4>병원 관리자 전용입니다</h4>
+        <h6>병원 관리자 전용입니다</h6>
         <hr />
-        <h3>
+        <h6>
           회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
-        </h3>
+        </h6>
         <button>
           <Link to="/signinend">회원가입 완료</Link>
         </button>

@@ -6,14 +6,14 @@ class ProductEntry extends Component {
   render() {
     return (
       <div>
-        <Link to="/detail" className="header__link">
-          <img src={this.props.ssupDummy.img} alt="product" />
+        <Link to="/detail" className="productentry__link">
+          <img src={this.props.product.img} alt="product" />
         </Link>
-        <h4>{this.props.ssupDummy.hospitalLoc}</h4>
-        <h3>{this.props.ssupDummy.title}</h3>
-        <h5>{this.props.ssupDummy.description}</h5>
-        <h4>{this.props.ssupDummy.purchased}</h4>
-        <h4>{this.props.ssupDummy.price}</h4>
+        <h4>{this.props.product.hospitalLoc}</h4>
+        <h3>{this.props.product.title}</h3>
+        <h5>{this.props.product.description}</h5>
+        <h4>{this.props.product.purchased}</h4>
+        <h4>{this.props.product.price}</h4>
       </div>
     );
   }
