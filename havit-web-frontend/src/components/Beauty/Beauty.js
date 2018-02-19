@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Banner, Product } from '../index';
+import { Nav, Banner, Product } from '../index';
 
 class Beauty extends Component {
   render() {
     return (
       <div>
+        <Nav />
         <ul>
           <li>전체보기</li>
           <li>필러</li>

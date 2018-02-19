@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import {
   Header,
-  Nav,
   Login,
-  Signin,
+  Signup,
   MyPage,
   Privacy,
-  SigninEnd,
+  SignupEnd,
   Home,
   All,
   Skin,
@@ -28,13 +27,12 @@ class App extends Component {
       <div>
         {console.log(this.props)}
         <Header />
-        <Nav />
         <Route exact path="/" render={props => <Home {...this.props} />} />
         <Route path="/login" component={Login} />
-        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
         <Route path="/mypage" component={MyPage} />
         <Route path="/privacy" component={Privacy} />
-        <Route path="/signinend" component={SigninEnd} />
+        <Route path="/signupend" component={SignupEnd} />
         <Route path="/all" component={All} />
         <Route path="/skin" component={Skin} />
         <Route path="/beauty" component={Beauty} />

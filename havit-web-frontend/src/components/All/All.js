@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Banner, Product } from '../index';
+import { Nav, Banner, Product } from '../index';
 
 class All extends Component {
   render() {
     return (
       <main>
+        <Nav />
         <Banner />
         <Product />
       </main>
