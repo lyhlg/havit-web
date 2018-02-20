@@ -17,7 +17,7 @@ const smtpTransport = nodemailer.createTransport({
 const checkFirstLogin = (req, res, next) => {
   if (req.user.phone) next();
   else {
-    res.send('<script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>')
+    res.send('<script>window.close(); window.opener.location.href="http://localhost:3000/privacy"</script>')
   }
 };
 
