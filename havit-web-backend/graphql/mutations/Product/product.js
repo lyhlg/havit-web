@@ -14,7 +14,7 @@ const ADD_LIKE_PRODUCT = async ( params ) => {
     }
     )
 
-  // 찜된 상품이 아닐 경우에만 추가
+  // 해당 상품이 찜이 안되었을 경우에만 추가
   if (!checkAlreadyLikeIt) {
     await ctx.user.update(
       { user_id_email: args.user_id_email },
