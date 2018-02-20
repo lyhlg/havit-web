@@ -5,8 +5,17 @@ import {
   LIKE_PRODUCT
  } from './Product/product';
 import FIND_REVIEW from './Review/review';
-import FIND_HOSPITAL from './Hospital/hospital';
+import {
+  FIND_HOSPITAL,
+  GET_HOSPITAL_RESERVATION_INFO,
+  GET_HOSPITAL_PRODUCT_LIST
+} from './Hospital/hospital';
 import FIND_HOSPITALADMIN from './HospitalAdmin/hospitalAdmin';
+import {
+  GET_BANNER_LIST,
+  GET_BANNER_FROM_PRODUCT
+} from './Banner/banner';
+
 
 export {
   FIND_USER,
@@ -15,5 +24,9 @@ export {
   LIKE_PRODUCT,
   FIND_REVIEW,
   FIND_HOSPITAL,
-  FIND_HOSPITALADMIN
+  FIND_HOSPITALADMIN,
+  GET_BANNER_LIST,
+  GET_BANNER_FROM_PRODUCT,
+  GET_HOSPITAL_RESERVATION_INFO,
+  GET_HOSPITAL_PRODUCT_LIST
 };
