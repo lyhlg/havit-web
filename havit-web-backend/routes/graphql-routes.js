@@ -7,7 +7,8 @@ import {
   Product,
   Review,
   Hospital,
-  HospitalAdmin
+  HospitalAdmin,
+  Banner
  } from '../db';
 import schema from '../graphql';
 
@@ -25,7 +26,8 @@ router.use('/graphql', bodyParser.json(), cors(), graphqlExpress({
         product: Product,
         review : Review,
         hospital : Hospital,
-        hospitalAdmin : HospitalAdmin
+        hospitalAdmin : HospitalAdmin,
+        banner: Banner
       }
     }
   )

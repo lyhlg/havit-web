@@ -24,6 +24,40 @@ export default {
     },
     HospitalAdmin : async ( obj, args, ctx ) => {
       return await ctx.hospitalAdmin.find();
+    },
+    Banners: async (obj, args, ctx) => {
+      console.log( args);
+      switch (args.type) {
+        case 'skinBanners' : {
+          return (await ctx.banner.findOne({}, { skinBanners: 1, _id: 0 })).skinBanners
+          break;
+        }
+        case 'beautyBanners' : {
+          return (await ctx.banner.findOne({}, { beautyBanners: 1, _id: 0 })).beautyBanners
+          break;
+        }
+        case 'totalBanners': {
+          return (await ctx.banner.findOne({}, { totalBanners: 1, _id: 0 })).totalBanners
+          break;
+        }
+      }
+    }
+  },
+  Banner : {
+    totalBanners: async (obj, args, ctx) =>{
+      return await ctx.product.find({
+        _id: ObjectId(obj)
+      })
+    },
+    skinBanners: async (obj, args, ctx) => {
+      return await ctx.product.find({
+        _id: ObjectId(obj)
+      })
+    },
+    beautyBanners: async (obj, args, ctx) => {
+      return await ctx.product.find({
+        _id: ObjectId(obj)
+      })
     }
   },
   Hospital : {

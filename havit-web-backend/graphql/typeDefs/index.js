@@ -3,6 +3,7 @@ const typeDefs = `
     Users(user_id_email: String) : [User],
     Reservations(user_id_email:String) : [Reservation],
     Products (type: String, subType: String) : [Product],
+    Banners (type: String): [Banner],
     Reviews: [Review],
     Hospitals(adminAccount: String) : [Hospital],
     HospitalAdmin : [HospitalAdmin],
@@ -49,6 +50,12 @@ const typeDefs = `
     purchased: Int,
     productDetail: String,
     reviews: [Review]
+  }
+  type Banner {
+    _id: ID,
+    totalBanners : [Product],
+    skinBanners: [Product],
+    beautyBanners: [Product]
   }
   type Review {
     _id: ID,
