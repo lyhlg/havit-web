@@ -18,9 +18,10 @@ export const getProducts = () => {
           type
           subType
           img
+          hospitalCode
           hospitalLoc
           hospitalName
-          title
+          productName
           description
           price
           purchased
