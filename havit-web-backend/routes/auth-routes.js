@@ -4,6 +4,7 @@ const nodemailer = require('nodemailer');
 // const mailAuth = require('../models/mailauth-model');
 const bodyParser = require('body-parser');
 import { MailAuth } from '../db';
+const local = require ('localStorage');
 const keys = require('../config/keys');
 
 const smtpTransport = nodemailer.createTransport({
@@ -17,9 +18,15 @@ const smtpTransport = nodemailer.createTransport({
 const checkFirstLogin = (req, res, next) => {
   if (req.user.phone) next();
   else {
-    res.send('<script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>')
+    res.send(`<script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>`);
   }
 };
+// const sendMailAccount = (req,res, next) => {
+//   console.log(req.user.user_id_email);
+//   local.setItem('aaa','bbb');
+
+//   res.send(req.user.user_id_email);
+// };
 
 // const cookie = (req, res, next) => {
 //   console.log("cookie", res);
@@ -47,7 +54,7 @@ router.get('local', passport.authenticate('{strategy}'));
 router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
-router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin,  (req, res) => {
+router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin, (req, res) => {
   res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
 });
 
