@@ -34,25 +34,31 @@ class Login extends Component {
       <div className="login">
         <img src={reallogo} className="login__logo" alt="logo" />
         <div className="login__wrapper">
-          <h3 className="login__emailword">이메일 주소</h3>
-          <input
-            type="text"
-            className="login__emailbox"
-            placeholder="이메일@도메인"
-          />
-          <h3 className="login__psw">비밀번호 입력</h3>
-          <input type="text" className="login__pswbox" placeholder="비밀번호" />
-          <button type="submit" className="login__btn">
-            로그인
-          </button>
-          <div className="social__button">
-            {this.state.socials.map(social => {
-              return (
-                <button onClick={() => this.loginPopup(social.url)}>
-                  {social.name}
-                </button>
-              );
-            })}
+          <div className="login__tab">
+            <h3 className="login__label">이메일 주소</h3>
+            <input
+              type="text"
+              className="login__input"
+              placeholder="이메일@도메인"
+            />
+            <h3 className="login__label">비밀번호 입력</h3>
+            <input
+              type="text"
+              className="login__input"
+              placeholder="비밀번호"
+            />
+            <button type="submit" className="login__btn">
+              로그인
+            </button>
+            <div className="social__button">
+              {this.state.socials.map(social => {
+                return (
+                  <button onClick={() => this.loginPopup(social.url)}>
+                    {social.name}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

@@ -26,7 +26,7 @@ class App extends Component {
     return (
       <div>
         {console.log(this.props)}
-        <Header />
+        <Header {...this.props} />
         <Route exact path="/" render={props => <Home {...this.props} />} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
