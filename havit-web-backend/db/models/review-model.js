@@ -17,19 +17,31 @@ db.reviews.insert([{
   user_id_email: 'lyhlg0201@gmail.com',
   stars: '4.5',
   comment: '좋았다',
-  product: ObjectId("5a86d25270ecb115bc27859a")
+  product: ObjectId("5a8b9323d485e3b7ca525abd")
 },
 {
   user_id_email: 'lyhlg0201@gmail.com',
-  stars: '3.5',
-  comment: '안좋았다.',
-  product: ObjectId("5a86d25270ecb115bc27859a")
+  stars: '4.5',
+  comment: 'This is really Good ! .',
+  product: ObjectId("5a8b9323d485e3b7ca525abc")
 },
 {
   user_id_email: 'iam.yonghyun@gmail.com',
   stars: '3.5',
   comment: '안좋았다.',
-  product: ObjectId("5a86d25270ecb115bc27859a")
+  product: ObjectId("5a8b9323d485e3b7ca525abc")
+},
+{
+  user_id_email: 'jyt9319@gmail.com',
+  stars: '2',
+  comment: '아무고토상.',
+  product: ObjectId("5a8b9323d485e3b7ca525abb")
+},
+{
+  user_id_email: 'dubbsong@gmail.com',
+  stars: '2',
+  comment: 'fuck me.',
+  product: ObjectId("5a8b9323d485e3b7ca525abf")
 }])
 */
 //db.product.findOne({title: "프락셀"})._id

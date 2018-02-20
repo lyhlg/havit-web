@@ -7,4 +7,4 @@ const bannerSchema = new Schema({
   beautyBanner: [String]
 });
 
-module.exports = mongoose.model('banner', bannerSchema);
+module.exports = mongoose.model('banner', bannerSchema, 'banners');

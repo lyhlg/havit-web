@@ -156,15 +156,9 @@ export default {
               phone: args.phone,
               birthday: args.birthday,
               gender: args.gender,
-              hospitalCode: args.code
-            },
-            $push: {
-              likeArea: {
-                $each: args.likeArea
-              },
-              likePoint: {
-                $each: args.likePoint
-              }
+              hospitalCode: args.code,
+              likeArea: args.likeArea,
+              likePoint: args.likePoint
             }
           }
         )

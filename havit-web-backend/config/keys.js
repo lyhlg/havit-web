@@ -15,10 +15,12 @@ module.exports = {
     callbackURL: '/auth/naver/redirect'
   },
   mongodb: {
-    dbURI: "mongodb://havit:havit@ds231758.mlab.com:31758/havit"
+    dbURI: "mongodb://havit:havit@162.243.137.152:27017/havit"
   },
   session: {
     cookieKey: "userCustomToken",
     secret: "userSecretKey"
   }
 };
+
+//dbURI: "mongodb://havit:havit@ds231758.mlab.com:31758/havit"
