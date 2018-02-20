@@ -3,6 +3,7 @@
   height: 1464px;
   background-color: #647dff;
   margin: 0 auto;
+  padding-top: 140px;
 
   .privacy__wrapper {
     width: 1180px;
@@ -10,239 +11,97 @@
     background-color: #ffffff;
     box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3);
     margin: 0 auto;
-    
-  }
 
-  .privacy__signuptext {
-    width: 89px;
-    height: 24px;
-    font-family: SpoqaHanSans;
-    font-size: 24px;
-    font-weight: bold;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1;
-    letter-spacing: normal;
-    text-align: left;
-    color: #647dff;
-    margin-top: 80px;
-    margin-left: 160px;
-  }
+    .privacy__tab {
+      padding: 80px 160px;
 
-  .privacy__name {
-    width: 28px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #869ab7;
-    margin-top: 60px;
-    margin-left: 160px;
-  }
+      .privacy__title {
+        font-size: 24px;
+        color: #647dff;
+      }
 
-  .privacy__namebox {
-    width: 200px;
-    height: 50px;
-    background-color: #ffffff;
-    border: solid 1px #dce2eb;
-    margin-top: 10px;
-    margin-left: 160px;
-  }
+      .privacy__label {
+        font-size: 15px;
+        color: #869ab7;
+        margin: 60px 0 10px 0;
+      }
 
-  .privacy__gender {
-    width: 28px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #869ab7;
-    margin-top: 60px;
-    margin-left: 160px;
-  }
+      .privacy__input {
+        width: 200px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+        padding-left: 10px;
+      }
 
-  .privacy__checkbox1 {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    margin-top: 10px;
-    margin-left: 160px;
-  }
+      .privacy__box1 {
+        width: 67px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+      }
 
-  .privacy__male {
-    width: 40px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #414d6b;
-  }
+      .privacy__box2 {
+        width: 67px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+        padding-left: 10px;
+      }
 
-  .privacy__checkbox2 {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    margin-top: 25px;
-    margin-left: 20px;
-  }
+      .privacy__box3 {
+        width: 120px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+      }
 
-  .privacy__female {
-    width: 40px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #414d6b;
-  }
+      .privacy__box4 {
+        width: 100px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+      }
 
-  .privacy__phone {
-    width: 73px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #869ab7;
-    margin-top: 75px;
-    margin-left: 160px;
-  }
+      .privacy__checkbox {
+        width: 20px;
+        height: 20px;
+      }
 
-  .privacy__box1 {
-    width: 67px;
-    height: 50px;
-    background-color: #ffffff;
-    border: solid 1px #dce2eb;
-    margin-top: 10px;
-    margin-left: 160px;
-  }
+      .privacy__text {
+        font-size: 15px;
+        color: #414d6b;
+        margin-left: 5px;
+        margin-right: 15px;
+      }
 
-  .privacy__box2 {
-    width: 67px;
-    height: 50px;
-    background-color: #ffffff;
-    border: solid 1px #dce2eb;
-  }
+      .privacy__subtext {
+        font-size: 15px;
+        color: #869ab7;
+        margin-top: 10px;
+      }
 
-  .privacy__box3 {
-    width: 67px;
-    height: 50px;
-    background-color: #ffffff;
-    border: solid 1px #dce2eb;
-  }
+      .privacy__info {
+        font-size: 15px;
+        color: #414d6b;
+        margin-top: 40px;
+        margin-left: 220px;
+      }
 
-  .privacy__birthday {
-    width: 62px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #869ab7;
-    margin-top: 75px;
-    margin-left: 160px;
-  }
+      .privacy__btn {
+        width: 160px;
+        height: 50px;
+        border-radius: 2px;
+        background-color: #4cc8e5;
+        border: solid 1px #4cc8e5;
+        margin-top: 30px;
+        margin-left: 350px;
 
-  .privacy__year {
-    width: 120px;
-    height: 50px;
-    background-color: #ffffff;
-    border: solid 1px #dce2eb;
-    margin-top: 10px;
-    margin-left: 160px;
-  }
-
-  .privacy__month {
-    width: 100px;
-    height: 50px;
-    background-color: #ffffff;
-    border: solid 1px #dce2eb;
-  }
-
-  .privacy__day {
-    width: 100px;
-    height: 50px;
-    background-color: #ffffff;
-    border: solid 1px #dce2eb;
-  }
-
-  .privacy__likepoint {
-    width: 59px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #869ab7;
-    margin-top: 75px;
-    margin-left: 160px;
-  }
-
-  .privacy__pointcheckbox1 {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-    margin-top: 10px;
-    margin-left: 160px;
-  }
-
-  .privacy__pointchecktext1 {
-    width: 100px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: 300;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #414d6b;
-  }
-
-  .privacy__likearea {
-    width: 59px;
-    height: 20px;
-    font-family: SpoqaHanSans;
-    font-size: 15px;
-    font-weight: normal;
-    font-style: normal;
-    font-stretch: normal;
-    line-height: 1.33;
-    letter-spacing: normal;
-    text-align: left;
-    color: #869ab7;
-    margin-top: 75px;
-    margin-left: 160px;
+        .privacy__btntext {
+          font-size: 15px;
+          color: #ffffff;
+        }
+      }
+    }
   }
 }
