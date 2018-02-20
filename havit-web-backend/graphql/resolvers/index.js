@@ -145,10 +145,9 @@ export default {
         } else {
           code = null;
         }
-        console.log(code);
       }
+
       let userUpdate = async () => {
-        console.log('userUpdate', args.code);
         await ctx.user.update(
           { user_id_email: args.user_id_email },
           {
@@ -157,15 +156,9 @@ export default {
               phone: args.phone,
               birthday: args.birthday,
               gender: args.gender,
-              hospitalCode: args.code
-            },
-            $push: {
-              likeArea: {
-                $each: args.likeArea
-              },
-              likePoint: {
-                $each: args.likePoint
-              }
+              hospitalCode: args.code,
+              likeArea: args.likeArea,
+              likePoint: args.likePoint
             }
           }
         )
