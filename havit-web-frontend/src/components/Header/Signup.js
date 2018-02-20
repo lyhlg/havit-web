@@ -23,19 +23,22 @@ class Signup extends Component {
       <div className="signup">
         <img src={logo3} className="signup__logo" alt="havit" />
         <main className="signup__wrapper">
-          <h3>이메일</h3>
-          <input id="email" type="email" placeholder="이메일@도메인" />
-          <button type="submit" method="get" onClick={this.handleSubmitEmail}>
-            이메일 인증하기
-          </button>
-          <h4>이메일 인증번호</h4>
-          <h6>이메일 인증번호를 입력해주세요.</h6>
-          <input type="text" placeholder="인증번호" />
-          <h3>비밀번호 입력</h3>
-          <input type="password" placeholder="비밀번호" />
-          <h3>비밀번호 확인</h3>
+          <h3 className="signup__emailword">이메일 주소</h3>
           <input
-            type="password"
+            type="text"
+            className="signup__emailbox"
+            placeholder="이메일@도메인"
+          />
+          <h3 className="signup__psw">비밀번호 입력</h3>
+          <input
+            type="text"
+            className="signup__pswbox"
+            placeholder="영문, 숫자로 6자 이상 입력해주세요."
+          />
+          <h3 className="signup__pswcheck">비밀번호 확인</h3>
+          <input
+            type="text"
+            className="signup__pswbox"
             placeholder="동일하게 다시 한 번 입력해주세요."
           />
           <button className="signup__button">
