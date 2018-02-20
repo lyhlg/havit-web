@@ -20,11 +20,15 @@
     float: right;
     
     .header__link {
-      margin: 0 20px;
+      margin-right: 40px;
       line-height: 80px;
       vertical-align: middle;
       font-size: 15px;
       color: #414d6b;
+
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
 
