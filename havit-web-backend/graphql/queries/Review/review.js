@@ -1,6 +1,12 @@
-const FIND_REVIEW = async (params) => {
+const FIND_REVIEW = async ( params ) => {
   const [obj, args, ctx] = [...params];
-  return await ctx.review.find(args);
+  if( obj ) {
+    return obj.reviews.map(async item => {
+      return await ctx.review.findOne({ _id: ObjectId(item) });
+    })
+  } else {
+    return await ctx.review.find(args);
+  }
 };
 
 export default FIND_REVIEW;

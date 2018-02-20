@@ -1,9 +1,9 @@
-const FIND_HOSPITAL = async (params) => {
+const FIND_HOSPITAL = async ( params ) => {
   const [obj, args, ctx] = [...params];
   return await ctx.hospital.find(args);
 };
 
-const GET_HOSPITAL_RESERVATION_INFO = async (params) => {
+const GET_HOSPITAL_RESERVATION_INFO = async ( params ) => {
   const [obj, args, ctx] = [...params];
   return (await ctx.hospital.findOne(
     { adminAccount: obj.adminAccount },
@@ -14,7 +14,7 @@ const GET_HOSPITAL_RESERVATION_INFO = async (params) => {
     });
 }
 
-const GET_HOSPITAL_PRODUCT_LIST = async (params) => {
+const GET_HOSPITAL_PRODUCT_LIST = async ( params ) => {
   const [obj, args, ctx] = [...params];
   return obj.products.map(async item => {
     return await ctx.product.findOne({ _id: ObjectId(item) });

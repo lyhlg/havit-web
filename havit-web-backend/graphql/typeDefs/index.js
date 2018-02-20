@@ -102,7 +102,7 @@ const typeDefs = `
       gender: String!,
       likeArea: [String!],
       likePoint: [String!],
-      code : String!
+      code : String
     ) : User,
 
     addLikeProducts(

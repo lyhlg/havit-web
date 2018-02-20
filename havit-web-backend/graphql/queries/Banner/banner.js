@@ -1,6 +1,6 @@
 const ObjectId = require('mongodb').ObjectID;
 
-const GET_BANNER_LIST = async (params) => {
+const GET_BANNER_LIST = async ( params ) => {
   const [obj, args, ctx] = [...params];
   const targetField = args.type;
   switch (targetField) {
@@ -19,7 +19,7 @@ const GET_BANNER_LIST = async (params) => {
   }
 };
 
-const GET_BANNER_FROM_PRODUCT = async (params,target) => {
+const GET_BANNER_FROM_PRODUCT = async ( params, target ) => {
   const [obj, args, ctx] = [...params];
   return await ctx.product.find({ _id: ObjectId(obj)});
 }
