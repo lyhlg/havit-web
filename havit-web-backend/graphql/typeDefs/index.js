@@ -6,7 +6,7 @@ const typeDefs = `
     Banners (type: String): [Banner],
     Reviews: [Review],
     Hospitals(adminAccount: String) : [Hospital],
-    HospitalAdmin : [HospitalAdmin],
+    HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product]
   }
   type User {
@@ -79,19 +79,19 @@ const typeDefs = `
   type Mutation {
 
     addReservation(
-      user_id_email: String,
-      hospitalCode: String,
-      userName: String,
-      phone: String,
-      productName: String,
-      reserveDate: String
+      user_id_email: String!,
+      hospitalCode: String!,
+      userName: String!,
+      phone: String!,
+      productName: String!,
+      reserveDate: String!
     ) : Reservation,
 
     addReview(
-      user_id_email: String,
-      stars: Float,
-      comment: String,
-      product: String
+      user_id_email: String!,
+      stars: Float!,
+      comment: String!,
+      product: String!
     ) : Review,
 
     addUserInfo(
@@ -102,7 +102,7 @@ const typeDefs = `
       gender: String!,
       likeArea: [String!],
       likePoint: [String!],
-      code : String
+      code : String!
     ) : User,
 
     addLikeProducts(
@@ -112,9 +112,9 @@ const typeDefs = `
 
     modifyReservation(
       reserveNum : String!
-      userName : String
-      phone : String
-      reserveDate: String
+      userName : String!
+      phone : String!
+      reserveDate: String!
     ) : Reservation,
 
     fixReservation(

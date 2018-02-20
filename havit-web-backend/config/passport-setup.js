@@ -4,6 +4,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const NaverStrategy = require('passport-naver').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 const KakaoStrategy = require('passport-kakao').Strategy;
+const localstorage = require('localStorage');
 const keys = require('./keys');
 import { User } from '../db';
 
@@ -51,7 +52,6 @@ passport.use(
     clientSecret: keys.google.clientSecret,
     callbackURL: keys.google.callbackURL
   }, (accessToken, refreshToken, profile, done) => {
-    // console.log("profile:", profile._json);
     const _profile = profile._json;
     // check if user already exists in our own db
     User.findOne({ user_id_email: _profile.emails[0].value }).then((currentUser) => {

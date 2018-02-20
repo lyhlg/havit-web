@@ -1,81 +1,26 @@
 const ObjectId = require('mongodb').ObjectID;
 import { reserveNumCal } from '../../utils';
+import * as query from '../queries';
 
 export default {
   Query: {
-    Users: async (obj, args, ctx) => await ctx.user.find(args),
-    Reservations : async (obj, args, ctx) => {
-      return await ctx.reservation.find(args);
-    },
-    LikeProducts: async (obj, args, ctx) => {
-      return (await ctx.user.findOne(args)).likeProduct
-        .map ( async item => {
-          return await ctx.product.findOne({_id:ObjectId(item)});
-      })
-    },
-    Products: async (obj, args, ctx) => {
-      return await ctx.product.find(args);
-    },
-    Reviews: async (obj, args, ctx) => {
-      return await ctx.review.find();
-    },
-    Hospitals: async (obj, args, ctx) => {
-      return await ctx.hospital.find(args);
-    },
-    HospitalAdmin : async ( obj, args, ctx ) => {
-      return await ctx.hospitalAdmin.find();
-    },
-    Banners: async (obj, args, ctx) => {
-      console.log( args);
-      switch (args.type) {
-        case 'skinBanners' : {
-          return (await ctx.banner.findOne({}, { skinBanners: 1, _id: 0 })).skinBanners
-          break;
-        }
-        case 'beautyBanners' : {
-          return (await ctx.banner.findOne({}, { beautyBanners: 1, _id: 0 })).beautyBanners
-          break;
-        }
-        case 'totalBanners': {
-          return (await ctx.banner.findOne({}, { totalBanners: 1, _id: 0 })).totalBanners
-          break;
-        }
-      }
-    }
+    Users: (...params) => query.FIND_USER(params),
+    Reservations : (...params) => query.FIND_RESERVATION(params),
+    LikeProducts: (...params) => query.LIKE_PRODUCT(params),
+    Products: (...params) => query.FIND_PRODUCT(params),
+    Reviews: (...params) => query.FIND_REVIEW(params),
+    Hospitals: (...params) => query.FIND_HOSPITAL(params),
+    HospitalAdmin: (...params) => query.FIND_HOSPITALADMIN(params),
+    Banners: (...params) => query.GET_BANNER_LIST(params)
   },
   Banner : {
-    totalBanners: async (obj, args, ctx) =>{
-      return await ctx.product.find({
-        _id: ObjectId(obj)
-      })
-    },
-    skinBanners: async (obj, args, ctx) => {
-      return await ctx.product.find({
-        _id: ObjectId(obj)
-      })
-    },
-    beautyBanners: async (obj, args, ctx) => {
-      return await ctx.product.find({
-        _id: ObjectId(obj)
-      })
-    }
+    totalBanners : (...params) => query.GET_BANNER_FROM_PRODUCT(params),
+    skinBanners: (...params) => query.GET_BANNER_FROM_PRODUCT(params),
+    beautyBanners: (...params) => query.GET_BANNER_FROM_PRODUCT(params)
   },
   Hospital : {
-    reservations: async (obj, args, ctx) => {
-      return (await ctx.hospital.findOne(
-        {adminAccount: obj.adminAccount},
-        {reservations:1}))
-        .reservations.map(async item => {
-          console.log( item );
-        return await ctx.reservation.findOne({ reserveNum: item });
-      });
-    },
-
-    products: (obj, args, ctx) => {
-      return obj.products.map( async item => {
-        return await ctx.product.findOne({_id: ObjectId(item)});
-      })
-    }
+    reservations: (...params) => query.GET_HOSPITAL_RESERVATION_INFO(params),
+    products: (...params) => query.GET_HOSPITAL_PRODUCT_LIST(params)
   },
 
   Product: {
