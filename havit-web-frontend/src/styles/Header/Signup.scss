@@ -2,49 +2,97 @@
   width: 1440px;
   height: 720px;
   background-color: #647dff;
-  text-align: center;
+  margin: 0 auto;
 
   .signup__logo {
     width: 200px;
     height: 65px;
-    margin: 20px 0 40px 0;
+    margin-top: 100px;
+    margin-left: 620px;
   }
 
   .signup__wrapper {
-    margin: 0 auto;
-    width: 240px;
-    height: 360px;
-    padding: 40px 60px;
+    width: 360px;
+    height: 440px;
     background-color: #ffffff;
     box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3);
-    text-align: left;
+    margin: 0 auto;
+    margin-top: 40px;
+  }
 
-    h3 {
+  .signup__emailword {
+      width: 73px;
+      height: 20px;
+      font-family: SpoqaHanSans;
       font-size: 15px;
-	    color: #869ab7;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: left;
+      color: #869ab7;
+      padding-top: 40px;
+      padding-left: 60px;
     }
 
-    input {
+    .signup__emailbox {
       width: 240px;
       height: 50px;
-      margin: 10px 0 20px 0;
       background-color: #ffffff;
       border: solid 1px #dce2eb;
-      padding-left: 15px;
-      font-size: 15px;
-	    color: #414d6b;
+      margin-top: 10px;
+      margin-left: 60px;
     }
+
+    .signup__psw {
+      width: 87px;
+      height: 20px;
+      font-family: SpoqaHanSans;
+      font-size: 15px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: left;
+      color: #869ab7;
+      padding-top: 20px;
+      padding-left: 60px;
+    }
+
+    .signup__pswbox {
+      width: 240px;
+      height: 50px;
+      background-color: #ffffff;
+      border: solid 1px #dce2eb;
+      margin-top: 10px;
+      margin-left: 60px;
+    }
+
+    .signup__pswcheck {
+      width: 87px;
+      height: 20px;
+      font-family: SpoqaHanSans;
+      font-size: 15px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.33;
+      letter-spacing: normal;
+      text-align: left;
+      color: #869ab7;
+      padding-top: 20px;
+      padding-left: 60px;
+    }
+
     .signup__button {
       width: 160px;
       height: 50px;
-      margin-left: 40px;
       border-radius: 2px;
       background-color: #4cc8e5;
       border: solid 1px #4cc8e5;
-      font-size: 15px;
-      a {
-        color: #ffffff;
-      }
+      margin-top: 30px;
+      margin-left: 100px;
     }
-  }
 }
