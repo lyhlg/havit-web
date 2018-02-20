@@ -19,6 +19,7 @@
       padding: 40px 60px; }
       .login .login__wrapper .login__tab .login__label {
         font-size: 15px;
+        font-weight: normal;
         color: #869ab7; }
       .login .login__wrapper .login__tab .login__input {
         width: 230px;

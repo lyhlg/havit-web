@@ -19,6 +19,7 @@
       padding: 40px 60px; }
       .signup .signup__wrapper .signup__tab .signup__label {
         font-size: 15px;
+        font-weight: normal;
         color: #869ab7; }
       .signup .signup__wrapper .signup__tab .signup__input {
         width: 240px;

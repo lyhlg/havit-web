@@ -9,11 +9,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const getProducts = () => {
+export const getProducts = (type, subType) => {
   return client.query({
     query: gql`
       {
-        Products {
+        Products(type: ${type}, subType: ${subType}) {
           _id
           type
           subType
@@ -37,17 +37,21 @@ export const getProducts = () => {
   });
 };
 
-export const getReservations = () => {
+export const getReservations = email => {
   return client.query({
-    query: gql`
-      {
-        Reservations {
-          _id
-          careDate
-          status
-        }
+    query: gql`{
+      Reservations(user_id_email: ${email}) {
+        _id
+        user_id_email
+        hospitalCode
+        userName
+        phone
+        productName
+        reserveDate
+        careDate
+        status
       }
-    `,
+    }`,
   });
 };
 
@@ -74,12 +78,125 @@ export const getLikeProducts = email => {
   });
 };
 
-export const getUserInfo = () => {
+export const getUserInfo = email => {
   return client.query({
     query: gql`{
-    Users {
-      
-    }
+      Users(user_id_email: ${email}) {
+        specId
+        name
+        password
+        auth
+        phone
+        birthday
+        gender
+        hospitalCode
+      }
   }`,
+  });
+};
+
+export const addReservations = (
+  email,
+  hospitalCode,
+  userName,
+  phone,
+  productName,
+  reserveDate
+) => {
+  return client.query({
+    mutation: gql`{
+      addReservation(
+        user_id_email: ${email},
+        hospitalCode: ${hospitalCode},
+        userName: ${userName},
+        phone: ${phone},
+        productName: ${productName},
+        reserveDate: ${reserveDate}
+      )
+    }`,
+  });
+};
+
+export const addReview = (email, stars, comment, product) => {
+  return client.query({
+    mutation: gql`{
+      addReview(
+        user_id_email: ${email},
+        stars: ${stars},
+        comment: ${comment},
+        product: ${product}
+      )
+    }`,
+  });
+};
+
+export const addUserInfo = (
+  email,
+  name,
+  phone,
+  birthday,
+  gender,
+  likeArea,
+  likePoint,
+  code
+) => {
+  return client.query({
+    mutation: gql`{
+      addUserInfo(
+        user_id_email: ${email},
+        name: ${name},
+        phone: ${phone},
+        birthday: ${birthday},
+        gender: ${gender},
+        likeArea: ${likeArea},
+        likePoint: ${likePoint},
+        code: ${code}
+      )
+    }`,
+  });
+};
+
+export const addLikeProducts = (email, productId) => {
+  return client.query({
+    mutation: gql`{
+      addLikeProducts(
+        user_id_email: ${email},
+        productId: ${productId}
+      )
+    }`,
+  });
+};
+
+export const modifyReservation = (reserveNum, userName, phone, reserveDate) => {
+  return client.query({
+    mutation: gql`{
+      modifyReservation(
+        reserveNum: ${reserveNum},
+        userName: ${userName},
+        phone: ${phone},
+        reserveDate: ${reserveDate}
+      )
+    }`,
+  });
+};
+
+export const fixReservation = (reserveNum, careDate) => {
+  return client.query({
+    mutation: gql`{
+      fixReservation(
+        reserveNum: ${reserveNum},
+        careDate: ${careDate}
+      )
+    }`,
+  });
+};
+
+export const confirmPurchase = reserveNum => {
+  return client.query({
+    mutation: gql`{
+      confirmPurchase(
+        reserveNum: ${reserveNum}
+      )
+    }`,
   });
 };
