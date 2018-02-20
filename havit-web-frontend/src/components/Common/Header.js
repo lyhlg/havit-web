@@ -15,14 +15,11 @@ class Header extends Component {
             <img src={logo} className="header__logo" alt="해빗 로고" />
           </Link>
         </h1>
-        {cookie ? (
+        {cookie.includes('userCustomToken') ? (
           <div className="header__right">
             <a href={`${url.API_DEV}/auth/logout`} className="header__link">
               로그아웃
             </a>
-            <Link to="/signup" className="header__link">
-              회원가입
-            </Link>
             <Link to="/service" className="header__link">
               고객센터
             </Link>
