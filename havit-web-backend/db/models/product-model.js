@@ -4,15 +4,15 @@ const Schema = mongoose.Schema;
 const productSchema = new Schema({
   type: String,
   subType: String,
-  img: String,
+  img: { type: String, default: "https://dummyimage.com/280x280" },
   hospitalCode: String,
   hospitalLoc: String,
   hospitalName: String,
   productName: String,
   description: String,
   price: Number,
-  purchased: Number,
-  productDetail: String,
+  purchased: { type: Number, default: 0 },
+  productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
   reviews: [String]
 });
 
@@ -24,7 +24,7 @@ module.exports = mongoose.model('product', productSchema);
 db.products.insert([{
   type: 'skin',
   subType: 'filling',
-  img: './image/test10.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
   hospitalName: '제이디클리닉',
@@ -37,7 +37,7 @@ db.products.insert([{
 },{
   type: 'beauty',
   subType: 'filler',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100001',
   hospitalLoc: '대치',
   hospitalName: '더밸런스한의원',
@@ -50,7 +50,7 @@ db.products.insert([{
 },{
   type: 'beauty',
   subType: 'lefting',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100002',
   hospitalLoc: '천호',
   hospitalName: '코코클리닉',
@@ -64,7 +64,7 @@ db.products.insert([{
 {
   type: 'skin',
   subType: 'scaling',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100003',
   hospitalLoc: '강남',
   hospitalName: '포에버성형외과',
@@ -77,7 +77,7 @@ db.products.insert([{
 },{
   type: 'beauty',
   subType: 'lifting',
-  img: './image/test10.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
   hospitalName: '제이디클리닉',
@@ -91,7 +91,7 @@ db.products.insert([{
 {
   type: 'beauty',
   subType: 'botox',
-  img: './image/test10.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
   hospitalName: '제이디클리닉',
@@ -104,7 +104,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'botox',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100001',
   hospitalLoc: '대치',
   hospitalName: '더밸런스한의원',
@@ -117,7 +117,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'lefting',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100002',
   hospitalLoc: '천호',
   hospitalName: '코코클리닉',
@@ -131,7 +131,7 @@ db.products.insert([{
 {
   type: 'beauty',
   subType: 'ContourInjection',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100003',
   hospitalLoc: '강남',
   hospitalName: '포에버성형외과',
@@ -144,7 +144,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'ContourInjection',
-  img: './image/test10.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
   hospitalName: '제이디클리닉',
@@ -158,7 +158,7 @@ db.products.insert([{
 {
   type: 'beauty',
   subType: 'ContourInjection',
-  img: './image/test10.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
   hospitalName: '제이디클리닉',
@@ -171,7 +171,7 @@ db.products.insert([{
 }, {
   type: 'skin',
   subType: 'acne',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100001',
   hospitalLoc: '대치',
   hospitalName: '더밸런스한의원',
@@ -184,7 +184,7 @@ db.products.insert([{
 }, {
   type: 'skin',
   subType: 'acne',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100002',
   hospitalLoc: '천호',
   hospitalName: '코코클리닉',
@@ -198,7 +198,7 @@ db.products.insert([{
 {
   type: 'skin',
   subType: 'acne',
-  img: './image/test23.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100003',
   hospitalLoc: '강남',
   hospitalName: '포에버성형외과',
@@ -211,7 +211,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'filler',
-  img: './image/test10.jpg',
+  img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
   hospitalName: '제이디클리닉',

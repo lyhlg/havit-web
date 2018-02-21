@@ -37,6 +37,7 @@ export default {
 
   // MUTATION (STORE DATA)
   Mutation: {
+    addProduct: (...params) => mutation.ADD_PRODUCT(params),
     addReservation: (...params) => mutation.ADD_RESERVATION(params, reserveNumCal),
     addReview: (...params) => mutation.ADD_REVIEW(params),
     addUserInfo: (...params) => mutation.ADD_USER_INFO(params),
