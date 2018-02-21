@@ -6,8 +6,6 @@ import 'styles/css/Home/Home.css';
 class Home extends Component {
   componentDidMount() {
     this.props.getProducts();
-
-    this.props.addReservation('jyt9319@gmail.com');
   }
 
   render() {
