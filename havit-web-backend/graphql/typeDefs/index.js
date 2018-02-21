@@ -79,30 +79,43 @@ const typeDefs = `
 
   type Mutation {
 
+    addProduct(
+      type: String,
+      subType: String,
+      img: String,
+      hospitalCode: String,
+      hospitalLoc: String,
+      hospitalName: String,
+      productName: String,
+      description: String,
+      price: Int,
+      productDetail: String,
+    ) : Product,
+
     addReservation(
-      user_id_email: String!,
-      hospitalCode: String!,
-      userName: String!,
-      phone: String!,
-      productName: String!,
-      reserveDate: String!
+      user_id_email: String,
+      hospitalCode: String,
+      userName: String,
+      phone: String,
+      productName: String,
+      reserveDate: String
     ) : Reservation,
 
     addReview(
-      user_id_email: String!,
-      stars: Float!,
-      comment: String!,
-      product: String!
+      user_id_email: String,
+      stars: Float,
+      comment: String,
+      product: String
     ) : Review,
 
     addUserInfo(
-      user_id_email: String!,
-      name: String!,
-      phone: String!,
-      birthday: String!,
-      gender: String!,
-      likeArea: [String!],
-      likePoint: [String!],
+      user_id_email: String,
+      name: String,
+      phone: String,
+      birthday: String,
+      gender: String,
+      likeArea: [String],
+      likePoint: [String],
       code : String
     ) : User,
 

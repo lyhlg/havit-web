@@ -23,4 +23,14 @@ const ADD_LIKE_PRODUCT = async ( params ) => {
   return userInfo();
 }
 
-export default ADD_LIKE_PRODUCT;
+const ADD_PRODUCT = async ( params ) => {
+  const [obj, args, ctx] = [...params];
+  var a = await new ctx.product(args).save();
+  console.log(a);
+  return a;
+}
+
+export {
+  ADD_LIKE_PRODUCT,
+  ADD_PRODUCT
+}
