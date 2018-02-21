@@ -1,14 +1,19 @@
 .productEntry {
   display: inline-block;
-  width: 280px;
-  height: 470px;
+  width: 278px;
+  height: 480px;
   margin-right: 20px;
-  border: solid 1px #dce2eb; }
+  margin-bottom: 20px;
+  border: solid 1px #dce2eb;
+  vertical-align: bottom; }
   .productEntry:last-child {
     margin-right: 0; }
   .productEntry .productEntry__link {
-    width: 280px;
-    height: 280px; }
+    width: 278px;
+    height: 278px; }
+    .productEntry .productEntry__link .productEntry__img {
+      width: 278px;
+      height: 278px; }
   .productEntry .productEntry__text {
     padding: 20px; }
     .productEntry .productEntry__text .productEntry__hospital {
@@ -24,7 +29,7 @@
       font-size: 15px;
       color: #414d6b; }
     .productEntry .productEntry__text .productEntry__sales {
-      margin-top: 40px; }
+      margin-top: 50px; }
       .productEntry .productEntry__text .productEntry__sales .productEntry__purchased {
         float: left;
         margin-top: 10px;

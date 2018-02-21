@@ -1,16 +1,23 @@
 .productEntry {
   display: inline-block;
-  width: 280px;
-  height: 470px;
+  width: 278px;
+  height: 480px;
   margin-right: 20px;
+  margin-bottom: 20px;
   border: solid 1px #dce2eb;
+  vertical-align: bottom;
 
   &:last-child {
     margin-right: 0;
   }
   .productEntry__link {
-    width: 280px;
-    height: 280px;
+    width: 278px;
+    height: 278px;
+
+    .productEntry__img {
+      width: 278px;
+      height: 278px;
+    }
   }
 
   .productEntry__text {
@@ -23,6 +30,7 @@
     }
 
     .productEntry__title {
+
       margin-bottom: 10px;
       font-size: 20px;
       font-weight: bold;
@@ -35,7 +43,7 @@
     }
 
     .productEntry__sales {
-      margin-top: 40px;
+      margin-top: 50px;
 
       .productEntry__purchased {
         float: left;

@@ -123,12 +123,12 @@ export const addReservation = (
   return client.mutate({
     mutation: gql`
       mutation addReservation(
-        $email: String!
-        $hospitalCode: String!
-        $userName: String!
-        $phone: String!
-        $productName: String!
-        $reserveDate: String!
+        $email: String
+        $hospitalCode: String
+        $userName: String
+        $phone: String
+        $productName: String
+        $reserveDate: String
       ) {
         addReservation(
           user_id_email: $email
