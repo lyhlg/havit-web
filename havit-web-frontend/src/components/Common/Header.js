@@ -9,7 +9,6 @@ class Header extends Component {
     const cookie = document.cookie || '';
     return (
       <header className="header">
-        {console.log('sad', cookie)}
         <h1 className="header__left">
           <Link to="/" className="header__home">
             <img src={logo} className="header__logo" alt="해빗 로고" />

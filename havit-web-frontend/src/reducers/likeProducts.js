@@ -6,12 +6,12 @@ const initialState = {
 
 const products = (state = initialState, action) => {
   switch (action.type) {
-    case types.SUCCESS_PRODUCTS_LIST:
+    case types.SUCCESS_GET_LIKEPRODUCTS:
       return {
         ...state,
         likeProductsList: action.likeProducts,
       };
-    case types.REQUEST_PRODUCTS_LIST:
+    case types.REQUEST_GET_LIKEPRODUCTS:
     default:
       return state;
   }

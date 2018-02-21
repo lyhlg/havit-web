@@ -18,14 +18,13 @@ import 'styles/css/index.css';
 
 class App extends Component {
   componentDidMount() {
-    this.props.getProductsList();
-    this.props.getReservationsList();
+    this.props.getProducts('skin');
   }
 
   render() {
+    console.log(this.props);
     return (
       <div>
-        {console.log(this.props)}
         <Header {...this.props} />
         <Route exact path="/" render={props => <Home {...this.props} />} />
         <Route path="/login" component={Login} />
