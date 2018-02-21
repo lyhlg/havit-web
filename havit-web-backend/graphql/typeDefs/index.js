@@ -107,24 +107,24 @@ const typeDefs = `
     ) : User,
 
     addLikeProducts(
-      user_id_email: String!,
-      productId : String!,
+      user_id_email: String,
+      productId : String,
     ) : User,
 
     modifyReservation(
-      reserveNum : String!
-      userName : String!
-      phone : String!
-      reserveDate: String!
+      reserveNum : String
+      userName : String
+      phone : String
+      reserveDate: String
     ) : Reservation,
 
     fixReservation(
-      reserveNum : String!
-      careDate : String!
+      reserveNum : String
+      careDate : String
     ) : Reservation,
 
     confirmPurchase(
-      reserveNum : String!
+      reserveNum : String
     ) : Reservation,
   }
 `;
