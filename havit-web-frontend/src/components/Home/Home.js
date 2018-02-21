@@ -9,7 +9,6 @@ class Home extends Component {
       <main>
         <Nav />
         <Banner />
-        {console.log(this.props.products)}
         <div className="home__category">
           <h2>전체보기</h2>
           <p>
