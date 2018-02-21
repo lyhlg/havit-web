@@ -35,3 +35,6 @@ export { default as Beauty } from './Beauty/Beauty';
 // Event
 
 export { default as Event } from './Event/Event';
+
+// Admin
+export { default as Admin } from './Admin/Admin';
