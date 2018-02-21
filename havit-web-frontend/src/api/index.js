@@ -43,27 +43,32 @@ export const getProducts = (type, subType) => {
 
 export const getReservations = email => {
   return client.query({
-    query: gql`{
-      Reservations(user_id_email: ${email}) {
-        _id
-        user_id_email
-        hospitalCode
-        userName
-        phone
-        productName
-        reserveDate
-        careDate
-        status
+    query: gql`
+      query($email: String) {
+        Reservations(user_id_email: $email) {
+          _id
+          user_id_email
+          hospitalCode
+          userName
+          phone
+          productName
+          reserveDate
+          careDate
+          status
+        }
       }
-    }`,
+    `,
+    variables: {
+      email: email,
+    },
   });
 };
 
 export const getLikeProducts = email => {
   return client.query({
-    query: gql`{
-      Users(user_id_email: ${email}) {
-        likeProduct {
+    query: gql`
+      query($email: String) {
+        LikeProducts(user_id_email: $email) {
           _id
           type
           subType
@@ -78,24 +83,32 @@ export const getLikeProducts = email => {
           productDetail
         }
       }
-  }`,
+    `,
+    variables: {
+      email,
+    },
   });
 };
 
 export const getUserInfo = email => {
   return client.query({
-    query: gql`{
-      Users(user_id_email: ${email}) {
-        specId
-        name
-        password
-        auth
-        phone
-        birthday
-        gender
-        hospitalCode
+    query: gql`
+      query($email: String) {
+        UserInfo(user_id_email: $email) {
+          specId
+          name
+          password
+          auth
+          phone
+          birthday
+          gender
+          hospitalCode
+        }
       }
-  }`,
+    `,
+    variables: {
+      email,
+    },
   });
 };
 
