@@ -120,17 +120,34 @@ export const addReservation = (
   productName,
   reserveDate
 ) => {
-  return client.query({
-    mutation: gql`{
-      addReservation(
-        user_id_email: ${email},
-        hospitalCode: ${hospitalCode},
-        userName: ${userName},
-        phone: ${phone},
-        productName: ${productName},
-        reserveDate: ${reserveDate}
-      )
-    }`,
+  return client.mutate({
+    mutation: gql`
+      mutation addReservation(
+        $email: String!
+        $hospitalCode: String!
+        $userName: String!
+        $phone: String!
+        $productName: String!
+        $reserveDate: String!
+      ) {
+        addReservation(
+          user_id_email: $email
+          hospitalCode: $hospitalCode
+          userName: $userName
+          phone: $phone
+          productName: $productName
+          reserveDate: $reserveDate
+        )
+      }
+    `,
+    variables: {
+      email,
+      hospitalCode,
+      userName,
+      phone,
+      productName,
+      reserveDate,
+    },
   });
 };
 
@@ -174,13 +191,26 @@ export const addUserInfo = (
 };
 
 export const addLikeProducts = (email, productId) => {
-  return client.query({
-    mutation: gql`{
-      addLikeProducts(
-        user_id_email: ${email},
-        productId: ${productId}
-      )
-    }`,
+  console.log(email, productId);
+  return client.mutate({
+    mutation: gql`
+      mutation($email: String, $productId: String) {
+        addLikeProducts(user_id_email: $email, productId: $productId) {
+          specId
+          name
+          password
+          auth
+          phone
+          birthday
+          gender
+          hospitalCode
+        }
+      }
+    `,
+    variables: {
+      email,
+      productId,
+    },
   });
 };
 
