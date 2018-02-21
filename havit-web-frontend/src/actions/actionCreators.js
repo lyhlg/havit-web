@@ -138,10 +138,10 @@ const successAddLikeProducts = likeProducts => ({
   likeProducts,
 });
 
-export const addLikeProducts = () => {
+export const addLikeProducts = (email, productId) => {
   return dispatch => {
     dispatch(requestAddLikeProducts());
-    return api.addLikeProducts().then(res => {
+    return api.addLikeProducts(email, productId).then(res => {
       dispatch(successAddLikeProducts(res));
     });
   };

@@ -122,7 +122,7 @@ export const addReservation = (
 ) => {
   return client.mutate({
     mutation: gql`
-      mutation(
+      mutation addReservation(
         $email: String!
         $hospitalCode: String!
         $userName: String!
@@ -191,19 +191,11 @@ export const addUserInfo = (
 };
 
 export const addLikeProducts = (email, productId) => {
+  console.log(email, productId);
   return client.mutate({
     mutation: gql`
-      mutation($email: String!, $productId: String!) {
-        addLikeProducts(user_id_email: $email, productId: $productId) {
-          specId
-          name
-          password
-          auth
-          phone
-          birthday
-          gender
-          hospitalCode
-        }
+      mutation($email: String, $productId: String) {
+        addLikeProducts(user_id_email: $email, productId: $productId)
       }
     `,
     variables: {
