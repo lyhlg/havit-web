@@ -10,16 +10,16 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProductsList: () => {
-    dispatch(actions.getProductsList());
+  getProducts: (type, subType) => {
+    dispatch(actions.getProducts(type, subType));
   },
 
-  getReservationsList: () => {
-    dispatch(actions.getReservationsList());
+  getReservations: () => {
+    dispatch(actions.getReservations());
   },
 
-  getLikeProductsList: email => {
-    dispatch(actions.getLikeProductsList(email));
+  getLikeProducts: email => {
+    dispatch(actions.getLikeProducts(email));
   },
 });
 

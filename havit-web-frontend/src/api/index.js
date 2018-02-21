@@ -12,8 +12,8 @@ const client = new ApolloClient({
 export const getProducts = (type, subType) => {
   return client.query({
     query: gql`
-      {
-        Products(type: ${type}, subType: ${subType}) {
+      query($type: String, $subType: String) {
+        Products(type: $type, subType: $subType) {
           _id
           type
           subType
@@ -34,6 +34,10 @@ export const getProducts = (type, subType) => {
         }
       }
     `,
+    variables: {
+      type: type,
+      subType: subType,
+    },
   });
 };
 
@@ -95,7 +99,7 @@ export const getUserInfo = email => {
   });
 };
 
-export const addReservations = (
+export const addReservation = (
   email,
   hospitalCode,
   userName,

@@ -6,12 +6,12 @@ const initialState = {
 
 const products = (state = initialState, action) => {
   switch (action.type) {
-    case types.SUCCESS_PRODUCTS_LIST:
+    case types.SUCCESS_GET_PRODUCTS:
       return {
         ...state,
         productsList: action.products.data.Products,
       };
-    case types.REQUEST_PRODUCTS_LIST:
+    case types.REQUEST_GET_PRODUCTS:
     default:
       return state;
   }
