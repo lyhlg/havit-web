@@ -16,6 +16,9 @@ class Reserve extends Component {
           <th>상태</th>
           <th>예약변경/취소</th>
         </tr>
+        <td>
+          <th>sad</th>
+        </td>
       </table>
     );
   }

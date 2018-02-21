@@ -17,10 +17,6 @@ import {
 import 'styles/css/index.css';
 
 class App extends Component {
-  componentDidMount() {
-    this.props.getProducts('skin');
-  }
-
   render() {
     console.log(this.props);
     return (
@@ -32,9 +28,9 @@ class App extends Component {
         <Route path="/mypage" component={MyPage} />
         <Route path="/privacy" component={Privacy} />
         <Route path="/signupend" component={SignupEnd} />
-        <Route path="/all" component={All} />
-        <Route path="/skin" component={Skin} />
-        <Route path="/beauty" component={Beauty} />
+        <Route path="/all" render={props => <All {...this.props} />} />
+        <Route path="/skin" render={props => <Skin {...this.props} />} />
+        <Route path="/beauty" render={props => <Beauty {...this.props} />} />
         <Route path="/event" component={Event} />
         <Route path="/detail" component={ProductDetail} />
       </div>

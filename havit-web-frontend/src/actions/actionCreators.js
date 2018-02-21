@@ -59,9 +59,9 @@ const requestGetUserInfo = () => ({
   type: types.REQUEST_GET_USERINFO,
 });
 
-const successGetUserInfo = info => ({
+const successGetUserInfo = userInfo => ({
   type: types.SUCCESS_GET_USERINFO,
-  info,
+  userInfo,
 });
 
 export const getUserInfo = () => {

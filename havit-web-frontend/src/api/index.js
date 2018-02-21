@@ -35,8 +35,8 @@ export const getProducts = (type, subType) => {
       }
     `,
     variables: {
-      type: type,
-      subType: subType,
+      type,
+      subType,
     },
   });
 };
@@ -59,7 +59,7 @@ export const getReservations = email => {
       }
     `,
     variables: {
-      email: email,
+      email,
     },
   });
 };
@@ -76,7 +76,7 @@ export const getLikeProducts = email => {
           hospitalCode
           hospitalLoc
           hospitalName
-          title
+          productName
           description
           price
           purchased
@@ -94,7 +94,7 @@ export const getUserInfo = email => {
   return client.query({
     query: gql`
       query($email: String) {
-        UserInfo(user_id_email: $email) {
+        Users(user_id_email: $email) {
           specId
           name
           password
