@@ -10,8 +10,7 @@ const ADD_LIKE_PRODUCT = async ( params ) => {
     .forEach(item => {
       if (item === args.productId) {
         checkAlreadyLikeIt = !checkAlreadyLikeIt;
-      }
-    }
+      }}
     )
 
   // 해당 상품이 찜이 안되었을 경우에만 추가

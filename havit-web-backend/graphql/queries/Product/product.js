@@ -5,7 +5,13 @@ const FIND_PRODUCT = async ( params ) => {
   if ( obj ) {
     return (await ctx.product.findOne({ _id: ObjectId(obj.product) }))
   } else {
-    return await ctx.product.find(args);
+    if ( !args.limit ) args.limit = 12;
+    if ( !args.page ) args.page = 1;
+    return await ctx.product
+      .find({type:args.type, subType:args.subType})
+      .sort({_id:-1})
+      .limit(args.limit)
+      .skip(args.page-1);
   }
 
 };
