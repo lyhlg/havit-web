@@ -13,6 +13,7 @@ import {
   Beauty,
   Event,
   ProductDetail,
+  Admin,
 } from './index';
 import 'styles/css/index.css';
 
@@ -33,6 +34,7 @@ class App extends Component {
         <Route path="/beauty" render={props => <Beauty {...this.props} />} />
         <Route path="/event" component={Event} />
         <Route path="/detail" component={ProductDetail} />
+        <Route path="/admin" component={Admin} />
       </div>
     );
   }
