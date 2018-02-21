@@ -40,10 +40,7 @@ export default {
     addReservation: (...params) => mutation.ADD_RESERVATION(params, reserveNumCal),
     addReview: (...params) => mutation.ADD_REVIEW(params),
     addUserInfo: (...params) => mutation.ADD_USER_INFO(params),
-    addLikeProducts: (...params) => {
-      console.log( 'hihi', params);
-      mutation.ADD_LIKE_PRODUCT(params);
-    },
+    addLikeProducts: (...params) => mutation.ADD_LIKE_PRODUCT(params),
     modifyReservation : (...params) => mutation.MODIFY_RESERVATION(params),
     fixReservation : (...params) => mutation.FIX_RESERVATION(params),
     confirmPurchase: (...params) => mutation.CONFIRM_PURCHASE(params)

@@ -5,7 +5,6 @@ const ADD_LIKE_PRODUCT = async ( params ) => {
     return await ctx.user.findOne({ user_id_email: args.user_id_email });
   };
 
-  console.log(args);
   // user 테이블에 likeProduct에 이미 해당 상품을 찜 해뒀는지 확인
   (await ctx.user.findOne({ user_id_email: args.user_id_email })).likeProduct
     .forEach(item => {
