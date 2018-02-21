@@ -25,3 +25,5 @@ export const reserveNumCal = () => {
 };
 
 // // export redirect: <script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>
+
+export const FRONT_DEV_SRV = 'http://localhost:3000';

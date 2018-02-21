@@ -5,8 +5,8 @@ const typeDefs = `
     Products (type: String, subType: String, limit: Int, page: Int) : [Product],
     Banners (type: String): [Banner],
     Reviews: [Review],
-    Hospitals(adminAccount: String) : [Hospital],
-    HospitalAdmin(code:String) : [HospitalAdmin],
+    Hospitals(adminAccount: String!) : [Hospital],
+    HospitalAdmin(code:String!) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product]
   }
   type User {
@@ -27,12 +27,13 @@ const typeDefs = `
   }
   type Reservation {
     _id: ID,
-    user_id_email: String!,
-    hospitalCode: String!,
-    userName: String!,
-    phone: String!,
-    productName: String!,
-    reserveDate: String!,
+    reserveNum: Float,
+    user_id_email: String,
+    hospitalCode: String,
+    userName: String,
+    phone: String,
+    productName: String,
+    reserveDate: String,
     careDate: String,
     status: String
   }
@@ -65,7 +66,7 @@ const typeDefs = `
     product: Product
   }
   type Hospital {
-    code : String!,
+    code : String,
     adminAccount : String,
     reservations: [Reservation],
     products: [Product]

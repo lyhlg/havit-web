@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 import { MailAuth } from '../db';
 const local = require ('localStorage');
 const keys = require('../config/keys');
+import FRONT_DEV_SRV from '../utils';
 
 const smtpTransport = nodemailer.createTransport({
   service: "Gmail",
@@ -18,7 +19,7 @@ const smtpTransport = nodemailer.createTransport({
 const checkFirstLogin = (req, res, next) => {
   if (req.user.phone) next();
   else {
-    res.send('<script>window.close(); window.opener.location.href="http://localhost:3000/privacy"</script>')
+    res.send(`<script>window.close(); window.opener.location.href=${FRONT_DEV_SRV}</script>`)
   }
 };
 // const sendMailAccount = (req,res, next) => {
@@ -42,7 +43,7 @@ router.get('/logout', (req, res) => {
     req.session.destroy(err => {
       if (err) console.error(err);
       else {
-        res.redirect("http://localhost:3000");
+        res.redirect(FRONT_DEV_SRV);
       }
     });
 });
@@ -55,19 +56,19 @@ router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin, (req, res) => {
-  res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
+  res.send(`<script>window.close(); window.opener.location.href=${FRONT_DEV_SRV}</script>`)
 });
 
 // Naver Login
 router.get('/naver', passport.authenticate('naver'));
 router.get('/naver/redirect', passport.authenticate('naver'), checkFirstLogin, (req, res) => {
-  res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
+  res.send(`<script>window.close(); window.opener.location.href=${FRONT_DEV_SRV}</script>`)
 });
 
 // Kakao Login
 router.get('/kakao', passport.authenticate('kakao'));
 router.get('/kakao/redirect', passport.authenticate('kakao'), checkFirstLogin, (req, res) => {
-  res.send('<script>window.close(); window.opener.location.href="http://localhost:3000"</script>')
+  res.send(`<script>window.close(); window.opener.location.href=${FRONT_DEV_SRV}</script>`)
 });
 
 // mail auth
