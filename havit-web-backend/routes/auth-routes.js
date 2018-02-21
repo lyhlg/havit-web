@@ -28,7 +28,6 @@ const checkFirstLogin = (req, res, next) => {
 
 //   res.send(req.user.user_id_email);
 // };
-
 // const cookie = (req, res, next) => {
 //   console.log("cookie", res);
 //   res.send(res.headers);
