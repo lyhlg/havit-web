@@ -13,7 +13,6 @@ const FIND_PRODUCT = async ( params ) => {
       .limit(args.limit)
       .skip(args.page-1);
   }
-
 };
 
 const LIKE_PRODUCT = async ( params ) => {
