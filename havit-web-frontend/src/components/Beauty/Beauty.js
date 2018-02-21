@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Nav, Banner, Product } from '../index';
 
 class Beauty extends Component {
+  componentDidMount() {
+    this.props.getProducts('beauty');
+  }
+
   render() {
     return (
       <div>
@@ -15,7 +19,7 @@ class Beauty extends Component {
         </ul>
         <main>
           <Banner />
-          <Product />
+          <Product products={this.props.products.productsList} />
         </main>
       </div>
     );

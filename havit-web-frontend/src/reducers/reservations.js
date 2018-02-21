@@ -11,7 +11,13 @@ const reservations = (state = initialState, action) => {
         ...state,
         reservationsList: action.reservations.data.Reservations,
       };
+    case types.SUCCESS_ADD_RESERVATION:
+      return {
+        ...state,
+        reservationsList: action.reservations,
+      };
     case types.REQUEST_GET_RESERVATIONS:
+    case types.REQUEST_ADD_RESERVATION:
     default:
       return state;
   }
