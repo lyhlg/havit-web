@@ -7,7 +7,7 @@ class Home extends Component {
   componentDidMount() {
     this.props.getProducts();
 
-    this.props.addReservation('jyt9319@gmail.com');
+    this.props.addLikeProducts('jyt9319@gmail.com', '5a8b9e2ae5fb2bb6ef38c8d0');
   }
 
   render() {
