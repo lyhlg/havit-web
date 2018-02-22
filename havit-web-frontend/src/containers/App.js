@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   likeProducts: state.likeProducts,
   userInfo: state.userInfo,
   review: state.review,
+  email: window.localStorage.getItem('email') || '',
 });
 
 const mapDispatchToProps = dispatch => ({

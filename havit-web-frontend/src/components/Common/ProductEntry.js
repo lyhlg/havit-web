@@ -5,7 +5,6 @@ import 'styles/css/Common/ProductEntry.css';
 
 class ProductEntry extends Component {
   render() {
-    console.log(this.props, 'sadsad');
     return (
       <div className="productEntry">
         <Link to="/detail" className="productEntry__link">
