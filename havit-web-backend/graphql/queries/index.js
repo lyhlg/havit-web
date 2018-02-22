@@ -1,5 +1,6 @@
 import {
   FIND_USER,
+  EDIT_USER_INFO
 } from './User/user';
 import FIND_RESERVATION from './Reservation/reservation';
 import {
@@ -22,6 +23,7 @@ import {
 
 export {
   FIND_USER,
+  EDIT_USER_INFO,
   FIND_RESERVATION,
   FIND_PRODUCT,
   LIKE_PRODUCT,

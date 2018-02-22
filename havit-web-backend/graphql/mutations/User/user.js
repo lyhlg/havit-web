@@ -54,4 +54,44 @@ const ADD_USER_INFO = async ( params ) => {
   return await ctx.user.findOne({ user_id_email: args.user_id_email });
 };
 
-export default ADD_USER_INFO;
+const EDIT_USER_INFO = async (params) => {
+  const [obj, args, {user}] = [...params];
+  const { name,
+    user_id_email,
+    phone,
+    birthday,
+    gender,
+    likeArea,
+    likePoint,
+    hospitalCode
+  } = args;
+  console.log(args)
+
+  console.log(args.hospitalCode);
+  // if ( !hospitalCode ) {
+  //   hospitalCode = null;
+  // }
+  const user_update = async () => {
+    return await user.update(
+    { user_id_email: user_id_email },
+      {
+        $set: {
+          name: name,
+          phone: phone,
+          birthday: birthday,
+          gender: gender,
+          hospitalCode: hospitalCode,
+          likeArea: likeArea,
+          likePoint: likePoint,
+        }
+      }
+  )
+  }
+  user_update();
+  return await user.find({ user_id_email: user_id_email });
+}
+
+export {
+  ADD_USER_INFO,
+  EDIT_USER_INFO
+};

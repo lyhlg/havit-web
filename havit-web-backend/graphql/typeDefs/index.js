@@ -139,6 +139,17 @@ const typeDefs = `
     confirmPurchase(
       reserveNum : String
     ) : Reservation,
+
+    editUserInfo(
+      name: String,
+      user_id_email: String,
+      phone: String,
+      birthday: String,
+      gender: String,
+      likeArea: [String],
+      likePoint: [String],
+      hospitalCode: String
+    ) : User
   }
 `;
 
