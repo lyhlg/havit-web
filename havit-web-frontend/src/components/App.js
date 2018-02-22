@@ -26,7 +26,7 @@ class App extends Component {
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
         <Route path="/mypage" component={MyPage} />
-        <Route path="/privacy" component={Privacy} />
+        <Route path="/privacy" render={props => <Privacy {...this.props} />} />
         <Route path="/signupend" component={SignupEnd} />
         <Route path="/all" render={props => <All {...this.props} />} />
         <Route path="/skin" render={props => <Skin {...this.props} />} />

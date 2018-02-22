@@ -131,9 +131,9 @@ const requestAddUserInfo = () => ({
   type: types.REQUEST_ADD_USERINFO,
 });
 
-const successAddUserInfo = UserInfo => ({
+const successAddUserInfo = newUserInfo => ({
   type: types.SUCCESS_ADD_USERINFO,
-  UserInfo,
+  newUserInfo,
 });
 
 export const addUserInfo = (
@@ -169,9 +169,9 @@ const requestAddLikeProducts = () => ({
   type: types.REQUEST_ADD_LIKEPRODUCTS,
 });
 
-const successAddLikeProducts = likeProducts => ({
+const successAddLikeProducts = newLikeProduct => ({
   type: types.SUCCESS_ADD_LIKEPRODUCTS,
-  likeProducts,
+  newLikeProduct,
 });
 
 export const addLikeProducts = (email, productId) => {

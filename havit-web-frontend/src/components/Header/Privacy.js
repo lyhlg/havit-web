@@ -3,7 +3,39 @@ import { Link } from 'react-router-dom';
 import 'styles/css/Header/Privacy.css';
 
 class Privacy extends Component {
+  constructor(props) {
+    super(props);
+
+    this.submitUserInfo = this.submitUserInfo.bind(this);
+  }
+
+  submitUserInfo() {
+    console.log('sadas');
+    this.props.addUserInfo(
+      'jyt9319@gmai.com',
+      document.getElementById('name').value,
+      document.getElementById('txtMobile1').value +
+        document.getElementById('txtMobile2').value +
+        document.getElementById('txtMobile3').value,
+      document.getElementById('birthday1').value +
+        document.getElementById('birthday2').value +
+        document.getElementById('birthday3').value,
+      document.querySelector('input[name="gender"]:checked').value,
+      Array.prototype.map.call(
+        document.querySelectorAll('input[name="likeArea"]:checked'),
+        area => area.value
+      ),
+      Array.prototype.map.call(
+        document.querySelectorAll('input[name="likePoint"]:checked'),
+        point => point.value
+      ),
+      document.getElementById('code').value
+    );
+    console.log('sadasasadsas');
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="privacy">
         <div className="privacy__wrapper">
@@ -11,6 +43,7 @@ class Privacy extends Component {
             <h2 className="privacy__title">회원가입</h2>
             <h3 className="privacy__label">이름</h3>
             <input
+              id="name"
               type="text"
               className="privacy__input"
               placeholder="실명 한글 이름을 입력해주세요."
@@ -38,86 +71,131 @@ class Privacy extends Component {
               className="privacy__box2"
             />
             <h3 className="privacy__label">생년월일</h3>
-            <select className="privacy__box3">
+            <select id="birthday1" className="privacy__box3">
               <option>1995</option>
               <option>1996</option>
               <option>1997</option>
             </select>
             <span>년</span>
-            <select className="privacy__box4">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+            <select id="birthday2" className="privacy__box4">
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
             </select>
             <span>월</span>
-            <select className="privacy__box4">
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
+            <select id="birthday3" className="privacy__box4">
+              <option>01</option>
+              <option>02</option>
+              <option>03</option>
             </select>
             <span>일</span>
             <h3 className="privacy__label">성별</h3>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              남자
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              여자
-            </label>
+            <input
+              name="gender"
+              id="gender"
+              type="radio"
+              className="privacy__checkbox"
+              value="여자"
+            />
+            <label className="privacy__text">여자</label>
+            <input
+              name="gender"
+              id="gender"
+              type="radio"
+              className="privacy__checkbox"
+              value="남자"
+            />
+            <label className="privacy__text">남자</label>
             <h3 className="privacy__label">관심 지역</h3>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              강남구
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              서초구
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              중구
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              성동구
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              광진구
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              영등포구
-            </label>
+            <input
+              name="likeArea"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="강남구"
+            />
+            <label className="privacy__text">강남구</label>
+            <input
+              name="likeArea"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="서초구"
+            />
+            <label className="privacy__text">서초구</label>
+            <input
+              name="likeArea"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="중구"
+            />
+            <label className="privacy__text">중구</label>
+            <input
+              name="likeArea"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="성동구"
+            />
+            <label className="privacy__text">성동구</label>
+            <input
+              name="likeArea"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="광진구"
+            />
+            <label className="privacy__text">광진구</label>
+            <input
+              name="likeArea"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="영등포구"
+            />
+            <label className="privacy__text">영등포구</label>
             <h3 className="privacy__label">관심 부위</h3>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              피부
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              여드름
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              리프팅
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              제모
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              반영구
-            </label>
-            <input type="checkbox" className="privacy__checkbox" />
-            <label for="subscribeNews" className="privacy__text">
-              미용주사
-            </label>
+            <input
+              name="likePoint"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="피부"
+            />
+            <label className="privacy__text">피부</label>
+            <input
+              name="likePoint"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="여드름"
+            />
+            <label className="privacy__text">여드름</label>
+            <input
+              name="likePoint"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="리프팅"
+            />
+            <label className="privacy__text">리프팅</label>
+            <input
+              name="likePoint"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="제모"
+            />
+            <label className="privacy__text">제모</label>
+            <input
+              name="likePoint"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="반영구"
+            />
+            <label className="privacy__text">반영구</label>
+            <input
+              name="likePoint"
+              type="checkbox"
+              className="privacy__checkbox"
+              value="미용주사"
+            />
+            <label className="privacy__text">미용주사</label>
             <hr />
             <h3 className="privacy__label">병원코드</h3>
             <input
+              id="code"
               type="text"
               className="privacy__input"
               placeholder="병원코드"
@@ -128,9 +206,9 @@ class Privacy extends Component {
               회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
             </h6>
             <button className="privacy__btn">
-              <Link to="/signupend" className="privacy__btntext">
+              <a className="privacy__btntext" onClick={this.submitUserInfo}>
                 회원가입
-              </Link>
+              </a>
             </button>
           </div>
         </div>
