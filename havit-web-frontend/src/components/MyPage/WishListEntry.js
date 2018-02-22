@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 
 class WishListEntry extends Component {
   render() {
+    console.log('sad', this.props.product);
     return (
       <div>
-        <img src="http://dummyimage.com/200x200/000/fff" alt="product" />
-        <h3>상품명</h3>
-        <h4>상품 내용</h4>
-        <h4>금액</h4>
+        <img src={this.props.product.img} alt="product" />
+        <h3>{this.props.product.productName}</h3>
+        <h4>{this.props.product.description}</h4>
+        <h4>{this.props.product.price}</h4>
         <button>바로 예약</button>
         <button>상품 삭제</button>
       </div>
