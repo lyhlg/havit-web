@@ -20,6 +20,14 @@ export { default as Reserve } from './MyPage/Reserve';
 export { default as WishList } from './MyPage/WishList';
 export { default as WishListEntry } from './MyPage/WishListEntry';
 
+// HospitalPage
+export { default as HospitalPage } from './HospitalPage/HospitalPage';
+export { default as HospitalMenu } from './HospitalPage/HospitalMenu';
+export { default as CustomerInfo } from './HospitalPage/CustomerInfo';
+export { default as UploadProduct } from './HospitalPage/UploadProduct';
+export { default as ManageProduct } from './HospitalPage/ManageProduct';
+export { default as Balance } from './HospitalPage/Balance';
+
 // Home
 export { default as Home } from './Home/Home';
 
@@ -35,6 +43,3 @@ export { default as Beauty } from './Beauty/Beauty';
 // Event
 
 export { default as Event } from './Event/Event';
-
-// Admin
-export { default as Admin } from './Admin/Admin';
