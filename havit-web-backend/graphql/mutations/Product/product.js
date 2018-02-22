@@ -25,9 +25,7 @@ const ADD_LIKE_PRODUCT = async ( params ) => {
 
 const ADD_PRODUCT = async ( params ) => {
   const [obj, args, ctx] = [...params];
-  var a = await new ctx.product(args).save();
-  console.log(a);
-  return a;
+  return await new ctx.product(args).save();
 }
 
 export {
