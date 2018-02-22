@@ -28,10 +28,10 @@ const successGetReservations = reservations => ({
   reservations,
 });
 
-export const getReservations = () => {
+export const getReservations = email => {
   return dispatch => {
     dispatch(requestGetReservations());
-    return api.getReservations().then(res => {
+    return api.getReservations(email).then(res => {
       dispatch(successGetReservations(res));
     });
   };
@@ -46,10 +46,10 @@ const successGetLikeProducts = likeProducts => ({
   likeProducts,
 });
 
-export const getLikeProducts = () => {
+export const getLikeProducts = email => {
   return dispatch => {
     dispatch(requestGetLikeProducts());
-    return api.getLikeProducts().then(res => {
+    return api.getLikeProducts(email).then(res => {
       dispatch(successGetLikeProducts(res));
     });
   };
@@ -64,10 +64,10 @@ const successGetUserInfo = userInfo => ({
   userInfo,
 });
 
-export const getUserInfo = () => {
+export const getUserInfo = email => {
   return dispatch => {
     dispatch(requestGetUserInfo());
-    return api.getUserInfo().then(res => {
+    return api.getUserInfo(email).then(res => {
       dispatch(successGetUserInfo(res));
     });
   };
@@ -84,12 +84,28 @@ const successAddReservation = reservation => ({
   reservation,
 });
 
-export const addReservation = () => {
+export const addReservation = (
+  email,
+  hospitalCode,
+  userName,
+  phone,
+  productName,
+  reserveDate
+) => {
   return dispatch => {
     dispatch(requestAddReservation());
-    return api.addReservation().then(res => {
-      dispatch(successAddReservation(res));
-    });
+    return api
+      .addReservation(
+        email,
+        hospitalCode,
+        userName,
+        phone,
+        productName,
+        reserveDate
+      )
+      .then(res => {
+        dispatch(successAddReservation(res));
+      });
   };
 };
 
@@ -102,10 +118,10 @@ const successAddReview = review => ({
   review,
 });
 
-export const addReview = () => {
+export const addReview = (email, stars, comment, product) => {
   return dispatch => {
     dispatch(requestAddReview());
-    return api.addReview().then(res => {
+    return api.addReview(email, stars, comment, product).then(res => {
       dispatch(successAddReview(res));
     });
   };
@@ -120,12 +136,32 @@ const successAddUserInfo = UserInfo => ({
   UserInfo,
 });
 
-export const addUserInfo = () => {
+export const addUserInfo = (
+  email,
+  name,
+  phone,
+  birthday,
+  gender,
+  likeArea,
+  likePoint,
+  code
+) => {
   return dispatch => {
     dispatch(requestAddUserInfo());
-    return api.addUserInfo().then(res => {
-      dispatch(successAddUserInfo(res));
-    });
+    return api
+      .addUserInfo(
+        email,
+        name,
+        phone,
+        birthday,
+        gender,
+        likeArea,
+        likePoint,
+        code
+      )
+      .then(res => {
+        dispatch(successAddUserInfo(res));
+      });
   };
 };
 
@@ -156,12 +192,14 @@ const successModifyReservation = reservation => ({
   reservation,
 });
 
-export const modifyReservation = () => {
+export const modifyReservation = (reserveNum, userName, phone, reserveDate) => {
   return dispatch => {
     dispatch(requestModifyReservation());
-    return api.modifyReservation().then(res => {
-      dispatch(successModifyReservation(res));
-    });
+    return api
+      .modifyReservation(reserveNum, userName, phone, reserveDate)
+      .then(res => {
+        dispatch(successModifyReservation(res));
+      });
   };
 };
 
@@ -174,10 +212,10 @@ const successFixReservation = reservation => ({
   reservation,
 });
 
-export const fixReservation = () => {
+export const fixReservation = (reserveNum, careDate) => {
   return dispatch => {
     dispatch(requestFixReservation());
-    return api.fixReservation().then(res => {
+    return api.fixReservation(reserveNum, careDate).then(res => {
       dispatch(successFixReservation(res));
     });
   };
@@ -192,10 +230,10 @@ const successConfirmPurchase = reservation => ({
   reservation,
 });
 
-export const confirmPurchase = () => {
+export const confirmPurchase = reserveNum => {
   return dispatch => {
     dispatch(requestConfirmPurchase());
-    return api.confirmPurchase().then(res => {
+    return api.confirmPurchase(reserveNum).then(res => {
       dispatch(successConfirmPurchase(res));
     });
   };
