@@ -8,9 +8,23 @@ class MyPage extends Component {
     return (
       <main>
         <Menu />
-        <Route path="/mypage/reserve" component={Reserve} />
-        <Route path="/mypage/wishList" component={WishList} />
-        <Route path="/mypage/changeInfo" component={ChangeInfo} />
+        <Route
+          path="/mypage/reserve"
+          render={props => (
+            <Reserve
+              getReservations={this.props.getReservations}
+              reservations={this.props.reservations}
+            />
+          )}
+        />
+        <Route
+          path="/mypage/wishList"
+          render={props => <WishList {...this.props} />}
+        />
+        <Route
+          path="/mypage/changeInfo"
+          render={props => <WishList {...this.props} />}
+        />
       </main>
     );
   }
