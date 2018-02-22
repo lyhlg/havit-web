@@ -47,6 +47,7 @@ export const getReservations = email => {
       query($email: String) {
         Reservations(user_id_email: $email) {
           _id
+          reserveNum
           user_id_email
           hospitalCode
           userName
