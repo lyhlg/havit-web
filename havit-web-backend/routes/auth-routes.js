@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 import { MailAuth } from '../db';
 const local = require ('localStorage');
 const keys = require('../config/keys');
+// const ls = require('localStorage');
 import { FRONT_DEV_SRV } from '../utils';
 
 const smtpTransport = nodemailer.createTransport({
@@ -19,22 +20,11 @@ const smtpTransport = nodemailer.createTransport({
 const checkFirstLogin = (req, res, next) => {
   if (req.user.phone) next();
   else {
-    res.send(`<script>window.close(); window.opener.location.href="${FRONT_DEV_SRV}/privacy"</script>`)
+    res.send(`<script> window.close(); window.opener.location.href="${FRONT_DEV_SRV}/privacy"; </script>`);
   }
 };
-// const sendMailAccount = (req,res, next) => {
-//   console.log(req.user.user_id_email);
-//   local.setItem('aaa','bbb');
 
-//   res.send(req.user.user_id_email);
-// };
-// const cookie = (req, res, next) => {
-//   console.log("cookie", res);
-//   res.send(res.headers);
-//   next();
-// };
-
-var rand, mailOptions, host, link;
+let rand, mailOptions, host, link;
 
 // logout
 router.get('/logout', (req, res) => {
@@ -55,19 +45,19 @@ router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.localStorage.setItem('email', ${req.session.user}); window.close(); window.opener.location.href=${FRONT_DEV_SRV}</script>`)
+  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.close(); window.opener.location.href="${FRONT_DEV_SRV}"</script>`);
 });
 
 // Naver Login
 router.get('/naver', passport.authenticate('naver'));
 router.get('/naver/redirect', passport.authenticate('naver'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.localStorage.setItem('email', ${req.session.user}); window.close(); window.opener.location.href=${FRONT_DEV_SRV}</script>`)
+  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.close(); window.opener.location.href="${FRONT_DEV_SRV}"</script>`)
 });
 
 // Kakao Login
 router.get('/kakao', passport.authenticate('kakao'));
 router.get('/kakao/redirect', passport.authenticate('kakao'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.localStorage.setItem('email', ${req.session.user}); window.close(); window.opener.location.href=${FRONT_DEV_SRV}</script>`)
+  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.close(); window.opener.location.href="${FRONT_DEV_SRV}"</script>`)
 });
 
 // mail auth

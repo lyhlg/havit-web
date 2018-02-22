@@ -1,49 +1,74 @@
 import { reserveNumCal } from '../../utils';
 import * as query from '../queries';
-import * as mutation from '../mutations';
+import {
+  FIND_USER,
+  FIND_RESERVATION,
+  FIND_PRODUCT,
+  LIKE_PRODUCT,
+  GET_REVIEW_LIST_OF_PRODUCT,
+  FIND_REVIEW,
+  FIND_HOSPITAL,
+  GET_HOSPITAL_RESERVATION_INFO,
+  GET_HOSPITAL_PRODUCT_LIST,
+  FIND_HOSPITAL_ADMIN,
+  GET_BANNER_LIST,
+  GET_BANNER_FROM_PRODUCT
+} from "../queries";
+import {
+  ADD_RESERVATION,
+  MODIFY_RESERVATION,
+  FIX_RESERVATION,
+  CONFIRM_PURCHASE,
+  ADD_REVIEW,
+  ADD_USER_INFO,
+  ADD_LIKE_PRODUCT,
+  ADD_PRODUCT
+} from "../mutations";
+
+
 
 export default {
   // QUERY (GET DATA)
   Query: {
-    Users: (...params) => query.FIND_USER(params),
-    Reservations : (...params) => query.FIND_RESERVATION(params),
-    LikeProducts: (...params) => query.LIKE_PRODUCT(params),
-    Products: (...params) => query.FIND_PRODUCT(params),
-    Reviews: (...params) => query.FIND_REVIEW(params),
-    Hospitals: (...params) => query.FIND_HOSPITAL(params),
-    HospitalAdmin: (...params) => query.FIND_HOSPITALADMIN(params),
-    Banners: (...params) => query.GET_BANNER_LIST(params)
+    Users: (...params) => FIND_USER(params),
+    Reservations : (...params) => FIND_RESERVATION(params),
+    LikeProducts: (...params) => LIKE_PRODUCT(params),
+    Products: (...params) => FIND_PRODUCT(params),
+    Reviews: (...params) => FIND_REVIEW(params),
+    Hospitals: (...params) => FIND_HOSPITAL(params),
+    HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
+    Banners: (...params) => GET_BANNER_LIST(params)
   },
   Banner : {
-    totalBanners : (...params) => query.GET_BANNER_FROM_PRODUCT(params),
-    skinBanners: (...params) => query.GET_BANNER_FROM_PRODUCT(params),
-    beautyBanners: (...params) => query.GET_BANNER_FROM_PRODUCT(params)
+    totalBanners : (...params) => GET_BANNER_FROM_PRODUCT(params),
+    skinBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
+    beautyBanners: (...params) => GET_BANNER_FROM_PRODUCT(params)
   },
   Hospital : {
-    reservations: (...params) => query.GET_HOSPITAL_RESERVATION_INFO(params),
-    products: (...params) => query.GET_HOSPITAL_PRODUCT_LIST(params)
+    reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
+    products: (...params) => GET_HOSPITAL_PRODUCT_LIST(params)
   },
   Product: {
-    reviews: (...params) => query.GET_REVIEW_LIST_OF_PRODUCT(params)
+    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params)
   },
   User: {
-    reservation: (...params) => query.FIND_RESERVATION(params),
-    likeProduct: (...params) => query.LIKE_PRODUCT(params),
-    reviews: (...params) => query.FIND_REVIEW(params)
+    reservation: (...params) => FIND_RESERVATION(params),
+    likeProduct: (...params) => LIKE_PRODUCT(params),
+    reviews: (...params) => FIND_REVIEW(params)
   },
   Review : {
-    product: (...params) => query.FIND_PRODUCT(params)
+    product: (...params) => FIND_PRODUCT(params)
   },
 
   // MUTATION (STORE DATA)
   Mutation: {
-    addProduct: (...params) => mutation.ADD_PRODUCT(params),
-    addReservation: (...params) => mutation.ADD_RESERVATION(params, reserveNumCal),
-    addReview: (...params) => mutation.ADD_REVIEW(params),
-    addUserInfo: (...params) => mutation.ADD_USER_INFO(params),
-    addLikeProducts: (...params) => mutation.ADD_LIKE_PRODUCT(params),
-    modifyReservation : (...params) => mutation.MODIFY_RESERVATION(params),
-    fixReservation : (...params) => mutation.FIX_RESERVATION(params),
-    confirmPurchase: (...params) => mutation.CONFIRM_PURCHASE(params)
+    addProduct: (...params) => ADD_PRODUCT(params),
+    addReservation: (...params) => ADD_RESERVATION(params, reserveNumCal),
+    addReview: (...params) => ADD_REVIEW(params),
+    addUserInfo: (...params) => ADD_USER_INFO(params),
+    addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),
+    modifyReservation : (...params) => MODIFY_RESERVATION(params),
+    fixReservation : (...params) => FIX_RESERVATION(params),
+    confirmPurchase: (...params) => CONFIRM_PURCHASE(params)
   }
 };
