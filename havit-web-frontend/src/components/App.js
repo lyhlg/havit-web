@@ -13,7 +13,7 @@ import {
   Beauty,
   Event,
   ProductDetail,
-  Admin,
+  HospitalPage,
 } from './index';
 import 'styles/css/index.css';
 
@@ -25,7 +25,7 @@ class App extends Component {
         <Route exact path="/" render={props => <Home {...this.props} />} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={Signup} />
-        <Route path="/mypage" render={props => <MyPage {...this.props} />} />
+        <Route path="/mypage" component={MyPage} />
         <Route path="/privacy" render={props => <Privacy {...this.props} />} />
         <Route path="/signupend" component={SignupEnd} />
         <Route path="/all" render={props => <All {...this.props} />} />
@@ -33,7 +33,7 @@ class App extends Component {
         <Route path="/beauty" render={props => <Beauty {...this.props} />} />
         <Route path="/event" component={Event} />
         <Route path="/detail" component={ProductDetail} />
-        <Route path="/admin" component={Admin} />
+        <Route path="/hospitalpage" component={HospitalPage} />
       </div>
     );
   }
