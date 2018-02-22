@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import 'styles/css/Admin/Admin.css';
 
 class Admin extends Component {
   render() {
@@ -53,7 +54,7 @@ class Admin extends Component {
             <h3 className="admin__label">상품 설명</h3>
             <input
               type="text"
-              className="admin__input"
+              className="admin__inputbig"
               placeholder="상품에 대한 정보를 한문장으로 입력해주세요."
             />
             <h3 className="admin__label">시술금액</h3>

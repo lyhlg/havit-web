@@ -1,0 +1,38 @@
+.admin {
+  width: 1440px;
+  height: 1464px;
+  background-color: #647dff;
+  margin: 0 auto;
+  padding-top: 140px; }
+  .admin .admin__wrapper {
+    width: 1180px;
+    height: 1244px;
+    background-color: #ffffff;
+    box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3);
+    margin: 0 auto; }
+    .admin .admin__wrapper .admin__tab {
+      padding: 80px 160px; }
+      .admin .admin__wrapper .admin__tab .admin__title {
+        font-size: 24px;
+        color: #647dff; }
+      .admin .admin__wrapper .admin__tab .admin__label {
+        font-size: 15px;
+        color: #869ab7;
+        margin: 20px 0 10px 0; }
+      .admin .admin__wrapper .admin__tab .admin__dropdown {
+        width: 120px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb; }
+      .admin .admin__wrapper .admin__tab .admin__input {
+        width: 250px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+        padding-left: 10px; }
+      .admin .admin__wrapper .admin__tab .admin__inputbig {
+        width: 600px;
+        height: 50px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+        padding-left: 10px; }
