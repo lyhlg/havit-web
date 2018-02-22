@@ -9,7 +9,7 @@ const products = (state = initialState, action) => {
     case types.SUCCESS_ADD_LIKEPRODUCTS:
       return {
         ...state,
-        addLikeProductsList: action.likeProducts,
+        addLikeProductsList: action.newLikeProduct,
       };
     case types.REQUEST_ADD_LIKEPRODUCTS:
     default:
