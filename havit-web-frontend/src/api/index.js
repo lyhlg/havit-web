@@ -152,15 +152,33 @@ export const addReservation = (
 };
 
 export const addReview = (email, stars, comment, product) => {
-  return client.query({
-    mutation: gql`{
-      addReview(
-        user_id_email: ${email},
-        stars: ${stars},
-        comment: ${comment},
-        product: ${product}
-      )
-    }`,
+  return client.mutate({
+    mutation: gql`
+      mutation(
+        $email: String
+        $stars: String
+        $comment: String
+        $product: String
+      ) {
+        addReview(
+          user_id_email: $email
+          stars: $stars
+          comment: $comment
+          product: $product
+        ) {
+          _id
+          user_id_email
+          stars
+          comment
+        }
+      }
+    `,
+    variables: {
+      email,
+      stars,
+      comment,
+      product,
+    },
   });
 };
 
@@ -174,24 +192,53 @@ export const addUserInfo = (
   likePoint,
   code
 ) => {
-  return client.query({
-    mutation: gql`{
-      addUserInfo(
-        user_id_email: ${email},
-        name: ${name},
-        phone: ${phone},
-        birthday: ${birthday},
-        gender: ${gender},
-        likeArea: ${likeArea},
-        likePoint: ${likePoint},
-        code: ${code}
-      )
-    }`,
+  return client.mutate({
+    mutation: gql`
+      mutation(
+        $email: String
+        $name: String
+        $phone: String
+        $birthday: String
+        $gender: String
+        $likeArea: Array
+        $likePoint: Array
+        $code: String
+      ) {
+        addUserInfo(
+          user_id_email: $email
+          name: $name
+          phone: $phone
+          birthday: $birthday
+          gender: $gender
+          likeArea: $likeArea
+          likePoint: $likePoint
+          code: $code
+        ) {
+          specId
+          name
+          password
+          auth
+          phone
+          birthday
+          gender
+          hospitalCode
+        }
+      }
+    `,
+    variables: {
+      email,
+      name,
+      phone,
+      birthday,
+      gender,
+      likeArea,
+      likePoint,
+      code,
+    },
   });
 };
 
 export const addLikeProducts = (email, productId) => {
-  console.log(email, productId);
   return client.mutate({
     mutation: gql`
       mutation($email: String, $productId: String) {
@@ -215,35 +262,87 @@ export const addLikeProducts = (email, productId) => {
 };
 
 export const modifyReservation = (reserveNum, userName, phone, reserveDate) => {
-  return client.query({
-    mutation: gql`{
-      modifyReservation(
-        reserveNum: ${reserveNum},
-        userName: ${userName},
-        phone: ${phone},
-        reserveDate: ${reserveDate}
-      )
-    }`,
+  return client.mutate({
+    mutation: gql`
+      mutation(
+        $reserveNum: String
+        $userName: String
+        $phone: String
+        $reserveDate: String
+      ) {
+        modifyReservation(
+          reserveNum: $reserveNum
+          userName: $userName
+          phone: $phone
+          reserveDate: $reserveDate
+        ) {
+          _id
+          reserveNum
+          user_id_email
+          hospitalCode
+          userName
+          phone
+          productName
+          reserveDate
+          careDate
+          status
+        }
+      }
+    `,
+    variables: {
+      reserveNum,
+      userName,
+      phone,
+      reserveDate,
+    },
   });
 };
 
 export const fixReservation = (reserveNum, careDate) => {
-  return client.query({
-    mutation: gql`{
-      fixReservation(
-        reserveNum: ${reserveNum},
-        careDate: ${careDate}
-      )
-    }`,
+  return client.mutate({
+    mutation: gql`
+      mutation($reserveNum: String, $careDate: String) {
+        fixReservation(reserveNum: $reserveNum, careDate: $careDate) {
+          _id
+          reserveNum
+          user_id_email
+          hospitalCode
+          userName
+          phone
+          productName
+          reserveDate
+          careDate
+          status
+        }
+      }
+    `,
+    variables: {
+      reserveNum,
+      careDate,
+    },
   });
 };
 
 export const confirmPurchase = reserveNum => {
-  return client.query({
-    mutation: gql`{
-      confirmPurchase(
-        reserveNum: ${reserveNum}
-      )
-    }`,
+  return client.mutate({
+    mutation: gql`
+      mutation($reserveNum: String) {
+        confirmPurchase(reserveNum: $reserveNum) {
+          _id
+          reserveNum
+          user_id_email
+          hospitalCode
+          userName
+          phone
+          productName
+          reserveDate
+          careDate
+          status
+        }
+      }
+    `,
+    variables: {
+      reserveNum,
+    },
   });
 };

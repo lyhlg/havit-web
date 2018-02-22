@@ -7,7 +7,9 @@ const mapStateToProps = state => ({
   products: state.products,
   reservations: state.reservations,
   likeProducts: state.likeProducts,
+  newLikeProduct: state.newLikeProduct,
   userInfo: state.userInfo,
+  newUserInfo: state.newUserInfo,
   review: state.review,
   email: window.localStorage.getItem('email') || '',
 });
