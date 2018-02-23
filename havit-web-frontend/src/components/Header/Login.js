@@ -3,6 +3,7 @@ import * as url from 'utils';
 import { reallogo } from 'assets/img';
 import 'styles/css/Common/Login.css';
 import axios from 'axios';
+import { GoogleLogin } from 'react-google-login';
 
 class Login extends Component {
   constructor(props) {
@@ -24,6 +25,12 @@ class Login extends Component {
       ],
     };
     this.loginPage = this.loginPage.bind(this);
+  }
+  authLoginGoogleSucc(res) {
+    console.log(res);
+  }
+  authLoginGoogleFail(res) {
+    console.log(res);
   }
 
   loginPage(social) {
@@ -59,13 +66,13 @@ class Login extends Component {
               로그인
             </button>
             <div className="social__button">
-              {this.state.socials.map((social, i) => {
-                return (
-                  <button onClick={() => this.loginPage(social.url)} key={i}>
-                    {social.name}
-                  </button>
-                );
-              })}
+              <GoogleLogin
+                clientId="235629451128-6epmo55kkdeiah4phs7psth5e09g1ujj.apps.googleusercontent.com"
+                onSuccess={this.authLoginGoogleSucc.bind(this)}
+                onFailure={this.authLoginGoogleFail.bind(this)}
+              >
+                <span>Login</span>
+              </GoogleLogin>
             </div>
           </div>
         </div>
