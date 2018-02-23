@@ -4,23 +4,27 @@ const FIND_PRODUCT = async ( params ) => {
   const [obj, args, ctx] = [...params];
   if (!args.limit) args.limit = 12;
   if (!args.page) args.page = 1;
-
-  const res = async (arg) => await ctx.product
-    .find(arg)
-    .sort({ _id: -1 })
-    .skip((args.page - 1) * args.limit)
-    .limit(args.limit);
-
-  if ( obj ) {
-    return (await ctx.product.findOne());
+  if ( args.id ) {
+    const a = await ctx.product.find({ _id: ObjectId(args.id)})
+    return a
   } else {
-    if ( !(args.type || args.subType) ){
-      return res({});
+    const res = async (arg) => await ctx.product
+      .find(arg)
+      .sort({ _id: -1 })
+      .skip((args.page - 1) * args.limit)
+      .limit(args.limit);
+
+    if ( obj ) {
+      return (await ctx.product.findOne());
     } else {
-      if ( args.type && !args.subType ){
-        return res({ type: args.type });
-      } else if ( args.type && args.subType ) {
-        return res({ type: args.type, subType: args.subType });
+      if ( !(args.type || args.subType) ){
+        return res({});
+      } else {
+        if ( args.type && !args.subType ){
+          return res({ type: args.type });
+        } else if ( args.type && args.subType ) {
+          return res({ type: args.type, subType: args.subType });
+        }
       }
     }
   }

@@ -1,17 +1,24 @@
 import React, { Component } from 'react';
-import * as url from 'utils';
 import { reallogo } from 'assets/img';
 import 'styles/css/Common/Login.css';
-import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
+import KakaoLogin from 'react-kakao-login';
 
 class Login extends Component {
   authLoginGoogleSucc(res) {
     console.log(res);
-    this.props.history.push('/');
+    // this.props.history.push('/');
   }
   authLoginGoogleFail(res) {
-    this.props.history.push('/');
+    console.log(res);
+  }
+
+  authLoginKakaoSucc(res) {
+    console.log(res);
+    // this.props.history.push('/');
+  }
+  authLoginKakaoFail(res) {
+    console.log(res);
   }
 
   render() {
@@ -43,6 +50,12 @@ class Login extends Component {
               >
                 <span>Login</span>
               </GoogleLogin>
+              <KakaoLogin
+                jsKey="268fb9ee81f5cc98b81d5e03e42fdead"
+                onSuccess={this.authLoginKakaoSucc.bind(this)}
+                onFailure={this.authLoginKakaoFail.bind(this)}
+                getProfile
+              />
             </div>
           </div>
         </div>
