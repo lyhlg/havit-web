@@ -28,6 +28,9 @@ class Header extends Component {
           </div>
         ) : (
           <div className="header__right">
+            <Link to="/hospitalpage" className="header__link">
+              병원관리
+            </Link>
             <Link to="/login" className="header__link">
               로그인
             </Link>

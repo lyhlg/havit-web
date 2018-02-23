@@ -4,9 +4,9 @@ import 'styles/css/HospitalPage/ManageProduct.css';
 class ManageProduct extends Component {
   render() {
     return (
-      <div className="uploadProduct">
-        <div className="uploadProduct__wrapper">
-          <div className="uploadProduct__tab">
+      <div className="manageProduct">
+        <div className="manageProduct__wrapper">
+          <div className="manageProduct__tab">
             <table border="1">
               <tr>
                 <th>대분류</th>

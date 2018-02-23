@@ -4,9 +4,9 @@ import 'styles/css/HospitalPage/Balance.css';
 class Balance extends Component {
   render() {
     return (
-      <div className="uploadProduct">
-        <div className="uploadProduct__wrapper">
-          <div className="uploadProduct__tab">
+      <div className="balance">
+        <div className="balance__wrapper">
+          <div className="balance__tab">
             <table border="1">
               <tr>
                 <th>기간</th>
