@@ -6,8 +6,9 @@ const bodyParser = require('body-parser');
 import { MailAuth } from '../db';
 const local = require ('localStorage');
 const keys = require('../config/keys');
-// const ls = require('localStorage');
+import cors from 'cors';
 import { FRONT_DEV_SRV } from '../utils';
+
 
 const smtpTransport = nodemailer.createTransport({
   service: "Gmail",

@@ -50,6 +50,7 @@ passport.use(
     callbackURL: keys.google.callbackURL
   }, (accessToken, refreshToken, profile, done) => {
     const _profile = profile._json;
+    console.log( profile);
     // check if user already exists in our own db
     User.findOne({ user_id_email: _profile.emails[0].value }).then((currentUser) => {
       if (currentUser) {
