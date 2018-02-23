@@ -23,7 +23,8 @@ import {
   ADD_USER_INFO,
   ADD_LIKE_PRODUCT,
   ADD_PRODUCT,
-  EDIT_USER_INFO
+  EDIT_USER_INFO,
+  ADD_USER
 } from "../mutations";
 
 
@@ -70,6 +71,7 @@ export default {
     modifyReservation: (...params) => MODIFY_RESERVATION(params),
     fixReservation: (...params) => FIX_RESERVATION(params),
     confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
-    editUserInfo: (...params) => EDIT_USER_INFO(params)
+    editUserInfo: (...params) => EDIT_USER_INFO(params),
+    addUser: (...params) => ADD_USER(params)
   }
 };
