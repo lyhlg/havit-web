@@ -7,16 +7,33 @@ class Nav extends Component {
     return (
       <nav className="nav">
         <div className="nav__wrapper">
-          <NavLink to="/" className="nav__list">
+          <NavLink
+            exact
+            to="/"
+            className="nav__list"
+            activeClassName="nav__list--selected"
+          >
             전체보기
           </NavLink>
-          <NavLink to="/skin" className="nav__list">
+          <NavLink
+            to="/skin"
+            className="nav__list"
+            activeClassName="nav__list--selected"
+          >
             피부시술
           </NavLink>
-          <NavLink to="/beauty" className="nav__list">
+          <NavLink
+            to="/beauty"
+            className="nav__list"
+            activeClassName="nav__list--selected"
+          >
             뷰티시술
           </NavLink>
-          <NavLink to="/event" className="nav__list">
+          <NavLink
+            to="/event"
+            className="nav__list"
+            activeClassName="nav__list--selected"
+          >
             이벤트
           </NavLink>
         </div>
