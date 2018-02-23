@@ -9,6 +9,7 @@ const passportSetup = require('./config/passport-setup');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 import bodyParser from 'body-parser';
+import cors from "cors";
 
 const app = express();
 const port = 8080;
@@ -18,6 +19,7 @@ const defaultHeader = {
   'access-control-allow-methods': 'GET, POST, PUT, DELETE, OPTIONS',
   'access-control-allow-headers': 'content-type, accept',
   'access-control-max-age': 10,
+  'Access-Control-Allow-Credentials': true
 };
 
 //  initialize Cookie Session value

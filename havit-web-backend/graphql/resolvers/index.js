@@ -22,7 +22,8 @@ import {
   ADD_REVIEW,
   ADD_USER_INFO,
   ADD_LIKE_PRODUCT,
-  ADD_PRODUCT
+  ADD_PRODUCT,
+  EDIT_USER_INFO
 } from "../mutations";
 
 
@@ -31,7 +32,7 @@ export default {
   // QUERY (GET DATA)
   Query: {
     Users: (...params) => FIND_USER(params),
-    Reservations : (...params) => FIND_RESERVATION(params),
+    Reservations: (...params) => FIND_RESERVATION(params),
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     Products: (...params) => FIND_PRODUCT(params),
     Reviews: (...params) => FIND_REVIEW(params),
@@ -39,12 +40,12 @@ export default {
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
     Banners: (...params) => GET_BANNER_LIST(params)
   },
-  Banner : {
-    totalBanners : (...params) => GET_BANNER_FROM_PRODUCT(params),
+  Banner: {
+    totalBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
     skinBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
     beautyBanners: (...params) => GET_BANNER_FROM_PRODUCT(params)
   },
-  Hospital : {
+  Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
     products: (...params) => GET_HOSPITAL_PRODUCT_LIST(params)
   },
@@ -56,7 +57,7 @@ export default {
     likeProduct: (...params) => LIKE_PRODUCT(params),
     reviews: (...params) => FIND_REVIEW(params)
   },
-  Review : {
+  Review: {
     product: (...params) => FIND_PRODUCT(params)
   },
 
@@ -67,8 +68,9 @@ export default {
     addReview: (...params) => ADD_REVIEW(params),
     addUserInfo: (...params) => ADD_USER_INFO(params),
     addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),
-    modifyReservation : (...params) => MODIFY_RESERVATION(params),
-    fixReservation : (...params) => FIX_RESERVATION(params),
-    confirmPurchase: (...params) => CONFIRM_PURCHASE(params)
+    modifyReservation: (...params) => MODIFY_RESERVATION(params),
+    fixReservation: (...params) => FIX_RESERVATION(params),
+    confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
+    editUserInfo: (...params) => EDIT_USER_INFO(params)
   }
 };
