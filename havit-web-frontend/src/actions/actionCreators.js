@@ -238,3 +238,21 @@ export const confirmPurchase = reserveNum => {
     });
   };
 };
+
+const requestAddUser = () => ({
+  type: types.REQUEST_ADD_USER,
+});
+
+const successAddUser = newUser => ({
+  type: types.SUCCESS_ADD_USER,
+  newUser,
+});
+
+export const addUser = (email, specId, user) => {
+  return dispatch => {
+    dispatch(requestAddUser());
+    return api.addUser(email, specId, user).then(res => {
+      dispatch(successAddUser(res));
+    });
+  };
+};
