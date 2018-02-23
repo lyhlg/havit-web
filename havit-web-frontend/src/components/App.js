@@ -8,7 +8,6 @@ import {
   Privacy,
   SignupEnd,
   Home,
-  All,
   Skin,
   Beauty,
   Event,
@@ -44,7 +43,6 @@ class App extends Component {
         />
         <Route path="/privacy" render={props => <Privacy {...this.props} />} />
         <Route path="/signupend" component={SignupEnd} />
-        <Route path="/all" render={props => <All {...this.props} />} />
         <Route path="/skin" render={props => <Skin {...this.props} />} />
         <Route path="/beauty" render={props => <Beauty {...this.props} />} />
         <Route path="/event" component={Event} />

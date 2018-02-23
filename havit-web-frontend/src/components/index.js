@@ -31,9 +31,6 @@ export { default as Balance } from './HospitalPage/Balance';
 // Home
 export { default as Home } from './Home/Home';
 
-// All
-export { default as All } from './All/All';
-
 // Skin
 export { default as Skin } from './Skin/Skin';
 

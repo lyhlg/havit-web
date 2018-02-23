@@ -7,7 +7,7 @@ class Nav extends Component {
     return (
       <nav className="nav">
         <div className="nav__wrapper">
-          <NavLink to="/all" className="nav__list">
+          <NavLink to="/" className="nav__list">
             전체보기
           </NavLink>
           <NavLink to="/skin" className="nav__list">
