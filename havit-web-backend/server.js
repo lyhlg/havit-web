@@ -15,11 +15,10 @@ const app = express();
 const port = 8080;
 
 const defaultHeader = {
-  'access-control-allow-origin': '*',
-  'access-control-allow-methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  'access-control-allow-headers': 'content-type, accept',
-  'access-control-max-age': 10,
-  'Access-Control-Allow-Credentials': true
+  "access-control-allow-origin": "*",
+  "access-control-allow-methods": "GET, POST, PUT, DELETE, OPTIONS",
+  "access-control-allow-headers": "content-type, accept",
+  "access-control-max-age": 10
 };
 
 //  initialize Cookie Session value

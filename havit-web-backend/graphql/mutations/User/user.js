@@ -52,23 +52,23 @@ const ADD_USER_INFO = async ( params ) => {
   return await user.findOne({ user_id_email: args.user_id_email });
 };
 
-const EDIT_USER_INFO = async (params) => {
-  const [obj, args, {user,hospial}] = [...params];
-  const email = args.user_id_email;
-  if ( !args.hospitalCode ) args.hospitalCode = null;
-  else {
-    // const isAdmin = await FIND_HOSPITAL_ADMIN([obj, { code: args.hospitalCode }, user]);
 
-      CHK_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE([obj, { code: args.hospitalCode }, {user,hospital, hospitalAdmin}])
-      // const user_update = async () => {
-      //   return await user.update(
-      //   { user_id_email: email },
-      //     { $set: args }
-      // )}
-      user_update();
-      return await user.findOne({ user_id_email: email });
-    // }
-  }
+
+
+
+
+
+
+
+const EDIT_USER_INFO = async (params) => {
+  const [obj, args, {user, hospital, hospitalAdmin}] = [...params];
+
+  CHK_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE([
+    obj,
+    args,
+    {user, hospital, hospitalAdmin}
+  ])
+  return await user.findOne({ user_id_email: args.user_id_email });
 
 }
 

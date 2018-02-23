@@ -1,7 +1,7 @@
 module.exports = {
   google: {
-    clientID: '356033391619-6t1m5mm02jks2msgd6m6huleq2sbgfol.apps.googleusercontent.com',
-    clientSecret: 'JSWU_SvdZbq2xJbHGiPMQuFU',
+    clientID: '235629451128-6epmo55kkdeiah4phs7psth5e09g1ujj.apps.googleusercontent.com',
+    clientSecret: 'DrrPiIrs6pgjIf4HxqPhd7w2',
     callbackURL: '/auth/google/redirect'
   },
   kakao: {

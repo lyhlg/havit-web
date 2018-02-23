@@ -27,7 +27,6 @@ import {
 } from "../mutations";
 
 
-
 export default {
   // QUERY (GET DATA)
   Query: {
