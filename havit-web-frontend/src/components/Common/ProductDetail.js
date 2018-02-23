@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import 'styles/css/Common/ProductDetail.css';
 
 class ProductDetail extends Component {
+  componentDidMount() {
+    this.props.getProducts('', '', this.props.location.pathname.slice(10));
+  }
+
   render() {
-    console.log(this.props);
+    console.log(this.props.products.productsList[0]);
     return (
       <div className="productDetail">
         <div className="productDetail__category">
@@ -12,21 +16,39 @@ class ProductDetail extends Component {
         <div className="productDetail__info">
           <div className="productDetail__img">
             <img
-              src="http://dummyimage.com/480x480/00c4e2/fff"
+              src={
+                this.props.products.productsList[0] &&
+                this.props.products.productsList[0].img
+              }
               alt="detail"
               align="left"
             />
           </div>
           <div className="productDetail__text">
-            <h4 className="productDetail__hospital">[강남구] 라피네 클리닉</h4>
-            <h3 className="productDetail__title">큐오필 1CC</h3>
+            <h4 className="productDetail__hospital">
+              [{this.props.products.productsList[0] &&
+                this.props.products.productsList[0].hospitalLoc}]{' '}
+              {this.props.products.productsList[0] &&
+                this.props.products.productsList[0].hospitalName}
+            </h4>
+            <h3 className="productDetail__title">
+              {this.props.products.productsList[0] &&
+                this.props.products.productsList[0].productName}
+            </h3>
             <h5 className="productDetail__description">
-              볼륨+탄력+콜라겐+지속력+피부
+              {this.props.products.productsList[0] &&
+                this.props.products.productsList[0].description}
             </h5>
             <div className="productDetail__sales">
-              <h4 className="productDetail__price">59,000원</h4>
+              <h4 className="productDetail__price">
+                {this.props.products.productsList[0] &&
+                  this.props.products.productsList[0].price}원
+              </h4>
               <h4 className="productDetail__purchased">
-                <span>38 개 </span>구매
+                <span>
+                  {this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].purchased}개{' '}
+                </span>구매
               </h4>
             </div>
             <hr className="productDetail__divider" />

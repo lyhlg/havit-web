@@ -52,7 +52,7 @@ class App extends Component {
           <Route path="/event" component={Event} />
           <Route
             path="/products/:_id"
-            render={props => <ProductDetail {...props.match.params} />}
+            render={props => <ProductDetail {...this.props} />}
           />
           <Route path="/hospitalpage" component={HospitalPage} />
           <Route component={Home} />
