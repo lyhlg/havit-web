@@ -347,3 +347,27 @@ export const confirmPurchase = reserveNum => {
     },
   });
 };
+
+export const addUser = (email, specId, user) => {
+  return client.mutate({
+    mutation: gql`
+      mutation($email: String, $specId: Float, $user: String) {
+        addUser(user_id_email: $email, specId: $specId, name: $user) {
+          specId
+          name
+          password
+          auth
+          phone
+          birthday
+          gender
+          hospitalCode
+        }
+      }
+    `,
+    variables: {
+      email,
+      specId,
+      user,
+    },
+  });
+};

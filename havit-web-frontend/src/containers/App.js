@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   likeProducts: state.likeProducts,
   newLikeProduct: state.newLikeProduct,
   userInfo: state.userInfo,
+  newUser: state.newUser,
   newUserInfo: state.newUserInfo,
   review: state.review,
   email: window.localStorage.getItem('email') || '',
@@ -95,6 +96,10 @@ const mapDispatchToProps = dispatch => ({
 
   confirmPurchase: reserveNum => {
     dispatch(actions.confirmPurchase(reserveNum));
+  },
+
+  addUser: (email, specId, user) => {
+    dispatch(actions.addUser(email, specId, user));
   },
 });
 
