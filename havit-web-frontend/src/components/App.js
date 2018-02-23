@@ -23,8 +23,8 @@ class App extends Component {
   }
 
   checkAuth() {
-    if (!document.getElementById('email').value) {
-      this.props.history.push(`/login`);
+    if (!localStorage.getItem('email')) {
+      this.props.history.push('/login');
     }
   }
 
