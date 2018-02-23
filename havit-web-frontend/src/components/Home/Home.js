@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Nav, Banner, Product } from '../index';
-import { Link } from 'react-router-dom';
 import 'styles/css/Home/Home.css';
 
 class Home extends Component {

@@ -6,42 +6,12 @@ import axios from 'axios';
 import { GoogleLogin } from 'react-google-login';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      socials: [
-        {
-          name: '구글',
-          url: 'google',
-        },
-        {
-          name: '네이버',
-          url: 'naver',
-        },
-        {
-          name: '카카오',
-          url: 'kakao',
-        },
-      ],
-    };
-    this.loginPage = this.loginPage.bind(this);
-  }
   authLoginGoogleSucc(res) {
     console.log(res);
+    this.props.history.push('/');
   }
   authLoginGoogleFail(res) {
-    console.log(res);
-  }
-
-  loginPage(social) {
-    console.log('sad');
-    axios(`${url.API_DEV}/auth/${social}`, {
-      method: 'GET',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    this.props.history.push('/');
   }
 
   render() {
