@@ -4,6 +4,10 @@ import { Menu, Reserve, WishList, ChangeInfo } from '../index';
 import 'styles/css/MyPage/MyPage.css';
 
 class MyPage extends Component {
+  componentWillMount() {
+    this.props.checkAuth();
+  }
+
   render() {
     return (
       <main>
@@ -23,7 +27,7 @@ class MyPage extends Component {
         />
         <Route
           path="/mypage/changeInfo"
-          render={props => <WishList {...this.props} />}
+          render={props => <ChangeInfo {...this.props} />}
         />
       </main>
     );

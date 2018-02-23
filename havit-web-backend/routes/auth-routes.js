@@ -20,7 +20,7 @@ const smtpTransport = nodemailer.createTransport({
 const checkFirstLogin = (req, res, next) => {
   if (req.user.phone) next();
   else {
-    res.send(`<script> window.close(); window.opener.location.href="${FRONT_DEV_SRV}/privacy"; </script>`);
+    res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.location.href="${FRONT_DEV_SRV}/privacy"; </script>`);
   }
 };
 
@@ -45,19 +45,19 @@ router.get('/google', passport.authenticate('google', {
   scope: ['profile', 'email']
 }));
 router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.close(); window.opener.location.href="${FRONT_DEV_SRV}"</script>`);
+  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}");  window.location.href="${FRONT_DEV_SRV}"</script>`);
 });
 
 // Naver Login
 router.get('/naver', passport.authenticate('naver'));
 router.get('/naver/redirect', passport.authenticate('naver'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.close(); window.opener.location.href="${FRONT_DEV_SRV}"</script>`)
+  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.location.href="${FRONT_DEV_SRV}"</script>`)
 });
 
 // Kakao Login
 router.get('/kakao', passport.authenticate('kakao'));
 router.get('/kakao/redirect', passport.authenticate('kakao'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.close(); window.opener.location.href="${FRONT_DEV_SRV}"</script>`)
+  res.send(`<script>window.localStorage.setItem('email', "${req.user.user_id_email}"); window.location.href="${FRONT_DEV_SRV}"</script>`)
 });
 
 // mail auth

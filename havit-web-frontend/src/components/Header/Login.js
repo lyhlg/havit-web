@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as url from 'utils';
 import { reallogo } from 'assets/img';
 import 'styles/css/Common/Login.css';
+import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
@@ -22,11 +23,18 @@ class Login extends Component {
         },
       ],
     };
-    this.loginPopup = this.loginPopup.bind(this);
+    this.loginPage = this.loginPage.bind(this);
   }
 
-  loginPopup(social) {
-    window.open(`${url.API_DEV}/auth/${social}`, '', 'width=500, height=500');
+  loginPage(social) {
+    console.log('sad');
+    axios(`${url.API_DEV}/auth/${social}`, {
+      method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
   render() {
@@ -51,9 +59,9 @@ class Login extends Component {
               로그인
             </button>
             <div className="social__button">
-              {this.state.socials.map(social => {
+              {this.state.socials.map((social, i) => {
                 return (
-                  <button onClick={() => this.loginPopup(social.url)}>
+                  <button onClick={() => this.loginPage(social.url)} key={i}>
                     {social.name}
                   </button>
                 );
