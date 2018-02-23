@@ -9,11 +9,11 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const getProducts = (type, subType) => {
+export const getProducts = (type, subType, id) => {
   return client.query({
     query: gql`
-      query($type: String, $subType: String) {
-        Products(type: $type, subType: $subType) {
+      query($type: String, $subType: String, $id: String) {
+        Products(type: $type, subType: $subType, id: $id) {
           _id
           type
           subType
@@ -37,6 +37,7 @@ export const getProducts = (type, subType) => {
     variables: {
       type,
       subType,
+      id,
     },
   });
 };

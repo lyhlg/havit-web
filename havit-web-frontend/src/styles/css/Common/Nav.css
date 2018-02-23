@@ -9,3 +9,6 @@
     color: #414d6b;
     margin-right: 40px;
     font-size: 20px; }
+  .nav .nav__list--selected {
+    color: #647dff;
+    font-weight: bold; }

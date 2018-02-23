@@ -10,10 +10,10 @@ const successGetProducts = products => ({
   products,
 });
 
-export const getProducts = (type, subType) => {
+export const getProducts = (type, subType, id) => {
   return dispatch => {
     dispatch(requestGetProducts());
-    return api.getProducts(type, subType).then(res => {
+    return api.getProducts(type, subType, id).then(res => {
       dispatch(successGetProducts(res));
     });
   };

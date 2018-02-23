@@ -1,0 +1,19 @@
+.subNav__wrapper {
+  width: 1200px;
+  height: 40px;
+  margin: 0 auto;
+  padding-left: 10px; }
+  .subNav__wrapper .subNav {
+    float: left; }
+    .subNav__wrapper .subNav .subNav__li {
+      display: inline-block;
+      margin-right: 40px;
+      font-size: 15px; }
+      .subNav__wrapper .subNav .subNav__li li {
+        color: lightgray; }
+    .subNav__wrapper .subNav .subNav__li--selected li {
+      color: #647dff; }
+  .subNav__wrapper::after {
+    display: block;
+    content: '';
+    clear: both; }

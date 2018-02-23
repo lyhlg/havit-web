@@ -16,8 +16,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProducts: (type, subType) => {
-    dispatch(actions.getProducts(type, subType));
+  getProducts: (type, subType, id) => {
+    dispatch(actions.getProducts(type, subType, id));
   },
 
   getReservations: email => {
