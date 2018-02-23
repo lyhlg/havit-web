@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import * as url from 'utils';
 import { reallogo } from 'assets/img';
 import 'styles/css/Common/Login.css';
+import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
@@ -27,8 +28,12 @@ class Login extends Component {
 
   loginPage(social) {
     console.log('sad');
-    fetch(`${url.API_DEV}/auth/${social}`, {
+    axios(`${url.API_DEV}/auth/${social}`, {
       method: 'GET',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': 'application/json',
+      },
     });
   }
 
