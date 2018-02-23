@@ -5,7 +5,10 @@ import 'styles/css/Skin/Skin.css';
 
 class Skin extends Component {
   componentDidMount() {
-    this.props.getProducts('skin');
+    this.props.getProducts(
+      this.props.history.location.pathname.slice(1, 5),
+      this.props.history.location.pathname.slice(6)
+    );
   }
 
   render() {
@@ -80,6 +83,9 @@ class Skin extends Component {
         </div>
         <main>
           <Banner />
+          <div className="skin__category">
+            <h2>피부시술</h2>
+          </div>
           <Product products={this.props.products.productsList} />
         </main>
       </div>

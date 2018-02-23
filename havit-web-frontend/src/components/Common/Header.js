@@ -5,8 +5,13 @@ import * as url from 'utils';
 import 'styles/css/Common/Header.css';
 
 class Header extends Component {
+  handleLogout() {
+    localStorage.removeItem('email');
+    if (localStorage.getItem('kakao_32d45b3f136b81e89905f794f933f564'))
+      localStorage.removeItem('kakao_32d45b3f136b81e89905f794f933f564');
+  }
+
   render() {
-    const cookie = document.cookie || '';
     return (
       <header className="header">
         <h1 className="header__left">
@@ -14,12 +19,16 @@ class Header extends Component {
             <img src={logo} className="header__logo" alt="해빗 로고" />
           </Link>
         </h1>
-        {cookie.includes('userCustomToken') ? (
+        {localStorage.getItem('email') ? (
           <div className="header__right">
-            <a href={`${url.API_DEV}/auth/logout`} className="header__link">
+            <Link
+              to="/"
+              className="header__link"
+              onClick={this.handleLogout.bind(this)}
+            >
               로그아웃
-            </a>
-            <Link to="/service" className="header__link">
+            </Link>
+            <Link to="/" className="header__link">
               고객센터
             </Link>
             <Link to="/mypage/reserve" className="header__link">
@@ -37,7 +46,7 @@ class Header extends Component {
             <Link to="/signup" className="header__link">
               회원가입
             </Link>
-            <Link to="/service" className="header__link">
+            <Link to="/" className="header__link">
               고객센터
             </Link>
           </div>

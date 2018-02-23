@@ -6,7 +6,6 @@ import KakaoLogin from 'react-kakao-login';
 
 class Login extends Component {
   authLoginGoogleSucc(res) {
-    if (localStorage.email) localStorage.removeItem('email');
     localStorage.setItem('email', res.profileObj.email);
     this.props.history.push('/');
   }
@@ -16,7 +15,7 @@ class Login extends Component {
   }
 
   authLoginKakaoSucc(res) {
-    if (localStorage.email) localStorage.removeItem('email');
+    if (localStorage.getItem('email')) localStorage.removeItem('email');
     localStorage.setItem('email', res.profile.kaccount_email);
     this.props.history.push('/');
   }
