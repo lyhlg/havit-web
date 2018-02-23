@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import {
   Header,
   Login,
@@ -23,7 +23,7 @@ class App extends Component {
   }
 
   checkAuth() {
-    if (!this.props.email) {
+    if (!document.getElementById('email').value) {
       this.props.history.push(`/login`);
     }
   }
@@ -32,22 +32,31 @@ class App extends Component {
     return (
       <div>
         <Header {...this.props} />
-        <Route exact path="/" render={props => <Home {...this.props} />} />
-        <Route path="/login" render={props => <Login {...this.props} />} />
-        <Route path="/signup" component={Signup} />
-        <Route
-          path="/mypage"
-          render={props => (
-            <MyPage checkAuth={this.checkAuth} {...this.props} />
-          )}
-        />
-        <Route path="/privacy" render={props => <Privacy {...this.props} />} />
-        <Route path="/signupend" component={SignupEnd} />
-        <Route path="/skin" render={props => <Skin {...this.props} />} />
-        <Route path="/beauty" render={props => <Beauty {...this.props} />} />
-        <Route path="/event" component={Event} />
-        <Route path="/detail" component={ProductDetail} />
-        <Route path="/hospitalpage" component={HospitalPage} />
+        <Switch>
+          <Route exact path="/" render={props => <Home {...this.props} />} />
+          <Route path="/login" render={props => <Login {...this.props} />} />
+          <Route path="/signup" component={Signup} />
+          <Route
+            path="/mypage"
+            render={props => (
+              <MyPage checkAuth={this.checkAuth} {...this.props} />
+            )}
+          />
+          <Route
+            path="/privacy"
+            render={props => <Privacy {...this.props} />}
+          />
+          <Route path="/signupend" component={SignupEnd} />
+          <Route path="/skin" render={props => <Skin {...this.props} />} />
+          <Route path="/beauty" render={props => <Beauty {...this.props} />} />
+          <Route path="/event" component={Event} />
+          <Route
+            path="/products/:_id"
+            render={props => <ProductDetail {...props.match.params} />}
+          />
+          <Route path="/hospitalpage" component={HospitalPage} />
+          <Route component={Home} />
+        </Switch>
       </div>
     );
   }

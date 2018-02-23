@@ -7,7 +7,10 @@ class ProductEntry extends Component {
   render() {
     return (
       <div className="productEntry">
-        <Link to="/detail" className="productEntry__link">
+        <Link
+          to={`/products/${this.props.product._id}`}
+          className="productEntry__link"
+        >
           <img
             src={this.props.product.img}
             className="productEntry__img"
