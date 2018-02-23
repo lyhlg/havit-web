@@ -4,9 +4,9 @@ import 'styles/css/HospitalPage/CustomerInfo.css';
 class CustomerInfo extends Component {
   render() {
     return (
-      <div className="uploadProduct">
-        <div className="uploadProduct__wrapper">
-          <div className="uploadProduct__tab">
+      <div className="customerInfo">
+        <div className="customerInfo__wrapper">
+          <div className="customerInfo__tab">
             <table border="1">
               <tr>
                 <th>예약번호</th>
