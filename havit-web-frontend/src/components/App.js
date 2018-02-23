@@ -18,14 +18,30 @@ import {
 import 'styles/css/index.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.checkAuth = this.checkAuth.bind(this);
+  }
+
+  checkAuth() {
+    if (!this.props.email) {
+      this.props.history.push(`/login`);
+    }
+  }
+
   render() {
     return (
       <div>
         <Header {...this.props} />
         <Route exact path="/" render={props => <Home {...this.props} />} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" render={props => <Login {...this.props} />} />
         <Route path="/signup" component={Signup} />
-        <Route path="/mypage" render={props => <MyPage {...this.props} />} />
+        <Route
+          path="/mypage"
+          render={props => (
+            <MyPage checkAuth={this.checkAuth} {...this.props} />
+          )}
+        />
         <Route path="/privacy" render={props => <Privacy {...this.props} />} />
         <Route path="/signupend" component={SignupEnd} />
         <Route path="/all" render={props => <All {...this.props} />} />
