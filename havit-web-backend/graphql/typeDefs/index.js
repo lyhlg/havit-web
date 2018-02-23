@@ -108,6 +108,12 @@ const typeDefs = `
       product: String
     ) : Review,
 
+    addUser(
+      specId: Float,
+      name: String,
+      user_id_email: String,
+    ) : User,
+
     addUserInfo(
       user_id_email: String,
       name: String,
