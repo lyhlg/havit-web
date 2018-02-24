@@ -5,8 +5,18 @@ import 'styles/css/Header/Privacy.css';
 class Privacy extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      arr: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+      month: 31,
+    };
+    this.changeMonth = this.changeMonth.bind(this);
     this.submitUserInfo = this.submitUserInfo.bind(this);
+  }
+
+  changeMonth(e) {
+    this.setState({
+      month: this.state.arr[Number(e.currentTarget.value) - 1],
+    });
   }
 
   submitUserInfo() {
@@ -36,7 +46,6 @@ class Privacy extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="privacy">
         <div className="privacy__wrapper">
@@ -73,21 +82,39 @@ class Privacy extends Component {
             />
             <h3 className="privacy__label">생년월일</h3>
             <select id="birthday1" className="privacy__box3">
-              <option>1995</option>
-              <option>1996</option>
-              <option>1997</option>
+              {Array(81)
+                .fill(1930)
+                .map((a, i) => {
+                  return <option key={i}>{a + i}</option>;
+                })}
             </select>
             <span>년</span>
-            <select id="birthday2" className="privacy__box4">
-              <option>01</option>
-              <option>02</option>
-              <option>03</option>
+            <select
+              id="birthday2"
+              className="privacy__box4"
+              onChange={this.changeMonth}
+            >
+              {Array(12)
+                .fill(1)
+                .map((a, i) => {
+                  return (
+                    <option key={i}>
+                      {(a + i).toString().length < 2 ? '0' + (a + i) : a + i}
+                    </option>
+                  );
+                })}
             </select>
             <span>월</span>
             <select id="birthday3" className="privacy__box4">
-              <option>01</option>
-              <option>02</option>
-              <option>03</option>
+              {Array(this.state.month)
+                .fill(1)
+                .map((a, i) => {
+                  return (
+                    <option key={i}>
+                      {(a + i).toString().length < 2 ? '0' + (a + i) : a + i}
+                    </option>
+                  );
+                })}
             </select>
             <span>일</span>
             <h3 className="privacy__label">성별</h3>
