@@ -40,7 +40,7 @@ class Reserve extends Component {
                     {reser.reserveDate.slice(10, 12)}분
                   </td>
                   <td>
-                    {reser.careDate === '전화예약 대기중'
+                    {reser.careDate === '전화대기중'
                       ? reser.careDate
                       : `${reser.careDate.slice(4, 6)}월 ${reser.careDate.slice(
                           6,
@@ -48,7 +48,7 @@ class Reserve extends Component {
                         )}일`}
                   </td>
                   <td>
-                    {reser.careDate === '전화예약 대기중'
+                    {reser.careDate === '전화대기중'
                       ? reser.careDate
                       : `${reser.careDate.slice(8, 10)}시`}
                   </td>

@@ -53,8 +53,14 @@ const GET_REVIEW_LIST_OF_PRODUCT = async ( params ) => {
   })
 }
 
+const GET_PRODUCT_RESERVATION = async ( params ) => {
+  const [{hospitalCode, productName}, args, {product}] = [...params];
+  return await product.find({hospitalCode: hospitalCode, productName: productName});
+}
+
 export {
   FIND_PRODUCT,
   LIKE_PRODUCT,
-  GET_REVIEW_LIST_OF_PRODUCT
+  GET_REVIEW_LIST_OF_PRODUCT,
+  GET_PRODUCT_RESERVATION
 };

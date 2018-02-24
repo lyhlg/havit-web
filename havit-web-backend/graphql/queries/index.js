@@ -5,12 +5,13 @@ import {
 import {
   FIND_RESERVATION,
   GET_DASHBOARD_COUNT
-} from './Reservation/reservation';
+} from "./Reservation/reservation";
 import {
   FIND_PRODUCT,
   LIKE_PRODUCT,
-  GET_REVIEW_LIST_OF_PRODUCT
- } from './Product/product';
+  GET_REVIEW_LIST_OF_PRODUCT,
+  GET_PRODUCT_RESERVATION
+} from "./Product/product";
 import FIND_REVIEW from './Review/review';
 import {
   FIND_HOSPITAL,
@@ -32,6 +33,7 @@ export {
   FIND_PRODUCT,
   LIKE_PRODUCT,
   GET_REVIEW_LIST_OF_PRODUCT,
+  GET_PRODUCT_RESERVATION,
   FIND_REVIEW,
   FIND_HOSPITAL,
   GET_HOSPITAL_RESERVATION_INFO,

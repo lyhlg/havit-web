@@ -5,7 +5,7 @@ const hospitalSchema = new Schema({
   code: { type: String, required: true },
   adminAccount: String,
   reservations: [String],
-  products: [String],
+  products: [String]
 });
 
 

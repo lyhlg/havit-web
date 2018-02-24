@@ -1,10 +1,10 @@
 import { reserveNumCal } from '../../utils';
-import * as query from '../queries';
 import {
   FIND_USER,
   FIND_RESERVATION,
   FIND_PRODUCT,
   LIKE_PRODUCT,
+  GET_PRODUCT_RESERVATION,
   GET_REVIEW_LIST_OF_PRODUCT,
   FIND_REVIEW,
   FIND_HOSPITAL,
@@ -12,7 +12,8 @@ import {
   GET_HOSPITAL_PRODUCT_LIST,
   FIND_HOSPITAL_ADMIN,
   GET_BANNER_LIST,
-  GET_BANNER_FROM_PRODUCT
+  GET_BANNER_FROM_PRODUCT,
+  GET_DASHBOARD_COUNT
 } from "../queries";
 import {
   ADD_RESERVATION,
@@ -25,7 +26,7 @@ import {
   ADD_PRODUCT,
   EDIT_USER_INFO,
   ADD_USER,
-  GET_DASHBOARD_COUNT
+
 } from "../mutations";
 
 
@@ -39,7 +40,11 @@ export default {
     Reviews: (...params) => FIND_REVIEW(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
-    Banners: (...params) => GET_BANNER_LIST(params)
+    Banners: (...params) => GET_BANNER_LIST(params),
+    getDashboardCount: (...params) => GET_DASHBOARD_COUNT(params)
+  },
+  Reservation: {
+    product: (...params) => GET_PRODUCT_RESERVATION(params)
   },
   Banner: {
     totalBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
@@ -73,7 +78,6 @@ export default {
     fixReservation: (...params) => FIX_RESERVATION(params),
     confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
     editUserInfo: (...params) => EDIT_USER_INFO(params),
-    addUser: (...params) => ADD_USER(params),
-    getDashboardCount: (...params) => GET_DASHBOARD_COUNT(params)
+    addUser: (...params) => ADD_USER(params)
   }
 };

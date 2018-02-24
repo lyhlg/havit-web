@@ -9,17 +9,17 @@ const reservationSchema = new Schema({
   phone: String,
   productName: String,
   reserveDate: String,
-  careDate: { type: String, default : "전화예약 대기중"},
-  status: { type: String, default: "전화예약 대기중" },
+  careDate: { type: String, default : "전화대기중"},
+  status: { type: String, default: "전화대기중" },
   createdOn: { type: Date, default: Date.now }
 });
 
 reservationSchema.statics.chk_total_purch_cancel_Count = async function (cb) {
   const a = await this.find({hospitalCode : code})
 
-  // const totalRsrvCount = await this.find({status: "전화예약 대기중"}).count();
-  // const purchasedCount = await this.find({status: "시술 진행 중"}).count();
-  // const completedCount = await this.find({status: "시술 진행 중"}).count();
+  // const totalRsrvCount = await this.find({status: "전화대기중"}).count();
+  // const purchasedCount = await this.find({status: "시술진행중"}).count();
+  // const completedCount = await this.find({status: "시술진행중"}).count();
   // const cancelCount = await this.find({status: "취소"}).count();
   // return cb([{
   //   totalRsrvCount,
