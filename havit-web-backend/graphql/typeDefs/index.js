@@ -1,13 +1,14 @@
 const typeDefs = `
   type Query {
     Users(user_id_email: String) : [User],
-    Reservations(user_id_email:String, hospitalCode: String) : [Reservation],
+    Reservations(user_id_email:String, hospitalCode: String, status: String) : [Reservation],
     Products (type: String, subType: String, limit: Int, page: Int, id: String) : [Product],
     Banners (type: String): [Banner],
     Reviews: [Review],
     Hospitals(adminAccount: String!) : [Hospital],
     HospitalAdmin(code:String!) : [HospitalAdmin],
-    LikeProducts(user_id_email:String) : [Product]
+    LikeProducts(user_id_email:String) : [Product],
+    getDashboardCount(code : String) : [Product],
   }
   type User {
     specId: Float,
@@ -35,7 +36,8 @@ const typeDefs = `
     productName: String,
     reserveDate: String,
     careDate: String,
-    status: String
+    status: String,
+    product: [Product]
   }
   type Product {
     _id: ID,
@@ -157,9 +159,7 @@ const typeDefs = `
       hospitalCode: String
     ) : User,
 
-    getDashboardCount(
-      code : String
-    ) : Hospital
+
   }
 `;
 

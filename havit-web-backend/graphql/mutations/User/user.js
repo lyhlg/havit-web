@@ -6,7 +6,6 @@ import {
 
 const ADD_USER = async ( params ) => {
   const [obj, args, ctx] = [...params];
-  // return (await CHK_DB_USER(params)) || ADD_DB_USER(params);
   const chk_user = await CHK_DB_USER(params);
   return chk_user || ADD_DB_USER(params);
 }

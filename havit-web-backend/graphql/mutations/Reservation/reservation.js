@@ -39,7 +39,7 @@ const FIX_RESERVATION = async ( params ) => {
       { reserveNum: args.reserveNum },
       { $set: {
         careDate: args.careDate,
-        status : "시술 진행 중"
+        status : "시술진행중"
       }})
   }
   fixReserveCareDate();
@@ -53,7 +53,7 @@ const CONFIRM_PURCHASE = async ( params ) => {
   let confirmUpdate = async () => {
     return await ctx.reservation.update(
       { reserveNum : args.reserveNum },
-      { $set : { status: "시술 완료" }})
+      { $set : { status: "시술완료" }})
     }
 
     // 구매 확정이 되었으므로, 구매 개수의 count를 1 증가한다.
