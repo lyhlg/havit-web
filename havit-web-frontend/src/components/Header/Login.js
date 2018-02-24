@@ -1,26 +1,54 @@
 import React, { Component } from 'react';
 import { reallogo } from 'assets/img';
 import { Route } from 'react-router-dom';
-import { Privacy } from '../index';
 import 'styles/css/Common/Login.css';
 import { GoogleLogin } from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';
 
 class Login extends Component {
   authLoginGoogleSucc(res) {
-    if (localStorage.getItem('email')) localStorage.removeItem('email');
-    localStorage.setItem('email', res.profileObj.email);
-    this.props.history.push('/');
+    this.props.addUser(
+      res.profileObj.email,
+      Number(res.profileObj.googleId),
+      res.profileObj.name
+    );
+    setTimeout(() => {
+      const phone = this.props.newUser.newUser.phone;
+      if (phone !== null) {
+        if (localStorage.getItem('email')) localStorage.removeItem('email');
+        localStorage.setItem('email', res.profileObj.email);
+        this.props.history.push('/');
+      } else {
+        if (localStorage.getItem('temp')) localStorage.removeItem('temp');
+        localStorage.setItem('temp', res.profileObj.email);
+        this.props.history.push('/privacy');
+      }
+    }, 2000);
   }
+
   authLoginGoogleFail(res) {
     console.log(res);
     this.props.history.push('/login');
   }
 
   authLoginKakaoSucc(res) {
-    if (localStorage.getItem('email')) localStorage.removeItem('email');
-    localStorage.setItem('email', res.profile.kaccount_email);
-    this.props.history.push('/');
+    this.props.addUser(
+      res.profile.kaccount_email,
+      res.profile.id,
+      res.profile.properties.nickname
+    );
+    setTimeout(() => {
+      const phone = this.props.newUser.newUser.phone;
+      if (phone !== null) {
+        if (localStorage.getItem('email')) localStorage.removeItem('email');
+        localStorage.setItem('email', res.profile.kaccount_email);
+        this.props.history.push('/');
+      } else {
+        if (localStorage.getItem('temp')) localStorage.removeItem('temp');
+        localStorage.setItem('temp', res.profile.kaccount_email);
+        this.props.history.push('/privacy');
+      }
+    }, 2000);
   }
   authLoginKakaoFail(res) {
     console.log(res);
@@ -70,7 +98,6 @@ class Login extends Component {
             </div>
           </div>
         </div>
-        <Route path="/privacy" render={props => <Privacy {...this.props} />} />
       </div>
     );
   }

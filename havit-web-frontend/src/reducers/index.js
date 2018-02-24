@@ -5,7 +5,7 @@ import likeProducts from './likeProducts';
 import userInfo from './userInfo';
 import addLikeProducts from './addLikeProducts';
 import addUserInfo from './addUserInfo';
-import addUser from './addUser';
+import newUser from './newUser';
 
 export default combineReducers({
   products,
@@ -14,5 +14,5 @@ export default combineReducers({
   userInfo,
   addLikeProducts,
   addUserInfo,
-  addUser,
+  newUser,
 });

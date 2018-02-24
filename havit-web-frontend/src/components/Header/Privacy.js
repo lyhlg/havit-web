@@ -10,9 +10,8 @@ class Privacy extends Component {
   }
 
   submitUserInfo() {
-    console.log('sadas');
-    this.props.addUserInfo(
-      'jyt9319@gmai.com',
+    let data = [
+      localStorage.getItem('temp'),
       document.getElementById('name').value,
       document.getElementById('txtMobile1').value +
         document.getElementById('txtMobile2').value +
@@ -29,9 +28,11 @@ class Privacy extends Component {
         document.querySelectorAll('input[name="likePoint"]:checked'),
         point => point.value
       ),
-      document.getElementById('code').value
-    );
-    console.log('sadasasadsas');
+      document.getElementById('code').value || '',
+    ];
+    console.log(data);
+    this.props.addUserInfo(...data);
+    localStorage.removeItem('temp'), this.props.history.push('/signupend');
   }
 
   render() {
@@ -205,10 +206,8 @@ class Privacy extends Component {
             <h6 className="privacy__info">
               회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
             </h6>
-            <button className="privacy__btn">
-              <a className="privacy__btntext" onClick={this.submitUserInfo}>
-                회원가입
-              </a>
+            <button className="privacy__btn" onClick={this.submitUserInfo}>
+              <a className="privacy__btntext">회원가입</a>
             </button>
           </div>
         </div>

@@ -202,8 +202,8 @@ export const addUserInfo = (
         $phone: String
         $birthday: String
         $gender: String
-        $likeArea: Array
-        $likePoint: Array
+        $likeArea: [String]
+        $likePoint: [String]
         $code: String
       ) {
         addUserInfo(
@@ -214,7 +214,7 @@ export const addUserInfo = (
           gender: $gender
           likeArea: $likeArea
           likePoint: $likePoint
-          code: $code
+          hospitalCode: $code
         ) {
           specId
           name

@@ -30,18 +30,15 @@ class Header extends Component {
             >
               로그아웃
             </Link>
-            <Link to="/" className="header__link">
-              고객센터
-            </Link>
             <Link to="/mypage/reserve" className="header__link">
               마이페이지
+            </Link>
+            <Link to="/" className="header__link">
+              고객센터
             </Link>
           </div>
         ) : (
           <div className="header__right">
-            <Link to="/hospitalpage" className="header__link">
-              병원관리
-            </Link>
             <Link to="/login" className="header__link">
               로그인
             </Link>
