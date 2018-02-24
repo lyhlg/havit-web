@@ -8,6 +8,9 @@ havit-web-frontend/node_modules
 havit-web-backend/package-lock.json
 havit-web-frontend/package-lock.json
 
+## key
+havit-web-backend/config/keys.js
+
 ## yarn
 havit-web-frontend/yarn.lock
 havit-web-backend/yarn.lock

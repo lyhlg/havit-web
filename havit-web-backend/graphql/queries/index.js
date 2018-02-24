@@ -2,7 +2,10 @@ import {
   FIND_USER,
   EDIT_USER_INFO
 } from './User/user';
-import FIND_RESERVATION from './Reservation/reservation';
+import {
+  FIND_RESERVATION,
+  GET_DASHBOARD_COUNT
+} from './Reservation/reservation';
 import {
   FIND_PRODUCT,
   LIKE_PRODUCT,
@@ -25,6 +28,7 @@ export {
   FIND_USER,
   EDIT_USER_INFO,
   FIND_RESERVATION,
+  GET_DASHBOARD_COUNT,
   FIND_PRODUCT,
   LIKE_PRODUCT,
   GET_REVIEW_LIST_OF_PRODUCT,

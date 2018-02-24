@@ -7,7 +7,7 @@ import { GoogleLogin } from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';
 
 class Login extends Component {
-  async authLoginGoogleSucc(res) {
+  authLoginGoogleSucc(res) {
     if (localStorage.getItem('email')) localStorage.removeItem('email');
     localStorage.setItem('email', res.profileObj.email);
     this.props.history.push('/');

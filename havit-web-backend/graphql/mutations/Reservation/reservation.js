@@ -68,8 +68,8 @@ const CONFIRM_PURCHASE = async ( params ) => {
         })
       }
 
-  confirmUpdate();
-  sellingCount();
+  await confirmUpdate();
+  await sellingCount();
   return await ctx.reservation.findOne({ reserveNum: args.reserveNum })
 }
 

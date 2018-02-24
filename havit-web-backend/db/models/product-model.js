@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
   type: String,
+  productId: Number,
   subType: String,
   img: { type: String, default: "https://dummyimage.com/280x280" },
   hospitalCode: String,

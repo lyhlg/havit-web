@@ -24,7 +24,8 @@ import {
   ADD_LIKE_PRODUCT,
   ADD_PRODUCT,
   EDIT_USER_INFO,
-  ADD_USER
+  ADD_USER,
+  GET_DASHBOARD_COUNT
 } from "../mutations";
 
 
@@ -72,6 +73,7 @@ export default {
     fixReservation: (...params) => FIX_RESERVATION(params),
     confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
     editUserInfo: (...params) => EDIT_USER_INFO(params),
-    addUser: (...params) => ADD_USER(params)
+    addUser: (...params) => ADD_USER(params),
+    getDashboardCount: (...params) => GET_DASHBOARD_COUNT(params)
   }
 };
