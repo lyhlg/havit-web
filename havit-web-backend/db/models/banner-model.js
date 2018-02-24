@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+// 변경 필요
 const bannerSchema = new Schema({
   totalBanners : [String],
   skinBanners: [String],

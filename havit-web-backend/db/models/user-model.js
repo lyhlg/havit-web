@@ -46,10 +46,10 @@ password: null,
 auth: 'google',
 phone: '01086674355',
 birthday: 19890201,
-gender: 'male',
+gender: '남자',
 likeArea: ['강남','판교'],
 likePoint: ['FRONTEND', 'BACKEND'],
-reservation: [201801010001]
+reservation: []
 },{
 specId: 12346,
 name: '홍길동',
@@ -58,10 +58,10 @@ password: null,
 auth: 'google',
 phone: '01082383747',
 birthday: 19890202,
-gender: 'female',
+gender: '여자',
 likeArea: ['강남','판교'],
 likePoint: ['FRONTEND', 'BACKEND'],
-reservation: [201801010002]
+reservation: []
 },{
 specId: 12347,
 name: '전다해',
@@ -70,9 +70,9 @@ password: null,
 auth: 'google',
 phone: '01030190222',
 birthday: 19880124,
-gender: 'female',
+gender: '여자',
 likeArea: ['청담','판교'],
 likePoint: ['NETWORK', 'GOSU'],
-reservation: [201801010003]
+reservation: []
 }])
 */

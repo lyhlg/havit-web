@@ -122,7 +122,7 @@ const typeDefs = `
       gender: String,
       likeArea: [String],
       likePoint: [String],
-      code : String
+      hospitalCode : String
     ) : User,
 
     addLikeProducts(
@@ -155,7 +155,11 @@ const typeDefs = `
       likeArea: [String],
       likePoint: [String],
       hospitalCode: String
-    ) : User
+    ) : User,
+
+    getDashboardCount(
+      code : String
+    ) : Hospital
   }
 `;
 
