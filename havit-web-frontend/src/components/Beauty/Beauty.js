@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Banner, Product, Empty } from '../index';
+import { Nav, Banner, Product } from '../index';
 import { NavLink } from 'react-router-dom';
 import 'styles/css/Beauty/Beauty.css';
 

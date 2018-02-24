@@ -5,7 +5,6 @@ import {
   Login,
   Signup,
   MyPage,
-  Privacy,
   SignupEnd,
   Home,
   Skin,
@@ -42,10 +41,6 @@ class App extends Component {
               <MyPage checkAuth={this.checkAuth} {...this.props} />
             )}
           />
-          <Route
-            path="/privacy"
-            render={props => <Privacy {...this.props} />}
-          />
           <Route path="/signupend" component={SignupEnd} />
           <Route path="/skin" render={props => <Skin {...this.props} />} />
           <Route path="/beauty" render={props => <Beauty {...this.props} />} />
@@ -55,7 +50,6 @@ class App extends Component {
             render={props => <ProductDetail {...this.props} />}
           />
           <Route path="/hospitalpage" component={HospitalPage} />
-          <Route component={Home} />
         </Switch>
       </div>
     );
