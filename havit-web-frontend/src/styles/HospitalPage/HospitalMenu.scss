@@ -1,0 +1,30 @@
+.hospitalMenu {
+  width: 1200px;
+  height: 100px;
+  padding: 40px;
+  color: #414d6b;
+
+  .hospitalMenu__name {
+    font-size: 30px;
+    font-weight: normal;
+  }
+
+  .hospitalMenu__tab {
+    float: left;
+    margin-top: 40px;
+
+    .hospitalMenu__button {
+      font-size: 20px;
+      margin-right: 20px;
+    }
+
+    .hospitalMenu__button--selected {
+      color: #647dff;
+    }
+  }
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}

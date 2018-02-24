@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { logo } from 'assets/img';
-import * as url from 'utils';
 import 'styles/css/Common/Header.css';
 
 class Header extends Component {
@@ -21,6 +20,9 @@ class Header extends Component {
         </h1>
         {localStorage.getItem('email') ? (
           <div className="header__right">
+            <Link to="/hospitalPage/customerInfo" className="header__link">
+              병원페이지
+            </Link>
             <Link
               to="/"
               className="header__link"
