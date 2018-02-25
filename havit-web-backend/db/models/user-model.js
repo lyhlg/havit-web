@@ -32,7 +32,7 @@ const userSchema = new Schema({
   reviews: [String],
   hospitalCode: { type: String, default: null}
 });
-
+// likeProduct: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
 
 module.exports=mongoose.model('user', userSchema, 'users');
 

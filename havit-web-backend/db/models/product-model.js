@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   type: String,
   productId: Number,
   subType: String,
@@ -16,7 +17,8 @@ const productSchema = new Schema({
   salesCount: [Number],
   purchased: { type: Number, default: 0 },
   productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
-  reviews: [String]
+  reviews: [String],
+  createdOn: { type: Date, default: Date.now }
 });
 
 
@@ -27,6 +29,7 @@ module.exports = mongoose.model('product', productSchema);
 db.products.insert([{
   type: 'skin',
   subType: 'filling',
+  productId: 1,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
@@ -41,6 +44,7 @@ db.products.insert([{
 },{
   type: 'beauty',
   subType: 'filler',
+  productId: 2,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100001',
   hospitalLoc: '대치',
@@ -55,6 +59,7 @@ db.products.insert([{
 },{
   type: 'beauty',
   subType: 'lefting',
+  productId: 3,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100002',
   hospitalLoc: '천호',
@@ -70,6 +75,7 @@ db.products.insert([{
 {
   type: 'skin',
   subType: 'scaling',
+  productId: 4,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100003',
   hospitalLoc: '강남',
@@ -84,6 +90,7 @@ db.products.insert([{
 },{
   type: 'beauty',
   subType: 'lifting',
+  productId: 5,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
@@ -99,6 +106,7 @@ db.products.insert([{
 {
   type: 'beauty',
   subType: 'botox',
+  productId: 6,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
@@ -113,6 +121,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'botox',
+  productId: 7,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100001',
   hospitalLoc: '대치',
@@ -127,6 +136,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'lefting',
+  productId: 8,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100002',
   hospitalLoc: '천호',
@@ -142,6 +152,7 @@ db.products.insert([{
 {
   type: 'beauty',
   subType: 'ContourInjection',
+  productId: 9,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100003',
   hospitalLoc: '강남',
@@ -156,6 +167,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'ContourInjection',
+  productId: 10,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
@@ -171,6 +183,7 @@ db.products.insert([{
 {
   type: 'beauty',
   subType: 'ContourInjection',
+  productId: 11,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',
@@ -185,6 +198,7 @@ db.products.insert([{
 }, {
   type: 'skin',
   subType: 'acne',
+  productId: 12,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100001',
   hospitalLoc: '대치',
@@ -199,6 +213,7 @@ db.products.insert([{
 }, {
   type: 'skin',
   subType: 'acne',
+  productId: 13,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100002',
   hospitalLoc: '천호',
@@ -214,6 +229,7 @@ db.products.insert([{
 {
   type: 'skin',
   subType: 'acne',
+  productId: 14,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100003',
   hospitalLoc: '강남',
@@ -228,6 +244,7 @@ db.products.insert([{
 }, {
   type: 'beauty',
   subType: 'filler',
+  productId: 15,
   img: 'https://dummyimage.com/280x280',
   hospitalCode: 'AAAA100000',
   hospitalLoc: '신사역',

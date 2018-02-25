@@ -73,6 +73,10 @@ const ADD_DB_USER = async ( params ) => {
   return await new user(args).save();
 }
 
+const CHECK_DUP_DATA = async params => {
+  const [obj, args, ctx] = [...params];
+  return await ctx.findOne(args);
+};
 
 
 export {
@@ -84,5 +88,6 @@ export {
   REG_USER_TO_HOSPTIAL,
   CHK_DB_HOSPITAL,
   CHK_DB_USER,
-  ADD_DB_USER
+  ADD_DB_USER,
+  CHECK_DUP_DATA
 };

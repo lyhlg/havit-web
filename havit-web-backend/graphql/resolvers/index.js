@@ -7,14 +7,17 @@ import {
   GET_PRODUCT_RESERVATION,
   GET_REVIEW_LIST_OF_PRODUCT,
   FIND_REVIEW,
+  FIND_NOTICE,
   FIND_HOSPITAL,
   GET_HOSPITAL_RESERVATION_INFO,
   GET_HOSPITAL_PRODUCT_LIST,
   FIND_HOSPITAL_ADMIN,
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
-  GET_DASHBOARD_COUNT
+  GET_DASHBOARD_COUNT,
 } from "../queries";
+
+
 import {
   ADD_RESERVATION,
   MODIFY_RESERVATION,
@@ -24,9 +27,15 @@ import {
   ADD_USER_INFO,
   ADD_LIKE_PRODUCT,
   ADD_PRODUCT,
+  EDIT_PRODUCT,
   EDIT_USER_INFO,
   ADD_USER,
-
+  ADD_HOSPITAL_ADMIN,
+  DEL_HOSPITAL_ADMIN,
+  ADD_NOTICE,
+  DEL_NOTICE,
+  ADD_BANNER,
+  DEL_BANNER
 } from "../mutations";
 
 
@@ -38,6 +47,7 @@ export default {
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     Products: (...params) => FIND_PRODUCT(params),
     Reviews: (...params) => FIND_REVIEW(params),
+    Notices: (...params) => FIND_NOTICE(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
     Banners: (...params) => GET_BANNER_LIST(params),
@@ -47,9 +57,7 @@ export default {
     product: (...params) => GET_PRODUCT_RESERVATION(params)
   },
   Banner: {
-    totalBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
-    skinBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
-    beautyBanners: (...params) => GET_BANNER_FROM_PRODUCT(params)
+    product: (...params) => GET_BANNER_FROM_PRODUCT(params)
   },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
@@ -70,6 +78,7 @@ export default {
   // MUTATION (STORE DATA)
   Mutation: {
     addProduct: (...params) => ADD_PRODUCT(params),
+    editProduct: (...params) => EDIT_PRODUCT(params),
     addReservation: (...params) => ADD_RESERVATION(params, reserveNumCal),
     addReview: (...params) => ADD_REVIEW(params),
     addUserInfo: (...params) => ADD_USER_INFO(params),
@@ -78,6 +87,10 @@ export default {
     fixReservation: (...params) => FIX_RESERVATION(params),
     confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
     editUserInfo: (...params) => EDIT_USER_INFO(params),
-    addUser: (...params) => ADD_USER(params)
+    addUser: (...params) => ADD_USER(params),
+    addHospitalAdmin: (...params) => ADD_HOSPITAL_ADMIN(params),
+    delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params),
+    addNotice: (...params) => ADD_NOTICE(params),
+    delNotice: (...params) => DEL_NOTICE(params)
   }
 };

@@ -23,7 +23,37 @@ export const reserveNumCal = () => {
   };
   return ChangeNumToStr(year, month, day, hour, minute, second, millisecond);
 };
-
-// // export redirect: <script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>
-
 export const FRONT_DEV_SRV = 'http://localhost:3000';
+
+
+export const autoNumbering = async (sequenceName, targetCounter) => {
+  switch (sequenceName) {
+    case 'productid' : {
+      const exist = await targetCounter.findOne({_id: sequenceName});
+
+      if ( !exist ){
+        await targetCounter({_id:sequenceName, sequence_value:0}).save();
+      }
+      const sequenceDocument = await targetCounter.update(
+        { _id: sequenceName },
+        { $inc: { sequence_value: 1 } }
+      );
+
+      return (await targetCounter.findOne({_id:sequenceName})).sequence_value;
+      break;
+    }
+    case 'noticeid' : {
+      const exist = await targetCounter.findOne({_id: sequenceName});
+
+      if ( !exist ){
+        await targetCounter({_id:sequenceName, sequence_value:0}).save();
+      }
+      const sequenceDocument = await targetCounter.update(
+        { _id: sequenceName },
+        { $inc: { sequence_value: 1 } }
+      );
+
+      return (await targetCounter.findOne({_id:sequenceName})).sequence_value;
+    }
+  }
+}
