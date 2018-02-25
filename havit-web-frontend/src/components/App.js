@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import {
   Header,
   Login,
+  Privacy,
   Signup,
   MyPage,
   SignupEnd,
@@ -34,6 +35,10 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={props => <Home {...this.props} />} />
           <Route path="/login" render={props => <Login {...this.props} />} />
+          <Route
+            path="/privacy"
+            render={props => <Privacy {...this.props} />}
+          />
           <Route path="/signup" component={Signup} />
           <Route
             path="/mypage"
@@ -49,7 +54,10 @@ class App extends Component {
             path="/products/:_id"
             render={props => <ProductDetail {...this.props} />}
           />
-          <Route path="/hospitalpage" component={HospitalPage} />
+          <Route
+            path="/hospitalpage"
+            render={props => <HospitalPage {...this.props} />}
+          />
         </Switch>
       </div>
     );

@@ -6,8 +6,8 @@ const typeDefs = `
     Notices (id: Int) : [Notice],
     Banners (type: String): [Banner],
     Reviews: [Review],
-    Hospitals(adminAccount: String!) : [Hospital],
-    HospitalAdmin(code:String!) : [HospitalAdmin],
+    Hospitals(adminAccount: String) : [Hospital],
+    HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product],
     getDashboardCount(code : String) : [Product],
   }

@@ -73,6 +73,24 @@ export const getUserInfo = email => {
   };
 };
 
+const requestGetHospital = () => ({
+  type: types.REQUEST_GET_HOSPITAL,
+});
+
+const successGetHospital = hospital => ({
+  type: types.SUCCESS_GET_HOSPITAL,
+  hospital,
+});
+
+export const getHospital = email => {
+  return dispatch => {
+    dispatch(requestGetHospital());
+    return api.getHospital(email).then(res => {
+      dispatch(successGetHospital(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddReservation = () => ({

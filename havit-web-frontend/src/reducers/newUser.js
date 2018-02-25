@@ -9,7 +9,7 @@ const user = (state = initialState, action) => {
     case types.SUCCESS_ADD_USER:
       return {
         ...state,
-        newUser: action.newUser,
+        newUser: action.newUser.data.addUser,
       };
     case types.REQUEST_ADD_USER:
     default:

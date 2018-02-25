@@ -5,14 +5,23 @@ import 'styles/css/Header/Privacy.css';
 class Privacy extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      arr: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+      month: 31,
+    };
+    this.changeMonth = this.changeMonth.bind(this);
     this.submitUserInfo = this.submitUserInfo.bind(this);
   }
 
+  changeMonth(e) {
+    this.setState({
+      month: this.state.arr[Number(e.currentTarget.value) - 1],
+    });
+  }
+
   submitUserInfo() {
-    console.log('sadas');
-    this.props.addUserInfo(
-      'jyt9319@gmai.com',
+    let data = [
+      localStorage.getItem('temp'),
       document.getElementById('name').value,
       document.getElementById('txtMobile1').value +
         document.getElementById('txtMobile2').value +
@@ -29,13 +38,14 @@ class Privacy extends Component {
         document.querySelectorAll('input[name="likePoint"]:checked'),
         point => point.value
       ),
-      document.getElementById('code').value
-    );
-    console.log('sadasasadsas');
+      document.getElementById('code').value || '',
+    ];
+    console.log(data);
+    this.props.addUserInfo(...data);
+    localStorage.removeItem('temp'), this.props.history.push('/signupend');
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="privacy">
         <div className="privacy__wrapper">
@@ -72,21 +82,39 @@ class Privacy extends Component {
             />
             <h3 className="privacy__label">생년월일</h3>
             <select id="birthday1" className="privacy__box3">
-              <option>1995</option>
-              <option>1996</option>
-              <option>1997</option>
+              {Array(81)
+                .fill(1930)
+                .map((a, i) => {
+                  return <option key={i}>{a + i}</option>;
+                })}
             </select>
             <span>년</span>
-            <select id="birthday2" className="privacy__box4">
-              <option>01</option>
-              <option>02</option>
-              <option>03</option>
+            <select
+              id="birthday2"
+              className="privacy__box4"
+              onChange={this.changeMonth}
+            >
+              {Array(12)
+                .fill(1)
+                .map((a, i) => {
+                  return (
+                    <option key={i}>
+                      {(a + i).toString().length < 2 ? '0' + (a + i) : a + i}
+                    </option>
+                  );
+                })}
             </select>
             <span>월</span>
             <select id="birthday3" className="privacy__box4">
-              <option>01</option>
-              <option>02</option>
-              <option>03</option>
+              {Array(this.state.month)
+                .fill(1)
+                .map((a, i) => {
+                  return (
+                    <option key={i}>
+                      {(a + i).toString().length < 2 ? '0' + (a + i) : a + i}
+                    </option>
+                  );
+                })}
             </select>
             <span>일</span>
             <h3 className="privacy__label">성별</h3>
@@ -205,10 +233,8 @@ class Privacy extends Component {
             <h6 className="privacy__info">
               회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
             </h6>
-            <button className="privacy__btn">
-              <a className="privacy__btntext" onClick={this.submitUserInfo}>
-                회원가입
-              </a>
+            <button className="privacy__btn" onClick={this.submitUserInfo}>
+              <a className="privacy__btntext">회원가입</a>
             </button>
           </div>
         </div>
