@@ -27,6 +27,7 @@ import {
   ADD_USER_INFO,
   ADD_LIKE_PRODUCT,
   ADD_PRODUCT,
+  EDIT_PRODUCT,
   EDIT_USER_INFO,
   ADD_USER,
   ADD_HOSPITAL_ADMIN,
@@ -77,6 +78,7 @@ export default {
   // MUTATION (STORE DATA)
   Mutation: {
     addProduct: (...params) => ADD_PRODUCT(params),
+    editProduct: (...params) => EDIT_PRODUCT(params),
     addReservation: (...params) => ADD_RESERVATION(params, reserveNumCal),
     addReview: (...params) => ADD_REVIEW(params),
     addUserInfo: (...params) => ADD_USER_INFO(params),

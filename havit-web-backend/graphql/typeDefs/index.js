@@ -103,6 +103,17 @@ const typeDefs = `
       productDetail: String,
     ) : Product,
 
+    editProduct(
+      id: Int,
+      type: String,
+      subType: String,
+      img: String,
+      productName: String,
+      description: String,
+      price: Int,
+      productDetail: String
+    ) : Product,
+
     addReservation(
       user_id_email: String,
       hospitalCode: String,

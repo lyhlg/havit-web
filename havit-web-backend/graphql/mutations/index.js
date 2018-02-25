@@ -12,7 +12,8 @@ import {
 } from './User/user';
 import {
   ADD_LIKE_PRODUCT,
-  ADD_PRODUCT
+  ADD_PRODUCT,
+  EDIT_PRODUCT
 } from './Product/product';
 
 import {
@@ -40,11 +41,13 @@ export {
   ADD_USER,
   ADD_LIKE_PRODUCT,
   ADD_PRODUCT,
+  EDIT_PRODUCT,
   EDIT_USER_INFO,
   ADD_HOSPITAL_ADMIN,
   DEL_HOSPITAL_ADMIN,
   ADD_NOTICE,
   DEL_NOTICE,
   ADD_BANNER,
-  DEL_BANNER
+  DEL_BANNER,
+
 };

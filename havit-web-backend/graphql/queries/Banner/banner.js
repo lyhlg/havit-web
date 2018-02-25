@@ -10,7 +10,7 @@ const GET_BANNER_LIST = async ( params ) => {
 
 const GET_BANNER_FROM_PRODUCT = async ( params ) => {
   const [obj, args, { product }] = [...params];
-  return await product.findOne({ _id: ObjectId(obj.product)});
+  return await product.findOne({ _id: ObjectId(obj.product)}, {productId:1, _id:0});
 }
 
 export {

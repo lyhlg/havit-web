@@ -36,8 +36,18 @@ const ADD_PRODUCT = async ( params ) => {
   }
 }
 
+const EDIT_PRODUCT = async (params) => {
+  const [obj, args, { product }] = [...params];
+
+  await product.update(
+      { productId: args.id },
+      { $set: args }
+    )
+  return product.findOne({ productId: args.id });
+}
 
 export {
   ADD_LIKE_PRODUCT,
-  ADD_PRODUCT
+  ADD_PRODUCT,
+  EDIT_PRODUCT
 }
