@@ -14,6 +14,7 @@ import {
   ProductDetail,
   HospitalPage,
   Loading,
+  NotFound,
 } from './index';
 import 'styles/css/index.css';
 
@@ -61,6 +62,7 @@ class App extends Component {
             path="/hospitalpage"
             render={props => <HospitalPage {...this.props} />}
           />
+          <Route component={NotFound} />
         </Switch>
       </div>
     );
