@@ -7,6 +7,7 @@ export { default as ProductEntry } from './Common/ProductEntry';
 export { default as ProductDetail } from './Common/ProductDetail';
 export { default as Empty } from './Common/Empty';
 export { default as Loading } from './Common/Loading';
+export { default as NotFound } from './Common/NotFound';
 
 // Header
 export { default as Login } from './Header/Login';

@@ -1,8 +1,9 @@
 import * as types from 'actions/actionTypes';
 
 const initialState = {
-  hospital: [],
   loading: false,
+  hospitalProducts: [],
+  hospitalReservations: [],
 };
 
 const hospital = (state = initialState, action) => {
@@ -11,7 +12,8 @@ const hospital = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        hospital: action.hospital.data.Hospitals[0].reservations,
+        hospitalProducts: action.hospital.data.Hospitals[0].products,
+        hospitalReservations: action.hospital.data.Hospitals[0].reservations,
       };
     case types.REQUEST_GET_HOSPITAL:
       return {

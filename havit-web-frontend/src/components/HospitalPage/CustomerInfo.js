@@ -3,12 +3,11 @@ import 'styles/css/HospitalPage/CustomerInfo.css';
 
 class CustomerInfo extends Component {
   render() {
-    console.log(this.props.hospital.hospital);
     return (
       <div className="customerInfo">
         <div className="customerInfo__wrapper">
           <div className="customerInfo__tab">
-            <table className="customerInfo__table">
+            <table className="table">
               <thead>
                 <tr>
                   <th>예약번호</th>
@@ -23,7 +22,7 @@ class CustomerInfo extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.hospital.hospital.map((reserve, i) => {
+                {this.props.hospital.hospitalReservations.map((reserve, i) => {
                   return (
                     <tr key={i}>
                       <td>{reserve.reserveNum}</td>

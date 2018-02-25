@@ -2,9 +2,9 @@ const typeDefs = `
   type Query {
     Users(user_id_email: String) : [User],
     Reservations(user_id_email:String, hospitalCode: String, status: String) : [Reservation],
-    Products (type: String, subType: String, limit: Int, page: Int, productId: String) : [Product],
+    Products (type: String, subType: String, limit: Int, page: Int, productId: Int) : [Product],
     Notices (id: Int) : [Notice],
-    Banners (type: String, subType: String): [Banner],
+    Banners (type: String, subType: String, status: String): [Banner],
     Reviews: [Review],
     Hospitals(adminAccount: String) : [Hospital],
     HospitalAdmin(code:String) : [HospitalAdmin],
@@ -67,6 +67,7 @@ const typeDefs = `
     _id: ID,
     type: String,
     subType: String,
+    priority: Int,
     product: Product
   }
   type Review {
@@ -201,6 +202,7 @@ const typeDefs = `
 
     addBanner(
       productId: Int
+      priority: Int
     ) : Banner
 
     delBanner(
