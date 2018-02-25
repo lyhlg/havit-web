@@ -24,15 +24,16 @@ const ADD_LIKE_PRODUCT = async ( params ) => {
 }
 
 const ADD_PRODUCT = async ( params ) => {
-  const [obj, args, { product, productCounter }] = [...params];
+  const [obj, args, { product, productCounter, hospital }] = [...params];
   const chk_dup = await CHECK_DUP_DATA([obj, args, product]);
   if ( !chk_dup ) {
     const number = await autoNumbering("productid", productCounter);
     let obj_counter = { productId : number };
     let new_args = Object.assign(args, obj_counter);
     console.log(new_args);
-
-    return await new product(new_args).save();
+    const newProduct = await new product(new_args).save();
+    await hospital.update({code:args.hospitalCode}, {$push: {products:newProduct._id}})
+    return newProduct;
   } else {
     return chk_dup;
   }

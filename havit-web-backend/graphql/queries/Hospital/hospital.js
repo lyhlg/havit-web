@@ -17,10 +17,11 @@ const GET_HOSPITAL_RESERVATION_INFO = async ( params ) => {
 }
 
 const GET_HOSPITAL_PRODUCT_LIST = async ( params ) => {
-  const [obj, args, ctx] = [...params];
-  return obj.products.map(async item => {
-    return await ctx.product.find({ _id: ObjectId(item) });
+  const [obj, args, {product}] = [...params];
+  return await obj.products.map(async item => {
+    return await product.findOne({ _id: ObjectId(item) });
   })
+
 }
 
 export {
