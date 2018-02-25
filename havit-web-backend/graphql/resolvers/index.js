@@ -91,6 +91,8 @@ export default {
     addHospitalAdmin: (...params) => ADD_HOSPITAL_ADMIN(params),
     delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params),
     addNotice: (...params) => ADD_NOTICE(params),
-    delNotice: (...params) => DEL_NOTICE(params)
+    delNotice: (...params) => DEL_NOTICE(params),
+    addBanner: (...params) => ADD_BANNER(params),
+    delBanner: (...params) => DEL_BANNER(params)
   }
 };

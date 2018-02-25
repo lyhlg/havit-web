@@ -30,6 +30,8 @@ const ADD_PRODUCT = async ( params ) => {
     const number = await autoNumbering("productid", productCounter);
     let obj_counter = { productId : number };
     let new_args = Object.assign(args, obj_counter);
+    console.log(new_args);
+
     return await new product(new_args).save();
   } else {
     return chk_dup;
