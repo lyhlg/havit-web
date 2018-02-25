@@ -23,7 +23,18 @@ export const reserveNumCal = () => {
   };
   return ChangeNumToStr(year, month, day, hour, minute, second, millisecond);
 };
-
-// // export redirect: <script>window.close(); window.opener.location.href="http://localhost:3000/addinfo"</script>
-
 export const FRONT_DEV_SRV = 'http://localhost:3000';
+
+export const autoNumberingProductId = async (sequenceName, productCounter) => {
+  const exist = await productCounter.findOne({_id: sequenceName});
+
+  if ( !exist ){
+    await productCounter({_id:sequenceName, sequence_value:0}).save();
+  }
+  const sequenceDocument = await productCounter.update(
+    { _id: sequenceName },
+    { $inc: { sequence_value: 1 } }
+  );
+
+  return (await productCounter.findOne({_id:sequenceName})).sequence_value;
+}

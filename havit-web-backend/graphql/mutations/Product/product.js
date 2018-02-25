@@ -1,12 +1,12 @@
+import { autoNumberingProductId } from '../../../utils/index';
+import { CHECK_DUP_DATA } from '../../common';
+
 const ADD_LIKE_PRODUCT = async ( params ) => {
-  const [obj, args, ctx] = [...params];
+  const [obj, args, { user }] = [...params];
   let checkAlreadyLikeIt = false;
-  let userInfo = async () => {
-    return await ctx.user.findOne({ user_id_email: args.user_id_email });
-  };
 
   // user 테이블에 likeProduct에 이미 해당 상품을 찜 해뒀는지 확인
-  (await ctx.user.findOne({ user_id_email: args.user_id_email })).likeProduct
+  (await user.findOne({ user_id_email: args.user_id_email })).likeProduct
     .forEach(item => {
       if (item === args.productId) {
         checkAlreadyLikeIt = !checkAlreadyLikeIt;
@@ -15,18 +15,27 @@ const ADD_LIKE_PRODUCT = async ( params ) => {
 
   // 해당 상품이 찜이 안되었을 경우에만 추가
   if (!checkAlreadyLikeIt) {
-    await ctx.user.update(
+    await user.update(
       { user_id_email: args.user_id_email },
       { $push: { likeProduct: args.productId } });
   }
 
-  return userInfo();
+  return await user.findOne({ user_id_email: args.user_id_email });
 }
 
 const ADD_PRODUCT = async ( params ) => {
-  const [obj, args, ctx] = [...params];
-  return await new ctx.product(args).save();
+  const [obj, args, { product, productCounter }] = [...params];
+  const chk_dup = await CHECK_DUP_DATA([obj, args, product]);
+  if ( !chk_dup ) {
+    const number = await autoNumberingProductId("productid", productCounter);
+    let obj_counter = { productId : number };
+    let new_args = Object.assign(args, obj_counter);
+    return await new product(new_args).save();
+  } else {
+    return chk_dup;
+  }
 }
+
 
 export {
   ADD_LIKE_PRODUCT,

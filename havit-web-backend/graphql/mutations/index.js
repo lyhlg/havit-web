@@ -15,6 +15,16 @@ import {
   ADD_PRODUCT
 } from './Product/product';
 
+import {
+  ADD_HOSPITAL_ADMIN,
+  DEL_HOSPITAL_ADMIN
+} from "./HospitalAdmin/hospitalAdmin";
+
+// import {
+//   ADD_NOTICE,
+//   DEL_NOTICE
+// } from './Notice/notice';
+
 export {
   ADD_RESERVATION,
   MODIFY_RESERVATION,
@@ -25,5 +35,9 @@ export {
   ADD_USER,
   ADD_LIKE_PRODUCT,
   ADD_PRODUCT,
-  EDIT_USER_INFO
+  EDIT_USER_INFO,
+  ADD_HOSPITAL_ADMIN,
+  DEL_HOSPITAL_ADMIN,
+  // ADD_NOTICE,
+  // DEL_NOTICE
 };

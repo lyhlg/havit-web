@@ -7,13 +7,15 @@ import {
   GET_PRODUCT_RESERVATION,
   GET_REVIEW_LIST_OF_PRODUCT,
   FIND_REVIEW,
+  FIND_NOTICE,
   FIND_HOSPITAL,
   GET_HOSPITAL_RESERVATION_INFO,
   GET_HOSPITAL_PRODUCT_LIST,
   FIND_HOSPITAL_ADMIN,
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
-  GET_DASHBOARD_COUNT
+  GET_DASHBOARD_COUNT,
+
 } from "../queries";
 import {
   ADD_RESERVATION,
@@ -26,7 +28,10 @@ import {
   ADD_PRODUCT,
   EDIT_USER_INFO,
   ADD_USER,
-
+  ADD_HOSPITAL_ADMIN,
+  DEL_HOSPITAL_ADMIN,
+  // ADD_NOTICE,
+  // DEL_NOTICE
 } from "../mutations";
 
 
@@ -38,6 +43,7 @@ export default {
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     Products: (...params) => FIND_PRODUCT(params),
     Reviews: (...params) => FIND_REVIEW(params),
+    Notices: (...params) => FIND_NOTICE(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
     Banners: (...params) => GET_BANNER_LIST(params),
@@ -78,6 +84,8 @@ export default {
     fixReservation: (...params) => FIX_RESERVATION(params),
     confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
     editUserInfo: (...params) => EDIT_USER_INFO(params),
-    addUser: (...params) => ADD_USER(params)
+    addUser: (...params) => ADD_USER(params),
+    addHospitalAdmin: (...params) => ADD_HOSPITAL_ADMIN(params),
+    delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params)
   }
 };

@@ -11,7 +11,8 @@ import {
   LIKE_PRODUCT,
   GET_REVIEW_LIST_OF_PRODUCT,
   GET_PRODUCT_RESERVATION
-} from "./Product/product";
+} from './Product/product';
+import FIND_NOTICE from './Notice/notice';
 import FIND_REVIEW from './Review/review';
 import {
   FIND_HOSPITAL,
@@ -31,6 +32,7 @@ export {
   FIND_RESERVATION,
   GET_DASHBOARD_COUNT,
   FIND_PRODUCT,
+  FIND_NOTICE,
   LIKE_PRODUCT,
   GET_REVIEW_LIST_OF_PRODUCT,
   GET_PRODUCT_RESERVATION,

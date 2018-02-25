@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const hospitalSchema = new Schema({
   code: { type: String, required: true },
   adminAccount: String,
+  createdOn: { type: Date, default: Date.now },
   reservations: [String],
   products: [String]
 });
