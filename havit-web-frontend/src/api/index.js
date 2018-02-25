@@ -13,9 +13,10 @@ export const getProducts = (type, subType, id) => {
   return client.query({
     query: gql`
       query($type: String, $subType: String, $id: String) {
-        Products(type: $type, subType: $subType, id: $id) {
+        Products(type: $type, subType: $subType, productId: $id) {
           _id
           type
+          productId
           subType
           img
           hospitalCode
@@ -27,6 +28,7 @@ export const getProducts = (type, subType, id) => {
           purchased
           productDetail
           reviews {
+            _id
             user_id_email
             stars
             comment

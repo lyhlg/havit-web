@@ -30,6 +30,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.products);
     return (
       <div>
         <Header {...this.props} />
@@ -53,7 +54,7 @@ class App extends Component {
           <Route path="/event" component={Event} />
           <Route path="/loading" component={Loading} />
           <Route
-            path="/products/:_id"
+            path="/products/:productId"
             render={props => <ProductDetail {...this.props} />}
           />
           <Route

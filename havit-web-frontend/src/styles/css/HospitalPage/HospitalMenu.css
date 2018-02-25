@@ -6,27 +6,24 @@
     display: block;
     content: '';
     clear: both; }
-  .hospitalMenu .hospitalMenu__clear::after {
-    display: block;
-    content: '';
-    clear: both; }
-  .hospitalMenu hr {
-    float: left;
-    width: 1100px;
-    margin-top: 20px;
-    color: #414d6b; }
   .hospitalMenu .hospitalMenu__wrapper {
     float: left; }
   .hospitalMenu .hospitalMenu__name {
-    display: inline-block;
-    font-size: 30px;
-    font-weight: normal;
-    margin-right: 30px; }
+    font-size: 40px;
+    font-weight: bold;
+    color: #414d6b;
+    margin-top: 100px; }
   .hospitalMenu .hospitalMenu__tab {
-    display: inline-block; }
+    display: inline-block;
+    width: 1200px;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    margin-top: 40px; }
     .hospitalMenu .hospitalMenu__tab .hospitalMenu__button {
       font-size: 20px;
-      margin-right: 20px;
+      margin-right: 40px;
       color: #414d6b; }
     .hospitalMenu .hospitalMenu__tab .hospitalMenu__button--selected {
+      font-weight: bold;
       color: #647dff; }
