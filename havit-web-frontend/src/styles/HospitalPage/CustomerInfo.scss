@@ -1,7 +1,7 @@
 .customerInfo__table {
   width: 1100px;
   text-align: center;
-  
+  font-size: 10px;
   tr, th {
     border: 1px solid black;
   }
@@ -10,6 +10,10 @@
     height: 30px;
     line-height: 30px;
     vertical-align: middle;
+
+    th {
+      font-size: 15px;
+    }
   }
   td {
     height: 30px;

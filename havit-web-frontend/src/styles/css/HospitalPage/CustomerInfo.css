@@ -1,12 +1,15 @@
 .customerInfo__table {
   width: 1100px;
-  text-align: center; }
+  text-align: center;
+  font-size: 10px; }
   .customerInfo__table tr, .customerInfo__table th {
     border: 1px solid black; }
   .customerInfo__table tr {
     height: 30px;
     line-height: 30px;
     vertical-align: middle; }
+    .customerInfo__table tr th {
+      font-size: 15px; }
   .customerInfo__table td {
     height: 30px;
     line-height: 30px;
