@@ -136,6 +136,25 @@ export const getHospital = email => {
             careDate
             status
           }
+          products {
+            _id
+            type
+            productId
+            subType
+            img
+            hospitalCode
+            hospitalLoc
+            hospitalName
+            productName
+            description
+            price
+            purchased
+            productDetail
+            reviews {
+              _id
+              stars
+            }
+          }
         }
       }
     `,

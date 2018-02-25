@@ -7,7 +7,7 @@ class Balance extends Component {
       <div className="balance">
         <div className="balance__wrapper">
           <div className="balance__tab">
-            <table className="balance__table">
+            <table className="table">
               <tr>
                 <th>기간</th>
                 <th>게시물 개수</th>
