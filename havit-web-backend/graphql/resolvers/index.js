@@ -52,11 +52,11 @@ export default {
   Reservation: {
     product: (...params) => GET_PRODUCT_RESERVATION(params)
   },
-  Banner: {
-    totalBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
-    skinBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
-    beautyBanners: (...params) => GET_BANNER_FROM_PRODUCT(params)
-  },
+  // Banner: {
+  //   totalBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
+  //   skinBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
+  //   beautyBanners: (...params) => GET_BANNER_FROM_PRODUCT(params)
+  // },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
     products: (...params) => GET_HOSPITAL_PRODUCT_LIST(params)

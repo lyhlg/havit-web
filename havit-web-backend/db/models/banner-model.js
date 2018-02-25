@@ -3,9 +3,11 @@ const Schema = mongoose.Schema;
 
 // 변경 필요
 const bannerSchema = new Schema({
-  totalBanners : [String],
-  skinBanners: [String],
-  beautyBanners: [String]
+  _id: String,
+  type: String,
+  subType: String,
+  product: { type: Schema.Types.ObjectId, ref: "Product" },
+  createdOn: { type: Date, default: Date.now() }
 });
 
 module.exports = mongoose.model('banner', bannerSchema, 'banners');
