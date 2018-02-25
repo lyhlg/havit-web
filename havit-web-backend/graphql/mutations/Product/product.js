@@ -41,9 +41,10 @@ const ADD_PRODUCT = async ( params ) => {
 
 const EDIT_PRODUCT = async (params) => {
   const [obj, args, { product }] = [...params];
-
+  const pid = args.id
+  delete args.id;
   await product.update(
-      { productId: args.id },
+      { productId: pid },
       { $set: args }
     )
   return product.findOne({ productId: args.id });

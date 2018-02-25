@@ -2,7 +2,7 @@ const typeDefs = `
   type Query {
     Users(user_id_email: String) : [User],
     Reservations(user_id_email:String, hospitalCode: String, status: String) : [Reservation],
-    Products (type: String, subType: String, limit: Int, page: Int, productId: String) : [Product],
+    Products (type: String, subType: String, limit: Int, page: Int, productId: Int) : [Product],
     Notices (id: Int) : [Notice],
     Banners (type: String, subType: String, status: String): [Banner],
     Reviews: [Review],

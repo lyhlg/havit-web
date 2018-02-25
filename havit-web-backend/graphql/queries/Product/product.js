@@ -1,31 +1,33 @@
 const ObjectId = require('mongodb').ObjectID;
 
 const FIND_PRODUCT = async ( params ) => {
-  const [obj, args, ctx] = [...params];
+  const [obj, args, {product}] = [...params];
   if (!args.limit) args.limit = 12;
   if (!args.page) args.page = 1;
   if ( args.id ) {
-    const a = await ctx.product.find({ _id: ObjectId(args.id)})
-    return a
+    return await product.find({ _id: ObjectId(args.id)})
   } else {
-    const res = async (arg) => await ctx.product
+    const res = async (arg) => await product
       .find(arg)
       .sort({ _id: -1 })
       .skip((args.page - 1) * args.limit)
       .limit(args.limit);
-
     if ( obj ) {
-      return (await ctx.product.findOne());
-    } else {
-      if ( !(args.type || args.subType) ){
-        return res({});
-      } else {
-        if ( args.type && !args.subType ){
-          return res({ type: args.type });
-        } else if ( args.type && args.subType ) {
+      return (await product.findOne());
+    } else if ( args.type || args.subType || args.productId ) {
+      if (!args.type && args.subType) {
+        return [{ type: "Type is empty, You must fill this" }];
+      } else if ((args.productId && !(args.type || args.subType))) {
+        return res({productId: args.productId});
+      } else if (args.type){
+        if (args.subType){
           return res({ type: args.type, subType: args.subType });
+        } else {
+          return res({ type: args.type });
         }
       }
+    } else {
+      return [{ type: "You cannot request only option flag" }];
     }
   }
 };
