@@ -15,8 +15,9 @@ import {
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
   GET_DASHBOARD_COUNT,
-
 } from "../queries";
+
+
 import {
   ADD_RESERVATION,
   MODIFY_RESERVATION,
@@ -31,7 +32,9 @@ import {
   ADD_HOSPITAL_ADMIN,
   DEL_HOSPITAL_ADMIN,
   ADD_NOTICE,
-  DEL_NOTICE
+  DEL_NOTICE,
+  ADD_BANNER,
+  DEL_BANNER
 } from "../mutations";
 
 
@@ -52,11 +55,9 @@ export default {
   Reservation: {
     product: (...params) => GET_PRODUCT_RESERVATION(params)
   },
-  // Banner: {
-  //   totalBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
-  //   skinBanners: (...params) => GET_BANNER_FROM_PRODUCT(params),
-  //   beautyBanners: (...params) => GET_BANNER_FROM_PRODUCT(params)
-  // },
+  Banner: {
+    product: (...params) => GET_BANNER_FROM_PRODUCT(params)
+  },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
     products: (...params) => GET_HOSPITAL_PRODUCT_LIST(params)

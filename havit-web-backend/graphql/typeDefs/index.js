@@ -67,7 +67,7 @@ const typeDefs = `
     _id: ID,
     type: String,
     subType: String,
-    product: [Product]
+    product: Product
   }
   type Review {
     _id: ID,

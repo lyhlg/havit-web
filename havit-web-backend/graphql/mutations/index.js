@@ -25,6 +25,11 @@ import {
   DEL_NOTICE
 } from './Notice/notice';
 
+import {
+  ADD_BANNER,
+  DEL_BANNER
+} from './Banner/banner';
+
 export {
   ADD_RESERVATION,
   MODIFY_RESERVATION,
@@ -39,5 +44,7 @@ export {
   ADD_HOSPITAL_ADMIN,
   DEL_HOSPITAL_ADMIN,
   ADD_NOTICE,
-  DEL_NOTICE
+  DEL_NOTICE,
+  ADD_BANNER,
+  DEL_BANNER
 };

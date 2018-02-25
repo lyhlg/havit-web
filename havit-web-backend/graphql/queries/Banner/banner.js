@@ -1,30 +1,19 @@
 const ObjectId = require('mongodb').ObjectID;
 
 const GET_BANNER_LIST = async ( params ) => {
-  // const [obj, args, ctx] = [...params];
-  // const targetField = args.type;
-  // switch (targetField) {
-  //   case 'totalBanners': {
-  //     return (await ctx.banner.findOne({}, { _id: 0 })).totalBanners;
-  //     break;
-  //   }
-  //   case 'skinBanners': {
-  //     return (await ctx.banner.findOne({}, { _id:0 } )).skinBanners;
-  //     break;
-  //   }
-  //   case 'beautyBanners': {
-  //     return (await ctx.banner.findOne({}, { _id: 0 })).beautyBanners;
-  //     break;
-  //   }
-  // }
+  const [obj, args , { banner }] = [...params];
+  if ( !args.type && args.subType ) {
+    return [{type: "is empty", subType: "This Field is used with Type"}]
+  }
+  return await banner.find(args);
 };
 
-const GET_BANNER_FROM_PRODUCT = async ( params, target ) => {
-  const [obj, args, ctx] = [...params];
-  return await ctx.product.find({ _id: ObjectId(obj)});
+const GET_BANNER_FROM_PRODUCT = async ( params ) => {
+  const [obj, args, { product }] = [...params];
+  return await product.findOne({ _id: ObjectId(obj.product)});
 }
 
 export {
-  // GET_BANNER_LIST,
-  // GET_BANNER_FROM_PRODUCT
+  GET_BANNER_LIST,
+  GET_BANNER_FROM_PRODUCT
 };
