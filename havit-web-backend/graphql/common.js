@@ -74,8 +74,8 @@ const ADD_DB_USER = async ( params ) => {
 }
 
 const CHECK_DUP_DATA = async (params) => {
-  const [obj, args, ctx] = [...params];
-  return await ctx.findOne(args);
+  const [obj, args, db] = [...params];
+  return await db.findOne(args);
 };
 
 

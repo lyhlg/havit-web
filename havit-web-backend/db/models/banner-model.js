@@ -6,6 +6,8 @@ const bannerSchema = new Schema({
   type: String,
   subType: String,
   product: String,
+  status: { type: String, default:"판매중" },
+  priority: { type:Number, default: 100000 } ,
   createdOn: { type: Date, default: Date.now() }
 });
 
