@@ -197,7 +197,16 @@ const typeDefs = `
 
     delNotice(
       id : Int
-    ) : Notice
+    ) : Notice,
+
+    addBanner(
+      productId: Int
+    ) : Banner
+
+    delBanner(
+      productId: Int
+    ) : Banner
+
   }
 `;
 

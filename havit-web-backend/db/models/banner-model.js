@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 // 변경 필요
 const bannerSchema = new Schema({
-  _id: String,
   type: String,
   subType: String,
   product: String,
