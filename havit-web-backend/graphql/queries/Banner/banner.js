@@ -5,7 +5,7 @@ const GET_BANNER_LIST = async ( params ) => {
   if ( !args.type && args.subType ) {
     return [{type: "is empty", subType: "This Field is used with Type"}]
   }
-  return await banner.find(args);
+  return await banner.find(args).sort({priority:1});
 };
 
 const GET_BANNER_FROM_PRODUCT = async ( params ) => {

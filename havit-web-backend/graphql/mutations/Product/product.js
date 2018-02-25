@@ -30,8 +30,8 @@ const ADD_PRODUCT = async ( params ) => {
     const number = await autoNumbering("productid", productCounter);
     let obj_counter = { productId : number };
     let new_args = Object.assign(args, obj_counter);
-    console.log(new_args);
     const newProduct = await new product(new_args).save();
+    // 새 제품 병원의 리스트로 업데이트
     await hospital.update({code:args.hospitalCode}, {$push: {products:newProduct._id}})
     return newProduct;
   } else {
