@@ -7,7 +7,7 @@ class ProductEntry extends Component {
     return (
       <div className="productEntry">
         <Link
-          to={`/products/${this.props.product._id}`}
+          to={`/products/${this.props.product.productId}`}
           className="productEntry__link"
         >
           <img

@@ -1,13 +1,38 @@
 .customerInfo__table {
-  width: 1100px;
-  text-align: center; }
-  .customerInfo__table tr, .customerInfo__table th {
-    border: 1px solid black; }
+  width: 1200px;
+  text-align: left;
+  font-size: 10px; }
   .customerInfo__table tr {
-    height: 30px;
-    line-height: 30px;
+    border: solid 1px #dce2eb;
+    height: 20px;
+    line-height: 20px;
     vertical-align: middle; }
+    .customerInfo__table tr th {
+      height: 50px;
+      line-height: 50px;
+      vertical-align: middle;
+      padding-left: 20px;
+      font-size: 12px;
+      font-weight: normal;
+      color: #afc2db;
+      background-color: #f7f8fb; }
   .customerInfo__table td {
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    padding-left: 20px;
+    font-size: 15px;
+    color: #495057; }
+  .customerInfo__table .customerInfo__button {
+    width: 40px;
     height: 30px;
-    line-height: 30px;
-    vertical-align: middle; }
+    margin-right: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 2px;
+    background-color: #647dff;
+    border: solid 1px #647dff; }
+    .customerInfo__table .customerInfo__button:last-child {
+      margin-right: 0; }

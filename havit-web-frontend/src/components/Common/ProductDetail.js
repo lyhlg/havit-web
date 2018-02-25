@@ -7,7 +7,6 @@ class ProductDetail extends Component {
   }
 
   render() {
-    console.log(this.props.products.productsList[0]);
     return (
       <div className="productDetail">
         <div className="productDetail__category">

@@ -20,7 +20,10 @@
       color: #414d6b; }
       .header .header__right .header__link:last-child {
         margin-right: 0; }
+    .header .header__right .header__link--selected {
+      color: #647dff;
+      font-weight: bold; }
   .header::after {
     display: block;
-    content: '';
+    content: "";
     clear: both; }
