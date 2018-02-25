@@ -54,7 +54,10 @@ class App extends Component {
             path="/products/:_id"
             render={props => <ProductDetail {...this.props} />}
           />
-          <Route path="/hospitalpage" component={HospitalPage} />
+          <Route
+            path="/hospitalpage"
+            render={props => <HospitalPage {...this.props} />}
+          />
         </Switch>
       </div>
     );

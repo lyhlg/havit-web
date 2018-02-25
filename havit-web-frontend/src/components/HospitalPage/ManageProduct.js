@@ -7,7 +7,7 @@ class ManageProduct extends Component {
       <div className="manageProduct">
         <div className="manageProduct__wrapper">
           <div className="manageProduct__tab">
-            <table border="1">
+            <table className="manageProduct__table">
               <tr>
                 <th>대분류</th>
                 <th>소분류</th>

@@ -15,7 +15,10 @@ class HospitalPage extends Component {
       <main className="hospitalPage">
         <div className="hospitalPage__wrapper">
           <HospitalMenu />
-          <Route path="/HospitalPage/CustomerInfo" component={CustomerInfo} />
+          <Route
+            path="/HospitalPage/CustomerInfo"
+            render={props => <CustomerInfo {...this.props} />}
+          />
           <Route path="/HospitalPage/UploadProduct" component={UploadProduct} />
           <Route path="/HospitalPage/ManageProduct" component={ManageProduct} />
           <Route path="/HospitalPage/Balance" component={Balance} />
