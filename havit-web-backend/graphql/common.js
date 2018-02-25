@@ -17,7 +17,7 @@ const INSERT_DB_HOSPITAL = async (params) => {
   return await hospital.findOne({code: hospitalCode});
 }
 
-const CHK_HOSPITAL_ADMIN_CODE = async (params) => {
+const CHK_HOSPITAL_ADMIN_CODE = async ( params ) => {
   const [obj, {hospitalCode, user_id_email }, hospitalAdmin] = [...params];
   return await hospitalAdmin.find({code: hospitalCode});
 }
