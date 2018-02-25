@@ -42,11 +42,11 @@ export const getProducts = (type, subType, id) => {
   });
 };
 
-export const getReservations = email => {
+export const getReservations = (email, code) => {
   return client.query({
     query: gql`
-      query($email: String) {
-        Reservations(user_id_email: $email) {
+      query($email: String, $code: String) {
+        Reservations(user_id_email: $email, hospitalCode: $code) {
           _id
           reserveNum
           user_id_email
@@ -62,6 +62,7 @@ export const getReservations = email => {
     `,
     variables: {
       email,
+      code,
     },
   });
 };
@@ -114,6 +115,33 @@ export const getUserInfo = email => {
   });
 };
 
+export const getHospital = email => {
+  return client.query({
+    query: gql`
+      query($email: String) {
+        Hospitals(adminAccount: $email) {
+          code
+          adminAccount
+          reservations {
+            _id
+            reserveNum
+            user_id_email
+            hospitalCode
+            userName
+            phone
+            productName
+            reserveDate
+            careDate
+            status
+          }
+        }
+      }
+    `,
+    variables: {
+      email,
+    },
+  });
+};
 export const addReservation = (
   email,
   hospitalCode,

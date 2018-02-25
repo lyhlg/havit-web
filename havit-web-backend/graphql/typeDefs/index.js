@@ -5,8 +5,8 @@ const typeDefs = `
     Products (type: String, subType: String, limit: Int, page: Int, id: String) : [Product],
     Banners (type: String): [Banner],
     Reviews: [Review],
-    Hospitals(adminAccount: String!) : [Hospital],
-    HospitalAdmin(code:String!) : [HospitalAdmin],
+    Hospitals(adminAccount: String) : [Hospital],
+    HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product],
     getDashboardCount(code : String) : [Product],
   }
