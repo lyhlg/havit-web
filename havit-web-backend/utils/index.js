@@ -25,16 +25,35 @@ export const reserveNumCal = () => {
 };
 export const FRONT_DEV_SRV = 'http://localhost:3000';
 
-export const autoNumberingProductId = async (sequenceName, productCounter) => {
-  const exist = await productCounter.findOne({_id: sequenceName});
 
-  if ( !exist ){
-    await productCounter({_id:sequenceName, sequence_value:0}).save();
+export const autoNumbering = async (sequenceName, targetCounter) => {
+  switch (sequenceName) {
+    case 'productid' : {
+      const exist = await targetCounter.findOne({_id: sequenceName});
+
+      if ( !exist ){
+        await targetCounter({_id:sequenceName, sequence_value:0}).save();
+      }
+      const sequenceDocument = await targetCounter.update(
+        { _id: sequenceName },
+        { $inc: { sequence_value: 1 } }
+      );
+
+      return (await targetCounter.findOne({_id:sequenceName})).sequence_value;
+      break;
+    }
+    case 'noticeid' : {
+      const exist = await targetCounter.findOne({_id: sequenceName});
+
+      if ( !exist ){
+        await targetCounter({_id:sequenceName, sequence_value:0}).save();
+      }
+      const sequenceDocument = await targetCounter.update(
+        { _id: sequenceName },
+        { $inc: { sequence_value: 1 } }
+      );
+
+      return (await targetCounter.findOne({_id:sequenceName})).sequence_value;
+    }
   }
-  const sequenceDocument = await productCounter.update(
-    { _id: sequenceName },
-    { $inc: { sequence_value: 1 } }
-  );
-
-  return (await productCounter.findOne({_id:sequenceName})).sequence_value;
 }

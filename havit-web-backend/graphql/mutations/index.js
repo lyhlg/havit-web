@@ -20,10 +20,10 @@ import {
   DEL_HOSPITAL_ADMIN
 } from "./HospitalAdmin/hospitalAdmin";
 
-// import {
-//   ADD_NOTICE,
-//   DEL_NOTICE
-// } from './Notice/notice';
+import {
+  ADD_NOTICE,
+  DEL_NOTICE
+} from './Notice/notice';
 
 export {
   ADD_RESERVATION,
@@ -38,6 +38,6 @@ export {
   EDIT_USER_INFO,
   ADD_HOSPITAL_ADMIN,
   DEL_HOSPITAL_ADMIN,
-  // ADD_NOTICE,
-  // DEL_NOTICE
+  ADD_NOTICE,
+  DEL_NOTICE
 };

@@ -1,4 +1,4 @@
-import { autoNumberingProductId } from '../../../utils/index';
+import { autoNumbering } from '../../../utils/index';
 import { CHECK_DUP_DATA } from '../../common';
 
 const ADD_LIKE_PRODUCT = async ( params ) => {
@@ -27,7 +27,7 @@ const ADD_PRODUCT = async ( params ) => {
   const [obj, args, { product, productCounter }] = [...params];
   const chk_dup = await CHECK_DUP_DATA([obj, args, product]);
   if ( !chk_dup ) {
-    const number = await autoNumberingProductId("productid", productCounter);
+    const number = await autoNumbering("productid", productCounter);
     let obj_counter = { productId : number };
     let new_args = Object.assign(args, obj_counter);
     return await new product(new_args).save();

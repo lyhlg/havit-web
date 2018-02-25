@@ -176,7 +176,17 @@ const typeDefs = `
 
     delHospitalAdmin(
       code : String
-    ) : HospitalAdmin
+    ) : HospitalAdmin,
+
+    addNotice(
+      title: String,
+      body: String,
+      author: String,
+    ) : Notice,
+
+    delNotice(
+      id : Int
+    ) : Notice
   }
 `;
 

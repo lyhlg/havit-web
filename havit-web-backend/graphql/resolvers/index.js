@@ -30,8 +30,8 @@ import {
   ADD_USER,
   ADD_HOSPITAL_ADMIN,
   DEL_HOSPITAL_ADMIN,
-  // ADD_NOTICE,
-  // DEL_NOTICE
+  ADD_NOTICE,
+  DEL_NOTICE
 } from "../mutations";
 
 
@@ -86,6 +86,8 @@ export default {
     editUserInfo: (...params) => EDIT_USER_INFO(params),
     addUser: (...params) => ADD_USER(params),
     addHospitalAdmin: (...params) => ADD_HOSPITAL_ADMIN(params),
-    delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params)
+    delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params),
+    addNotice: (...params) => ADD_NOTICE(params),
+    delNotice: (...params) => DEL_NOTICE(params)
   }
 };
