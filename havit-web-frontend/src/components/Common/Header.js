@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { logo } from 'assets/img';
 import 'styles/css/Common/Header.css';
 
@@ -14,40 +14,64 @@ class Header extends Component {
     return (
       <header className="header">
         <h1 className="header__left">
-          <Link to="/" className="header__home">
+          <NavLink to="/" className="header__home">
             <img src={logo} className="header__logo" alt="해빗 로고" />
-          </Link>
+          </NavLink>
         </h1>
         {localStorage.getItem('email') ? (
           <div className="header__right">
-            <Link to="/hospitalPage/customerInfo" className="header__link">
+            <NavLink
+              to="/hospitalPage/customerInfo"
+              className="header__link"
+              activeClassName="header__link--selected"
+            >
               병원페이지
-            </Link>
-            <Link
+            </NavLink>
+            <NavLink
               to="/"
               className="header__link"
               onClick={this.handleLogout.bind(this)}
             >
               로그아웃
-            </Link>
-            <Link to="/mypage/reserve" className="header__link">
+            </NavLink>
+            <NavLink
+              to="/mypage/reserve"
+              className="header__link"
+              activeClassName="header__link--selected"
+            >
               마이페이지
-            </Link>
-            <Link to="/" className="header__link">
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className="header__link"
+              activeClassName="header__link--selected"
+            >
               고객센터
-            </Link>
+            </NavLink>
           </div>
         ) : (
           <div className="header__right">
-            <Link to="/login" className="header__link">
+            <NavLink
+              to="/login"
+              className="header__link"
+              activeClassName="header__link--selected"
+            >
               로그인
-            </Link>
-            <Link to="/signup" className="header__link">
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className="header__link"
+              activeClassName="header__link--selected"
+            >
               회원가입
-            </Link>
-            <Link to="/" className="header__link">
+            </NavLink>
+            <NavLink
+              to="/signup"
+              className="header__link"
+              activeClassName="header__link--selected"
+            >
               고객센터
-            </Link>
+            </NavLink>
           </div>
         )}
       </header>

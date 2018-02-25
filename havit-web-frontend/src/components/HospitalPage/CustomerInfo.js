@@ -31,9 +31,6 @@ class CustomerInfo extends Component {
                       <td>{reserve.phone}</td>
                       <td>{reserve.productName}</td>
                       <td>{`${reserve.reserveDate.slice(
-                        0,
-                        4
-                      )}년 ${reserve.reserveDate.slice(
                         4,
                         6
                       )}월 ${reserve.reserveDate.slice(6, 8)}일`}</td>
@@ -45,9 +42,6 @@ class CustomerInfo extends Component {
                         <td>{reserve.careDate}</td>
                       ) : (
                         <td>{`${reserve.careDate.slice(
-                          0,
-                          4
-                        )}년 ${reserve.careDate.slice(
                           4,
                           6
                         )}월 ${reserve.careDate.slice(
@@ -56,12 +50,12 @@ class CustomerInfo extends Component {
                         )}일/${reserve.careDate.slice(
                           8,
                           10
-                        )}시 ${reserve.careDate.slice(10, 12) || ''}분`}</td>
+                        )}시 ${reserve.careDate.slice(10, 12) || '00'}분`}</td>
                       )}
                       <td>{reserve.status}</td>
                       <td>
-                        <button>변경</button>
-                        <button>취소</button>
+                        <button className="customerInfo__button">변경</button>
+                        <button className="customerInfo__button">취소</button>
                       </td>
                     </tr>
                   );

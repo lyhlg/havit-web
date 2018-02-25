@@ -18,7 +18,7 @@
 
   .header__right {
     float: right;
-    
+
     .header__link {
       margin-right: 40px;
       line-height: 80px;
@@ -30,11 +30,16 @@
         margin-right: 0;
       }
     }
+
+    .header__link--selected {
+      color: #647dff;
+      font-weight: bold;
+    }
   }
 
   &::after {
     display: block;
-    content: '';
+    content: "";
     clear: both;
   }
 }

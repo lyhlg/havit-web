@@ -23,25 +23,23 @@ class HospitalPage extends Component {
           <Loading />
         ) : (
           <div className="hospitalPage">
-            <div className="hospitalPage__wrapper">
-              <HospitalMenu />
-              <Route
-                path="/HospitalPage/CustomerInfo"
-                render={props => <CustomerInfo {...this.props} />}
-              />
-              <Route
-                path="/HospitalPage/UploadProduct"
-                render={props => <UploadProduct {...this.props} />}
-              />
-              <Route
-                path="/HospitalPage/ManageProduct"
-                render={props => <ManageProduct {...this.props} />}
-              />
-              <Route
-                path="/HospitalPage/Balance"
-                render={props => <Balance {...this.props} />}
-              />
-            </div>
+            <HospitalMenu />
+            <Route
+              path="/HospitalPage/CustomerInfo"
+              render={props => <CustomerInfo {...this.props} />}
+            />
+            <Route
+              path="/HospitalPage/UploadProduct"
+              render={props => <UploadProduct {...this.props} />}
+            />
+            <Route
+              path="/HospitalPage/ManageProduct"
+              render={props => <ManageProduct {...this.props} />}
+            />
+            <Route
+              path="/HospitalPage/Balance"
+              render={props => <Balance {...this.props} />}
+            />
           </div>
         )}
       </main>
