@@ -20,6 +20,9 @@ class Header extends Component {
         </h1>
         {localStorage.getItem('email') ? (
           <div className="header__right">
+            <Link to="/adminPage/manageHospital" className="header__link">
+              Admin페이지
+            </Link>
             <Link to="/hospitalPage/customerInfo" className="header__link">
               병원페이지
             </Link>

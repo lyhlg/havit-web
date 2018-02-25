@@ -13,6 +13,7 @@ import {
   Event,
   ProductDetail,
   HospitalPage,
+  AdminPage,
 } from './index';
 import 'styles/css/index.css';
 
@@ -55,6 +56,7 @@ class App extends Component {
             render={props => <ProductDetail {...this.props} />}
           />
           <Route path="/hospitalpage" component={HospitalPage} />
+          <Route path="/adminpage" component={AdminPage} />
         </Switch>
       </div>
     );

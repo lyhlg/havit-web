@@ -1,0 +1,30 @@
+.adminMenu {
+  width: 1200px;
+  height: 100px;
+  padding: 40px;
+  color: #414d6b;
+
+  .adminMenu__name {
+    font-size: 30px;
+    font-weight: normal;
+  }
+
+  .adminMenu__tab {
+    float: left;
+    margin-top: 40px;
+
+    .adminMenu__button {
+      font-size: 20px;
+      margin-right: 20px;
+    }
+
+    .adminMenu__button--selected {
+      color: #647dff;
+    }
+  }
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}

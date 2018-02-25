@@ -29,6 +29,14 @@ export { default as UploadProduct } from './HospitalPage/UploadProduct';
 export { default as ManageProduct } from './HospitalPage/ManageProduct';
 export { default as Balance } from './HospitalPage/Balance';
 
+// AdminPage
+export { default as AdminPage } from './AdminPage/AdminPage';
+export { default as AdminMenu } from './AdminPage/AdminMenu';
+export { default as ManageHospital } from './AdminPage/ManageHospital';
+export { default as Notice } from './AdminPage/Notice';
+export { default as ManageBanner } from './AdminPage/ManageBanner';
+export { default as ManageEvent } from './AdminPage/ManageEvent';
+
 // Home
 export { default as Home } from './Home/Home';
 
