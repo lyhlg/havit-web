@@ -14,6 +14,7 @@ import {
   ProductDetail,
   HospitalPage,
   AdminPage,
+  Loading,
 } from './index';
 import 'styles/css/index.css';
 
@@ -30,6 +31,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.products);
     return (
       <div>
         <Header {...this.props} />
@@ -51,12 +53,16 @@ class App extends Component {
           <Route path="/skin" render={props => <Skin {...this.props} />} />
           <Route path="/beauty" render={props => <Beauty {...this.props} />} />
           <Route path="/event" component={Event} />
+          <Route path="/adminpage" component={AdminPage} />
+          <Route path="/loading" component={Loading} />
           <Route
-            path="/products/:_id"
+            path="/products/:productId"
             render={props => <ProductDetail {...this.props} />}
           />
-          <Route path="/hospitalpage" component={HospitalPage} />
-          <Route path="/adminpage" component={AdminPage} />
+          <Route
+            path="/hospitalpage"
+            render={props => <HospitalPage {...this.props} />}
+          />
         </Switch>
       </div>
     );

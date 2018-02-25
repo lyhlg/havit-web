@@ -1,30 +1,41 @@
 .hospitalMenu {
   width: 1200px;
-  height: 100px;
-  padding: 40px;
+  height: 50px;
   color: #414d6b;
 
-  .hospitalMenu__name {
-    font-size: 30px;
-    font-weight: normal;
-  }
-
-  .hospitalMenu__tab {
-    float: left;
-    margin-top: 40px;
-
-    .hospitalMenu__button {
-      font-size: 20px;
-      margin-right: 20px;
-    }
-
-    .hospitalMenu__button--selected {
-      color: #647dff;
-    }
-  }
   &::after {
     display: block;
     content: '';
     clear: both;
+  }
+
+  .hospitalMenu__wrapper {
+    float: left;
+  }
+  .hospitalMenu__name {
+    font-size: 40px;
+    font-weight: bold;
+    color: #414d6b;
+    margin-top:100px;
+  }
+
+  .hospitalMenu__tab {
+    display: inline-block;
+    width: 1200px;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    margin-top: 40px;
+
+    .hospitalMenu__button {
+      font-size: 20px;
+      margin-right: 40px;
+      color: #414d6b;
+    }
+
+    .hospitalMenu__button--selected {
+      font-weight: bold;
+      color: #647dff;
+    }
   }
 }

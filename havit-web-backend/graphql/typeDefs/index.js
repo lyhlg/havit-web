@@ -2,11 +2,12 @@ const typeDefs = `
   type Query {
     Users(user_id_email: String) : [User],
     Reservations(user_id_email:String, hospitalCode: String, status: String) : [Reservation],
-    Products (type: String, subType: String, limit: Int, page: Int, id: String) : [Product],
-    Banners (type: String): [Banner],
+    Products (type: String, subType: String, limit: Int, page: Int, productId: String) : [Product],
+    Notices (id: Int) : [Notice],
+    Banners (type: String, subType: String): [Banner],
     Reviews: [Review],
-    Hospitals(adminAccount: String!) : [Hospital],
-    HospitalAdmin(code:String!) : [HospitalAdmin],
+    Hospitals(adminAccount: String) : [Hospital],
+    HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product],
     getDashboardCount(code : String) : [Product],
   }
@@ -42,6 +43,7 @@ const typeDefs = `
   type Product {
     _id: ID,
     type: String,
+    productId: Int,
     subType: String,
     img: String,
     hospitalCode: String,
@@ -54,11 +56,18 @@ const typeDefs = `
     productDetail: String,
     reviews: [Review]
   }
+  type Notice {
+    _id: ID,
+    title: String,
+    body: String,
+    author: String,
+    views: Int
+  }
   type Banner {
     _id: ID,
-    totalBanners : [Product],
-    skinBanners: [Product],
-    beautyBanners: [Product]
+    type: String,
+    subType: String,
+    product: Product
   }
   type Review {
     _id: ID,
@@ -92,6 +101,17 @@ const typeDefs = `
       description: String,
       price: Int,
       productDetail: String,
+    ) : Product,
+
+    editProduct(
+      id: Int,
+      type: String,
+      subType: String,
+      img: String,
+      productName: String,
+      description: String,
+      price: Int,
+      productDetail: String
     ) : Product,
 
     addReservation(
@@ -159,6 +179,33 @@ const typeDefs = `
       hospitalCode: String
     ) : User,
 
+    addHospitalAdmin(
+      code : String,
+      name: String,
+      loc: String
+    ) : HospitalAdmin,
+
+    delHospitalAdmin(
+      code : String
+    ) : HospitalAdmin,
+
+    addNotice(
+      title: String,
+      body: String,
+      author: String,
+    ) : Notice,
+
+    delNotice(
+      id : Int
+    ) : Notice,
+
+    addBanner(
+      productId: Int
+    ) : Banner
+
+    delBanner(
+      productId: Int
+    ) : Banner
 
   }
 `;

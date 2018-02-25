@@ -6,20 +6,42 @@ import {
   UploadProduct,
   ManageProduct,
   Balance,
+  Loading,
 } from '../index';
 import 'styles/css/HospitalPage/HospitalPage.css';
 
 class HospitalPage extends Component {
+  componentDidMount() {
+    this.props.getHospital('lyhlg0201@gmail.com');
+  }
+
   render() {
+    console.log(this.props.hospital.loading);
     return (
-      <main className="hospitalPage">
-        <div className="hospitalPage__wrapper">
-          <HospitalMenu />
-          <Route path="/HospitalPage/CustomerInfo" component={CustomerInfo} />
-          <Route path="/HospitalPage/UploadProduct" component={UploadProduct} />
-          <Route path="/HospitalPage/ManageProduct" component={ManageProduct} />
-          <Route path="/HospitalPage/Balance" component={Balance} />
-        </div>
+      <main>
+        {this.props.hospital.loading ? (
+          <Loading />
+        ) : (
+          <div className="hospitalPage">
+            <HospitalMenu />
+            <Route
+              path="/HospitalPage/CustomerInfo"
+              render={props => <CustomerInfo {...this.props} />}
+            />
+            <Route
+              path="/HospitalPage/UploadProduct"
+              render={props => <UploadProduct {...this.props} />}
+            />
+            <Route
+              path="/HospitalPage/ManageProduct"
+              render={props => <ManageProduct {...this.props} />}
+            />
+            <Route
+              path="/HospitalPage/Balance"
+              render={props => <Balance {...this.props} />}
+            />
+          </div>
+        )}
       </main>
     );
   }

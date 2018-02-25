@@ -7,16 +7,19 @@ class ManageHospital extends Component {
       <div className="manageHospital">
         <div className="manageHospital__wrapper">
           <div className="manageHospital__tab">
-            <table border="1">
-              <tr>
-                <th>병원 코드</th>
-                <th>병원 이름</th>
-                <th>병원 위치</th>
-                <th>관리자 계정</th>
-              </tr>
-              <td>
-                <th>Wassup bro?</th>
-              </td>
+            <table className="manageHospital__table">
+              <thead>
+                <tr>
+                  <th>병원 코드</th>
+                  <th>병원 이름</th>
+                  <th>병원 위치</th>
+                  <th>관리자 계정</th>
+                </tr>
+                <td>
+                  <th>Wassup bro?</th>
+                </td>
+              </thead>
+              <tbody />
             </table>
           </div>
         </div>
