@@ -9,6 +9,7 @@ import {
   FIND_REVIEW,
   FIND_NOTICE,
   FIND_HOSPITAL,
+  GET_PAYMENT,
   GET_HOSPITAL_RESERVATION_INFO,
   GET_HOSPITAL_PRODUCT_LIST,
   FIND_HOSPITAL_ADMIN,
@@ -52,7 +53,8 @@ export default {
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
     Banners: (...params) => GET_BANNER_LIST(params),
-    getDashboardCount: (...params) => GET_DASHBOARD_COUNT(params)
+    getDashboardCount: (...params) => GET_DASHBOARD_COUNT(params),
+    Payments: (...params) => GET_PAYMENT(params)
   },
   Reservation: {
     product: (...params) => GET_PRODUCT_RESERVATION(params)

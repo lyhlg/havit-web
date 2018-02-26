@@ -4,7 +4,7 @@ const UPDATE_DB_USER = async (params,level) => {
   // 관리자 계정
   if ( args.user_id_email === "havitmailer@gmail.com" ){
     console.log("해당 계정은 관리자 등록합니다.");
-    햣level = 1;
+    level = 1;
   }
   const memberLevel = {level: level};
   const new_args = Object.assign(args, memberLevel);

@@ -1,7 +1,7 @@
 const typeDefs = `
   type Query {
     Users(user_id_email: String) : [User],
-    Reservations(user_id_email:String, hospitalCode: String, status: String) : [Reservation],
+    Reservations(user_id_email:String, hospitalCode: String, status: String, hospitalCode: String) : [Reservation],
     Products (type: String, subType: String, limit: Int, page: Int, productId: Int) : [Product],
     Notices (id: Int) : [Notice],
     Banners (type: String, subType: String, status: String): [Banner],
@@ -10,6 +10,7 @@ const typeDefs = `
     HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product],
     getDashboardCount(code : String) : [Product],
+    Payments(code: String) : [Payment]
   }
   type User {
     specId: Float,
@@ -62,7 +63,8 @@ const typeDefs = `
     title: String,
     body: String,
     author: String,
-    views: Int
+    views: Int,
+    createdOn: String
   }
   type Banner {
     _id: ID,
@@ -89,6 +91,9 @@ const typeDefs = `
     name: String,
     loc: String,
     adminAccount: String
+  }
+  type Payment {
+    code: String
   }
 
   type Mutation {
@@ -191,7 +196,7 @@ const typeDefs = `
     addHospitalAdmin(
       code : String,
       name: String,
-      loc: String
+      loc: String,
     ) : HospitalAdmin,
 
     delHospitalAdmin(
