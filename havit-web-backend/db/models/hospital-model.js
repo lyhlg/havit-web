@@ -6,6 +6,7 @@ const hospitalSchema = new Schema({
   code: { type: String, required: true },
   adminAccount: String,
   createdOn: { type: Date, default: getCurrentDate() },
+  billing: Number,
   reservations: [String],
   products: [String]
 });

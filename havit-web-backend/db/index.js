@@ -9,6 +9,7 @@ import HospitalAdmin from './models/hospitalAdmin-model';
 import Hospital from './models/hospital-model';
 import Banner from './models/banner-model';
 import ProductCounter from './models/product-counter-model';
+import Payment from './models/payment-model';
 
 export {
   User,
@@ -21,5 +22,6 @@ export {
   HospitalAdmin,
   Hospital,
   Banner,
-  ProductCounter
+  ProductCounter,
+  Payment
 };

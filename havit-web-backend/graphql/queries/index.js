@@ -24,7 +24,9 @@ import {
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT
 } from './Banner/banner';
-
+import {
+  GET_PAYMENT
+} from './Payment/payment';
 
 export {
   FIND_USER,
@@ -42,5 +44,6 @@ export {
   GET_HOSPITAL_PRODUCT_LIST,
   FIND_HOSPITAL_ADMIN,
   GET_BANNER_LIST,
-  GET_BANNER_FROM_PRODUCT
+  GET_BANNER_FROM_PRODUCT,
+  GET_PAYMENT
 };

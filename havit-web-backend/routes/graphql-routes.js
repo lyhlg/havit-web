@@ -11,7 +11,8 @@ import {
   Hospital,
   HospitalAdmin,
   Banner,
-  ProductCounter
+  ProductCounter,
+  Payment
  } from '../db';
 import schema from '../graphql';
 
@@ -33,7 +34,8 @@ router.use('/graphql', bodyParser.json(), cors(), graphqlExpress({
         hospital : Hospital,
         hospitalAdmin : HospitalAdmin,
         banner: Banner,
-        productCounter: ProductCounter
+        productCounter: ProductCounter,
+        payment: Payment
       }
     }
   )

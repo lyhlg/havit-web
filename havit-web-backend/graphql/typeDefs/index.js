@@ -1,7 +1,7 @@
 const typeDefs = `
   type Query {
     Users(user_id_email: String) : [User],
-    Reservations(user_id_email:String, hospitalCode: String, status: String) : [Reservation],
+    Reservations(user_id_email:String, hospitalCode: String, status: String, hospitalCode: String) : [Reservation],
     Products (type: String, subType: String, limit: Int, page: Int, productId: Int) : [Product],
     Notices (id: Int) : [Notice],
     Banners (type: String, subType: String, status: String): [Banner],
@@ -10,6 +10,7 @@ const typeDefs = `
     HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product],
     getDashboardCount(code : String) : [Product],
+    Payments(code: String) : Payment
   }
   type User {
     specId: Float,
@@ -20,7 +21,11 @@ const typeDefs = `
     phone: String,
     birthday: String,
     gender: String,
+<<<<<<< HEAD
+    level: Int,
+=======
     level: Int
+>>>>>>> fd4c6e2ed50abbe1f521d99501ed70f955332368
     likeArea: [String],
     likePoint: [String],
     hospitalCode: String,
@@ -63,7 +68,8 @@ const typeDefs = `
     title: String,
     body: String,
     author: String,
-    views: Int
+    views: Int,
+    createdOn: String
   }
   type Banner {
     _id: ID,
@@ -82,6 +88,7 @@ const typeDefs = `
   type Hospital {
     code : String,
     adminAccount : String,
+    billing: Int,
     reservations: [Reservation],
     products: [Product]
   }
@@ -90,6 +97,11 @@ const typeDefs = `
     name: String,
     loc: String,
     adminAccount: String
+  }
+  type Payment {
+    code: String,
+    count: Int,
+    price: Int
   }
 
   type Mutation {
@@ -167,6 +179,7 @@ const typeDefs = `
       phone : String
       reserveDate: String
       openPhoneNum: Int
+      hospitalCode: String
     ) : Reservation,
 
     fixReservation(
@@ -192,7 +205,7 @@ const typeDefs = `
     addHospitalAdmin(
       code : String,
       name: String,
-      loc: String
+      loc: String,
     ) : HospitalAdmin,
 
     delHospitalAdmin(
