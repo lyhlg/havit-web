@@ -78,7 +78,9 @@ class UploadProduct extends Component {
               onChange={this.fileSelectedHandler}
             />
             <button onClick={this.fileUploadHandler}>Upload</button>
-            <button className="uploadProduct__btn">상품 등록</button>
+            <div>
+              <button className="uploadProduct__btn">상품 등록</button>
+            </div>
           </div>
         </div>
       </div>
