@@ -29,6 +29,7 @@ import {
 
 import {
   ADD_BANNER,
+  MODIFY_BANNER,
   DEL_BANNER
 } from './Banner/banner';
 
@@ -50,5 +51,6 @@ export {
   ADD_NOTICE,
   DEL_NOTICE,
   ADD_BANNER,
+  MODIFY_BANNER,
   DEL_BANNER,
 }

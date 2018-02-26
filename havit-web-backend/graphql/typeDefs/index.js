@@ -3,8 +3,8 @@ const typeDefs = `
     Users(user_id_email: String) : [User],
     Reservations(user_id_email:String, hospitalCode: String, status: String, hospitalCode: String) : [Reservation],
     Products (type: String, subType: String, limit: Int, page: Int, productId: Int) : [Product],
-    Notices (id: Int) : [Notice],
-    Banners (type: String, subType: String, status: String): [Banner],
+    Notices(id: Int) : [Notice],
+    Banners(status: String): [Banner],
     Reviews: [Review],
     Hospitals(adminAccount: String) : [Hospital],
     HospitalAdmin(code:String) : [HospitalAdmin],
@@ -21,11 +21,7 @@ const typeDefs = `
     phone: String,
     birthday: String,
     gender: String,
-<<<<<<< HEAD
     level: Int,
-=======
-    level: Int
->>>>>>> fd4c6e2ed50abbe1f521d99501ed70f955332368
     likeArea: [String],
     likePoint: [String],
     hospitalCode: String,
@@ -73,10 +69,10 @@ const typeDefs = `
   }
   type Banner {
     _id: ID,
-    type: String,
-    subType: String,
+    img: String,
+    url: String,
     priority: Int,
-    product: Product
+    status: String
   }
   type Review {
     _id: ID,
@@ -223,14 +219,23 @@ const typeDefs = `
     ) : Notice,
 
     addBanner(
-      productId: Int
-      priority: Int
+      img: String,
+      url: String,
+      priority: Int,
+      status: String
+    ) : Banner
+
+    modifyBanner(
+      img: String,
+      url: String,
+      priority: Int,
+      status: String
     ) : Banner
 
     delBanner(
-      productId: Int
+      url: String
     ) : Banner
   }
 `;
 
-export default [ typeDefs ];
+export default [typeDefs];
