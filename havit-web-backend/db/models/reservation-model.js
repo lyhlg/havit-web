@@ -7,6 +7,7 @@ const reservationSchema = new Schema({
   reserveNum: {type: String, required:true },
   userName: String,
   phone: String,
+  openPhoneNum: Number,
   productName: String,
   reserveDate: String,
   careDate: { type: String, default : "전화대기중"},

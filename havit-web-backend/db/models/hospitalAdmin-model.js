@@ -5,6 +5,7 @@ const hospitalAdminSchema = new Schema({
   code: String,
   name : String,
   loc: String,
+  adminAccount : { type: String, default: "미등록" },
   createdOn: { type: Date, default: Date.now }
 });
 

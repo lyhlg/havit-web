@@ -6,15 +6,25 @@ const UPDATE_DB_USER = async (params) => {
 };
 
 const UPDATE_DB_HOSPITAL = async (params) => {
-  const [obj, args, hospital] = [...params];
-  return await hospital.update({code: args.hospitalCode},
-  {$set : {adminAccount: args.user_id_email}})
+  const [obj, { hospitalCode, user_id_email }, { hospital, hospitalAdmin }] = [...params];
+  await UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT([obj, { hospitalCode, user_id_email }, hospitalAdmin]);
+  return await hospital.update({code: hospitalCode},
+  {$set : { adminAccount: user_id_email }})
+
 }
 
 const INSERT_DB_HOSPITAL = async (params) => {
-  const [obj, {hospitalCode, user_id_email }, hospital] = [...params];
+  const [obj, {hospitalCode, user_id_email }, {hospital,hospitalAdmin}] = [...params];
   await new hospital({code: hospitalCode, adminAccount: user_id_email}).save();
+  await UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT([obj, { hospitalCode, user_id_email }, hospitalAdmin]);
   return await hospital.findOne({code: hospitalCode});
+}
+
+const UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT = async ( params ) => {
+  const [obj, { hospitalCode, user_id_email }, hospitalAdmin] = [...params];
+  return await hospitalAdmin.update(
+    {code: hospitalCode},
+    {$set: { adminAccount: user_id_email}})
 }
 
 const CHK_HOSPITAL_ADMIN_CODE = async ( params ) => {
@@ -30,7 +40,7 @@ const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async (params) => {
     const isVerifiedHospitalCode = await CHK_HOSPITAL_ADMIN_CODE([obj, args, hospitalAdmin]);
     if ( isVerifiedHospitalCode.length ){
       // 유효한 인증 번호이면, Hospital Table에 병원 추가 및 User 정보 업데이트
-      await REG_USER_TO_HOSPTIAL([obj, args, hospital]);
+      await REG_USER_TO_HOSPTIAL([obj, args, { hospital, hospitalAdmin }]);
       await UPDATE_DB_USER([obj, args, user]);
     } else {
       // 아닐 경우에는 잘못된 hospitalCode는 null로 변경하고 User 정보 업데이트
@@ -48,11 +58,13 @@ const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async (params) => {
 
 // 병원테이블에 관리자 등록
 const REG_USER_TO_HOSPTIAL = async (params) => {
-  const [obj, { hospitalCode, user_id_email }, hospital] = [...params];
+  const [obj, { hospitalCode, user_id_email }, { hospital, hospitalAdmin }] = [...params];
   const isRegHospital = await hospital.findOne({code : hospitalCode});
   return isRegHospital
-    ? await UPDATE_DB_HOSPITAL([obj, { hospitalCode, user_id_email }, hospital])
-    : await INSERT_DB_HOSPITAL([obj, { hospitalCode, user_id_email }, hospital])
+    ? await UPDATE_DB_HOSPITAL([obj, { hospitalCode, user_id_email },
+      { hospital, hospitalAdmin }])
+    : await INSERT_DB_HOSPITAL([obj, { hospitalCode, user_id_email },
+      { hospital, hospitalAdmin }])
 };
 
 const CHK_DB_HOSPITAL = async (params) => {

@@ -34,6 +34,7 @@ const typeDefs = `
     hospitalCode: String,
     userName: String,
     phone: String,
+    openPhoneNum: Int,
     productName: String,
     reserveDate: String,
     careDate: String,
@@ -86,7 +87,8 @@ const typeDefs = `
   type HospitalAdmin {
     code : String,
     name: String,
-    loc: String
+    loc: String,
+    adminAccount: String
   }
 
   type Mutation {
@@ -124,6 +126,10 @@ const typeDefs = `
       reserveDate: String
     ) : Reservation,
 
+    delReservation(
+      reserveNum : Float
+    ) : Reservation,
+
     addReview(
       user_id_email: String,
       stars: Float,
@@ -158,6 +164,7 @@ const typeDefs = `
       userName : String
       phone : String
       reserveDate: String
+      openPhoneNum: Int
     ) : Reservation,
 
     fixReservation(
@@ -208,7 +215,6 @@ const typeDefs = `
     delBanner(
       productId: Int
     ) : Banner
-
   }
 `;
 
