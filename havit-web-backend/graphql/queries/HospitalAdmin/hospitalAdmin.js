@@ -1,10 +1,6 @@
 const FIND_HOSPITAL_ADMIN = async ( params ) => {
-  const [obj, args, ctx] = [...params];
-  if ( args ) {
-    return await ctx.findOne(args);
-  } else {
-    return await ctx.find();
-  }
+  const [obj, args, { hospitalAdmin }] = [...params];
+  return await hospitalAdmin.find(args);
 
 };
 

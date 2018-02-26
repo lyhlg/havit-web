@@ -1,33 +1,49 @@
 const ADD_RESERVATION = async (params, reserveNumCal) => {
-  const [obj, args, ctx] = [...params];
+  const [obj, args, {hospital, reservation}] = [...params];
   // 예약 번호 reserveNumCal 을 통해 획득 후 기존 Object와 merge
   let obj_reserveNum = { reserveNum: reserveNumCal() };
-  let new_args = Object.assign(args, obj_reserveNum);
+  let new_args = Object.assign(args, obj_reserveNum, { openPhoneNum: 0});
+  console.log(new_args);
 
   // 병원 테이블에 예약 추가
   const addToHospitalReserveLists = async (id) => {
-    return await ctx.hospital.update(
+    return await hospital.update(
       { code: args.hospitalCode },
       { $push: { reservations: id } });
   }
   addToHospitalReserveLists(obj_reserveNum.reserveNum);
   // 새로 생성한 Reservation 정보 Response 값으로 Return
-  return await new ctx.reservation(new_args).save();
+  return await new reservation(new_args).save();
 };
 
 const MODIFY_RESERVATION = async ( params ) => {
-  const [obj, args, ctx] = [...params];
-  let updateUserReservation = async () => {
-    return await ctx.reservation.update(
-      { reserveNum: args.reserveNum },
-      { $set: {
-        reserveDate: args.reserveDate,
-        userName: args.userName,
-        phone: args.phone
-      }})
-    }
-  updateUserReservation();
-  return await ctx.reservation.findOne({ reserveNum: args.reserveNum })
+  const [obj, args, {reservation}] = [...params];
+  console.log(args);
+  if ( args.reserveNum && args.openPhoneNum ) {
+    console.log( args.openPhoneNum )
+    await reservation.update(
+      {reserveNum : args.reserveNum},
+      { $set : { openPhoneNum: args.openPhoneNum } })
+      // DB에 count 추가필요
+    return await reservation.findOne({reserveNum : args.reserveNum});
+  } else {
+    let updateUserReservation = async () => {
+        return await reservation.update(
+          { reserveNum: args.reserveNum },
+          { $set: {
+            reserveDate: args.reserveDate,
+            userName: args.userName,
+            phone: args.phone
+          }})
+        }
+      updateUserReservation();
+      return await reservation.findOne({ reserveNum: args.reserveNum })
+  }
+}
+
+const DELETE_RESERVATION = async ( params ) => {
+  const [obj, { reserveNum }, { reservation }] = [...params];
+
 }
 
 const FIX_RESERVATION = async ( params ) => {
@@ -76,6 +92,7 @@ const CONFIRM_PURCHASE = async ( params ) => {
 export {
   ADD_RESERVATION,
   MODIFY_RESERVATION,
+  DELETE_RESERVATION,
   FIX_RESERVATION,
   CONFIRM_PURCHASE
 }
