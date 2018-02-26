@@ -196,6 +196,21 @@ export const getNotices = () => {
   });
 };
 
+export const getBanners = priority => {
+  return client.query({
+    query: gql`
+      query($priority: Int) {
+        Banners(priority: $priority) {
+          priority
+        }
+      }
+    `,
+    variables: {
+      priority,
+    },
+  });
+};
+
 export const addReservation = (
   email,
   hospitalCode,

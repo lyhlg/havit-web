@@ -127,6 +127,24 @@ export const getNotices = () => {
   };
 };
 
+const requestGetBanners = () => ({
+  type: types.REQUEST_GET_BANNERS,
+});
+
+const successGetBanners = banners => ({
+  type: types.SUCCESS_GET_BANNERS,
+  banners,
+});
+
+export const getBanners = priority => {
+  return dispatch => {
+    dispatch(requestGetBanners());
+    return api.getBanners(priority).then(res => {
+      dispatch(successGetBanners(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddReservation = () => ({
