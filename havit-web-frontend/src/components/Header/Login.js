@@ -12,8 +12,14 @@ class Login extends Component {
       Number(res.profileObj.googleId),
       res.profileObj.name
     );
+    this.props.getUserInfo(res.profileObj.email);
     setTimeout(() => {
       const phone = this.props.newUser.newUser.phone;
+      const code = this.props.userInfo.userInfo[0].level;
+      if (code !== null) {
+        if (localStorage.getItem('code')) localStorage.removeItem('code');
+        localStorage.setItem('code', code);
+      }
       if (phone !== null) {
         if (localStorage.getItem('email')) localStorage.removeItem('email');
         localStorage.setItem('email', res.profileObj.email);
@@ -37,6 +43,7 @@ class Login extends Component {
       res.profile.id,
       res.profile.properties.nickname
     );
+    this.props.getUserInfo(res.profile.kaccount_email);
     setTimeout(() => {
       const phone = this.props.newUser.newUser.phone;
       if (phone !== null) {

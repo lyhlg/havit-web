@@ -4,9 +4,9 @@ import { Menu, Reserve, WishList, ChangeInfo } from '../index';
 import 'styles/css/MyPage/MyPage.css';
 
 class MyPage extends Component {
-  componentWillMount() {
-    this.props.checkAuth();
-  }
+  // componentWillMount() {
+  //   this.props.checkAuth();
+  // }
 
   render() {
     return (

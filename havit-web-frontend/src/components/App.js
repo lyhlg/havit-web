@@ -25,11 +25,20 @@ class App extends Component {
     this.checkAuth = this.checkAuth.bind(this);
   }
 
-  checkAuth() {
-    if (!localStorage.getItem('email')) {
-      this.props.history.push('/login');
-    }
-  }
+  // checkAuth(url) {
+  //   if ( url.includes('adminPage') && localStorage.getItem('code') !== 3) {
+  //     this.props.history.push('/login');
+  //   }
+  //   if ( url.includes('hospitalPage') && localStorage.getItem('code') < 2) {
+  //     this.props.history.push('/login');
+  //   }
+  //   if ( url.includes('mypage') && localStorage.getItem('code') < 1) {
+  //     this.props.history.push('/login');
+  //   }
+  //   if (!localStorage.getItem('email')) {
+  //     this.props.history.push('/login');
+  //   }
+  // }
 
   render() {
     console.log(this.props.products);
@@ -65,7 +74,9 @@ class App extends Component {
           />
           <Route
             path="/hospitalpage"
-            render={props => <HospitalPage {...this.props} />}
+            render={props => (
+              <HospitalPage checkAuth={this.checkAuth} {...this.props} />
+            )}
           />
           <Route component={NotFound} />
         </Switch>
