@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { logo3 } from 'assets/img';
-import { Privacy } from '../index';
 import 'styles/css/Header/Signup.css';
 
 class Signup extends Component {
@@ -51,9 +50,9 @@ class Signup extends Component {
   render() {
     return (
       <div className="signup">
-        <img src={logo3} className="signup__logo" alt="havit" />
         <div className="signup__wrapper">
           <div className="signup__tab">
+            <h2 className="signup__title">회원가입</h2>
             <h3 className="signup__label">이메일 주소</h3>
             <input
               id="email"
@@ -74,49 +73,40 @@ class Signup extends Component {
               className="signup__input"
               placeholder="동일하게 다시 한 번 입력해주세요."
             />
-            <h3 className="privacy__label">이름</h3>
+            <h3 className="signup__label">이름</h3>
             <input
               id="name"
               type="text"
-              className="privacy__input"
+              className="signup__input"
               placeholder="실명 한글 이름을 입력해주세요."
             />
-            <h3 className="privacy__label">휴대폰번호</h3>
-            <select id="txtMobile1" className="privacy__box1">
-              <option value="010">010</option>
-              <option value="011">011</option>
-              <option value="016">016</option>
-              <option value="017">017</option>
-              <option value="019">019</option>
-            </select>
-            <span>-</span>
+            <h3 className="signup__label">핸드폰 번호</h3>
             <input
               type="text"
-              id="txtMobile2"
+              id="txtMobile"
               size="4"
-              className="privacy__box2"
+              className="signup__phone"
+              placeholder="- 빼고 숫자만 입력"
             />
-            <span>-</span>
-            <input
-              type="text"
-              id="txtMobile3"
-              size="4"
-              className="privacy__box2"
-            />
-            <h3 className="privacy__label">생년월일</h3>
-            <select id="birthday1" className="privacy__box3">
+            <h3 className="signup__label">생년 월 일</h3>
+            <select id="birthday1" className="signup__box1">
+              <option selected disabled>
+                년
+              </option>
               {Array(81)
                 .fill(1930)
                 .map((a, i) => {
                   return <option key={i}>{a + i}</option>;
                 })}
             </select>
-            <span>년</span>
             <select
               id="birthday2"
-              className="privacy__box4"
+              className="signup__box2"
               onChange={this.changeMonth}
             >
+              <option selected disabled>
+                월
+              </option>
               {Array(12)
                 .fill(1)
                 .map((a, i) => {
@@ -127,8 +117,10 @@ class Signup extends Component {
                   );
                 })}
             </select>
-            <span>월</span>
-            <select id="birthday3" className="privacy__box4">
+            <select id="birthday3" className="signup__box2">
+              <option selected disabled>
+                일
+              </option>
               {Array(this.state.month)
                 .fill(1)
                 .map((a, i) => {
@@ -139,136 +131,129 @@ class Signup extends Component {
                   );
                 })}
             </select>
-            <span>일</span>
-            <h3 className="privacy__label">성별</h3>
+            <h3 className="signup__label">성별</h3>
             <input
               name="gender"
               id="gender"
               type="radio"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="여자"
             />
-            <label className="privacy__text">여자</label>
+            <label className="signup__text">여자</label>
             <input
               name="gender"
               id="gender"
               type="radio"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="남자"
             />
-            <label className="privacy__text">남자</label>
-            <h3 className="privacy__label">관심 지역</h3>
+            <label className="signup__text">남자</label>
+            <h3 className="signup__label">관심 지역</h3>
             <input
               name="likeArea"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="강남구"
             />
-            <label className="privacy__text">강남구</label>
+            <label className="signup__text">강남구</label>
             <input
               name="likeArea"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="서초구"
             />
-            <label className="privacy__text">서초구</label>
+            <label className="signup__text">서초구</label>
             <input
               name="likeArea"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="중구"
             />
-            <label className="privacy__text">중구</label>
+            <label className="signup__text">중구</label>
             <input
               name="likeArea"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="성동구"
             />
-            <label className="privacy__text">성동구</label>
+            <label className="signup__text">성동구</label>
             <input
               name="likeArea"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="광진구"
             />
-            <label className="privacy__text">광진구</label>
+            <label className="signup__text">광진구</label>
             <input
               name="likeArea"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="영등포구"
             />
-            <label className="privacy__text">영등포구</label>
-            <h3 className="privacy__label">관심 부위</h3>
+            <label className="signup__text">영등포구</label>
+            <h3 className="signup__label">관심 부위</h3>
             <input
               name="likePoint"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="피부"
             />
-            <label className="privacy__text">피부</label>
+            <label className="signup__text">피부</label>
             <input
               name="likePoint"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="여드름"
             />
-            <label className="privacy__text">여드름</label>
+            <label className="signup__text">여드름</label>
             <input
               name="likePoint"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="리프팅"
             />
-            <label className="privacy__text">리프팅</label>
+            <label className="signup__text">리프팅</label>
             <input
               name="likePoint"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="제모"
             />
-            <label className="privacy__text">제모</label>
+            <label className="signup__text">제모</label>
             <input
               name="likePoint"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="반영구"
             />
-            <label className="privacy__text">반영구</label>
+            <label className="signup__text">반영구</label>
             <input
               name="likePoint"
               type="checkbox"
-              className="privacy__checkbox"
+              className="signup__checkbox"
               value="미용주사"
             />
-            <label className="privacy__text">미용주사</label>
+            <label className="signup__text">미용주사</label>
             <hr />
-            <h3 className="privacy__label">병원코드</h3>
+            <h3 className="signup__label">병원코드</h3>
             <input
               id="code"
               type="text"
-              className="privacy__input"
+              className="signup__input"
               placeholder="병원코드"
             />
-            <h6 className="privacy__subtext">병원 관리자 전용입니다</h6>
+            <h6 className="signup__subtext">병원 관리자 전용입니다</h6>
             <hr />
-            <h6 className="privacy__info">
+            <h6 className="signup__info">
               회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
             </h6>
-            <button onClick={this.submitPrivacy} className="signup__button">
-              <Link to="/privacy" className="signup__btntext">
+            <button onClick={this.submitsignup} className="signup__button">
+              <Link to="/signup" className="signup__btntext">
                 회원가입
               </Link>
             </button>
           </div>
         </div>
-        <Route
-          path="/privacy"
-          render={props => (
-            <Privacy privacy={this.state.privacy} {...this.props} />
-          )}
-        />
       </div>
     );
   }

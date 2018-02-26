@@ -4,9 +4,13 @@ import 'styles/css/HospitalPage/UploadProduct.css';
 import axios from 'axios';
 
 class UploadProduct extends Component {
-  state = {
-    selectedFile: null,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedFile: null,
+      type: true,
+    };
+  }
 
   fileSelectedHandler = event => {
     console.log(event.target.files[0]);
@@ -24,6 +28,12 @@ class UploadProduct extends Component {
     // });
   };
 
+  handleSubType() {
+    this.setState({
+      type: !this.state.type,
+    });
+  }
+
   render() {
     return (
       <div className="uploadProduct">
@@ -31,21 +41,32 @@ class UploadProduct extends Component {
           <div className="uploadProduct__tab">
             <h2 className="uploadProduct__title">상품등록</h2>
             <h3 className="uploadProduct__label">대분류</h3>
-            <select className="uploadProduct__dropdown">
-              <option>전체보기</option>
-              <option>피부시술</option>
-              <option>뷰티시술</option>
-              <option>이벤트</option>
+            <select
+              id="type"
+              className="uploadProduct__dropdown"
+              onChange={this.handleSubType.bind(this)}
+            >
+              <option value="skin">피부시술</option>
+              <option value="beauty">뷰티시술</option>
             </select>
             <h3 className="uploadProduct__label">소분류</h3>
-            <select className="uploadProduct__dropdown">
-              <option>피부레이저</option>
-              <option>스케일링</option>
-              <option>필링</option>
-              <option>제모</option>
-              <option>반영구</option>
-              <option>미용주사</option>
-            </select>
+            {this.state.type === true ? (
+              <select id="subType" className="uploadProduct__dropdown">
+                <option value="laser">피부레이저</option>
+                <option value="scaling">스케일링</option>
+                <option value="pilling">필링</option>
+                <option value="waxing">제모</option>
+                <option value="semi">반영구</option>
+                <option value="shot">미용주사</option>
+              </select>
+            ) : (
+              <select id="subType" className="uploadProduct__dropdown">
+                <option value="piller">필러</option>
+                <option value="botox">보톡스</option>
+                <option value="outline">윤곽</option>
+                <option value="lifting">리프팅</option>
+              </select>
+            )}
             <h3 className="uploadProduct__label">이미지 업로드</h3>
             <input
               type="file"
@@ -56,18 +77,21 @@ class UploadProduct extends Component {
             <h3 className="uploadProduct__label">상품명</h3>
             <input
               type="text"
+              id="title"
               className="uploadProduct__input"
               placeholder="상품명을 입력해주세요."
             />
             <h3 className="uploadProduct__label">상품 설명</h3>
             <input
               type="text"
+              id="description"
               className="uploadProduct__inputbig"
               placeholder="상품에 대한 정보를 한문장으로 입력해주세요."
             />
             <h3 className="uploadProduct__label">시술 금액</h3>
             <input
               type="text"
+              id="price"
               className="uploadProduct__input"
               placeholder="시술 금액을 입력해주세요."
             />
