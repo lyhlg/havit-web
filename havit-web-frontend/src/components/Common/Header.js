@@ -8,12 +8,41 @@ class Header extends Component {
     localStorage.removeItem('email');
     if (localStorage.getItem('kakao_32d45b3f136b81e89905f794f933f564'))
       localStorage.removeItem('kakao_32d45b3f136b81e89905f794f933f564');
-    if (localStorage.getItem('code')) localStorage.removeItem('code');
+    this.props.userInfo.userInfo = [];
   }
 
   render() {
     let header;
-    if (localStorage.getItem('code')) {
+    if (this.props.userInfo.userInfo.length === 0) {
+      header = (
+        <div className="header__right">
+          <NavLink
+            to="/login"
+            className="header__link"
+            activeClassName="header__link--selected"
+          >
+            로그인
+          </NavLink>
+          <NavLink
+            to="/signup"
+            className="header__link"
+            activeClassName="header__link--selected"
+          >
+            회원가입
+          </NavLink>
+          <NavLink
+            to="/signup"
+            className="header__link"
+            activeClassName="header__link--selected"
+          >
+            고객센터
+          </NavLink>
+        </div>
+      );
+    } else if (
+      this.props.userInfo.userInfo &&
+      this.props.userInfo.userInfo[0].level === 3
+    ) {
       header = (
         <div className="header__right">
           <NavLink
@@ -53,9 +82,19 @@ class Header extends Component {
           </NavLink>
         </div>
       );
-    } else if (localStorage.getItem('email')) {
+    } else if (
+      this.props.userInfo.userInfo &&
+      this.props.userInfo.userInfo[0].level === 2
+    ) {
       header = (
         <div className="header__right">
+          <NavLink
+            to="/hospitalPage/customerInfo"
+            className="header__link"
+            activeClassName="header__link--selected"
+          >
+            병원페이지
+          </NavLink>
           <NavLink
             to="/"
             className="header__link"
@@ -83,18 +122,18 @@ class Header extends Component {
       header = (
         <div className="header__right">
           <NavLink
-            to="/login"
+            to="/"
             className="header__link"
-            activeClassName="header__link--selected"
+            onClick={this.handleLogout.bind(this)}
           >
-            로그인
+            로그아웃
           </NavLink>
           <NavLink
-            to="/signup"
+            to="/mypage/reserve"
             className="header__link"
             activeClassName="header__link--selected"
           >
-            회원가입
+            마이페이지
           </NavLink>
           <NavLink
             to="/signup"
