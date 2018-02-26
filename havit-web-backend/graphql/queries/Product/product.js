@@ -27,7 +27,7 @@ const FIND_PRODUCT = async ( params ) => {
         }
       }
     } else {
-      return [{ type: "You cannot request only option flag" }];
+      return res({});
     }
   }
 };

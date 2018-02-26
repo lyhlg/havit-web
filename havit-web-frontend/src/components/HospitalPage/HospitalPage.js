@@ -16,7 +16,7 @@ class HospitalPage extends Component {
   }
 
   render() {
-    console.log(this.props.hospital.loading);
+    console.log(this.props.hospital);
     return (
       <main>
         {this.props.hospital.loading ? (

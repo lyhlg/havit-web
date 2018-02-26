@@ -1,13 +1,10 @@
 .productEntry {
   display: inline-block;
-  width: 278px;
+  width: 277px;
   height: 480px;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  margin: 0 10px 20px 10px;
   border: solid 1px #dce2eb;
   vertical-align: bottom; }
-  .productEntry:last-child {
-    margin-right: 0; }
   .productEntry .productEntry__link {
     width: 278px;
     height: 278px; }
