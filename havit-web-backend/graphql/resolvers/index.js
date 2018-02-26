@@ -37,6 +37,7 @@ import {
   ADD_NOTICE,
   DEL_NOTICE,
   ADD_BANNER,
+  MODIFY_BANNER,
   DEL_BANNER
 } from "../mutations";
 
@@ -58,9 +59,6 @@ export default {
   },
   Reservation: {
     product: (...params) => GET_PRODUCT_RESERVATION(params)
-  },
-  Banner: {
-    product: (...params) => GET_BANNER_FROM_PRODUCT(params)
   },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
@@ -97,6 +95,7 @@ export default {
     addNotice: (...params) => ADD_NOTICE(params),
     delNotice: (...params) => DEL_NOTICE(params),
     addBanner: (...params) => ADD_BANNER(params),
+    modifyBanner: (...params) => MODIFY_BANNER(params),
     delBanner: (...params) => DEL_BANNER(params)
   }
 };

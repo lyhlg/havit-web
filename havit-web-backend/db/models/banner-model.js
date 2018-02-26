@@ -1,18 +1,17 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 import { getCurrentDate } from "../../utils/index";
 
 // 변경 필요
 const bannerSchema = new Schema({
-  type: String,
-  subType: String,
-  product: String,
-  status: { type: String, default: "판매중" },
-  priority: { type: Number, default: 100000 },
+  img: String,
+  url: String,
+  priority: { type: Number, default: 10000 },
+  status: String,
   createdOn: { type: Date, default: getCurrentDate() }
 });
 
-module.exports = mongoose.model('banner', bannerSchema, 'banners');
+module.exports = mongoose.model("banner", bannerSchema, "banners");
 
 // dummy : 추후 관리자 업데이트 할 수 있도록 기능 구현 필요
 /*
