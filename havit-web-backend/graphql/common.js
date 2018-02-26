@@ -22,7 +22,7 @@ const UPDATE_DB_HOSPITAL = async (params) => {
 }
 
 const INSERT_DB_HOSPITAL = async (params) => {
-  const [obj, {hospitalCode, user_id_email }, {hospital,hospitalAdmin}] = [...params];
+  const [obj, {hospitalCode, user_id_email }, { hospital,hospitalAdmin }] = [...params];
   await new hospital({code: hospitalCode, adminAccount: user_id_email}).save();
   await UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT([obj, { hospitalCode, user_id_email }, hospitalAdmin]);
   return await hospital.findOne({code: hospitalCode});
