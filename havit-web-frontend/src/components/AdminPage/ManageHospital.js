@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import 'styles/css/AdminPage/ManageHospital.css';
 
 class ManageHospital extends Component {
-  componentDidMount() {
-    this.props.getHospitalAdmin();
-  }
-
   render() {
     console.log(this.props);
     return (
@@ -34,6 +30,7 @@ class ManageHospital extends Component {
                         <td>{hospital.code}</td>
                         <td>{hospital.name}</td>
                         <td>{hospital.loc}</td>
+                        <td>{hospital.adminAccount}</td>
                       </tr>
                     );
                   }
