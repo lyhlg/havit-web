@@ -20,6 +20,7 @@ const typeDefs = `
     phone: String,
     birthday: String,
     gender: String,
+    level: Int
     likeArea: [String],
     likePoint: [String],
     hospitalCode: String,

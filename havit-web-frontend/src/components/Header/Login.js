@@ -12,6 +12,7 @@ class Login extends Component {
       Number(res.profileObj.googleId),
       res.profileObj.name
     );
+    this.props.getUserInfo(res.profileObj.email);
     setTimeout(() => {
       const phone = this.props.newUser.newUser.phone;
       if (phone !== null) {
@@ -37,6 +38,7 @@ class Login extends Component {
       res.profile.id,
       res.profile.properties.nickname
     );
+    this.props.getUserInfo(res.profile.kaccount_email);
     setTimeout(() => {
       const phone = this.props.newUser.newUser.phone;
       if (phone !== null) {

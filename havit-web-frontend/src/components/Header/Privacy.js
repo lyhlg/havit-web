@@ -44,7 +44,7 @@ class Privacy extends Component {
       ],
     };
     this.changeMonth = this.changeMonth.bind(this);
-    this.submitUserInfo = this.submitUserInfo.bind(this);
+    this.submitPrivacy = this.submitPrivacy.bind(this);
   }
 
   changeMonth(e) {
@@ -53,13 +53,11 @@ class Privacy extends Component {
     });
   }
 
-  submitUserInfo() {
+  submitPrivacy() {
     let data = [
       localStorage.getItem('temp'),
       document.getElementById('name').value,
-      document.getElementById('txtMobile1').value +
-        document.getElementById('txtMobile2').value +
-        document.getElementById('txtMobile3').value,
+      document.getElementById('txtMobile').value,
       document.getElementById('birthday1').value +
         document.getElementById('birthday2').value +
         document.getElementById('birthday3').value,
@@ -74,14 +72,16 @@ class Privacy extends Component {
       ),
       document.getElementById('code').value || '',
     ];
-    this.props.addUserInfo(...data);
-    localStorage.removeItem('temp');
-    this.props.history.push('/signupend');
+    setTimeout(() => {
+      this.props.addUserInfo(...data);
+      localStorage.removeItem('temp');
+      this.props.history.push('/signupend');
+    }, 2000);
   }
 
   render() {
     return (
-      <div className="signup">
+      <div className="privacy">
         <div className="signup__wrapper">
           <div className="signup__tab">
             <h2 className="signup__title">회원가입</h2>
@@ -225,7 +225,7 @@ class Privacy extends Component {
               회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
             </h6>
             <div className="signup__btn">
-              <button onClick={this.submitsignup} className="signup__button">
+              <button onClick={this.submitPrivacy} className="signup__button">
                 <Link to="/signup" className="signup__btntext">
                   회원가입
                 </Link>
