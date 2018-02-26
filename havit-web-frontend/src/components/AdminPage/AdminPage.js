@@ -14,6 +14,7 @@ class AdminPage extends Component {
   componentDidMount() {
     this.props.getHospitalAdmin();
     this.props.getNotices();
+    this.props.getBanners();
   }
 
   render() {
@@ -34,7 +35,10 @@ class AdminPage extends Component {
                 path="/adminPage/notice"
                 render={props => <Notice {...this.props} />}
               />
-              <Route path="/adminPage/manageBanner" component={ManageBanner} />
+              <Route
+                path="/adminPage/manageBanner"
+                render={props => <ManageBanner {...this.props} />}
+              />
               <Route path="/adminPage/manageEvent" component={ManageEvent} />
             </div>
           </div>

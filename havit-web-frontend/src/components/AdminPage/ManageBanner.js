@@ -3,24 +3,29 @@ import 'styles/css/AdminPage/ManageBanner.css';
 
 class ManageBanner extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="manageBanner">
         <div className="manageBanner__wrapper">
           <div className="manageBanner__tab">
             <table className="manageBanner__table">
-              <tr>
-                <th>상태</th>
-                <th>대분류</th>
-                <th>소분류</th>
-                <th>상품명</th>
-                <th>상품금액</th>
-                <th>총 판매수</th>
-                <th>별점수</th>
-                <th>-</th>
-              </tr>
-              <td>
-                <th>Wassup bro?</th>
-              </td>
+              <thead>
+                <tr>
+                  <th>번호</th>
+                  <th>배너상품</th>
+                  <th>URL</th>
+                  <th>상태</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.props.banners.bannersList.map((banner, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{banner.priority}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
           </div>
         </div>

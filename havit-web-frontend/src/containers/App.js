@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
   hospital: state.hospital,
   hospitalAdmin: state.hospitalAdmin,
   notices: state.notices,
+  banners: state.banners,
   email: window.localStorage.getItem('email') || '',
 });
 
@@ -45,6 +46,10 @@ const mapDispatchToProps = dispatch => ({
 
   getNotices: () => {
     dispatch(actions.getNotices());
+  },
+
+  getBanners: priority => {
+    dispatch(actions.getBanners(priority));
   },
 
   addReservation: (
