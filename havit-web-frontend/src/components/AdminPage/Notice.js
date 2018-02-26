@@ -3,6 +3,7 @@ import 'styles/css/AdminPage/Notice.css';
 
 class Notice extends Component {
   render() {
+    console.log(this.props);
     return (
       <div className="notice">
         <div className="notice__wrapper">
@@ -17,10 +18,19 @@ class Notice extends Component {
                   <th>조회수</th>
                 </tr>
               </thead>
-              <tbody />
-              <td>
-                <th>Wassup bro?</th>
-              </td>
+              <tbody>
+                {this.props.notices.noticesList.map((notice, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{notice._id}</td>
+                      <td>{notice.title}</td>
+                      <td>{notice.author}</td>
+                      <td>{notice.date}</td>
+                      <td>{notice.views}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
           </div>
         </div>

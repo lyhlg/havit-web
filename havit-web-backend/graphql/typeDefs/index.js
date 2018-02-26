@@ -21,11 +21,7 @@ const typeDefs = `
     phone: String,
     birthday: String,
     gender: String,
-<<<<<<< HEAD
     level: Int,
-=======
-    level: Int
->>>>>>> fd4c6e2ed50abbe1f521d99501ed70f955332368
     likeArea: [String],
     likePoint: [String],
     hospitalCode: String,

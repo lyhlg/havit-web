@@ -22,7 +22,7 @@ import 'styles/css/index.css';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.checkAuth = this.checkAuth.bind(this);
+    // this.checkAuth = this.checkAuth.bind(this);
   }
 
   // checkAuth(url) {

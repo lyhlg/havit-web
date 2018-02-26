@@ -109,6 +109,24 @@ export const getHospitalAdmin = () => {
   };
 };
 
+const requestGetNotices = () => ({
+  type: types.REQUEST_GET_NOTICES,
+});
+
+const successGetNotices = notices => ({
+  type: types.SUCCESS_GET_NOTICES,
+  notices,
+});
+
+export const getNotices = () => {
+  return dispatch => {
+    dispatch(requestGetNotices());
+    return api.getNotices().then(res => {
+      dispatch(successGetNotices(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddReservation = () => ({
