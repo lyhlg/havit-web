@@ -73,10 +73,11 @@ class Signup extends Component {
       ),
       document.getElementById('code').value || '',
     ];
-    console.log(data);
-    this.props.addUserInfo(...data);
-    localStorage.removeItem('temp');
-    this.props.history.push('/signupend');
+    setTimeout(() => {
+      console.log(data);
+      this.props.addUserInfo(...data);
+      this.props.history.push('/signupend');
+    }, 2000);
   }
 
   render() {
@@ -245,7 +246,7 @@ class Signup extends Component {
               회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
             </h6>
             <div className="signup__btn">
-              <button onClick={this.submitsignup} className="signup__button">
+              <button onClick={this.submitUserInfo} className="signup__button">
                 <Link to="/signup" className="signup__btntext">
                   회원가입
                 </Link>

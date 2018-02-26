@@ -11,8 +11,12 @@ import {
 import 'styles/css/HospitalPage/HospitalPage.css';
 
 class HospitalPage extends Component {
+  componentWillMount() {
+    // this.props.checkAuth(this.props.history.location.pathname);
+  }
+
   componentDidMount() {
-    this.props.getHospital('lyhlg0201@gmail.com');
+    this.props.getHospital(localStorage.getItem('email'));
   }
 
   render() {
