@@ -13,9 +13,11 @@ import 'styles/css/AdminPage/AdminPage.css';
 class AdminPage extends Component {
   componentDidMount() {
     this.props.getHospitalAdmin();
+    this.props.getNotices();
   }
 
   render() {
+    console.log(this.props);
     return (
       <main>
         {this.props.hospitalAdmin.loading ? (
@@ -28,7 +30,10 @@ class AdminPage extends Component {
                 path="/adminPage/manageHospital"
                 render={props => <ManageHospital {...this.props} />}
               />
-              <Route path="/adminPage/notice" component={Notice} />
+              <Route
+                path="/adminPage/notice"
+                render={props => <Notice {...this.props} />}
+              />
               <Route path="/adminPage/manageBanner" component={ManageBanner} />
               <Route path="/adminPage/manageEvent" component={ManageEvent} />
             </div>

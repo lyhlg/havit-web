@@ -180,6 +180,22 @@ export const getHospitalAdmin = () => {
   });
 };
 
+export const getNotices = () => {
+  return client.query({
+    query: gql`
+      query {
+        Notices {
+          _id
+          title
+          body
+          author
+          views
+        }
+      }
+    `,
+  });
+};
+
 export const addReservation = (
   email,
   hospitalCode,

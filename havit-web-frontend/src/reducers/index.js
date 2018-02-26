@@ -8,6 +8,7 @@ import addUserInfo from './addUserInfo';
 import newUser from './newUser';
 import hospital from './hospital';
 import hospitalAdmin from './hospitalAdmin';
+import notices from './notices';
 
 export default combineReducers({
   products,
@@ -19,4 +20,5 @@ export default combineReducers({
   newUser,
   hospital,
   hospitalAdmin,
+  notices,
 });
