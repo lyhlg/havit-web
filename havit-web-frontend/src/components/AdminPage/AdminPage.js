@@ -6,6 +6,7 @@ import {
   Notice,
   ManageBanner,
   ManageEvent,
+  UploadPage,
   Loading,
 } from '../index';
 import 'styles/css/AdminPage/AdminPage.css';
