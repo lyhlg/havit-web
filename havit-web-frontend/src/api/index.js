@@ -163,6 +163,21 @@ export const getHospital = email => {
     },
   });
 };
+
+export const getHospitalAdmin = () => {
+  return client.query({
+    query: gql`
+      query {
+        HospitalAdmin {
+          code
+          name
+          loc
+        }
+      }
+    `,
+  });
+};
+
 export const addReservation = (
   email,
   hospitalCode,
