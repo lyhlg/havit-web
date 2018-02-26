@@ -29,7 +29,7 @@ const typeDefs = `
   }
   type Reservation {
     _id: ID,
-    reserveNum: Float,
+    reserveNum: String,
     user_id_email: String,
     hospitalCode: String,
     userName: String,
@@ -127,7 +127,8 @@ const typeDefs = `
     ) : Reservation,
 
     delReservation(
-      reserveNum : Float
+      user_id_email : String,
+      reserveNum : String
     ) : Reservation,
 
     addReview(

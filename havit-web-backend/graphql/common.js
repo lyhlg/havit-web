@@ -22,6 +22,7 @@ const INSERT_DB_HOSPITAL = async (params) => {
 
 const UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT = async ( params ) => {
   const [obj, { hospitalCode, user_id_email }, hospitalAdmin] = [...params];
+  console.log( hospitalCode, user_id_email);
   return await hospitalAdmin.update(
     {code: hospitalCode},
     {$set: { adminAccount: user_id_email}})
@@ -60,7 +61,7 @@ const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async (params) => {
 const REG_USER_TO_HOSPTIAL = async (params) => {
   const [obj, { hospitalCode, user_id_email }, { hospital, hospitalAdmin }] = [...params];
   const isRegHospital = await hospital.findOne({code : hospitalCode});
-  return isRegHospital
+  return await isRegHospital
     ? await UPDATE_DB_HOSPITAL([obj, { hospitalCode, user_id_email },
       { hospital, hospitalAdmin }])
     : await INSERT_DB_HOSPITAL([obj, { hospitalCode, user_id_email },

@@ -21,7 +21,7 @@ import {
 import {
   ADD_RESERVATION,
   MODIFY_RESERVATION,
-  DELETE_RESERVATION,
+  DEL_RESERVATION,
   FIX_RESERVATION,
   CONFIRM_PURCHASE,
   ADD_REVIEW,
@@ -83,7 +83,7 @@ export default {
     addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),
     addReservation: (...params) => ADD_RESERVATION(params, reserveNumCal),
     modifyReservation: (...params) => MODIFY_RESERVATION(params),
-    delReservation: (...params) => DELETE_RESERVATION(params),
+    delReservation: (...params) => DEL_RESERVATION(params),
     fixReservation: (...params) => FIX_RESERVATION(params),
     addReview: (...params) => ADD_REVIEW(params),
     addUserInfo: (...params) => ADD_USER_INFO(params),
