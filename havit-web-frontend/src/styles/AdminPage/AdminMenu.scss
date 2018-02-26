@@ -1,0 +1,41 @@
+.adminMenu {
+  width: 1200px;
+  height: 50px;
+  color: #414d6b;
+
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  .adminMenu__wrapper {
+    float: left;
+  }
+  .adminMenu__name {
+    font-size: 40px;
+    font-weight: bold;
+    color: #414d6b;
+    margin-top:80px;
+  }
+
+  .adminMenu__tab {
+    display: inline-block;
+    width: 1200px;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    margin-top: 40px;
+
+    .adminMenu__button {
+      font-size: 20px;
+      margin-right: 40px;
+      color: #414d6b;
+    }
+
+    .adminMenu__button--selected {
+      font-weight: bold;
+      color: #647dff;
+    }
+  }
+}

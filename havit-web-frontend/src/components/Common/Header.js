@@ -21,6 +21,13 @@ class Header extends Component {
         {localStorage.getItem('email') ? (
           <div className="header__right">
             <NavLink
+              to="/adminPage/manageHospital"
+              className="header__link"
+              activeClassName="header__link--selected"
+            >
+              Admin페이지
+            </NavLink>
+            <NavLink
               to="/hospitalPage/customerInfo"
               className="header__link"
               activeClassName="header__link--selected"
