@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+import { getCurrentDate } from "../../utils/index";
 
 // 변경 필요
 const bannerSchema = new Schema({
   type: String,
   subType: String,
   product: String,
-  status: { type: String, default:"판매중" },
-  priority: { type:Number, default: 100000 } ,
-  createdOn: { type: Date, default: Date.now() }
+  status: { type: String, default: "판매중" },
+  priority: { type: Number, default: 100000 },
+  createdOn: { type: Date, default: getCurrentDate() }
 });
 
 module.exports = mongoose.model('banner', bannerSchema, 'banners');

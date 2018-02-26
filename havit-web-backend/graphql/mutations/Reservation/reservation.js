@@ -41,11 +41,23 @@ const MODIFY_RESERVATION = async ( params ) => {
   }
 }
 
-const DELETE_RESERVATION = async ( params ) => {
-  const [obj, { reserveNum }, { reservation }] = [...params];
+// 예약 삭제 (고객)
+const DEL_RESERVATION = async ( params ) => {
+  const [obj, args, { reservation }] = [...params];
+  const { user_id_email, reserveNum } = args;
+  const exist = await reservation.findOne(args);
+  if (exist){
+    await reservation.remove(args);
+    return exist;
+  }
+  return {
+    user_id_email: "user_id_email is not registerd OR",
+    reserveNum: "reservation Number is Not Correct"
+  }
 
 }
 
+// 예약 확정 (병원) - 시술 시간에 기입됨
 const FIX_RESERVATION = async ( params ) => {
   const [obj, args, ctx] = [...params];
 
@@ -62,6 +74,7 @@ const FIX_RESERVATION = async ( params ) => {
   return await ctx.reservation.findOne({ reserveNum: args.reserveNum })
 }
 
+// 구매 확정 (고객) - 추가 변경 불가능
 const CONFIRM_PURCHASE = async ( params ) => {
   const [obj, args, ctx] = [...params];
 
@@ -92,7 +105,7 @@ const CONFIRM_PURCHASE = async ( params ) => {
 export {
   ADD_RESERVATION,
   MODIFY_RESERVATION,
-  DELETE_RESERVATION,
+  DEL_RESERVATION,
   FIX_RESERVATION,
   CONFIRM_PURCHASE
-}
+};

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+import { getCurrentDate } from "../../utils/index";
 
 const productSchema = new Schema({
   type: String,
@@ -17,7 +18,7 @@ const productSchema = new Schema({
   purchased: { type: Number, default: 0 },
   productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
   reviews: [String],
-  createdOn: { type: Date, default: Date.now }
+  createdOn: { type: Date, default: getCurrentDate() }
 });
 
 

@@ -1,20 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+import { getCurrentDate } from '../../utils/index';
 
-// ISO 시간 입력으로 입력 되는 date 값에 +9 시간 해준다.
-function getCurrentDate() {
-  var date = new Date();
-
-  var year = date.getFullYear();
-  var month = date.getMonth();
-  var today = date.getDate();
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var seconds = date.getSeconds();
-  var milliseconds = date.getMilliseconds();
-
-  return new Date(Date.UTC(year, month, today, hours, minutes, seconds, milliseconds));
-}
 const userSchema = new Schema({
   specId: Number,
   name: String,
@@ -25,6 +12,7 @@ const userSchema = new Schema({
   phone: String,
   birthday: String,
   gender: String,
+  level: { type: Number, default : 3 },
   likeArea: [String],
   likePoint: [String],
   reservation: [String],
