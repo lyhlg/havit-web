@@ -91,6 +91,24 @@ export const getHospital = email => {
   };
 };
 
+const requestGetHospitalAdmin = () => ({
+  type: types.REQUEST_GET_HOSPITALADMIN,
+});
+
+const successGetHospitalAdmin = hospitalAdmin => ({
+  type: types.SUCCESS_GET_HOSPITALADMIN,
+  hospitalAdmin,
+});
+
+export const getHospitalAdmin = () => {
+  return dispatch => {
+    dispatch(requestGetHospitalAdmin());
+    return api.getHospitalAdmin().then(res => {
+      dispatch(successGetHospitalAdmin(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddReservation = () => ({

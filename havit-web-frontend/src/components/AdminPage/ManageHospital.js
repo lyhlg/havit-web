@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import 'styles/css/AdminPage/ManageHospital.css';
 
 class ManageHospital extends Component {
+  componentDidMount() {
+    this.props.getHospitalAdmin();
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="manageHospital">
         <div className="manageHospital__wrapper">
@@ -20,11 +25,20 @@ class ManageHospital extends Component {
                   <th>병원 위치</th>
                   <th>관리자 계정</th>
                 </tr>
-                <td>
-                  <th>Wassup bro?</th>
-                </td>
               </thead>
-              <tbody />
+              <tbody>
+                {this.props.hospitalAdmin.hospitalAdminList.map(
+                  (hospital, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{hospital.code}</td>
+                        <td>{hospital.name}</td>
+                        <td>{hospital.loc}</td>
+                      </tr>
+                    );
+                  }
+                )}
+              </tbody>
             </table>
             <button className="manageHospital__button">병원 추가</button>
           </div>

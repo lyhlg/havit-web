@@ -15,10 +15,13 @@ class AdminPage extends Component {
       <main className="adminPage">
         <div className="adminPage__wrapper">
           <AdminMenu />
-          <Route path="/AdminPage/ManageHospital" component={ManageHospital} />
-          <Route path="/AdminPage/Notice" component={Notice} />
-          <Route path="/AdminPage/ManageBanner" component={ManageBanner} />
-          <Route path="/AdminPage/ManageEvent" component={ManageEvent} />
+          <Route
+            path="/adminPage/manageHospital"
+            render={props => <ManageHospital {...this.props} />}
+          />
+          <Route path="/adminPage/notice" component={Notice} />
+          <Route path="/adminPage/manageBanner" component={ManageBanner} />
+          <Route path="/adminPage/manageEvent" component={ManageEvent} />
         </div>
       </main>
     );

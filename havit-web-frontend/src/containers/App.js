@@ -13,6 +13,7 @@ const mapStateToProps = state => ({
   newUserInfo: state.newUserInfo,
   review: state.review,
   hospital: state.hospital,
+  hospitalAdmin: state.hospitalAdmin,
   email: window.localStorage.getItem('email') || '',
 });
 
@@ -35,6 +36,10 @@ const mapDispatchToProps = dispatch => ({
 
   getHospital: email => {
     dispatch(actions.getHospital(email));
+  },
+
+  getHospitalAdmin: () => {
+    dispatch(actions.getHospitalAdmin());
   },
 
   addReservation: (
