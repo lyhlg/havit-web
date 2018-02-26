@@ -1,25 +1,34 @@
-const GET_PAYMENT = async (params) => {
-  const [obj, args, ctx] = [...params];
+const GET_PAYMENT = async params => {
+  const [ obj, args, ctx ] = [...params];
   const { code } = args;
-  const { hospital, reservation, product } = ctx;
-  const reservationList = await reservation.find({hospitalCode:code});
-  const a = reservationList.map( async item => {
-    if ( item.openPhoneNum === 1 ){
-      console.log( '1이다 ' , item.product)
-      const calPrice = (await product.findOne(
-        {productName: item.productName, hospitalCode: item.hospitalCode},
-        {price:1, _id:0}
-      )).price
-      // console.log( calPrice. )
-      // item.product.map( product => {
-      //   console.log(product);
-      //   console.log( product.price * 0.1);
-      // })
-    }
-  })
-
-}
+  const { payment } = ctx;
+  return await payment.findOne({code:code});
+};
 
 export {
   GET_PAYMENT
-}
+};
+
+
+
+/*
+
+  const a = (await hospital.findOne({ code: code })).reservations;
+  console.log(a);
+  const b = await a.map(async item => {
+    const c = await reservation.findOne({ reserveNum: item });
+    console.log(c.openPhoneNum);
+    if (c.openPhoneNum === 1) {
+      const d = await product.find({
+        productName: c.productName,
+        hospitalCode: c.hospitalCode
+      });
+      return d.price * 0.1;
+    }
+    console.log('hihi')
+    // console.log(c);
+  });
+  (async () => {
+    console.log(await b);
+  })();
+  */

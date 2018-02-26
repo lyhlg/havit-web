@@ -10,7 +10,7 @@ const typeDefs = `
     HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product],
     getDashboardCount(code : String) : [Product],
-    Payments(code: String) : [Payment]
+    Payments(code: String) : Payment
   }
   type User {
     specId: Float,
@@ -21,6 +21,7 @@ const typeDefs = `
     phone: String,
     birthday: String,
     gender: String,
+    level: Int,
     likeArea: [String],
     likePoint: [String],
     hospitalCode: String,
@@ -83,6 +84,7 @@ const typeDefs = `
   type Hospital {
     code : String,
     adminAccount : String,
+    billing: Int,
     reservations: [Reservation],
     products: [Product]
   }
@@ -93,7 +95,9 @@ const typeDefs = `
     adminAccount: String
   }
   type Payment {
-    code: String
+    code: String,
+    count: Int,
+    price: Int
   }
 
   type Mutation {
@@ -171,6 +175,7 @@ const typeDefs = `
       phone : String
       reserveDate: String
       openPhoneNum: Int
+      hospitalCode: String
     ) : Reservation,
 
     fixReservation(
