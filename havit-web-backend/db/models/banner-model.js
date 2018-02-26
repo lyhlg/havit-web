@@ -6,7 +6,7 @@ import { getCurrentDate } from "../../utils/index";
 const bannerSchema = new Schema({
   img: String,
   url: String,
-  priority: { type: Number, default: 100000 },
+  priority: { type: Number, default: 10000 },
   status: String,
   createdOn: { type: Date, default: getCurrentDate() }
 });
