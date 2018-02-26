@@ -7,6 +7,7 @@
   padding: 0 10px; }
   .home__category h2 {
     float: left;
+    padding-left: 10px;
     font-size: 30px;
     font-weight: normal; }
   .home__category p {

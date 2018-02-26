@@ -40,9 +40,9 @@ class Privacy extends Component {
       ),
       document.getElementById('code').value || '',
     ];
-    console.log(data);
     this.props.addUserInfo(...data);
-    localStorage.removeItem('temp'), this.props.history.push('/signupend');
+    localStorage.removeItem('temp');
+    this.props.history.push('/signupend');
   }
 
   render() {

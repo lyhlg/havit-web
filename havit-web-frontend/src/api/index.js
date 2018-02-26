@@ -12,7 +12,7 @@ const client = new ApolloClient({
 export const getProducts = (type, subType, id) => {
   return client.query({
     query: gql`
-      query($type: String, $subType: String, $id: String) {
+      query($type: String, $subType: String, $id: Int) {
         Products(type: $type, subType: $subType, productId: $id) {
           _id
           type
