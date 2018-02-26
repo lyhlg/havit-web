@@ -12,8 +12,8 @@ import 'styles/css/AdminPage/AdminPage.css';
 class AdminPage extends Component {
   render() {
     return (
-      <main className="AdminPage">
-        <div className="AdminPage__wrapper">
+      <main className="adminPage">
+        <div className="adminPage__wrapper">
           <AdminMenu />
           <Route path="/AdminPage/ManageHospital" component={ManageHospital} />
           <Route path="/AdminPage/Notice" component={Notice} />

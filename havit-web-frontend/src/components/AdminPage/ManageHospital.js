@@ -7,6 +7,11 @@ class ManageHospital extends Component {
       <div className="manageHospital">
         <div className="manageHospital__wrapper">
           <div className="manageHospital__tab">
+            <input
+              name="keyword"
+              className="manageHospital__right"
+              placeholder=" Search"
+            />
             <table className="manageHospital__table">
               <thead>
                 <tr>
@@ -21,6 +26,7 @@ class ManageHospital extends Component {
               </thead>
               <tbody />
             </table>
+            <button className="manageHospital__button">병원 추가</button>
           </div>
         </div>
       </div>
