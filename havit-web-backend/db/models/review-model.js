@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+import { getCurrentDate } from "../../utils/index";
 
 const reviewSchema = new Schema({
-  user_id_email : String,
-  stars : Number,
+  user_id_email: String,
+  stars: Number,
   comment: String,
-  createdOn: { type: Date, default: Date.now },
+  createdOn: { type: Date, default: getCurrentDate() },
   product: String
 });
 

@@ -1,8 +1,16 @@
-const UPDATE_DB_USER = async (params) => {
+const UPDATE_DB_USER = async (params,level) => {
   const [obj, args, user] = [...params];
   const email = args.user_id_email;
+  // 관리자 계정
+  if ( args.user_id_email === "havitmailer@gmail.com" ){
+    console.log("해당 계정은 관리자 등록합니다.");
+    햣level = 1;
+  }
+  const memberLevel = {level: level};
+  const new_args = Object.assign(args, memberLevel);
+  console.log(new_args)
   delete args.user_id_email;
-  return await user.update({ user_id_email: email }, { $set: args });
+  return await user.update({ user_id_email: email }, { $set: new_args }, {upsert:1});
 };
 
 const UPDATE_DB_HOSPITAL = async (params) => {
@@ -42,16 +50,16 @@ const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async (params) => {
     if ( isVerifiedHospitalCode.length ){
       // 유효한 인증 번호이면, Hospital Table에 병원 추가 및 User 정보 업데이트
       await REG_USER_TO_HOSPTIAL([obj, args, { hospital, hospitalAdmin }]);
-      await UPDATE_DB_USER([obj, args, user]);
+      await UPDATE_DB_USER([obj, args, user],3);
     } else {
       // 아닐 경우에는 잘못된 hospitalCode는 null로 변경하고 User 정보 업데이트
       args.hospitalCode = null;
-      await UPDATE_DB_USER([obj, args, user]);
+      await UPDATE_DB_USER([obj, args, user],2);
     }
   } else {
     // 병원 코드 존재 하지 않을 경우 hospitalCode는 null로 변경하고 User 정보 업데이트
     args.hospitalCode = null;
-    await UPDATE_DB_USER([obj, args, user]);
+    await UPDATE_DB_USER([obj, args, user],3);
   }
   // 업데이트된 유저 정보 리턴
   return await user.findOne({user_id_email: email});

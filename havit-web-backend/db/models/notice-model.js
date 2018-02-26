@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+import { getCurrentDate } from "../../utils/index";
 
 const noticeSchema = new Schema({
   _id: Number,
@@ -7,7 +8,7 @@ const noticeSchema = new Schema({
   body: String,
   author: String,
   views: { type: Number, default: 0 },
-  createdOn: { type: Date, default: Date.now }
+  createdOn: { type: Date, default: getCurrentDate() }
 });
 
 module.exports = mongoose.model("notice", noticeSchema, "notices");

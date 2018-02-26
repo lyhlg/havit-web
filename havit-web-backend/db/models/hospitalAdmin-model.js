@@ -1,12 +1,13 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+import { getCurrentDate } from "../../utils/index";
 
 const hospitalAdminSchema = new Schema({
   code: String,
-  name : String,
+  name: String,
   loc: String,
-  adminAccount : { type: String, default: "미등록" },
-  createdOn: { type: Date, default: Date.now }
+  adminAccount: { type: String, default: "미등록" },
+  createdOn: { type: Date, default: getCurrentDate() }
 });
 
 module.exports = mongoose.model('hospitalAdmin', hospitalAdminSchema, 'hospitalAdmins');

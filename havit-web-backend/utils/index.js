@@ -1,3 +1,19 @@
+// ISO 시간 입력으로 입력 되는 date 값에 +9 시간 해준다.
+export const getCurrentDate = () => {
+  var date = new Date();
+  var year = date.getFullYear();
+  var month = date.getMonth();
+  var today = date.getDate();
+  var hours = date.getHours();
+  var minutes = date.getMinutes();
+  var seconds = date.getSeconds();
+  var milliseconds = date.getMilliseconds();
+
+  return new Date(
+    Date.UTC(year, month, today, hours, minutes, seconds, milliseconds)
+  );
+}
+
 export const reserveNumCal = () => {
   var date = new Date(),
     year = date.getFullYear(),
@@ -24,6 +40,7 @@ export const reserveNumCal = () => {
   return ChangeNumToStr(year, month, day, hour, minute, second, millisecond);
 };
 export const FRONT_DEV_SRV = 'http://localhost:3000';
+
 
 
 export const autoNumbering = async (sequenceName, targetCounter) => {
