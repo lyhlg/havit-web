@@ -172,6 +172,7 @@ export const getHospitalAdmin = () => {
           code
           name
           loc
+          adminAccount
         }
       }
     `,
