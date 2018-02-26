@@ -6,14 +6,14 @@ import 'styles/css/Common/Header.css';
 class Header extends Component {
   handleLogout() {
     localStorage.removeItem('email');
+    localStorage.removeItem('code');
     if (localStorage.getItem('kakao_32d45b3f136b81e89905f794f933f564'))
       localStorage.removeItem('kakao_32d45b3f136b81e89905f794f933f564');
-    this.props.userInfo.userInfo = [];
   }
 
   render() {
     let header;
-    if (this.props.userInfo.userInfo.length === 0) {
+    if (!localStorage.getItem('code')) {
       header = (
         <div className="header__right">
           <NavLink
@@ -39,10 +39,7 @@ class Header extends Component {
           </NavLink>
         </div>
       );
-    } else if (
-      this.props.userInfo.userInfo &&
-      this.props.userInfo.userInfo[0].level === 3
-    ) {
+    } else if (localStorage.getItem('code') === '3') {
       header = (
         <div className="header__right">
           <NavLink
@@ -82,10 +79,7 @@ class Header extends Component {
           </NavLink>
         </div>
       );
-    } else if (
-      this.props.userInfo.userInfo &&
-      this.props.userInfo.userInfo[0].level === 2
-    ) {
+    } else if (localStorage.getItem('code') === '2') {
       header = (
         <div className="header__right">
           <NavLink
