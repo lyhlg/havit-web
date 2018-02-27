@@ -32,6 +32,7 @@ class Notice extends Component {
                 })}
               </tbody>
             </table>
+            <button className="notice__button">공지사항 등록하기</button>
           </div>
         </div>
       </div>

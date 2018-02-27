@@ -7,6 +7,8 @@ import {
   ManageBanner,
   ManageEvent,
   UploadPage,
+  UploadBanner,
+  UploadHospital,
   Loading,
 } from '../index';
 import 'styles/css/AdminPage/AdminPage.css';
@@ -41,6 +43,11 @@ class AdminPage extends Component {
                 render={props => <ManageBanner {...this.props} />}
               />
               <Route path="/adminPage/manageEvent" component={ManageEvent} />
+              <Route path="/adminPage/uploadBanner" component={UploadBanner} />
+              <Route
+                path="/adminPage/uploadHospital"
+                component={UploadHospital}
+              />
             </div>
           </div>
         )}
