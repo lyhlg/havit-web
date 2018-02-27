@@ -2,6 +2,36 @@ import React, { Component } from 'react';
 import 'styles/css/HospitalPage/CustomerInfo.css';
 
 class CustomerInfo extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      temp: '',
+    };
+    this.handleChangeCare = this.handleChangeCare.bind(this);
+  }
+  handleChangeCare(e) {
+    this.setState({
+      temp: e.currentTarget.parentNode.parentNode.childNodes[5],
+    });
+    e.currentTarget.parentNode.parentNode.childNodes[5].innerHTML = `
+    <select class="setTime__button">
+      <option>01</option>
+      <option>02</option>
+    </select>
+    <select class="setTime__button">
+      <option>01</option>
+      <option>02</option>
+    </select>
+    <select class="setTime__button">
+      <option>01</option>
+      <option>02</option>
+    </select>
+    <select class="setTime__button">
+    </select>
+    <button class="customerInfo__button">등록</button>
+    <button class="customerInfo__button">취소</button>
+    `;
+  }
   render() {
     return (
       <div className="customerInfo">
@@ -14,8 +44,7 @@ class CustomerInfo extends Component {
                   <th>고객명</th>
                   <th>연락처</th>
                   <th>상품명</th>
-                  <th>상담예약일자</th>
-                  <th>상담예약시간</th>
+                  <th>상담예약일자/시간</th>
                   <th>시술일자/시간</th>
                   <th>상태</th>
                   <th>예약변경/취소</th>
@@ -28,12 +57,18 @@ class CustomerInfo extends Component {
                       <td>{reserve.reserveNum}</td>
                       <td>{reserve.userName}</td>
                       <td>{reserve.phone}</td>
-                      <td>{reserve.productName}</td>
+                      <td>
+                        {reserve.productName.length > 12
+                          ? reserve.productName.slice(0, 12) + '...'
+                          : reserve.productName}
+                      </td>
                       <td>{`${reserve.reserveDate.slice(
                         4,
                         6
-                      )}월 ${reserve.reserveDate.slice(6, 8)}일`}</td>
-                      <td>{`${reserve.reserveDate.slice(
+                      )}월 ${reserve.reserveDate.slice(
+                        6,
+                        8
+                      )}일 / ${reserve.reserveDate.slice(
                         8,
                         10
                       )}시 ${reserve.reserveDate.slice(10, 12)}분`}</td>
@@ -53,7 +88,12 @@ class CustomerInfo extends Component {
                       )}
                       <td>{reserve.status}</td>
                       <td>
-                        <button className="customerInfo__button">변경</button>
+                        <button
+                          className="customerInfo__button"
+                          onClick={this.handleChangeCare}
+                        >
+                          변경
+                        </button>
                         <button className="customerInfo__button">취소</button>
                       </td>
                     </tr>

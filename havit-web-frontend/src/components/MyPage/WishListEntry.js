@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class WishListEntry extends Component {
   render() {
-    console.log('sad', this.props.product);
     return (
       <div>
         <img src={this.props.product.img} alt="product" />
