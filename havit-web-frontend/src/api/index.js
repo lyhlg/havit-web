@@ -199,18 +199,18 @@ export const getNotices = () => {
   });
 };
 
-export const getBanners = priority => {
+export const getBanners = () => {
   return client.query({
     query: gql`
-      query($priority: Int) {
-        Banners(priority: $priority) {
+      query {
+        Banners {
+          title
+          url
           priority
+          status
         }
       }
     `,
-    variables: {
-      priority,
-    },
   });
 };
 

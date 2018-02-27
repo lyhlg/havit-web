@@ -136,10 +136,10 @@ const successGetBanners = banners => ({
   banners,
 });
 
-export const getBanners = priority => {
+export const getBanners = () => {
   return dispatch => {
     dispatch(requestGetBanners());
-    return api.getBanners(priority).then(res => {
+    return api.getBanners().then(res => {
       dispatch(successGetBanners(res));
     });
   };

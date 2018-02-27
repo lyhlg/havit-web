@@ -51,6 +51,13 @@ class AdminMenu extends Component {
             >
               test(UploadBanner)
             </NavLink>
+            <NavLink
+              to="/adminPage/uploadEvent"
+              className="adminMenu__button"
+              activeClassName="adminMenu__button--selected"
+            >
+              test(UploadEvent)
+            </NavLink>
           </div>
         </div>
       </div>

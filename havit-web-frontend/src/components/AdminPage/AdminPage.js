@@ -9,6 +9,7 @@ import {
   UploadPage,
   UploadBanner,
   UploadHospital,
+  UploadEvent,
   Loading,
 } from '../index';
 import 'styles/css/AdminPage/AdminPage.css';
@@ -48,6 +49,7 @@ class AdminPage extends Component {
                 component={UploadHospital}
               />
               <Route path="/adminPage/uploadBanner" component={UploadBanner} />
+              <Route path="/adminPage/uploadEvent" component={UploadEvent} />
             </div>
           </div>
         )}
