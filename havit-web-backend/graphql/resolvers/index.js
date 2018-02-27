@@ -4,6 +4,7 @@ import {
   FIND_RESERVATION,
   FIND_PRODUCT,
   LIKE_PRODUCT,
+  FIND_EVENT,
   GET_PRODUCT_RESERVATION,
   GET_REVIEW_LIST_OF_PRODUCT,
   FIND_REVIEW,
@@ -48,6 +49,7 @@ export default {
     Reservations: (...params) => FIND_RESERVATION(params),
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     Products: (...params) => FIND_PRODUCT(params),
+    Events: (...params) => FIND_EVENT(params),
     Reviews: (...params) => FIND_REVIEW(params),
     Notices: (...params) => FIND_NOTICE(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
@@ -58,6 +60,10 @@ export default {
   },
   Reservation: {
     product: (...params) => GET_PRODUCT_RESERVATION(params)
+  },
+  Event: {
+    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
+    options: (...params) => GET_OPTIONS_OF_PRODUCT(params)
   },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),

@@ -26,5 +26,6 @@ export {
   Banner,
   ProductCounter,
   Payment,
-  ProductOption
+  ProductOption,
+  Event
 };
