@@ -20,14 +20,23 @@
     background-color: #ffffff;
     border: solid 1px #dce2eb;
     padding-left: 10px; }
-  .uploadBanner__tab .uploadBanner__button {
-    margin-top: 30px;
-    text-align: center; }
-    .uploadBanner__tab .uploadBanner__button .uploadBanner__btn {
-      width: 160px;
-      height: 50px;
-      border-radius: 2px;
-      background-color: #647dff;
-      border: solid 1px #647dff;
-      margin-top: 10px;
-      margin-left: 40px; }
+
+.uploadBanner__button {
+  display: inline-block;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 2px;
+  background-color: #647dff;
+  border: solid 1px #647dff; }
+  .uploadBanner__button:last-child {
+    margin-right: 0; }
+  .uploadBanner__button .uploadBanner__button--selected {
+    font-weight: bold;
+    color: #647dff; }

@@ -39,9 +39,19 @@ class UploadBanner extends Component {
             <h3 className="uploadBanner__label">배너 이미지 업로드</h3>
             <input type="file" className="uploadBanner__img" />
             <button className="uploadBanner__uploadbtn">Upload</button>
-            <div className="uploadBanner__button">
-              <button className="uploadBanner__btn">배너 등록하기</button>
-              <button className="uploadBanner__btn">취소</button>
+            <div className="uploadBanner__btn">
+              <Link
+                to="/adminPage/manageBanner"
+                className="uploadBanner__button"
+              >
+                배너 등록하기
+              </Link>
+              <Link
+                to="/adminPage/manageBanner"
+                className="uploadBanner__button"
+              >
+                취소
+              </Link>
             </div>
           </div>
         </div>

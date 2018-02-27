@@ -36,9 +36,19 @@ class UploadHospital extends Component {
               className="uploadHospital__input"
               placeholder="이메일@도메인"
             />
-            <div className="uploadHospital__button">
-              <button className="uploadHospital__btn">병원 추가하기</button>
-              <button className="uploadHospital__btn">취소</button>
+            <div className="uploadHospital__btn">
+              <Link
+                to="/adminPage/manageHospital"
+                className="uploadHospital__button"
+              >
+                병원 추가하기
+              </Link>
+              <Link
+                to="/adminPage/manageHospital"
+                className="uploadHospital__button"
+              >
+                취소
+              </Link>
             </div>
           </div>
         </div>
