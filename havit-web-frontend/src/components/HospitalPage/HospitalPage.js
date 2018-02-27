@@ -16,11 +16,10 @@ class HospitalPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getHospital(localStorage.getItem('email'));
+    this.props.getHospital('lyhlg0201@gmail.com');
   }
 
   render() {
-    console.log(this.props.hospital);
     return (
       <main>
         {this.props.hospital.loading ? (

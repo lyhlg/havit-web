@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import 'styles/css/MyPage/Reserve.css';
 
 class Reserve extends Component {
-  componentDidMount() {
-    this.props.getReservations();
-  }
-
   render() {
     return (
       <div className="reserve">
@@ -27,38 +23,37 @@ class Reserve extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.reservations &&
-                  this.props.reservations.reservationsList.map((reser, i) => {
-                    return (
-                      <tr key={i}>
-                        <td>{reser.reserveNum}</td>
-                        <td>{reser.userName}</td>
-                        <td>{reser.phone}</td>
-                        <td>{reser.productName}</td>
-                        <td>
-                          {reser.reserveDate.slice(4, 6)}월{' '}
-                          {reser.reserveDate.slice(6, 8)}일
-                        </td>
-                        <td>
-                          {reser.reserveDate.slice(8, 10)}시{' '}
-                          {reser.reserveDate.slice(10, 12)}분
-                        </td>
-                        <td>
-                          {reser.careDate === '전화대기중'
-                            ? reser.careDate
-                            : `${reser.careDate.slice(
-                                4,
-                                6
-                              )}월 ${reser.careDate.slice(6, 8)}일`}
-                        </td>
-                        <td>
-                          {reser.careDate === '전화대기중'
-                            ? reser.careDate
-                            : `${reser.careDate.slice(8, 10)}시`}
-                        </td>
-                      </tr>
-                    );
-                  })}
+                {this.props.reservations.reservationsList.map((reser, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{reser.reserveNum}</td>
+                      <td>{reser.userName}</td>
+                      <td>{reser.phone}</td>
+                      <td>{reser.productName}</td>
+                      <td>
+                        {reser.reserveDate.slice(4, 6)}월{' '}
+                        {reser.reserveDate.slice(6, 8)}일
+                      </td>
+                      <td>
+                        {reser.reserveDate.slice(8, 10)}시{' '}
+                        {reser.reserveDate.slice(10, 12)}분
+                      </td>
+                      <td>
+                        {reser.careDate === '전화대기중'
+                          ? reser.careDate
+                          : `${reser.careDate.slice(
+                              4,
+                              6
+                            )}월 ${reser.careDate.slice(6, 8)}일`}
+                      </td>
+                      <td>
+                        {reser.careDate === '전화대기중'
+                          ? reser.careDate
+                          : `${reser.careDate.slice(8, 10)}시`}
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

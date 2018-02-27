@@ -2,11 +2,8 @@ import React, { Component } from 'react';
 import { WishListEntry } from '../index';
 
 class WishList extends Component {
-  componentDidMount() {
-    this.props.getLikeProducts('jyt9319@gmail.com');
-  }
-
   render() {
+    console.log(this.props.likeProducts);
     return (
       <div>
         {this.props.likeProducts &&

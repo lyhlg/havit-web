@@ -6,7 +6,6 @@ class ManageProduct extends Component {
     this.props.history.push(`/products/${e.currentTarget.id}`);
   }
   render() {
-    console.log(this.props.hospital);
     const type = {
       skin: '피부시술',
       beauty: '뷰티시술',

@@ -76,6 +76,7 @@ export const getLikeProducts = email => {
         LikeProducts(user_id_email: $email) {
           _id
           type
+          productId
           subType
           img
           hospitalCode
@@ -108,6 +109,8 @@ export const getUserInfo = email => {
           birthday
           gender
           level
+          likeArea
+          likePoint
           hospitalCode
         }
       }
