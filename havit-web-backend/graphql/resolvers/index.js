@@ -1,4 +1,4 @@
-import { reserveNumCal } from '../../utils';
+import { reserveNumCal } from "../../utils";
 import {
   FIND_USER,
   FIND_RESERVATION,
@@ -16,8 +16,8 @@ import {
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
   GET_DASHBOARD_COUNT,
+  GET_OPTIONS_OF_PRODUCT
 } from "../queries";
-
 
 import {
   ADD_RESERVATION,
@@ -40,7 +40,6 @@ import {
   MODIFY_BANNER,
   DEL_BANNER
 } from "../mutations";
-
 
 export default {
   // QUERY (GET DATA)
@@ -65,7 +64,8 @@ export default {
     products: (...params) => GET_HOSPITAL_PRODUCT_LIST(params)
   },
   Product: {
-    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params)
+    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
+    options: (...params) => GET_OPTIONS_OF_PRODUCT(params)
   },
   User: {
     reservation: (...params) => FIND_RESERVATION(params),

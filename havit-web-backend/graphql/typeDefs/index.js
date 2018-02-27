@@ -10,7 +10,8 @@ const typeDefs = `
     HospitalAdmin(code:String) : [HospitalAdmin],
     LikeProducts(user_id_email:String) : [Product],
     getDashboardCount(code : String) : [Product],
-    Payments(code: String) : Payment
+    Payments(code: String) : Payment,
+    Options : [Option]
   }
   type User {
     specId: Float,
@@ -57,6 +58,7 @@ const typeDefs = `
     price: Int,
     purchased: Int,
     productDetail: String,
+    options: Option,
     reviews: [Review]
   }
   type Notice {
@@ -99,6 +101,11 @@ const typeDefs = `
     count: Int,
     price: Int
   }
+  type Option {
+    type : [String],
+    subType : [String],
+    productId: Int
+  }
 
   type Mutation {
 
@@ -113,6 +120,7 @@ const typeDefs = `
       description: String,
       price: Int,
       productDetail: String,
+      options: [String]
     ) : Product,
 
     editProduct(
@@ -120,10 +128,13 @@ const typeDefs = `
       type: String,
       subType: String,
       img: String,
+      hospitalLoc: String,
+      hospitalName: String,
       productName: String,
       description: String,
       price: Int,
-      productDetail: String
+      productDetail: String,
+      options: [String]
     ) : Product,
 
     addReservation(

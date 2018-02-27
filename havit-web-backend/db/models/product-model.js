@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 import { getCurrentDate } from "../../utils/index";
 
@@ -18,11 +18,11 @@ const productSchema = new Schema({
   purchased: { type: Number, default: 0 },
   productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
   reviews: [String],
+  options: String,
   createdOn: { type: Date, default: getCurrentDate() }
 });
 
-
-module.exports = mongoose.model('product', productSchema);
+module.exports = mongoose.model("product", productSchema);
 
 // dummy
 /*
@@ -258,3 +258,25 @@ db.products.insert([{
   reviews: []
 }])
 */
+
+// optaion dummy
+// {
+//   type: 'skin',
+//   subType: 'filling',
+//   productId: 1,
+//   img: 'https://dummyimage.com/280x280',
+//   hospitalCode: 'AAAA100000',
+//   hospitalLoc: '신사역',
+//   hospitalName: '제이디클리닉',
+//   productName: "여드름제로 7단계까지 풀패키지 129,000",
+//   description: '시술해드립니다.',
+//   price: 200000,
+//   option : {
+//     A: "여드름 패키지 1회",
+//     B: "여드름 패키지 3회 + 211,000"
+//   },
+//   status: "판매중",
+//   purchased: 72,
+//   productDetail: './image/det2ail/test.jpg',
+//   reviews: []
+// }
