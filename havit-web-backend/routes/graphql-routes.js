@@ -13,7 +13,8 @@ import {
   Banner,
   ProductCounter,
   Payment,
-  ProductOption
+  ProductOption,
+  Event
 } from "../db";
 import schema from "../graphql";
 
@@ -38,7 +39,8 @@ router.use(
       banner: Banner,
       productCounter: ProductCounter,
       payment: Payment,
-      productOption: ProductOption
+      productOption: ProductOption,
+      event: Event
     }
   })
 );

@@ -20,6 +20,7 @@ import FIND_HOSPITAL_ADMIN from "./HospitalAdmin/hospitalAdmin";
 import { GET_BANNER_LIST, GET_BANNER_FROM_PRODUCT } from "./Banner/banner";
 import { GET_PAYMENT } from "./Payment/payment";
 import { GET_OPTIONS_OF_PRODUCT } from "./Option/option";
+import { FIND_EVENT } from "./Event/event";
 
 export {
   FIND_USER,
@@ -39,5 +40,6 @@ export {
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
   GET_PAYMENT,
-  GET_OPTIONS_OF_PRODUCT
+  GET_OPTIONS_OF_PRODUCT,
+  FIND_EVENT
 };

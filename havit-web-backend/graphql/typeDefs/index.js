@@ -3,6 +3,7 @@ const typeDefs = `
     Users(user_id_email: String) : [User],
     Reservations(user_id_email:String, hospitalCode: String, status: String, hospitalCode: String) : [Reservation],
     Products (type: String, subType: String, limit: Int, page: Int, productId: Int) : [Product],
+    Events(hospitalCode: String, productId: Int, limit: Int, page: Int) : [Event]
     Notices(id: Int) : [Notice],
     Banners(status: String): [Banner],
     Reviews: [Review],
@@ -43,6 +44,22 @@ const typeDefs = `
     careDate: String,
     status: String,
     product: [Product]
+  }
+  type Event {
+    _id: ID,
+    productId : Int,
+    hospitalCode: String,
+    hospitalLoc: String,
+    hospitalName: String,
+    productName: String,
+    description: String,
+    price: Int,
+    status: String,
+    priority: Int,
+    purchased: Int,
+    productImage: String,
+    reviews: [Review],
+    options: Option
   }
   type Product {
     _id: ID,
@@ -240,6 +257,7 @@ const typeDefs = `
 
     modifyBanner(
       img: String,
+      title: String,
       url: String,
       priority: Int,
       status: String
