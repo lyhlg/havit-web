@@ -35,8 +35,11 @@
 }
 
 .manageHospital__button {
-  width: 140px;
+  display: inline-block;
+  width: 150px;
   height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
   margin-right: 5px;
   font-size: 12px;
   font-weight: bold;
@@ -48,5 +51,10 @@
 
   &:last-child {
     margin-right: 0;
+  }
+
+  .manageHospital__button--selected {
+    font-weight: bold;
+        color: #647dff;
   }
 }

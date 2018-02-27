@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ManageEvent.css';
 
 class ManageEvent extends Component {
@@ -40,8 +41,10 @@ class ManageEvent extends Component {
                   );
                 })}
               </tbody>
-              <button className="manageEvent__button">이벤트 등록하기</button>
             </table>
+            <Link to="/adminPage/uploadEvent" className="manageEvent__button">
+              이벤트 등록하기
+            </Link>
           </div>
         </div>
       </div>
