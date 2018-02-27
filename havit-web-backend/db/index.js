@@ -1,15 +1,16 @@
-import User from './models/user-model';
-import Review from './models/review-model';
-import Reservation from './models/reservation-model';
-import Product from './models/product-model';
-import Notice from './models/notice-model';
+import User from "./models/user-model";
+import Review from "./models/review-model";
+import Reservation from "./models/reservation-model";
+import Product from "./models/product-model";
+import Notice from "./models/notice-model";
 import NoticeCounter from "./models/notice-counter-model";
-import MailAuth from './models/mailauth-model';
-import HospitalAdmin from './models/hospitalAdmin-model';
-import Hospital from './models/hospital-model';
-import Banner from './models/banner-model';
-import ProductCounter from './models/product-counter-model';
-import Payment from './models/payment-model';
+import MailAuth from "./models/mailauth-model";
+import HospitalAdmin from "./models/hospitalAdmin-model";
+import Hospital from "./models/hospital-model";
+import Banner from "./models/banner-model";
+import ProductCounter from "./models/product-counter-model";
+import Payment from "./models/payment-model";
+import ProductOption from "./models/product-option-model";
 
 export {
   User,
@@ -23,5 +24,6 @@ export {
   Hospital,
   Banner,
   ProductCounter,
-  Payment
+  Payment,
+  ProductOption
 };
