@@ -43,11 +43,11 @@ class AdminPage extends Component {
                 render={props => <ManageBanner {...this.props} />}
               />
               <Route path="/adminPage/manageEvent" component={ManageEvent} />
-              <Route path="/adminPage/uploadBanner" component={UploadBanner} />
               <Route
                 path="/adminPage/uploadHospital"
                 component={UploadHospital}
               />
+              <Route path="/adminPage/uploadBanner" component={UploadBanner} />
             </div>
           </div>
         )}

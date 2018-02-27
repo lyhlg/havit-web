@@ -17,9 +17,9 @@ class ManageBanner extends Component {
             <table className="manageBanner__table">
               <thead>
                 <tr>
-                  <th>번호</th>
-                  <th>배너상품</th>
-                  <th>URL</th>
+                  <th>우선순위</th>
+                  <th>상품명</th>
+                  <th>상품 URL</th>
                   <th>상태</th>
                 </tr>
               </thead>
