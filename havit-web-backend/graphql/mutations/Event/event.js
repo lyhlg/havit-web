@@ -15,7 +15,7 @@ const ADD_EVENT = async params => {
 };
 
 const DEL_EVENT = async params => {
-  const [obj, args, ctx] = [...params];
+  const [ obj, args, ctx ] = [...params];
   const { hospitalCode, productId } = args;
   const { event } = ctx;
 
