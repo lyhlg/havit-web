@@ -173,7 +173,7 @@ const typeDefs = `
       user_id_email: String,
       stars: Float,
       comment: String,
-      product: String
+      productId: Int
     ) : Review,
 
     addUser(

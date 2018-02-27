@@ -52,7 +52,7 @@ export default {
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     Products: (...params) => FIND_PRODUCT(params),
     Events: (...params) => FIND_EVENT(params),
-    Reviews: (...params) => FIND_REVIEW(params),
+    Reviews: (...params) => FIND_REVIEW(params,),
     Notices: (...params) => FIND_NOTICE(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),

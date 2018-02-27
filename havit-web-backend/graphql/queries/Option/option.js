@@ -1,12 +1,9 @@
-const GET_OPTIONS_OF_PRODUCT = (params) => {
-  console.log('hihi');
-  return {
-    type: ['a','b','c'],
-    subType: ['1','2','3'],
-    productId:1
-  }
-}
+const GET_OPTIONS_OF_PRODUCT = params => {
+  const [obj, args, ctx] = [...params];
+  const { productId } = obj;
+  const { productOption } = ctx;
 
-export {
-  GET_OPTIONS_OF_PRODUCT
-}
+  return productOption.findOne({productId});
+};
+
+export { GET_OPTIONS_OF_PRODUCT };
