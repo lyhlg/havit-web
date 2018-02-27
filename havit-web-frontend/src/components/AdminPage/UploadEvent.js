@@ -53,9 +53,13 @@ class UploadEvent extends Component {
               <option value="ing">진행중</option>
               <option value="done">종료</option>
             </select>
-            <div className="uploadEvent__button">
-              <button className="uploadEvent__btn">이벤트 등록하기</button>
-              <button className="uploadEvent__btn">취소</button>
+            <div className="uploadEvent__btn">
+              <Link to="/adminPage/manageEvent" className="uploadEvent__button">
+                병원 추가하기
+              </Link>
+              <Link to="/adminPage/manageEvent" className="uploadEvent__button">
+                취소
+              </Link>
             </div>
           </div>
         </div>

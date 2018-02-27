@@ -20,14 +20,23 @@
     background-color: #ffffff;
     border: solid 1px #dce2eb;
     padding-left: 10px; }
-  .uploadHospital__tab .uploadHospital__button {
-    margin-top: 30px;
-    text-align: center; }
-    .uploadHospital__tab .uploadHospital__button .uploadHospital__btn {
-      width: 160px;
-      height: 50px;
-      border-radius: 2px;
-      background-color: #647dff;
-      border: solid 1px #647dff;
-      margin-top: 10px;
-      margin-left: 40px; }
+
+.uploadHospital__button {
+  display: inline-block;
+  width: 150px;
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 2px;
+  background-color: #647dff;
+  border: solid 1px #647dff; }
+  .uploadHospital__button:last-child {
+    margin-right: 0; }
+  .uploadHospital__button .uploadHospital__button--selected {
+    font-weight: bold;
+    color: #647dff; }
