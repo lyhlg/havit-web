@@ -50,8 +50,8 @@ class UploadEvent extends Component {
             <button className="uploadEvent__uploadbtn">Upload</button>
             <h3 className="uploadEvent__label">상태</h3>
             <select id="type" className="uploadEvent__dropdown">
-              <option value="ing">판매중</option>
-              <option value="done">판매종료</option>
+              <option value="ing">진행중</option>
+              <option value="done">종료</option>
             </select>
             <div className="uploadEvent__button">
               <button className="uploadEvent__btn">이벤트 등록하기</button>
