@@ -2,12 +2,21 @@ import { autoNumbering } from "../../../utils/index";
 
 const ADD_EVENT = async params => {
   const [obj, args, ctx] = [...params];
-  const { event, productCounter } = ctx;
+  const { event, productCounter, hospitalAdmin } = ctx;
   const realVal = Object.keys(args).length;
   const number = await autoNumbering("productid", productCounter);
+  const hospitalInfo = await hospitalAdmin.findOne(
+    { code: args.hospitalCode },
+    { loc: 1, name: 1, _id: 0 }
+  );
+
+  const new_hospitalInfo = {
+    hospitalName: hospitalInfo.name,
+    hospitalLoc: hospitalInfo.loc
+  }
 
   let productId_counter = { productId: number };
-  let new_args = Object.assign(args, productId_counter);
+  let new_args = Object.assign(args, productId_counter, new_hospitalInfo);
 
   if (realVal === 7) {
     return await event(new_args).save();
@@ -15,15 +24,13 @@ const ADD_EVENT = async params => {
 };
 
 const DEL_EVENT = async params => {
-  const [ obj, args, ctx ] = [...params];
+  const [obj, args, ctx] = [...params];
   const { hospitalCode, productId } = args;
   const { event } = ctx;
 
-  await event.update(
-    { productId },
-    { status : "종료" })
+  await event.update({ productId }, { status: "종료" });
 
-  return await event.findOne({ productId : productId });
+  return await event.findOne({ productId: productId });
 };
 
 export { ADD_EVENT, DEL_EVENT };
