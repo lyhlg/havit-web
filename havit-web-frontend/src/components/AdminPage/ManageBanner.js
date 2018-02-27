@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ManageBanner.css';
 
 class ManageBanner extends Component {
@@ -36,14 +36,9 @@ class ManageBanner extends Component {
                 })}
               </tbody>
             </table>
-            <button className="manageBanner__button">배너 등록하기</button>
-            <NavLink
-              to="/adminPage/uploadBanner"
-              className="uploadBanner__button"
-              activeClassName="uploadBanner__button--selected"
-            >
+            <Link to="/adminPage/uploadBanner" className="manageBanner__button">
               배너 등록하기
-            </NavLink>
+            </Link>
           </div>
         </div>
       </div>
