@@ -145,6 +145,24 @@ export const getBanners = () => {
   };
 };
 
+const requestGetEvents = () => ({
+  type: types.REQUEST_GET_EVENTS,
+});
+
+const successGetEvents = events => ({
+  type: types.SUCCESS_GET_EVENTS,
+  events,
+});
+
+export const getEvents = () => {
+  return dispatch => {
+    dispatch(requestGetEvents());
+    return api.getEvents().then(res => {
+      dispatch(successGetEvents(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddReservation = () => ({

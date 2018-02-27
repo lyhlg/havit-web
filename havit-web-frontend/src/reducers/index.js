@@ -10,6 +10,7 @@ import hospital from './hospital';
 import hospitalAdmin from './hospitalAdmin';
 import notices from './notices';
 import banners from './banners';
+import events from './events';
 
 export default combineReducers({
   products,
@@ -23,4 +24,5 @@ export default combineReducers({
   hospitalAdmin,
   notices,
   banners,
+  events,
 });

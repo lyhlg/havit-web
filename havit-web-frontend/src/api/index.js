@@ -214,6 +214,22 @@ export const getBanners = () => {
   });
 };
 
+export const getEvents = () => {
+  return client.query({
+    query: gql`
+      query {
+        Events {
+          priority
+          productName
+          price
+          purchased
+          status
+        }
+      }
+    `,
+  });
+};
+
 export const addReservation = (
   email,
   hospitalCode,
