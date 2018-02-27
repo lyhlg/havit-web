@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ManageHospital.css';
 
 class ManageHospital extends Component {
@@ -37,7 +38,12 @@ class ManageHospital extends Component {
                 )}
               </tbody>
             </table>
-            <button className="manageHospital__button">병원 추가하기</button>
+            <Link
+              to="/adminPage/uploadHospital"
+              className="manageHospital__button"
+            >
+              병원 추가하기
+            </Link>
           </div>
         </div>
       </div>

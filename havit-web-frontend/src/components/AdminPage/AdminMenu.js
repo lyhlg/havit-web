@@ -37,27 +37,6 @@ class AdminMenu extends Component {
             >
               이벤트관리
             </NavLink>
-            <NavLink
-              to="/adminPage/uploadHospital"
-              className="adminMenu__button"
-              activeClassName="adminMenu__button--selected"
-            >
-              test(UploadHospital)
-            </NavLink>
-            <NavLink
-              to="/adminPage/uploadBanner"
-              className="adminMenu__button"
-              activeClassName="adminMenu__button--selected"
-            >
-              test(UploadBanner)
-            </NavLink>
-            <NavLink
-              to="/adminPage/uploadEvent"
-              className="adminMenu__button"
-              activeClassName="adminMenu__button--selected"
-            >
-              test(UploadEvent)
-            </NavLink>
           </div>
         </div>
       </div>
