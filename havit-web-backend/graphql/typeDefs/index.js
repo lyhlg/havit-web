@@ -71,6 +71,7 @@ const typeDefs = `
   }
   type Banner {
     _id: ID,
+    title: String,
     img: String,
     url: String,
     priority: Int,
@@ -231,6 +232,7 @@ const typeDefs = `
 
     addBanner(
       img: String,
+      title: String,
       url: String,
       priority: Int,
       status: String

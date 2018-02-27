@@ -4,14 +4,14 @@ import { CHECK_DUP_DATA } from "../../common";
 
 const ADD_BANNER = async params => {
   const [obj, args, ctx] = [...params];
-  const { img, url, priority, status } = args;
+  const { title, img, url, priority, status } = args;
   const { banner } = ctx;
   // const productSubInfo = await GET_PRODUCT_OID_USING_PRODUCTID([
   // obj, {productId: productId}, product])
   const chk_dup = await CHECK_DUP_DATA([obj, { url: url }, banner]);
-  console.log(chk_dup);
   if (!chk_dup) {
     return await new banner({
+      title : title,
       img: img,
       url: url,
       priority: priority,
