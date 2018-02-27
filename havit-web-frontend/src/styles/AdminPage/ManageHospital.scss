@@ -1,6 +1,6 @@
 .manageHospital__right {
-    float: right;
-  }
+  float: right;
+}
 
 .manageHospital__table {
   width: 1200px;
@@ -35,7 +35,8 @@
 }
 
 .manageHospital__button {
-  display: inline-block;
+  float: right;
+  margin: 15px;
   width: 150px;
   height: 60px;
   line-height: 60px;

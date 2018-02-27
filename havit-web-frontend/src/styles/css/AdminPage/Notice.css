@@ -1,3 +1,6 @@
+.notice__right {
+  float: right; }
+
 .notice__table {
   width: 1200px;
   text-align: left;
@@ -25,6 +28,8 @@
     color: #495057; }
 
 .notice__button {
+  float: right;
+  margin: 15px;
   width: 180px;
   height: 60px;
   margin-right: 5px;
