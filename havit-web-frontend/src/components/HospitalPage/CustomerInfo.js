@@ -6,29 +6,50 @@ class CustomerInfo extends Component {
     super(props);
     this.state = {
       temp: '',
+      month: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
+      date: 0,
     };
+    this.submitCareDate = this.submitCareDate.bind(this);
     this.handleChangeCare = this.handleChangeCare.bind(this);
+  }
+
+  submitCareDate() {
+    console.log('sadas');
   }
   handleChangeCare(e) {
     this.setState({
       temp: e.currentTarget.parentNode.parentNode.childNodes[5],
     });
     e.currentTarget.parentNode.parentNode.childNodes[5].innerHTML = `
-    <select class="setTime__button">
-      <option>01</option>
-      <option>02</option>
+    <select class="setTime__button" id="setTimeMonth">
+      <option>월</option>
+      ${Array(13)
+        .fill(0)
+        .map((a, i) => ((a + i).toString().length < 2 ? '0' + (a + i) : a + i))
+        .reduce((x, y) => x + '<option>' + y + '</option>')}
     </select>
     <select class="setTime__button">
-      <option>01</option>
-      <option>02</option>
+      <option>일</option>
+      ${Array(32)
+        .fill(0)
+        .map((a, i) => ((a + i).toString().length < 2 ? '0' + (a + i) : a + i))
+        .reduce((x, y) => x + '<option>' + y + '</option>')}
     </select>
     <select class="setTime__button">
-      <option>01</option>
-      <option>02</option>
+    <option>시</option>
+    ${Array(25)
+      .fill(0)
+      .map((a, i) => ((a + i).toString().length < 2 ? '0' + (a + i) : a + i))
+      .reduce((x, y) => x + '<option>' + y + '</option>')}
     </select>
     <select class="setTime__button">
+    <option>분</option>
+    ${Array(61)
+      .fill(0)
+      .map((a, i) => ((a + i).toString().length < 2 ? '0' + (a + i) : a + i))
+      .reduce((x, y) => x + '<option>' + y + '</option>')}
     </select>
-    <button class="customerInfo__button">등록</button>
+    <button class="customerInfo__button" onClick="submitCareDate">등록</button>
     <button class="customerInfo__button">취소</button>
     `;
   }
