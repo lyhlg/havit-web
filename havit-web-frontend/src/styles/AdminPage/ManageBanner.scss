@@ -31,23 +31,23 @@
 }
 
 .manageBanner__button {
-width: 140px;
-height: 60px;
-margin-right: 5px;
-font-size: 12px;
-font-weight: bold;
-text-align: center;
-color: #ffffff;
-border-radius: 2px;
-background-color: #647dff;
-border: solid 1px #647dff;
-
-&:last-child {
-  margin-right: 0;
-}
-
-.uploadBanner__button--selected {
+  width: 150px;
+  height: 60px;
+  margin-right: 5px;
+  font-size: 12px;
   font-weight: bold;
-      color: #647dff;
-}
+  text-align: center;
+  color: #ffffff;
+  border-radius: 2px;
+  background-color: #647dff;
+  border: solid 1px #647dff;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  .manageBanner__button--selected {
+    font-weight: bold;
+        color: #647dff;
+  }
 }

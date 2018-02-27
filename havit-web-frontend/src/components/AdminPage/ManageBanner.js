@@ -28,6 +28,9 @@ class ManageBanner extends Component {
                   return (
                     <tr key={i}>
                       <td>{banner.priority}</td>
+                      <td>{banner.title}</td>
+                      <td>{banner.url}</td>
+                      <td>{banner.status}</td>
                     </tr>
                   );
                 })}

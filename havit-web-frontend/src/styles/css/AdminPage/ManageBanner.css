@@ -25,7 +25,7 @@
     color: #495057; }
 
 .manageBanner__button {
-  width: 140px;
+  width: 150px;
   height: 60px;
   margin-right: 5px;
   font-size: 12px;
@@ -37,6 +37,6 @@
   border: solid 1px #647dff; }
   .manageBanner__button:last-child {
     margin-right: 0; }
-  .manageBanner__button .uploadBanner__button--selected {
+  .manageBanner__button .manageBanner__button--selected {
     font-weight: bold;
     color: #647dff; }
