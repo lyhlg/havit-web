@@ -1,5 +1,5 @@
 const FIND_EVENT = async params => {
-  const [obj, args, ctx] = [...params];
+  const [ obj, args, ctx ] = [...params];
   const { hospitalCode, limit, page } = args;
   const { event } = ctx;
 
@@ -7,14 +7,10 @@ const FIND_EVENT = async params => {
   if (!page) args.page = 1;
 
   if (hospitalCode) {
-    var a = await event.find({ hospitalCode: hospitalCode });
-    console.log(a);
-    return a;
+    return await event.find({ hospitalCode: hospitalCode });
   }
   else if (!hospitalCode) {
-    var a = await event.find();
-    console.log(a);
-    return a;
+    return await event.find();
   }
 };
 
