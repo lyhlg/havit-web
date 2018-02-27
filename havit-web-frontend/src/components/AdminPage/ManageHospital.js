@@ -37,7 +37,7 @@ class ManageHospital extends Component {
                 )}
               </tbody>
             </table>
-            <button className="manageHospital__button">병원 추가</button>
+            <button className="manageHospital__button">병원 추가하기</button>
           </div>
         </div>
       </div>

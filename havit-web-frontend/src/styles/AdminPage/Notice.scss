@@ -29,3 +29,20 @@
     color: #495057;
   }
 }
+
+.notice__button {
+  width: 180px;
+  height: 60px;
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 2px;
+  background-color: #647dff;
+  border: solid 1px #647dff;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
