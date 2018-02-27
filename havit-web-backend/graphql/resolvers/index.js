@@ -39,7 +39,9 @@ import {
   DEL_NOTICE,
   ADD_BANNER,
   MODIFY_BANNER,
-  DEL_BANNER
+  DEL_BANNER,
+  ADD_EVENT,
+  DEL_EVENT
 } from "../mutations";
 
 export default {
@@ -50,7 +52,7 @@ export default {
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     Products: (...params) => FIND_PRODUCT(params),
     Events: (...params) => FIND_EVENT(params),
-    Reviews: (...params) => FIND_REVIEW(params),
+    Reviews: (...params) => FIND_REVIEW(params,),
     Notices: (...params) => FIND_NOTICE(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
@@ -102,6 +104,8 @@ export default {
     delNotice: (...params) => DEL_NOTICE(params),
     addBanner: (...params) => ADD_BANNER(params),
     modifyBanner: (...params) => MODIFY_BANNER(params),
-    delBanner: (...params) => DEL_BANNER(params)
+    delBanner: (...params) => DEL_BANNER(params),
+    addEvent: (...params) => ADD_EVENT(params),
+    delEvent: (...params) => DEL_EVENT(params)
   }
 };

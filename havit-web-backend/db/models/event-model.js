@@ -11,7 +11,7 @@ const eventSchema = new Schema({
   productName: String,
   description: String,
   price: Number,
-  status: String,
+  status: { type: String, default: "진행중"},
   priority: { type: Number, default: 100 },
   purchased: { type: Number, default: 0 },
   productImage: { type: String, default: "https://dummyimage.com/1180x560" },
@@ -25,12 +25,13 @@ module.exports = mongoose.model("event", eventSchema, "events");
 // db.events.insert([
 //   {
 //     productId: 100,
-//     hospitalCode: "A",
-//     hospitalLoc: "삼성동",
-//     hospitalName: "삼성병원",
-//     productName: "테스트더미입니다.",
-//     description: "테스트더미입니다.",
-//     price: 190000,
+//     hospitalCode: "AAAA100003",
+//     hospitalLoc: "강남",
+//     hospitalName: "포에버성형외과",
+//     productName: "자체발광 피부 만들기!",
+//     description:
+//       "셀렉레이저 + 포토샤워 + 레이저토닝 + 비타민 미백관리 모두 한번에!.",
+//     price: 99000,
 //     status: "진행중",
 //     priority: 3,
 //     purchased: 23,
@@ -39,32 +40,31 @@ module.exports = mongoose.model("event", eventSchema, "events");
 //   },
 //   {
 //     productId: 101,
-//     hospitalCode: "A",
-//     hospitalLoc: "삼성동",
-//     hospitalName: "삼성병원",
-//     productName: "테스트더미입니다2.",
-//     description: "테스트더미입니다2.",
-//     price: 300000,
+//     hospitalCode: "AAAA100003",
+//     hospitalLoc: "강남",
+//     hospitalName: "포에버성형외과",
+//     productName: "입술필러 + 입꼬리필러.",
+//     description:
+//       "처진 입꼬리는 올리고 얇고 작은 입술은 도톰하게! 닥터홈즈 키스필러.",
+//     price: 150000,
 //     status: "종료",
 //     priority: 4,
 //     purchased: 242,
 //     productImage: "https://dummyimage.com/1180x560",
 //     reviews: []
-//   }
-// ]);
-
-// db.events.insert(
+//   },
 //   {
 //     productId: 102,
-//     hospitalCode: "B",
-//     hospitalLoc: "삼성동",
-//     hospitalName: "삼성병원",
-//     productName: "테스트더미입니다.3",
-//     description: "테스트더미입니다.3",
+//     hospitalCode: "AAAA100005",
+//     hospitalLoc: "청담",
+//     hospitalName: "유마스템의원",
+//     productName: "2018 수험생 성형이벤트",
+//     description: "2018 수험생 전용! 눈성형, 콧대성형, 필러 다양한 이벤트!",
 //     price: 190000,
 //     status: "진행중",
 //     priority: 3,
 //     purchased: 23,
 //     productImage: "https://dummyimage.com/1180x560",
 //     reviews: []
-//   })
+//   }
+// ]);

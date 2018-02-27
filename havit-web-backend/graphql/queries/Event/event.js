@@ -7,15 +7,15 @@ const FIND_EVENT = async params => {
   if (!page) args.page = 1;
 
   if (hospitalCode) {
-    var a = await event.find({ hospitalCode: hospitalCode });
-    console.log(a);
-    return a;
+    return await event.find({ hospitalCode: hospitalCode });
+  } else {
+    return await event
+      .find()
+      .sort({ priority: 1 })
+      .skip((page - 1) * args.limit)
+      .limit(limit);
   }
-  else if (!hospitalCode) {
-    var a = await event.find();
-    console.log(a);
-    return a;
-  }
+  // 만약 Hospital이 event를 확인하고 싶으면 obj에 대한 내용 추가 필요
 };
 
 export { FIND_EVENT };

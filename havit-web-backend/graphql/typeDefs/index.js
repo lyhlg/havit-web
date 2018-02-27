@@ -173,7 +173,7 @@ const typeDefs = `
       user_id_email: String,
       stars: Float,
       comment: String,
-      product: String
+      productId: Int
     ) : Review,
 
     addUser(
@@ -195,7 +195,7 @@ const typeDefs = `
 
     addLikeProducts(
       user_id_email: String,
-      productId : String,
+      productId :Int
     ) : User,
 
     modifyReservation(
@@ -266,6 +266,21 @@ const typeDefs = `
     delBanner(
       url: String
     ) : Banner
+
+    addEvent(
+      hospitalCode: String,
+      productName: String,
+      description: String,
+      price: Int,
+      status: String,
+      priority: Int,
+      productImage: String
+    ) : Event
+
+    delEvent(
+      hospitalCode: String,
+      productId: Int
+    ) : Event
   }
 `;
 
