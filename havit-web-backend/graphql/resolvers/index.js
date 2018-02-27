@@ -39,7 +39,9 @@ import {
   DEL_NOTICE,
   ADD_BANNER,
   MODIFY_BANNER,
-  DEL_BANNER
+  DEL_BANNER,
+  ADD_EVENT,
+  DEL_EVENT
 } from "../mutations";
 
 export default {
@@ -102,6 +104,8 @@ export default {
     delNotice: (...params) => DEL_NOTICE(params),
     addBanner: (...params) => ADD_BANNER(params),
     modifyBanner: (...params) => MODIFY_BANNER(params),
-    delBanner: (...params) => DEL_BANNER(params)
+    delBanner: (...params) => DEL_BANNER(params),
+    addEvent: (...params) => ADD_EVENT(params),
+    delEvent: (...params) => DEL_EVENT(params)
   }
 };
