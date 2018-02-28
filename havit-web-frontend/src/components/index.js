@@ -5,6 +5,7 @@ export { default as Banner } from './Common/Banner';
 export { default as Product } from './Common/Product';
 export { default as ProductEntry } from './Common/ProductEntry';
 export { default as ProductDetail } from './Common/ProductDetail';
+export { default as ProductReserve } from './Common/ProductReserve';
 export { default as Empty } from './Common/Empty';
 export { default as Loading } from './Common/Loading';
 export { default as NotFound } from './Common/NotFound';

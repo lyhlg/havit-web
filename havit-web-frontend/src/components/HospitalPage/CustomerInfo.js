@@ -105,7 +105,7 @@ class CustomerInfo extends Component {
                         )}일/${reserve.careDate.slice(
                           8,
                           10
-                        )}시 ${reserve.careDate.slice(10, 12) || '00'}분`}</td>
+                        )}시~${reserve.careDate.slice(10, 12) || '00'}시`}</td>
                       )}
                       <td>{reserve.status}</td>
                       <td>

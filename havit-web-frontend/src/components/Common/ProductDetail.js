@@ -1,23 +1,77 @@
 import React, { Component } from 'react';
+import { ProductReserve } from '../index';
+import { Link } from 'react-router-dom';
 import 'styles/css/Common/ProductDetail.css';
 
 class ProductDetail extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      purchase: 'none',
+      purchaseBtn: 'block',
+    };
+    this.handleReserve = this.handleReserve.bind(this);
+  }
+
   componentDidMount() {
     this.props.getProducts('', '', this.props.location.pathname.slice(10));
   }
 
+  handleReserve() {
+    this.setState({
+      purchase: this.state.purchase === 'none' ? 'block' : 'none',
+      purchaseBtn: this.state.purchaseBtn === 'none' ? 'block' : 'none',
+    });
+  }
+
   render() {
+    const type = {
+      skin: '피부시술',
+      beauty: '뷰티시술',
+      laser: '피부레이저',
+      scaling: '스케일링',
+      peeling: '필링',
+      waxing: '제모',
+      semi: '반영구',
+      shot: '미용주사',
+      filler: '필러',
+      botox: '보톡스',
+      outline: '윤곽',
+      lifting: '리프팅',
+    };
+    const toggleBtn = {
+      display: this.state.purchaseBtn,
+    };
     return (
       <div className="productDetail">
         <div className="productDetail__category">
-          <p>홈 > 시술 상품 > 보톡스</p>
+          <p>
+            <Link to="/">홈</Link> >{' '}
+            <Link
+              to={`/${this.props.products.productsList[0] &&
+                this.props.products.productsList[0].type}`}
+            >
+              {this.props.products.productsList[0] &&
+                type[this.props.products.productsList[0].type]}
+            </Link>{' '}
+            >{' '}
+            <Link
+              to={`/${this.props.products.productsList[0] &&
+                this.props.products.productsList[0].type}/${this.props.products
+                .productsList[0] &&
+                this.props.products.productsList[0].subType}`}
+            >
+              {this.props.products.productsList[0] &&
+                type[this.props.products.productsList[0].subType]}
+            </Link>
+          </p>
         </div>
         <div className="productDetail__info">
           <div className="productDetail__img">
             <img
               src={
                 this.props.products.productsList[0] &&
-                this.props.products.productsList[0].img
+                this.props.products.productsList[0].productDetail
               }
               alt="detail"
               align="left"
@@ -54,9 +108,19 @@ class ProductDetail extends Component {
             <select className="productDetail__option">
               <option>옵션 선택</option>
             </select>
-            <div>
-              <button className="productDetail__purchaseBtn"> 구매하기 </button>
-              <button className="productDetail__likeBtn"> 😤 </button>
+            <ProductReserve
+              purchase={this.state.purchase}
+              purchaseBtn={this.state.purchaseBtn}
+              handleReserve={this.handleReserve}
+            />
+            <div className="productDetail__btnWrapper" style={toggleBtn}>
+              <button
+                onClick={this.handleReserve}
+                className="productDetail__reserveBtn"
+              >
+                구매하기
+              </button>
+              <button className="productDetail__likeBtn">찜하기</button>
             </div>
           </div>
         </div>
