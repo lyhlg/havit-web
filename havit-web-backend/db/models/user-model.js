@@ -1,28 +1,46 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-import { getCurrentDate } from '../../utils/index';
+import { getCurrentDate } from "../../utils/index";
 
 const userSchema = new Schema({
   specId: Number,
   name: String,
-  user_id_email: { type: String, required: true, unique: true, lowercase: true },
+  user_id_email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true
+  },
   password: String,
   createdOn: { type: Date, default: getCurrentDate() },
   auth: String,
   phone: String,
   birthday: String,
   gender: String,
-  level: { type: Number, default : 3 },
+  level: { type: Number, default: 3 },
   likeArea: [String],
   likePoint: [String],
   reservation: [String],
   likeProduct: [String],
   reviews: [String],
-  hospitalCode: { type: String, default: null}
+  hospitalCode: { type: String, default: null }
 });
 // likeProduct: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
 
-module.exports=mongoose.model('user', userSchema, 'users');
+userSchema.methods.comparePassword = async (id, inputPassword, cb) => {
+  const passwd = (await this.findOne(
+    { user_id_email: id },
+    { password: 1, _id: 0 }
+  )).password;
+  console.log(passwd);
+  if (inputPassword === passwd) {
+    cb(null, true);
+  } else {
+    cb("error");
+  }
+};
+
+module.exports = mongoose.model("user", userSchema, "users");
 
 // Dummy
 /*

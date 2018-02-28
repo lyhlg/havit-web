@@ -34,24 +34,27 @@ const FIND_PRODUCT = async ( params ) => {
 
 const LIKE_PRODUCT = async ( params ) => {
   const [obj, args, ctx] = [...params];
+  const { user_id_email } = obj;
+  const { user, product } = ctx;
   if ( obj ) {
-    return (await ctx.user.findOne({ user_id_email: obj.user_id_email })).likeProduct
+    return (await user.findOne({ user_id_email })).likeProduct
       .map(async item => {
-        return await ctx.product.findOne({ _id: ObjectId(item) });
+        return await product.findOne({ productId: item });
       })
   }
   else {
-    return (await ctx.user.findOne(args)).likeProduct
+    return (await user.findOne(args)).likeProduct
       .map(async item => {
-        return await ctx.product.findOne({ _id: ObjectId(item) });
+        return await product.findOne({ productId: item });ㅎ
       })
   }
 }
 
 const GET_REVIEW_LIST_OF_PRODUCT = async ( params ) => {
   const [obj, args, ctx] = [...params];
+  const { review } = ctx;
   return obj.reviews.map(async item => {
-    return await ctx.review.findOne({ _id: ObjectId(item) });
+    return await review.findOne({ _id: ObjectId(item) });
   })
 }
 
