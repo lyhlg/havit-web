@@ -45,7 +45,7 @@ const LIKE_PRODUCT = async ( params ) => {
   else {
     return (await user.findOne(args)).likeProduct
       .map(async item => {
-        return await product.findOne({ productId: item });ㅎ
+        return await product.findOne({ productId: item });
       })
   }
 }

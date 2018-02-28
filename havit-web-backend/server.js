@@ -22,9 +22,6 @@ const defaultHeader = {
 };
 
 // Cookie Parser
-// Body Parser
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
 //  initialize Cookie Session value
 app.use(
@@ -59,6 +56,10 @@ app.use((req, res, next) => {
   res.header(defaultHeader);
   next();
 });
+
+// Body Parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Router
 app.use("/auth", authRoutes);

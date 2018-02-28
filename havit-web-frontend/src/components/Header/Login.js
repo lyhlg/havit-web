@@ -12,7 +12,9 @@ class Login extends Component {
       Number(res.profileObj.googleId),
       res.profileObj.name
     );
-    this.props.getUserInfo(res.profileObj.email);
+    setTimeout(() => {
+      this.props.getUserInfo(res.profileObj.email);
+    }, 1000);
     setTimeout(() => {
       const phone = this.props.newUser.newUser.phone;
       const code = this.props.userInfo.userInfo[0].level;
