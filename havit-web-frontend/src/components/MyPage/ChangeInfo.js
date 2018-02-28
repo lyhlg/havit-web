@@ -96,6 +96,7 @@ class ChangeInfo extends Component {
             className="signup__input"
             placeholder="이메일@도메인"
             value={localStorage.getItem('email')}
+            style={{ backgroundColor: '#f7f8fb' }}
             disabled
           />
           <h3 className="signup__label">비밀번호 입력</h3>
@@ -120,6 +121,7 @@ class ChangeInfo extends Component {
                 className="signup__input"
                 placeholder="실명 한글 이름을 입력해주세요."
                 disabled
+                style={{ backgroundColor: '#f7f8fb' }}
                 value={
                   this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].name
@@ -135,7 +137,10 @@ class ChangeInfo extends Component {
                   type="radio"
                   className="signup__checkbox"
                   value="여자"
-                  // checked={this.props.userInfo.userInfo[0].gender === "여자"}
+                  defaultChecked={
+                    this.props.userInfo.userInfo[0] &&
+                    this.props.userInfo.userInfo[0].gender === '여자'
+                  }
                 />
                 여자
               </label>
@@ -146,7 +151,10 @@ class ChangeInfo extends Component {
                   type="radio"
                   className="signup__checkbox"
                   value="남자"
-                  // checked={this.props.userInfo.userInfo[0].gender === "남자"}
+                  defaultChecked={
+                    this.props.userInfo.userInfo[0] &&
+                    this.props.userInfo.userInfo[0].gender === '남자'
+                  }
                 />
                 남자
               </label>
@@ -172,10 +180,10 @@ class ChangeInfo extends Component {
               <select
                 id="birthday1"
                 className="signup__box1"
-                // value={
-                //   this.props.userInfo.userInfo[0] &&
-                //   this.props.userInfo.userInfo[0].birthday.slice(0, 4)
-                // }
+                value={
+                  this.props.userInfo.userInfo[0] &&
+                  this.props.userInfo.userInfo[0].birthday.slice(0, 4)
+                }
               >
                 {Array(81)
                   .fill(1930)
@@ -235,7 +243,12 @@ class ChangeInfo extends Component {
                     type="checkbox"
                     className="signup__checkbox"
                     value={region}
-                    // checked={this.props.userInfo.userInfo[0].likeArea.includes({region})}
+                    defaultChecked={
+                      this.props.userInfo.userInfo[0] &&
+                      this.props.userInfo.userInfo[0].likeArea.includes(
+                        this.state.regions[i]
+                      )
+                    }
                   />
                   {region}
                 </label>
@@ -252,7 +265,12 @@ class ChangeInfo extends Component {
                     type="checkbox"
                     className="signup__checkbox"
                     value={clinic}
-                    // checked={this.props.userInfo.userInfo[0].likePoint.includes({clinic})}
+                    defaultChecked={
+                      this.props.userInfo.userInfo[0] &&
+                      this.props.userInfo.userInfo[0].likePoint.includes(
+                        this.state.clinics[i]
+                      )
+                    }
                   />
                   {clinic}
                 </label>

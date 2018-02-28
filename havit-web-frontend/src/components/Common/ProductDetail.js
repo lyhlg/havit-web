@@ -11,6 +11,7 @@ class ProductDetail extends Component {
       purchaseBtn: 'block',
     };
     this.handleReserve = this.handleReserve.bind(this);
+    this.addLikeProduct = this.addLikeProduct.bind(this);
   }
 
   componentDidMount() {
@@ -22,6 +23,13 @@ class ProductDetail extends Component {
       purchase: this.state.purchase === 'none' ? 'block' : 'none',
       purchaseBtn: this.state.purchaseBtn === 'none' ? 'block' : 'none',
     });
+  }
+
+  addLikeProduct() {
+    this.props.addLikeProducts(
+      localStorage.getItem('email'),
+      Number(this.props.location.pathname.slice(10))
+    );
   }
 
   render() {
@@ -42,6 +50,7 @@ class ProductDetail extends Component {
     const toggleBtn = {
       display: this.state.purchaseBtn,
     };
+    console.log(this.props);
     return (
       <div className="productDetail">
         <div className="productDetail__category">
@@ -71,7 +80,7 @@ class ProductDetail extends Component {
             <img
               src={
                 this.props.products.productsList[0] &&
-                this.props.products.productsList[0].productDetail
+                this.props.products.productsList[0].img
               }
               alt="detail"
               align="left"
@@ -120,7 +129,12 @@ class ProductDetail extends Component {
               >
                 구매하기
               </button>
-              <button className="productDetail__likeBtn">찜하기</button>
+              <button
+                className="productDetail__likeBtn"
+                onClick={this.addLikeProduct}
+              >
+                찜하기
+              </button>
             </div>
           </div>
         </div>

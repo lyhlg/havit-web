@@ -45,7 +45,9 @@ class Login extends Component {
       res.profile.id,
       res.profile.properties.nickname
     );
-    this.props.getUserInfo(res.profile.kaccount_email);
+    setTimeout(() => {
+      this.props.getUserInfo(res.profile.kaccount_email);
+    }, 1000);
     setTimeout(() => {
       const phone = this.props.newUser.newUser.phone;
       const code = this.props.userInfo.userInfo[0].level;
