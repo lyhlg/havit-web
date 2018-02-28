@@ -413,16 +413,7 @@ export const fixReservation = (reserveNum, careDate) => {
     mutation: gql`
       mutation($reserveNum: String, $careDate: String) {
         fixReservation(reserveNum: $reserveNum, careDate: $careDate) {
-          _id
           reserveNum
-          user_id_email
-          hospitalCode
-          userName
-          phone
-          productName
-          reserveDate
-          careDate
-          status
         }
       }
     `,
