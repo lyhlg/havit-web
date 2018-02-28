@@ -1,29 +1,35 @@
-.uploadHospital__tab {
+.uploadNotice__tab {
   padding: 80px 160px; }
-  .uploadHospital__tab .uploadHospital__title {
+  .uploadNotice__tab .uploadNotice__title {
     font-size: 24px;
     color: #647dff; }
-  .uploadHospital__tab .uploadHospital__label {
+  .uploadNotice__tab .uploadNotice__label {
     font-size: 15px;
     font-weight: normal;
     color: #869ab7;
     margin: 60px 0 10px 0; }
-  .uploadHospital__tab .uploadHospital__input {
+  .uploadNotice__tab .uploadNotice__input {
     width: 220px;
     height: 46px;
     background-color: #ffffff;
     border: solid 1px #dce2eb;
     padding-left: 10px; }
-  .uploadHospital__tab .uploadHospital__dropdown {
+  .uploadNotice__tab .uploadNotice__biginput {
+    width: 600px;
+    height: 150px;
+    background-color: #ffffff;
+    border: solid 1px #dce2eb;
+    padding-left: 10px; }
+  .uploadNotice__tab .uploadNotice__dropdown {
     width: 220px;
     height: 46px;
     background-color: #ffffff;
     border: solid 1px #dce2eb;
     padding-left: 10px; }
 
-.uploadHospital__button {
+.uploadNotice__button {
   display: inline-block;
-  width: 150px;
+  width: 180px;
   height: 60px;
   line-height: 60px;
   vertical-align: middle;
@@ -35,8 +41,8 @@
   border-radius: 2px;
   background-color: #647dff;
   border: solid 1px #647dff; }
-  .uploadHospital__button:last-child {
+  .uploadNotice__button:last-child {
     margin-right: 0; }
-  .uploadHospital__button .uploadHospital__button--selected {
+  .uploadNotice__button .uploadNotice__button--selected {
     font-weight: bold;
     color: #647dff; }

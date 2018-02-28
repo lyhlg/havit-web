@@ -7,7 +7,7 @@ class AdminMenu extends Component {
     return (
       <div className="adminMenu">
         <div className="adminMenu__wrapper">
-          <h2 className="adminMenu__name">Admin</h2>
+          <h2 className="adminMenu__name">관리자페이지</h2>
           <div className="adminMenu__tab">
             <NavLink
               to="/adminPage/manageHospital"
@@ -36,27 +36,6 @@ class AdminMenu extends Component {
               activeClassName="adminMenu__button--selected"
             >
               이벤트관리
-            </NavLink>
-            <NavLink
-              to="/adminPage/uploadHospital"
-              className="adminMenu__button"
-              activeClassName="adminMenu__button--selected"
-            >
-              test(UploadHospital)
-            </NavLink>
-            <NavLink
-              to="/adminPage/uploadBanner"
-              className="adminMenu__button"
-              activeClassName="adminMenu__button--selected"
-            >
-              test(UploadBanner)
-            </NavLink>
-            <NavLink
-              to="/adminPage/uploadEvent"
-              className="adminMenu__button"
-              activeClassName="adminMenu__button--selected"
-            >
-              test(UploadEvent)
             </NavLink>
           </div>
         </div>

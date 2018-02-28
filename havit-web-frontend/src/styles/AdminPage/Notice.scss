@@ -1,3 +1,7 @@
+.notice__right {
+  float: right;
+}
+
 .notice__table {
   width: 1200px;
   text-align: left;
@@ -31,8 +35,12 @@
 }
 
 .notice__button {
+  float: right;
+  margin: 15px;
   width: 180px;
   height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
   margin-right: 5px;
   font-size: 12px;
   font-weight: bold;
@@ -44,5 +52,10 @@
 
   &:last-child {
     margin-right: 0;
+  }
+
+  .notice__button--selected {
+    font-weight: bold;
+        color: #647dff;
   }
 }

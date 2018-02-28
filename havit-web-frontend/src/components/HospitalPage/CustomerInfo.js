@@ -49,7 +49,7 @@ class CustomerInfo extends Component {
       .map((a, i) => ((a + i).toString().length < 2 ? '0' + (a + i) : a + i))
       .reduce((x, y) => x + '<option>' + y + '</option>')}
     </select>
-    <button class="customerInfo__button" onClick="submitCareDate">등록</button>
+    <button class="customerInfo__button" onClick="submitCareDate"></button>등록</button>
     <button class="customerInfo__button">취소</button>
     `;
   }
