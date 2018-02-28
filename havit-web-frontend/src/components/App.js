@@ -16,6 +16,7 @@ import {
   AdminPage,
   Loading,
   NotFound,
+  Footer,
 } from './index';
 import 'styles/css/index.css';
 
@@ -80,6 +81,7 @@ class App extends Component {
           />
           <Route component={NotFound} />
         </Switch>
+        <Footer />
       </div>
     );
   }
