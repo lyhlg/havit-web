@@ -184,6 +184,7 @@ const typeDefs = `
 
     addUserInfo(
       user_id_email: String,
+      password: String,
       name: String,
       phone: String,
       birthday: String,
