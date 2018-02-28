@@ -47,7 +47,7 @@ class Header extends Component {
             className="header__link"
             activeClassName="header__link--selected"
           >
-            Admin페이지
+            관리자페이지
           </NavLink>
           <NavLink
             to="/hospitalPage/customerInfo"
