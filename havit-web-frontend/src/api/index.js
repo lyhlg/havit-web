@@ -192,7 +192,6 @@ export const getNotices = () => {
           title
           body
           author
-          views
         }
       }
     `,
