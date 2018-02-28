@@ -26,11 +26,11 @@ class Beauty extends Component {
               <li onClick={() => this.props.getProducts('beauty')}>전체보기</li>
             </NavLink>
             <NavLink
-              to="/beauty/piller"
+              to="/beauty/filler"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', 'piller')}>
+              <li onClick={() => this.props.getProducts('beauty', 'filler')}>
                 필러
               </li>
             </NavLink>

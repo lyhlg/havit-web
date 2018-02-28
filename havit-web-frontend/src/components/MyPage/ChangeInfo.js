@@ -47,6 +47,10 @@ class ChangeInfo extends Component {
     this.changeUserInfo = this.changeUserInfo.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getUserInfo(localStorage.getItem('email'));
+  }
+
   changeMonth(e) {
     this.setState({
       month: this.state.arr[Number(e.currentTarget.value) - 1],
@@ -80,6 +84,7 @@ class ChangeInfo extends Component {
   }
 
   render() {
+    console.log(this.props.userInfo.userInfo[0]);
     return (
       <div className="changeInfo">
         <div className="signup__tab">
@@ -130,11 +135,7 @@ class ChangeInfo extends Component {
                   type="radio"
                   className="signup__checkbox"
                   value="여자"
-                  checked={
-                    this.props.userInfo.userInfo[0] &&
-                    document.querySelectorAll('input[name="gender"]')[0]
-                      .value === this.props.userInfo.userInfo[0].gender
-                  }
+                  // checked={this.props.userInfo.userInfo[0].gender === "여자"}
                 />
                 여자
               </label>
@@ -145,11 +146,7 @@ class ChangeInfo extends Component {
                   type="radio"
                   className="signup__checkbox"
                   value="남자"
-                  checked={
-                    this.props.userInfo.userInfo[0] &&
-                    document.querySelectorAll('input[name="gender"]')[1]
-                      .value === this.props.userInfo.userInfo[0].gender
-                  }
+                  // checked={this.props.userInfo.userInfo[0].gender === "남자"}
                 />
                 남자
               </label>
@@ -175,10 +172,10 @@ class ChangeInfo extends Component {
               <select
                 id="birthday1"
                 className="signup__box1"
-                value={
-                  this.props.userInfo.userInfo[0] &&
-                  this.props.userInfo.userInfo[0].birthday.slice(0, 4)
-                }
+                // value={
+                //   this.props.userInfo.userInfo[0] &&
+                //   this.props.userInfo.userInfo[0].birthday.slice(0, 4)
+                // }
               >
                 {Array(81)
                   .fill(1930)
@@ -238,13 +235,7 @@ class ChangeInfo extends Component {
                     type="checkbox"
                     className="signup__checkbox"
                     value={region}
-                    checked={
-                      this.props.userInfo.userInfo[0] &&
-                      this.props.userInfo.userInfo[0].likeArea.includes(
-                        document.querySelectorAll('input[name="likeArea"]')[i]
-                          .value
-                      )
-                    }
+                    // checked={this.props.userInfo.userInfo[0].likeArea.includes({region})}
                   />
                   {region}
                 </label>
@@ -261,13 +252,7 @@ class ChangeInfo extends Component {
                     type="checkbox"
                     className="signup__checkbox"
                     value={clinic}
-                    checked={
-                      this.props.userInfo.userInfo[0] &&
-                      this.props.userInfo.userInfo[0].likePoint.includes(
-                        document.querySelectorAll('input[name="likePoint"]')[i]
-                          .value
-                      )
-                    }
+                    // checked={this.props.userInfo.userInfo[0].likePoint.includes({clinic})}
                   />
                   {clinic}
                 </label>

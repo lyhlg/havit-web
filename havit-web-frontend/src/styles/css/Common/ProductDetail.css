@@ -54,7 +54,7 @@
             color: #647dff; }
         .productDetail .productDetail__info .productDetail__text .productDetail__sales::after {
           display: block;
-          content: '';
+          content: "";
           clear: both; }
       .productDetail .productDetail__info .productDetail__text .productDetail__divider {
         margin-top: 40px;
@@ -63,18 +63,21 @@
         border: 0.3px solid #dce2eb; }
       .productDetail .productDetail__info .productDetail__text .productDetail__option {
         margin-top: 20px; }
-      .productDetail .productDetail__info .productDetail__text .productDetail__purchaseBtn {
-        margin-top: 80px;
-        width: 160px;
-        height: 50px;
-        border-radius: 2px;
-        background-color: #647dff;
-        border: solid 1px #647dff;
-        color: white;
-        font-size: 15px; }
-      .productDetail .productDetail__info .productDetail__text .productDetail__likeBtn {
-        margin-top: 80px;
-        margin-left: 10px;
-        width: 50px;
-        height: 50px;
-        border: solid 1px #647dff; }
+      .productDetail .productDetail__info .productDetail__text .productDetail__btnWrapper {
+        margin-top: 80px; }
+        .productDetail .productDetail__info .productDetail__text .productDetail__btnWrapper .productDetail__reserveBtn {
+          display: inline-block;
+          width: 160px;
+          height: 48px;
+          line-height: 48px;
+          vertical-align: middle;
+          background-color: #647dff;
+          border: solid 1px #647dff;
+          color: white;
+          font-size: 15px;
+          text-align: center; }
+        .productDetail .productDetail__info .productDetail__text .productDetail__btnWrapper .productDetail__likeBtn {
+          width: 50px;
+          height: 50px;
+          margin-left: 10px;
+          border: solid 1px #647dff; }

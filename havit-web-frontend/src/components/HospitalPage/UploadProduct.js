@@ -54,14 +54,14 @@ class UploadProduct extends Component {
               <select id="subType" className="uploadProduct__dropdown">
                 <option value="laser">피부레이저</option>
                 <option value="scaling">스케일링</option>
-                <option value="pilling">필링</option>
+                <option value="peeling">필링</option>
                 <option value="waxing">제모</option>
                 <option value="semi">반영구</option>
                 <option value="shot">미용주사</option>
               </select>
             ) : (
               <select id="subType" className="uploadProduct__dropdown">
-                <option value="piller">필러</option>
+                <option value="filler">필러</option>
                 <option value="botox">보톡스</option>
                 <option value="outline">윤곽</option>
                 <option value="lifting">리프팅</option>

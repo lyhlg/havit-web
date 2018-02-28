@@ -44,11 +44,11 @@ class Skin extends Component {
               </li>
             </NavLink>
             <NavLink
-              to="/skin/pilling"
+              to="/skin/peeling"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'pilling')}>
+              <li onClick={() => this.props.getProducts('skin', 'peeling')}>
                 필링
               </li>
             </NavLink>

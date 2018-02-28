@@ -1,5 +1,5 @@
 .productDetail {
-  width : 1200px;
+  width: 1200px;
   margin: 0 auto;
 
   .productDetail__category {
@@ -28,7 +28,7 @@
       display: inline-block;
       width: 500px;
       height: 400px;
-      margin-left : 60px;
+      margin-left: 60px;
 
       .productDetail__hospital {
         margin-top: 20px;
@@ -55,7 +55,7 @@
           font-size: 40px;
           font-weight: bold;
           text-align: right;
-          margin-right : 10px;
+          margin-right: 10px;
           color: #647dff;
         }
 
@@ -72,7 +72,7 @@
         }
         &::after {
           display: block;
-          content: '';
+          content: "";
           clear: both;
         }
       }
@@ -85,24 +85,29 @@
       .productDetail__option {
         margin-top: 20px;
       }
-      .productDetail__purchaseBtn{
+
+      .productDetail__btnWrapper {
         margin-top: 80px;
-        width: 160px;
-        height: 50px;
-        border-radius: 2px;
-        background-color: #647dff;
-        border: solid 1px #647dff;
-        color: white;
-        font-size: 15px;
-      }
-      .productDetail__likeBtn{
-        margin-top: 80px;
-        margin-left: 10px;
-        width: 50px;
-        height: 50px;
-        border: solid 1px #647dff;
+
+        .productDetail__reserveBtn {
+          display: inline-block;
+          width: 160px;
+          height: 48px;
+          line-height: 48px;
+          vertical-align: middle;
+          background-color: #647dff;
+          border: solid 1px #647dff;
+          color: white;
+          font-size: 15px;
+          text-align: center;
+        }
+        .productDetail__likeBtn {
+          width: 50px;
+          height: 50px;
+          margin-left: 10px;
+          border: solid 1px #647dff;
+        }
       }
     }
   }
-
 }
