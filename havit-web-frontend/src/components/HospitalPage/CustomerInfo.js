@@ -7,15 +7,34 @@ class CustomerInfo extends Component {
     this.state = {
       arr: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       month: 31,
-      input: true,
+      input: Array(this.props.hospital.hospitalReservations.length).fill(true),
     };
     this.submitCareDate = this.submitCareDate.bind(this);
     this.changeMonth = this.changeMonth.bind(this);
     this.handleChangeCare = this.handleChangeCare.bind(this);
   }
 
-  submitCareDate() {
-    console.log('sadas');
+  submitCareDate(e) {
+    if (
+      e.currentTarget.parentNode.childNodes[3].value >=
+        e.currentTarget.parentNode.childNodes[5].value ||
+      e.currentTarget.parentNode.childNodes[0].value ||
+      e.currentTarget.parentNode.childNodes[1].value ||
+      e.currentTarget.parentNode.childNodes[3].value ||
+      e.currentTarget.parentNode.childNodes[5].value
+    ) {
+      alert('똑바로입려쿠바람니다');
+    } else {
+      this.props.fixReservation(
+        e.currentTarget.parentNode.parentNode.childNodes[0].textContent,
+        `2018${e.currentTarget.parentNode.childNodes[0].value}${
+          e.currentTarget.parentNode.childNodes[1].value
+        }${e.currentTarget.parentNode.childNodes[3].value}${
+          e.currentTarget.parentNode.childNodes[5].value
+        }`
+      );
+      window.location.href = '/hospitalPage/customerInfo';
+    }
   }
 
   changeMonth(e) {
@@ -24,9 +43,13 @@ class CustomerInfo extends Component {
     });
   }
 
-  handleChangeCare() {
+  handleChangeCare(i) {
     this.setState({
-      input: !this.state.input,
+      input: [
+        ...this.state.input.slice(0, i.i),
+        !this.state.input[i.i],
+        ...this.state.input.slice(i.i + 1),
+      ],
     });
   }
 
@@ -70,7 +93,7 @@ class CustomerInfo extends Component {
                         8,
                         10
                       )}시~${reserve.reserveDate.slice(10, 12)}시`}</td>
-                      {this.state.input ? (
+                      {this.state.input[{ i }.i] ? (
                         reserve.careDate === '전화대기중' ? (
                           <td>{reserve.careDate}</td>
                         ) : (
@@ -150,10 +173,15 @@ class CustomerInfo extends Component {
                                 );
                               })}
                           </select>
-                          <button className="customerInfo__button">등록</button>
                           <button
                             className="customerInfo__button"
-                            onClick={this.handleChangeCare}
+                            onClick={this.submitCareDate}
+                          >
+                            등록
+                          </button>
+                          <button
+                            className="customerInfo__button"
+                            onClick={() => this.handleChangeCare({ i })}
                           >
                             취소
                           </button>
@@ -163,7 +191,7 @@ class CustomerInfo extends Component {
                       <td>
                         <button
                           className="customerInfo__button"
-                          onClick={this.handleChangeCare}
+                          onClick={() => this.handleChangeCare({ i })}
                         >
                           변경
                         </button>
