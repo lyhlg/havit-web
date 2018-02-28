@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
 import { logo3 } from 'assets/img';
+import axios from 'axios';
 import 'styles/css/Header/Signup.css';
 
 class Signup extends Component {
@@ -55,27 +56,31 @@ class Signup extends Component {
   }
 
   submitUserInfo() {
-    let data = [
-      document.getElementById('email').value,
-      document.getElementById('name').value,
-      document.getElementById('txtMobile').value,
-      document.getElementById('birthday1').value +
-        document.getElementById('birthday2').value +
-        document.getElementById('birthday3').value,
-      document.querySelector('input[name="gender"]:checked').value,
-      Array.prototype.map.call(
-        document.querySelectorAll('input[name="likeArea"]:checked'),
-        area => area.value
-      ),
-      Array.prototype.map.call(
-        document.querySelectorAll('input[name="likePoint"]:checked'),
-        point => point.value
-      ),
-      document.getElementById('code').value || '',
-    ];
+    axios({
+      method: 'post',
+      url: 'http://localhost:8080/localLogin',
+      data: {
+        user_id_email: document.getElementById('email').value,
+        password: document.getElementById('password').value,
+        name: document.getElementById('name').value,
+        phone: document.getElementById('txtMobile').value,
+        birthday:
+          document.getElementById('birthday1').value +
+          document.getElementById('birthday2').value +
+          document.getElementById('birthday3').value,
+        gender: document.querySelector('input[name="gender"]:checked').value,
+        likeArea: Array.prototype.map.call(
+          document.querySelectorAll('input[name="likeArea"]:checked'),
+          area => area.value
+        ),
+        likePoint: Array.prototype.map.call(
+          document.querySelectorAll('input[name="likePoint"]:checked'),
+          point => point.value
+        ),
+        hospitalCode: document.getElementById('code').value || '',
+      },
+    }).then(res => console.log(res));
     setTimeout(() => {
-      console.log(data);
-      this.props.addUserInfo(...data);
       this.props.history.push('/signupend');
     }, 2000);
   }
@@ -89,13 +94,15 @@ class Signup extends Component {
             <h3 className="signup__label">이메일 주소</h3>
             <input
               id="email"
-              type="email"
+              name="user_id_email"
+              type="text"
               className="signup__input"
               placeholder="이메일@도메인"
             />
             <h3 className="signup__label">비밀번호 입력</h3>
             <input
               id="password"
+              name="password"
               type="password"
               className="signup__input"
               placeholder="영문, 숫자로 6자 이상 입력해주세요."
@@ -168,10 +175,9 @@ class Signup extends Component {
                   id="birthday2"
                   className="signup__box2"
                   onChange={this.changeMonth}
+                  defaultValue="월"
                 >
-                  <option selected disabled>
-                    월
-                  </option>
+                  <option disabled>월</option>
                   {Array(12)
                     .fill(1)
                     .map((a, i) => {
@@ -184,10 +190,12 @@ class Signup extends Component {
                       );
                     })}
                 </select>
-                <select id="birthday3" className="signup__box2">
-                  <option selected disabled>
-                    일
-                  </option>
+                <select
+                  id="birthday3"
+                  className="signup__box2"
+                  defaultValue="일"
+                >
+                  <option disabled>일</option>
                   {Array(this.state.month)
                     .fill(1)
                     .map((a, i) => {
@@ -247,9 +255,7 @@ class Signup extends Component {
             </h6>
             <div className="signup__btn">
               <button onClick={this.submitUserInfo} className="signup__button">
-                <Link to="/signup" className="signup__btntext">
-                  회원가입
-                </Link>
+                회원가입
               </button>
             </div>
           </div>
