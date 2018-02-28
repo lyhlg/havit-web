@@ -39,7 +39,7 @@ class Header extends Component {
           </NavLink>
         </div>
       );
-    } else if (localStorage.getItem('code') === '3') {
+    } else if (localStorage.getItem('code') === '1') {
       header = (
         <div className="header__right">
           <NavLink

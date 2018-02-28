@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ProductReserve } from '../index';
+import { ProductReserve, ProductInfo } from '../index';
 import { Link } from 'react-router-dom';
 import 'styles/css/Common/ProductDetail.css';
 
@@ -138,6 +138,7 @@ class ProductDetail extends Component {
             </div>
           </div>
         </div>
+        <ProductInfo {...this.props} />
       </div>
     );
   }
