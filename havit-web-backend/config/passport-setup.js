@@ -23,6 +23,7 @@ passport.use(
     passwordField: 'password',
     passReqToCallback: true
   }, (req, usermail, password, done) => {
+    console.log("usermail", usermail);
     User.findOne({ user_id_email: usermail }).then((currentUser) => {
       if (currentUser) {
         done(null, currentUser);

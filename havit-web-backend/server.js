@@ -1,13 +1,14 @@
-const express = require('express');
-const session = require('express-session');
-const cookieSession = require('cookie-session');
-const passport = require('passport');
-const authRoutes = require('./routes/auth-routes');
-const graphqlRoutes = require('./routes/graphql-routes');
-const passportSetup = require('./config/passport-setup');
-const mongoose = require('mongoose');
-const keys = require('./config/keys');
-import bodyParser from 'body-parser';
+const express = require("express");
+const session = require("express-session");
+// const cookieSession = require("cookie-session");
+const passport = require("passport");
+const authRoutes = require("./routes/auth-routes");
+const graphqlRoutes = require("./routes/graphql-routes");
+const passportSetup = require("./config/passport-setup");
+const mongoose = require("mongoose");
+const keys = require("./config/keys");
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
 import cors from "cors";
 
 const app = express();
@@ -20,29 +21,38 @@ const defaultHeader = {
   "access-control-max-age": 10
 };
 
+// Cookie Parser
+// Body Parser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 //  initialize Cookie Session value
-app.use(session({
-  key: keys.session.cookieKey,
-  secret: keys.session.secret,
-  resave: false,
-  saveUninitialized: true,
-  cookie: {
-    httpOnly: false,
-    maxAge: 60 * 60 * 1000
-  }
-}));
+app.use(
+  session({
+    key: keys.session.cookieKey,
+    secret: keys.session.secret,
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      httpOnly: false,
+      maxAge: 60 * 60 * 1000
+    }
+  })
+);
 
 // initialize passport
 app.use(passport.initialize());
 app.use(passport.session());
 
 // connect to mongodb
-mongoose.connect(keys.mongodb.dbURI)
-.then (()=> {
-  console.log('connected to mongodb');
-}).catch((err)=>{
-  console.error('ERROR!!');
-});
+mongoose
+  .connect(keys.mongodb.dbURI)
+  .then(() => {
+    console.log("connected to mongodb");
+  })
+  .catch(err => {
+    console.error("ERROR!!");
+  });
 
 // Add Default Header for solve CROS(Cross Resource Origin Sharing)
 app.use((req, res, next) => {
@@ -51,8 +61,8 @@ app.use((req, res, next) => {
 });
 
 // Router
-app.use('/auth', authRoutes);
-app.use('/', graphqlRoutes);
+app.use("/auth", authRoutes);
+app.use("/", graphqlRoutes);
 
 // Run Server
 app.listen(port, () => console.log(` Starting Server at port ${port} :) `));
