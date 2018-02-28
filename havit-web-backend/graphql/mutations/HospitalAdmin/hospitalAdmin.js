@@ -1,5 +1,7 @@
 const ADD_HOSPITAL_ADMIN = async (params) => {
-  const [obj, args, {hospitalAdmin}] = [...params];
+  const [obj, args, ctx] = [...params];
+  const { hospitalAdmin } = ctx;
+
   return await hospitalAdmin.findOne(args).then ( async res => {
     if (res) {
       return await hospitalAdmin.findOne(args);

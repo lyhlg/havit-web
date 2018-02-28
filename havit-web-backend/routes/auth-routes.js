@@ -18,17 +18,11 @@ const smtpTransport = nodemailer.createTransport({
   }
 });
 
-const checkFirstLogin = (req, res, next) => {
-  if (req.user.phone) next();
-  else {
-    res.send(`<script>window.location.href="${FRONT_DEV_SRV}/privacy"; </script>`);
-  }
-};
-
 let rand, mailOptions, host, link;
 
 // logout
 router.get('/logout', (req, res) => {
+  console.log( req.session)
     res.clearCookie(keys.session.cookieKey);
     req.session.destroy(err => {
       if (err) console.error(err);
@@ -41,35 +35,15 @@ router.get('/logout', (req, res) => {
 // Local Login
 router.get('local', passport.authenticate('{strategy}'));
 
-// Google Login
-router.get('/google', passport.authenticate('google', {
-  scope: ['profile', 'email']
-}));
-router.get('/google/redirect', passport.authenticate('google'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.location.href="${FRONT_DEV_SRV}"</script>`);
-});
-
-// Naver Login
-router.get('/naver', passport.authenticate('naver'));
-router.get('/naver/redirect', passport.authenticate('naver'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.location.href="${FRONT_DEV_SRV}"</script>`)
-});
-
-// Kakao Login
-router.get('/kakao', passport.authenticate('kakao'));
-router.get('/kakao/redirect', passport.authenticate('kakao'), checkFirstLogin, (req, res) => {
-  res.send(`<script>window.location.href="${FRONT_DEV_SRV}"</script>`)
-});
-
-// mail auth
-router.get('/mailauth', (res, req) => {
-  console.log('mailAuth!!!!!!!!!!!!!!!!!!!!',req.req.headers.host);
-  rand = Math.floor((Math.random() * 100))*999;
+// mail auth res 바꿔
+router.get('/mailauth', (req, res) => {
+  console.log('mailAuth!!!!!!!!!!!!!!!!!!!!',req);
+  rand = Math.floor((Math.random() * 100)) * 999;
   host = req.req.headers.host;
   // link = "http://" + req.req.headers.host + "/verify?id=" + rand;
   // console.log(' 이거확인 ', host, rand, link,req.req.query.to );
   MailAuth.findOne({ mail_account: req.req.query.to}).then((currentUser) => {
-    if ( currentUser){
+    if ( currentUser ){
       console.log('인증 절차중에 있습니다. 메일을 확인해주세요.', currentUser.Auth_number);
       tomail(currentUser.Auth_number);
     } else {
@@ -85,17 +59,19 @@ router.get('/mailauth', (res, req) => {
   });
   const tomail = (code) => {
     mailOptions = {
+      from: 'Havit 관리자 <havitmailer@gmail.com>',
       to: req.req.query.to,
       subject: "[havit] 홈페이지 회원가입을 위해 인증번호를 기입해주세요",
       html: `안녕하세요,<br> Havit 웹 사이트 입니다. 아래 인증 번호를 회원가입 창의 인증번호에 입력해주세요<br> <h3>인증번호<h3> : ${code} </a>`
     }
-    smtpTransport.sendMail(mailOptions, function (error, response) {
+    smtpTransport.sendMail(mailOptions, (error, response) => {
       if (error) {
         console.log(error);
         res.end("error");
       } else {
-        res.end("sent"); // 뭘 보여줘야 할지 ?
+        res.end(`Message sent : ${response.message}`);
       }
+      smtpTransport.close();
     });
   }
 });

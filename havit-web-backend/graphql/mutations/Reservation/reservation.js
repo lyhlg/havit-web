@@ -1,19 +1,20 @@
 const ADD_RESERVATION = async (params, reserveNumCal) => {
-  const [obj, args, { hospital, reservation }] = [...params];
-  // 예약 번호 reserveNumCal 을 통해 획득 후 기존 Object와 merge
+  const [obj, args, ctx] = [...params];
+  const { hospitalCode, user_id_email } = args;
+  const { user, hospital, reservation } = ctx;
+
   let obj_reserveNum = { reserveNum: reserveNumCal() };
   let new_args = Object.assign(args, obj_reserveNum, { openPhoneNum: 0 });
-  console.log(new_args);
 
-  // 병원 테이블에 예약 추가
-  const addToHospitalReserveLists = async id => {
-    return await hospital.update(
-      { code: args.hospitalCode },
-      { $push: { reservations: id } }
-    );
-  };
-  addToHospitalReserveLists(obj_reserveNum.reserveNum);
-  // 새로 생성한 Reservation 정보 Response 값으로 Return
+  await hospital.update(
+    { code: hospitalCode },
+    { $push: { reservations: obj_reserveNum.reserveNum } }
+  );
+  await user.update(
+    { user_id_email },
+    { $push: { reservation: obj_reserveNum.reserveNum } }
+  );
+
   return await new reservation(new_args).save();
 };
 
@@ -52,13 +53,16 @@ const ADD_BILL = async params => {
   console.log(args);
   const { hospitalCode } = args;
   const { hospital, product, reservation, payment } = ctx;
-  const title = (await reservation.findOne({ reserveNum: args.reserveNum })).productName;
-  const billing = (await product.findOne({hospitalCode: hospitalCode, productName:title})).price * 0.1;
+  const title = (await reservation.findOne({ reserveNum: args.reserveNum }))
+    .productName;
+  const billing =
+    (await product.findOne({ hospitalCode: hospitalCode, productName: title }))
+      .price * 0.1;
   console.log(billing);
   return await payment.update(
-        { code: hospitalCode },
-        { $inc: { price: billing } }
-      );
+    { code: hospitalCode },
+    { $inc: { price: billing } }
+  );
 };
 
 // 예약 삭제 (고객)

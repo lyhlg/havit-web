@@ -24,6 +24,8 @@ const defaultHeader = {
 app.use(session({
   key: keys.session.cookieKey,
   secret: keys.session.secret,
+  resave: false,
+  saveUninitialized: true,
   cookie: {
     httpOnly: false,
     maxAge: 60 * 60 * 1000
