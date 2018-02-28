@@ -1,0 +1,13 @@
+.productInfo {
+  width: 1180px;
+  margin: 0 auto; }
+  .productInfo .productInfo__btnWrapper {
+    border-bottom: 2px solid #dce2eb;
+    margin-bottom: 20px; }
+    .productInfo .productInfo__btnWrapper .productInfo__btn {
+      display: inline-block;
+      height: 100px;
+      margin-right: 40px;
+      font-size: 20px;
+      background: #fff;
+      border: none; }
