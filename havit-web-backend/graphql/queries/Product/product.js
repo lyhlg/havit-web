@@ -52,8 +52,9 @@ const LIKE_PRODUCT = async ( params ) => {
 
 const GET_REVIEW_LIST_OF_PRODUCT = async ( params ) => {
   const [obj, args, ctx] = [...params];
+  const { review } = ctx;
   return obj.reviews.map(async item => {
-    return await ctx.review.findOne({ _id: ObjectId(item) });
+    return await review.findOne({ _id: ObjectId(item) });
   })
 }
 
