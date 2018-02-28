@@ -14,7 +14,7 @@ class MyPage extends Component {
   }
 
   render() {
-    console.log();
+    console.log(this.props.userInfo);
     return (
       <main>
         {this.props.reservations.loading ? (
