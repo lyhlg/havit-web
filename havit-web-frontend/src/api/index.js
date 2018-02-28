@@ -358,16 +358,9 @@ export const addUserInfo = (
 export const addLikeProducts = (email, productId) => {
   return client.mutate({
     mutation: gql`
-      mutation($email: String, $productId: String) {
+      mutation($email: String, $productId: Int) {
         addLikeProducts(user_id_email: $email, productId: $productId) {
           specId
-          name
-          password
-          auth
-          phone
-          birthday
-          gender
-          hospitalCode
         }
       }
     `,
