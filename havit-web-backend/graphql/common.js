@@ -18,7 +18,6 @@ const UPDATE_DB_HOSPITAL = async (params) => {
   await UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT([obj, { hospitalCode, user_id_email }, hospitalAdmin]);
   return await hospital.update({code: hospitalCode},
   {$set : { adminAccount: user_id_email }})
-
 }
 
 const INSERT_DB_HOSPITAL = async (params) => {
