@@ -147,10 +147,9 @@ class Privacy extends Component {
                   id="birthday2"
                   className="signup__box2"
                   onChange={this.changeMonth}
+                  defaultValue="월"
                 >
-                  <option selected disabled>
-                    월
-                  </option>
+                  <option disabled>월</option>
                   {Array(12)
                     .fill(1)
                     .map((a, i) => {
@@ -163,10 +162,12 @@ class Privacy extends Component {
                       );
                     })}
                 </select>
-                <select id="birthday3" className="signup__box2">
-                  <option selected disabled>
-                    일
-                  </option>
+                <select
+                  id="birthday3"
+                  className="signup__box2"
+                  defaultValue="일"
+                >
+                  <option disabled>일</option>
                   {Array(this.state.month)
                     .fill(1)
                     .map((a, i) => {

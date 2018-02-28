@@ -85,12 +85,14 @@ class Login extends Component {
             <h3 className="login__label">이메일 주소</h3>
             <input
               type="text"
+              name="username"
               className="login__input"
               placeholder="이메일@도메인"
             />
             <h3 className="login__label">비밀번호 입력</h3>
             <input
               type="text"
+              name="password"
               className="login__input"
               placeholder="비밀번호"
             />

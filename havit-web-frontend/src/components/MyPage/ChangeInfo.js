@@ -217,10 +217,9 @@ class ChangeInfo extends Component {
                   this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].birthday.slice(6, 8)
                 }
+                defaultValue="일"
               >
-                <option selected disabled>
-                  일
-                </option>
+                <option disabled>일</option>
                 {Array(this.state.month)
                   .fill(1)
                   .map((a, i) => {
