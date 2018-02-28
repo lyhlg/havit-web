@@ -10,6 +10,7 @@ import {
   UploadBanner,
   UploadHospital,
   UploadEvent,
+  UploadNotice,
   Loading,
 } from '../index';
 import 'styles/css/AdminPage/AdminPage.css';
@@ -54,6 +55,7 @@ class AdminPage extends Component {
               />
               <Route path="/adminPage/uploadBanner" component={UploadBanner} />
               <Route path="/adminPage/uploadEvent" component={UploadEvent} />
+              <Route path="/adminPage/uploadNotice" component={UploadNotice} />
             </div>
           </div>
         )}

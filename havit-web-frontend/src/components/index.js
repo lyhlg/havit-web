@@ -39,6 +39,7 @@ export { default as Notice } from './AdminPage/Notice';
 export { default as ManageBanner } from './AdminPage/ManageBanner';
 export { default as ManageEvent } from './AdminPage/ManageEvent';
 export { default as UploadHospital } from './AdminPage/UploadHospital';
+export { default as UploadNotice } from './AdminPage/UploadNotice';
 export { default as UploadBanner } from './AdminPage/UploadBanner';
 export { default as UploadEvent } from './AdminPage/UploadEvent';
 

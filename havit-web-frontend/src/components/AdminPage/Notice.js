@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/Notice.css';
 
 class Notice extends Component {
@@ -20,7 +21,6 @@ class Notice extends Component {
                   <th>제목</th>
                   <th>작성자</th>
                   <th>작성일</th>
-                  <th>조회수</th>
                 </tr>
               </thead>
               <tbody>
@@ -30,14 +30,15 @@ class Notice extends Component {
                       <td>{notice._id}</td>
                       <td>{notice.title}</td>
                       <td>{notice.author}</td>
-                      <td>{notice.date}</td>
-                      <td>{notice.views}</td>
+                      <td>{notice.createdOn}</td>
                     </tr>
                   );
                 })}
               </tbody>
             </table>
-            <button className="notice__button">공지사항 등록하기</button>
+            <Link to="/adminPage/uploadNotice" className="notice__button">
+              공지사항 등록하기
+            </Link>
           </div>
         </div>
       </div>
