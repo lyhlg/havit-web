@@ -29,13 +29,6 @@ class UploadHospital extends Component {
               <option value="songpa">송파구</option>
               <option value="kangdong">강동구</option>
             </select>
-            <h3 className="uploadHospital__label">관리자 계정</h3>
-            <input
-              type="text"
-              id="title"
-              className="uploadHospital__input"
-              placeholder="이메일@도메인"
-            />
             <div className="uploadHospital__btn">
               <Link
                 to="/adminPage/manageHospital"
