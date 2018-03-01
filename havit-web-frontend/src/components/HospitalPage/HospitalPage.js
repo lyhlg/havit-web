@@ -16,7 +16,12 @@ class HospitalPage extends Component {
   }
 
   componentDidMount() {
-    this.props.getHospital('lyhlg0201@gmail.com');
+    if (localStorage.getItem('code') === '2')
+      this.props.getHospital(localStorage.getItem('email'));
+    else if (localStorage.getItem('code') === '1') {
+      this.props.getHospital(localStorage.getItem('hospital'));
+      localStorage.removeItem('hospital');
+    }
   }
 
   render() {

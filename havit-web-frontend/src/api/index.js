@@ -239,7 +239,7 @@ export const addReservation = (
 ) => {
   return client.mutate({
     mutation: gql`
-      mutation addReservation(
+      mutation(
         $email: String
         $hospitalCode: String
         $userName: String
