@@ -6,9 +6,11 @@ export { default as Product } from './Common/Product';
 export { default as ProductEntry } from './Common/ProductEntry';
 export { default as ProductDetail } from './Common/ProductDetail';
 export { default as ProductReserve } from './Common/ProductReserve';
+export { default as ProductInfo } from './Common/ProductInfo';
 export { default as Empty } from './Common/Empty';
 export { default as Loading } from './Common/Loading';
 export { default as NotFound } from './Common/NotFound';
+export { default as Footer } from './Common/Footer';
 
 // Header
 export { default as Login } from './Header/Login';

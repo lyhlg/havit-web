@@ -1,5 +1,6 @@
 .productDetail {
   width: 1200px;
+  height: 1500px;
   margin: 0 auto; }
   .productDetail .productDetail__category {
     margin: 0, 120px;
@@ -15,6 +16,9 @@
     .productDetail .productDetail__info .productDetail__img {
       padding-top: 20px;
       padding-left: 10px; }
+      .productDetail .productDetail__info .productDetail__img img {
+        width: 480px;
+        height: 480px; }
     .productDetail .productDetail__info .productDetail__text {
       display: inline-block;
       width: 500px;
