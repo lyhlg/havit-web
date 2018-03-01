@@ -19,6 +19,7 @@ class ManageProduct extends Component {
       botox: '보톡스',
       outline: '윤곽',
       lifting: '리프팅',
+      acne: '여드름',
     };
     return (
       <div className="manageProduct">

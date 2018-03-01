@@ -44,7 +44,8 @@ const ADD_PRODUCT = async params => {
     productCounter,
     hospital,
     hospitalAdmin,
-    productOption
+    productOption,
+    salesCount
   } = ctx;
 
   const chk_dup = await CHECK_DUP_DATA([
@@ -74,7 +75,7 @@ const ADD_PRODUCT = async params => {
     const optionUpdate = await SAVE_N_UP_PRODUCT_OPTION(
       number,
       option1,
-      opiont2,
+      option2,
       productOption,
       "SAVE"
     );
@@ -86,8 +87,9 @@ const ADD_PRODUCT = async params => {
     // 새 제품 병원의 리스트로 업데이트
     await hospital.update(
       { code: args.hospitalCode },
-      { $push: { products: newProduct._id } }
+      { $push: { products: newProduct.productId } }
     );
+    await salesCount({ _id: number }).save();
     return newProduct;
   } else {
     return chk_dup;
@@ -95,6 +97,7 @@ const ADD_PRODUCT = async params => {
 };
 
 const EDIT_PRODUCT = async params => {
+  console.log("EDIT_PRODUCT");
   const [obj, args, ctx] = [...params];
   const { product, productOption } = ctx;
 
@@ -129,14 +132,12 @@ const SEPERATE_TYPE_FOR_PRODUCT_OPTIONS = (options, cb) => {
   let option1 = [];
   let option2 = [];
   let inputTarget = 0;
-
   options.forEach(item => {
     if (item.length === 0) inputTarget = !inputTarget;
     else {
       inputTarget ? option2.push(item) : option1.push(item);
     }
   });
-
   return cb(option1, option2);
 };
 

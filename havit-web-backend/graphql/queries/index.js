@@ -1,7 +1,6 @@
 import { FIND_USER, EDIT_USER_INFO } from "./User/user";
 import {
   FIND_RESERVATION,
-  GET_DASHBOARD_COUNT
 } from "./Reservation/reservation";
 import {
   FIND_PRODUCT,
@@ -21,6 +20,7 @@ import { GET_BANNER_LIST, GET_BANNER_FROM_PRODUCT } from "./Banner/banner";
 import { GET_PAYMENT } from "./Payment/payment";
 import { GET_OPTIONS_OF_PRODUCT } from "./Option/option";
 import { FIND_EVENT } from "./Event/event";
+import { GET_DASHBOARD_COUNT } from './Dashboard/dashboard';
 
 export {
   FIND_USER,

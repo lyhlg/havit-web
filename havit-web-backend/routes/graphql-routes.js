@@ -14,7 +14,8 @@ import {
   ProductCounter,
   Payment,
   ProductOption,
-  Event
+  Event,
+  SalesCount
 } from "../db";
 import schema from "../graphql";
 
@@ -40,7 +41,8 @@ router.use(
       productCounter: ProductCounter,
       payment: Payment,
       productOption: ProductOption,
-      event: Event
+      event: Event,
+      salesCount: SalesCount
     }
   })
 );

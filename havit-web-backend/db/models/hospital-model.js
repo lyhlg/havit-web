@@ -8,7 +8,7 @@ const hospitalSchema = new Schema({
   createdOn: { type: Date, default: getCurrentDate() },
   billing: Number,
   reservations: [String],
-  products: [String]
+  products: [Number]
 });
 
 
