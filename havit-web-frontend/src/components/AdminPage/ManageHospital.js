@@ -3,6 +3,20 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ManageHospital.css';
 
 class ManageHospital extends Component {
+  constructor(props) {
+    super(props);
+    this.moveHospital = this.moveHospital.bind(this);
+  }
+
+  moveHospital(e) {
+    if (e.currentTarget.childNodes[3].textContent !== '미등록') {
+      localStorage.setItem(
+        'hospital',
+        e.currentTarget.childNodes[3].textContent
+      );
+      this.props.history.push('/hospitalPage/customerInfo');
+    }
+  }
   render() {
     console.log(this.props);
     return (
@@ -27,7 +41,7 @@ class ManageHospital extends Component {
                 {this.props.hospitalAdmin.hospitalAdminList.map(
                   (hospital, i) => {
                     return (
-                      <tr key={i}>
+                      <tr key={i} onClick={this.moveHospital}>
                         <td>{hospital.code}</td>
                         <td>{hospital.name}</td>
                         <td>{hospital.loc}</td>

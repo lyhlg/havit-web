@@ -126,6 +126,10 @@ const mapDispatchToProps = dispatch => ({
   addUser: (email, specId, user) => {
     dispatch(actions.addUser(email, specId, user));
   },
+
+  addNotice: (title, body, author) => {
+    dispatch(actions.addNotice(title, body, author));
+  },
 });
 
 const AppContainer = withRouter(

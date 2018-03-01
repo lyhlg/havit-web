@@ -20,7 +20,8 @@
   height: 150px;
   background-color: #ffffff;
   border: solid 1px #dce2eb;
-  padding-left: 10px; }
+  padding-left: 10px;
+  resize: none; }
 
 .uploadNotice__tab .uploadNotice__dropdown {
   width: 220px;

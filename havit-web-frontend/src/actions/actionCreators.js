@@ -346,3 +346,21 @@ export const addUser = (email, specId, user) => {
     });
   };
 };
+
+const requestAddNotice = () => ({
+  type: types.REQUEST_ADD_NOTICE,
+});
+
+const successAddNotice = notice => ({
+  type: types.SUCCESS_ADD_NOTICE,
+  notice,
+});
+
+export const addNotice = (title, body, author) => {
+  return dispatch => {
+    dispatch(requestAddNotice());
+    return api.addNotice(title, body, author).then(res => {
+      dispatch(successAddNotice(res));
+    });
+  };
+};

@@ -12,8 +12,12 @@ const hospital = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        hospitalProducts: action.hospital.data.Hospitals[0].products,
-        hospitalReservations: action.hospital.data.Hospitals[0].reservations,
+        hospitalProducts:
+          action.hospital.data.Hospitals[0] &&
+          action.hospital.data.Hospitals[0].products,
+        hospitalReservations:
+          action.hospital.data.Hospitals[0] &&
+          action.hospital.data.Hospitals[0].reservations,
       };
     case types.REQUEST_GET_HOSPITAL:
       return {

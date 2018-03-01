@@ -239,7 +239,7 @@ export const addReservation = (
 ) => {
   return client.mutate({
     mutation: gql`
-      mutation addReservation(
+      mutation(
         $email: String
         $hospitalCode: String
         $userName: String
@@ -468,6 +468,28 @@ export const addUser = (email, specId, user) => {
       email,
       specId,
       user,
+    },
+  });
+};
+
+export const addNotice = (title, body, author) => {
+  return client.mutate({
+    mutation: gql`
+      mutation($title: String, $body: String, $author: String) {
+        addNotice(title: $title, body: $body, author: $author) {
+          _id
+          title
+          body
+          author
+          views
+          createdOn
+        }
+      }
+    `,
+    variables: {
+      title,
+      body,
+      author,
     },
   });
 };

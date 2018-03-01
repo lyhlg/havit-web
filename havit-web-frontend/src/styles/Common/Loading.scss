@@ -1,4 +1,5 @@
 .loading {
+  height: 600px;
   $s: 3em;
   $colors: #1fbcd3, #cbe2b4, #f6b6ca;
 
@@ -20,7 +21,7 @@
       display: block;
       width: 500px;
       height: 300px;
-      content: '';
+      content: "";
     }
     @include cbox;
     font-size: 40px;

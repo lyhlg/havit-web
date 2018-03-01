@@ -10,6 +10,10 @@ import {
 import 'styles/css/ServicePage/ServicePage.css';
 
 class ServicePage extends Component {
+  componentDidMount() {
+    this.props.get;
+  }
+
   render() {
     console.log(this.props);
     return (
