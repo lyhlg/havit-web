@@ -13,7 +13,6 @@ const ADD_HOSPITAL_ADMIN = async (params) => {
 
 const DEL_HOSPITAL_ADMIN = async (params) => {
   const [obj, args, { hospitalAdmin }] = [...params];
-  console.log( 'delete!~~~~');
   return await hospitalAdmin.findOne(args).then ( async res => {
     if (res) {
       await hospitalAdmin.remove(args);
