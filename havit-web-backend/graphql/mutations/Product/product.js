@@ -63,8 +63,8 @@ const ADD_PRODUCT = async params => {
   let inputTarget = 0;
 
   SEPERATE_TYPE_FOR_PRODUCT_OPTIONS(options, (o1, o2) => {
-    option1 = o1;
-    option2 = o2;
+      option1 = o1;
+      option2 = o2;
   });
   delete args.options;
 
@@ -74,7 +74,7 @@ const ADD_PRODUCT = async params => {
     const optionUpdate = await SAVE_N_UP_PRODUCT_OPTION(
       number,
       option1,
-      opiont2,
+      option2,
       productOption,
       "SAVE"
     );
@@ -86,7 +86,7 @@ const ADD_PRODUCT = async params => {
     // 새 제품 병원의 리스트로 업데이트
     await hospital.update(
       { code: args.hospitalCode },
-      { $push: { products: newProduct._id } }
+      { $push: { products: newProduct.productId } }
     );
     return newProduct;
   } else {
@@ -95,6 +95,7 @@ const ADD_PRODUCT = async params => {
 };
 
 const EDIT_PRODUCT = async params => {
+  console.log("EDIT_PRODUCT");
   const [obj, args, ctx] = [...params];
   const { product, productOption } = ctx;
 
@@ -129,14 +130,12 @@ const SEPERATE_TYPE_FOR_PRODUCT_OPTIONS = (options, cb) => {
   let option1 = [];
   let option2 = [];
   let inputTarget = 0;
-
   options.forEach(item => {
     if (item.length === 0) inputTarget = !inputTarget;
     else {
       inputTarget ? option2.push(item) : option1.push(item);
     }
   });
-
   return cb(option1, option2);
 };
 

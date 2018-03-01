@@ -17,6 +17,10 @@ salesCountSchema.statics.UpdateFixValue = async function(_id, cb) {
   return 0;
 };
 
+salesCountSchema.statics.UpdateStars = async function(_id, cb) {
+
+};
+
 module.exports = mongoose.model("salesCount", salesCountSchema, "salesCounts");
 
 /*
