@@ -130,6 +130,10 @@ const mapDispatchToProps = dispatch => ({
   addNotice: (title, body, author) => {
     dispatch(actions.addNotice(title, body, author));
   },
+
+  addBanner: (title, url, status) => {
+    dispatch(actions.addBanner(title, url, status));
+  },
 });
 
 const AppContainer = withRouter(

@@ -3,6 +3,19 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/UploadBanner.css';
 
 class UploadBanner extends Component {
+  constructor(props) {
+    super(props);
+    this.submitBanner = this.submitBanner.bind(this);
+  }
+
+  submitBanner() {
+    this.props.addBanner(
+      document.getElementById('title').value,
+      document.getElementById('url').value,
+      document.getElementById('status').value
+    );
+  }
+
   render() {
     return (
       <div className="uploadBanner">
@@ -40,12 +53,12 @@ class UploadBanner extends Component {
             <input type="file" className="uploadBanner__img" />
             <button className="uploadBanner__uploadbtn">Upload</button>
             <div className="uploadBanner__btn">
-              <Link
-                to="/adminPage/manageBanner"
+              <button
+                onClick={this.submitBanner}
                 className="uploadBanner__button"
               >
                 배너 등록하기
-              </Link>
+              </button>
               <Link
                 to="/adminPage/manageBanner"
                 className="uploadBanner__button"

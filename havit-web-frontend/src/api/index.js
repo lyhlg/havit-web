@@ -493,3 +493,25 @@ export const addNotice = (title, body, author) => {
     },
   });
 };
+
+export const addBanner = (title, url, status) => {
+  return client.mutate({
+    mutation: gql`
+      mutation($title: String, $url: String, $status: String) {
+        addBanner(title: $title, url: $url, status: $status) {
+          _id
+          title
+          img
+          url
+          priority
+          status
+        }
+      }
+    `,
+    variables: {
+      title,
+      url,
+      status,
+    },
+  });
+};

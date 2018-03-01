@@ -364,3 +364,21 @@ export const addNotice = (title, body, author) => {
     });
   };
 };
+
+const requestAddBanner = () => ({
+  type: types.REQUEST_ADD_BANNER,
+});
+
+const successAddBanner = banner => ({
+  type: types.SUCCESS_ADD_BANNER,
+  banner,
+});
+
+export const addBanner = (title, url, status) => {
+  return dispatch => {
+    dispatch(requestAddBanner());
+    return api.addBanner(title, url, status).then(res => {
+      dispatch(successAddBanner(res));
+    });
+  };
+};
