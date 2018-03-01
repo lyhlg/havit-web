@@ -57,7 +57,7 @@ export default {
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
     Banners: (...params) => GET_BANNER_LIST(params),
-    getDashboardCount: (...params) => GET_DASHBOARD_COUNT(params),
+    Dashboard: (...params) => GET_DASHBOARD_COUNT(params),
     Payments: (...params) => GET_PAYMENT(params)
   },
   Reservation: {

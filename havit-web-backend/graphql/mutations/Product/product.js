@@ -44,7 +44,8 @@ const ADD_PRODUCT = async params => {
     productCounter,
     hospital,
     hospitalAdmin,
-    productOption
+    productOption,
+    salesCount
   } = ctx;
 
   const chk_dup = await CHECK_DUP_DATA([
@@ -63,8 +64,8 @@ const ADD_PRODUCT = async params => {
   let inputTarget = 0;
 
   SEPERATE_TYPE_FOR_PRODUCT_OPTIONS(options, (o1, o2) => {
-      option1 = o1;
-      option2 = o2;
+    option1 = o1;
+    option2 = o2;
   });
   delete args.options;
 
@@ -88,6 +89,7 @@ const ADD_PRODUCT = async params => {
       { code: args.hospitalCode },
       { $push: { products: newProduct.productId } }
     );
+    await salesCount({ _id: number }).save();
     return newProduct;
   } else {
     return chk_dup;

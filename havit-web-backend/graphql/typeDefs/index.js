@@ -1,110 +1,110 @@
 const typeDefs = `
   type Query {
-    Users(user_id_email: String) : [User],
-    Reservations(user_id_email:String, hospitalCode: String, status: String, hospitalCode: String) : [Reservation],
-    Products (type: String, subType: String, limit: Int, page: Int, productId: Int) : [Product],
-    Events(hospitalCode: String, productId: Int, limit: Int, page: Int) : [Event]
-    Notices(id: Int) : [Notice],
-    Banners(status: String): [Banner],
-    Reviews: [Review],
-    Hospitals(adminAccount: String) : [Hospital],
-    HospitalAdmin(code:String) : [HospitalAdmin],
-    LikeProducts(user_id_email:String) : [Product],
-    getDashboardCount(code : String) : [Product],
-    Payments(code: String) : Payment,
+    Users(user_id_email: String) : [User]
+    Reservations(user_id_email:String hospitalCode: String status: String hospitalCode: String) : [Reservation]
+    Products (type: String subType: String limit: Int page: Int productId: Int) : [Product]
+    Events(hospitalCode: String productId: Int limit: Int page: Int) : [Event]
+    Notices(id: Int) : [Notice]
+    Banners(status: String): [Banner]
+    Reviews: [Review]
+    Hospitals(adminAccount: String) : [Hospital]
+    HospitalAdmin(code:String) : [HospitalAdmin]
+    LikeProducts(user_id_email:String) : [Product]
+    Dashboard(code : String) : [SalesCount]
+    Payments(code: String) : Payment
     Options : [Option]
   }
   type User {
-    specId: Float,
-    name: String,
-    user_id_email: String!,
-    password: String,
-    auth: String,
-    phone: String,
-    birthday: String,
-    gender: String,
-    level: Int,
-    likeArea: [String],
-    likePoint: [String],
-    hospitalCode: String,
-    reservation: [Reservation],
-    likeProduct: [Product],
+    specId: Float
+    name: String
+    user_id_email: String!
+    password: String
+    auth: String
+    phone: String
+    birthday: String
+    gender: String
+    level: Int
+    likeArea: [String]
+    likePoint: [String]
+    hospitalCode: String
+    reservation: [Reservation]
+    likeProduct: [Product]
     reviews: [Review]
   }
   type Reservation {
-    _id: ID,
-    reserveNum: String,
-    user_id_email: String,
-    hospitalCode: String,
-    userName: String,
-    phone: String,
-    openPhoneNum: Int,
-    productName: String,
-    reserveDate: String,
-    careDate: String,
-    status: String,
+    _id: ID
+    reserveNum: String
+    user_id_email: String
+    hospitalCode: String
+    userName: String
+    phone: String
+    openPhoneNum: Int
+    productName: String
+    reserveDate: String
+    careDate: String
+    status: String
     product: [Product]
   }
   type Event {
-    _id: ID,
-    productId : Int,
-    hospitalCode: String,
-    hospitalLoc: String,
-    hospitalName: String,
-    productName: String,
-    description: String,
-    price: Int,
-    status: String,
-    priority: Int,
-    purchased: Int,
-    productImage: String,
-    reviews: [Review],
+    _id: ID
+    productId : Int
+    hospitalCode: String
+    hospitalLoc: String
+    hospitalName: String
+    productName: String
+    description: String
+    price: Int
+    status: String
+    priority: Int
+    purchased: Int
+    productImage: String
+    reviews: [Review]
     options: Option
   }
   type Product {
-    _id: ID,
-    type: String,
-    productId: Int,
-    subType: String,
-    img: String,
-    hospitalCode: String,
-    hospitalLoc: String,
-    hospitalName: String,
-    productName: String,
-    description: String,
-    price: Int,
-    purchased: Int,
-    productDetail: String,
-    options: Option,
+    _id: ID
+    type: String
+    productId: Int
+    subType: String
+    img: String
+    hospitalCode: String
+    hospitalLoc: String
+    hospitalName: String
+    productName: String
+    description: String
+    price: Int
+    purchased: Int
+    productDetail: String
+    options: Option
     reviews: [Review]
   }
   type Notice {
-    _id: ID,
-    title: String,
-    body: String,
-    author: String,
-    views: Int,
+    _id: ID
+    title: String
+    body: String
+    author: String
+    views: Int
     createdOn: String
   }
   type Banner {
-    _id: ID,
-    title: String,
-    img: String,
-    url: String,
-    priority: Int,
+    _id: ID
+    title: String
+    img: String
+    url: String
+    priority: Int
     status: String
   }
   type Review {
-    _id: ID,
-    user_id_email : String,
-    stars : Float,
-    comment: String,
+    _id: ID
+    user_id_email : String
+    stars : Float
+    comment: String
     product: Product
   }
   type Hospital {
-    code : String,
-    adminAccount : String,
-    billing: Int,
+    code : String
+    adminAccount : String
+    billing: Int
     reservations: [Reservation],
     products: [Product]
   }
@@ -123,6 +123,14 @@ const typeDefs = `
     type : [String],
     subType : [String],
     productId: Int
+  }
+  type SalesCount {
+    _id: ID
+    total: Int
+    purchased: Int
+    canceled: Int
+    fix: String
+    stars: Float
   }
 
   type Mutation {
@@ -156,48 +164,50 @@ const typeDefs = `
     ) : Product,
 
     addReservation(
-      user_id_email: String,
-      hospitalCode: String,
-      userName: String,
-      phone: String,
-      productName: String,
+      user_id_email: String
+      hospitalCode: String
+      userName: String
+      phone: String
+      productId: Int
+      productName: String
       reserveDate: String
-    ) : Reservation,
+    ) : Reservation
 
     delReservation(
-      user_id_email : String,
+      user_id_email : String
+      productId: Int
       reserveNum : String
-    ) : Reservation,
+    ) : Reservation
 
     addReview(
-      user_id_email: String,
-      stars: Float,
-      comment: String,
+      user_id_email: String
+      stars: Float
+      comment: String
       productId: Int
-    ) : Review,
+    ) : Review
 
     addUser(
-      specId: Float,
-      name: String,
-      user_id_email: String,
-    ) : User,
+      specId: Float
+      name: String
+      user_id_email: String
+    ) : User
 
     addUserInfo(
-      user_id_email: String,
-      password: String,
-      name: String,
-      phone: String,
-      birthday: String,
-      gender: String,
-      likeArea: [String],
-      likePoint: [String],
+      user_id_email: String
+      password: String
+      name: String
+      phone: String
+      birthday: String
+      gender: String
+      likeArea: [String]
+      likePoint: [String]
       hospitalCode : String
-    ) : User,
+    ) : User
 
     addLikeProducts(
-      user_id_email: String,
+      user_id_email: String
       productId :Int
-    ) : User,
+    ) : User
 
     modifyReservation(
       reserveNum : String
@@ -206,61 +216,63 @@ const typeDefs = `
       reserveDate: String
       openPhoneNum: Int
       hospitalCode: String
-    ) : Reservation,
+    ) : Reservation
 
     fixReservation(
+      productId :Int
       reserveNum : String
       careDate : String
-    ) : Reservation,
+    ) : Reservation
 
     confirmPurchase(
+      productId :Int
       reserveNum : String
-    ) : Reservation,
+    ) : Reservation
 
     editUserInfo(
-      name: String,
-      user_id_email: String,
-      phone: String,
-      birthday: String,
-      gender: String,
-      likeArea: [String],
-      likePoint: [String],
+      name: String
+      user_id_email: String
+      phone: String
+      birthday: String
+      gender: String
+      likeArea: [String]
+      likePoint: [String]
       hospitalCode: String
-    ) : User,
+    ) : User
 
     addHospitalAdmin(
-      code : String,
-      name: String,
-      loc: String,
-    ) : HospitalAdmin,
+      code : String
+      name: String
+      loc: String
+    ) : HospitalAdmin
 
     delHospitalAdmin(
       code : String
-    ) : HospitalAdmin,
+    ) : HospitalAdmin
 
     addNotice(
-      title: String,
-      body: String,
-      author: String,
-    ) : Notice,
+      title: String
+      body: String
+      author: String
+    ) : Notice
 
     delNotice(
       id : Int
-    ) : Notice,
+    ) : Notice
 
     addBanner(
-      img: String,
-      title: String,
-      url: String,
-      priority: Int,
+      img: String
+      title: String
+      url: String
+      priority: Int
       status: String
     ) : Banner
 
     modifyBanner(
-      img: String,
-      title: String,
-      url: String,
-      priority: Int,
+      img: String
+      title: String
+      url: String
+      priority: Int
       status: String
     ) : Banner
 
@@ -269,17 +281,17 @@ const typeDefs = `
     ) : Banner
 
     addEvent(
-      hospitalCode: String,
-      productName: String,
-      description: String,
-      price: Int,
-      status: String,
-      priority: Int,
+      hospitalCode: String
+      productName: String
+      description: String
+      price: Int
+      status: String
+      priority: Int
       productImage: String
     ) : Event
 
     delEvent(
-      hospitalCode: String,
+      hospitalCode: String
       productId: Int
     ) : Event
   }
