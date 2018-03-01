@@ -1,0 +1,54 @@
+.serviceNotice__right {
+  float: right; }
+
+.serviceNotice__table {
+  width: 1200px;
+  text-align: left;
+  font-size: 10px; }
+
+.serviceNotice__table tr {
+  border: solid 1px #dce2eb;
+  height: 20px;
+  line-height: 20px;
+  vertical-align: middle; }
+
+.serviceNotice__table tr th {
+  height: 50px;
+  line-height: 50px;
+  vertical-align: middle;
+  padding-left: 20px;
+  font-size: 12px;
+  font-weight: normal;
+  color: #afc2db;
+  background-color: #f7f8fb; }
+
+.serviceNotice__table td {
+  height: 80px;
+  line-height: 80px;
+  vertical-align: middle;
+  padding-left: 20px;
+  font-size: 15px;
+  color: #495057; }
+
+.serviceNotice__button {
+  float: right;
+  margin: 15px;
+  width: 180px;
+  height: 60px;
+  line-height: 60px;
+  vertical-align: middle;
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  color: #ffffff;
+  border-radius: 2px;
+  background-color: #647dff;
+  border: solid 1px #647dff; }
+
+.serviceNotice__button:last-child {
+  margin-right: 0; }
+
+.serviceNotice__button .serviceNotice__button--selected {
+  font-weight: bold;
+  color: #647dff; }
