@@ -31,7 +31,7 @@ class Header extends Component {
             회원가입
           </NavLink>
           <NavLink
-            to="/signup"
+            to="/servicePage/serviceCenter"
             className="header__link"
             activeClassName="header__link--selected"
           >
@@ -71,7 +71,7 @@ class Header extends Component {
             마이페이지
           </NavLink>
           <NavLink
-            to="/signup"
+            to="/servicePage/serviceCenter"
             className="header__link"
             activeClassName="header__link--selected"
           >
@@ -104,7 +104,7 @@ class Header extends Component {
             마이페이지
           </NavLink>
           <NavLink
-            to="/signup"
+            to="/servicePage/serviceCenter"
             className="header__link"
             activeClassName="header__link--selected"
           >
@@ -130,7 +130,7 @@ class Header extends Component {
             마이페이지
           </NavLink>
           <NavLink
-            to="/signup"
+            to="/servicePage/serviceCenter"
             className="header__link"
             activeClassName="header__link--selected"
           >

@@ -17,6 +17,7 @@ import {
   Loading,
   NotFound,
   Footer,
+  ServicePage,
 } from './index';
 import 'styles/css/index.css';
 
@@ -74,9 +75,15 @@ class App extends Component {
             render={props => <ProductDetail {...this.props} />}
           />
           <Route
-            path="/hospitalpage"
+            path="/hospitalPage"
             render={props => (
               <HospitalPage checkAuth={this.checkAuth} {...this.props} />
+            )}
+          />
+          <Route
+            path="/servicePage"
+            render={props => (
+              <ServicePage checkAuth={this.checkAuth} {...this.props} />
             )}
           />
           <Route component={NotFound} />

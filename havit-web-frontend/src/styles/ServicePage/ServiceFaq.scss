@@ -1,0 +1,31 @@
+.serviceFaq__table {
+  width: 1200px;
+  text-align: left;
+  font-size: 10px;
+
+  tr {
+    border: solid 1px #dce2eb;
+    height: 20px;
+    line-height: 20px;
+    vertical-align: middle;
+    th {
+      height: 50px;
+      line-height: 50px;
+      vertical-align: middle;
+      padding-left: 20px;
+      font-size: 12px;
+      font-weight: normal;
+      color: #afc2db;
+      background-color: #f7f8fb;
+    }
+  }
+
+  td {
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    padding-left: 20px;
+    font-size: 15px;
+    color: #495057;
+  }
+}
