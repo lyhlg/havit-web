@@ -19,7 +19,7 @@ class ServiceFaq extends Component {
               <tbody>
                 <tr>
                   <td>Q.</td>
-                  <td>회원만 가입이 가능한가요?</td>
+                  <td>회원만 예약이 가능한가요?</td>
                 </tr>
                 <tr>
                   <td>A.</td>

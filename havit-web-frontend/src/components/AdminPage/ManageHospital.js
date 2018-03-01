@@ -22,7 +22,7 @@ class ManageHospital extends Component {
     return (
       <div className="manageHospital">
         <div className="manageHospital__wrapper">
-          <div className="gmanageHospital__tab">
+          <div className="manageHospital__tab">
             <input
               name="keyword"
               className="manageHospital__right"

@@ -39,6 +39,7 @@ export { default as AdminPage } from './AdminPage/AdminPage';
 export { default as AdminMenu } from './AdminPage/AdminMenu';
 export { default as ManageHospital } from './AdminPage/ManageHospital';
 export { default as Notice } from './AdminPage/Notice';
+export { default as NoticeDetail } from './AdminPage/NoticeDetail';
 export { default as ManageBanner } from './AdminPage/ManageBanner';
 export { default as ManageEvent } from './AdminPage/ManageEvent';
 export { default as UploadHospital } from './AdminPage/UploadHospital';
@@ -64,5 +65,4 @@ export { default as Skin } from './Skin/Skin';
 export { default as Beauty } from './Beauty/Beauty';
 
 // Event
-
 export { default as Event } from './Event/Event';
