@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import 'styles/css/ServicePage/ServiceNotice.css';
 
 class ServiceNotice extends Component {
+  componentDidMount() {
+    this.props.getNotices();
+  }
+
   render() {
     return (
       <div className="serviceNotice">
@@ -22,6 +26,18 @@ class ServiceNotice extends Component {
                   <th>작성일</th>
                 </tr>
               </thead>
+              <tbody>
+                {this.props.notices.noticesList.map((notice, i) => {
+                  return (
+                    <tr key={i}>
+                      <td>{notice._id}</td>
+                      <td>{notice.title}</td>
+                      <td>{notice.author}</td>
+                      <td>{notice.createdOn}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
             </table>
           </div>
         </div>
