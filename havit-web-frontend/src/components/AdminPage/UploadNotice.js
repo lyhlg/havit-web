@@ -10,8 +10,8 @@ class UploadNotice extends Component {
 
   submitNotice() {
     this.props.addNotice(
-      document.getElementById('title'),
-      document.getElementById('content'),
+      document.getElementById('title').value,
+      document.getElementById('content').value,
       '관리자'
     );
   }

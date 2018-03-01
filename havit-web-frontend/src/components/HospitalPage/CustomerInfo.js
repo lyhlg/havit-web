@@ -7,7 +7,10 @@ class CustomerInfo extends Component {
     this.state = {
       arr: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       month: 31,
-      input: Array(this.props.hospital.hospitalReservations.length).fill(true),
+      input: Array(
+        this.props.hospital.hospitalReservations &&
+          this.props.hospital.hospitalReservations.length
+      ).fill(true),
     };
     this.submitCareDate = this.submitCareDate.bind(this);
     this.changeMonth = this.changeMonth.bind(this);
@@ -72,134 +75,144 @@ class CustomerInfo extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.props.hospital.hospitalReservations.map((reserve, i) => {
-                  return (
-                    <tr key={i}>
-                      <td>{reserve.reserveNum}</td>
-                      <td>{reserve.userName}</td>
-                      <td>{reserve.phone}</td>
-                      <td>
-                        {reserve.productName.length > 12
-                          ? reserve.productName.slice(0, 12) + '...'
-                          : reserve.productName}
-                      </td>
-                      <td>{`${reserve.reserveDate.slice(
-                        4,
-                        6
-                      )}월 ${reserve.reserveDate.slice(
-                        6,
-                        8
-                      )}일 / ${reserve.reserveDate.slice(
-                        8,
-                        10
-                      )}시~${reserve.reserveDate.slice(10, 12)}시`}</td>
-                      {this.state.input[{ i }.i] ? (
-                        reserve.careDate === '전화대기중' ? (
-                          <td>{reserve.careDate}</td>
-                        ) : (
-                          <td>{`${reserve.careDate.slice(
-                            4,
-                            6
-                          )}월 ${reserve.careDate.slice(
-                            6,
-                            8
-                          )}일/${reserve.careDate.slice(
-                            8,
-                            10
-                          )}시~${reserve.careDate.slice(10, 12) ||
-                            '00'}시`}</td>
-                        )
-                      ) : (
+                {this.props.hospital.hospitalReservations &&
+                  this.props.hospital.hospitalReservations.map((reserve, i) => {
+                    return (
+                      <tr key={i}>
+                        <td>{reserve.reserveNum}</td>
+                        <td>{reserve.userName}</td>
+                        <td>{reserve.phone}</td>
                         <td>
-                          <select
-                            className="setTime__button"
-                            id="setTimeMonth"
-                            onChange={this.changeMonth}
-                            defaultValue="월"
-                          >
-                            <option disabled>월</option>
-                            {Array(12)
-                              .fill(1)
-                              .map((a, i) => {
-                                return (
-                                  <option key={i}>
-                                    {(a + i).toString().length < 2
-                                      ? '0' + (a + i)
-                                      : a + i}
-                                  </option>
-                                );
-                              })}
-                          </select>
-                          <select className="setTime__button" defaultValue="일">
-                            <option disabled>일</option>
-                            {Array(this.state.month)
-                              .fill(1)
-                              .map((a, i) => {
-                                return (
-                                  <option key={i}>
-                                    {(a + i).toString().length < 2
-                                      ? '0' + (a + i)
-                                      : a + i}
-                                  </option>
-                                );
-                              })}
-                          </select>/
-                          <select className="setTime__button" defaultValue="시">
-                            <option disabled>시</option>
-                            {Array(24)
-                              .fill(1)
-                              .map((a, i) => {
-                                return (
-                                  <option key={i}>
-                                    {(a + i).toString().length < 2
-                                      ? '0' + (a + i)
-                                      : a + i}
-                                  </option>
-                                );
-                              })}
-                          </select>
-                          ~
-                          <select className="setTime__button" defaultValue="시">
-                            <option disabled>시</option>
-                            {Array(24)
-                              .fill(1)
-                              .map((a, i) => {
-                                return (
-                                  <option key={i}>
-                                    {(a + i).toString().length < 2
-                                      ? '0' + (a + i)
-                                      : a + i}
-                                  </option>
-                                );
-                              })}
-                          </select>
-                          <button
-                            className="customerInfo__button"
-                            onClick={this.submitCareDate}
-                          >
-                            등록
-                          </button>
+                          {reserve.productName.length > 12
+                            ? reserve.productName.slice(0, 12) + '...'
+                            : reserve.productName}
+                        </td>
+                        <td>{`${reserve.reserveDate.slice(
+                          4,
+                          6
+                        )}월 ${reserve.reserveDate.slice(
+                          6,
+                          8
+                        )}일 / ${reserve.reserveDate.slice(
+                          8,
+                          10
+                        )}시~${reserve.reserveDate.slice(10, 12)}시`}</td>
+                        {this.state.input[{ i }.i] ? (
+                          reserve.careDate === '전화대기중' ? (
+                            <td>{reserve.careDate}</td>
+                          ) : (
+                            <td>{`${reserve.careDate.slice(
+                              4,
+                              6
+                            )}월 ${reserve.careDate.slice(
+                              6,
+                              8
+                            )}일/${reserve.careDate.slice(
+                              8,
+                              10
+                            )}시~${reserve.careDate.slice(10, 12) ||
+                              '00'}시`}</td>
+                          )
+                        ) : (
+                          <td>
+                            <select
+                              className="setTime__button"
+                              id="setTimeMonth"
+                              onChange={this.changeMonth}
+                              defaultValue="월"
+                            >
+                              <option disabled>월</option>
+                              {Array(12)
+                                .fill(1)
+                                .map((a, i) => {
+                                  return (
+                                    <option key={i}>
+                                      {(a + i).toString().length < 2
+                                        ? '0' + (a + i)
+                                        : a + i}
+                                    </option>
+                                  );
+                                })}
+                            </select>
+                            <select
+                              className="setTime__button"
+                              defaultValue="일"
+                            >
+                              <option disabled>일</option>
+                              {Array(this.state.month)
+                                .fill(1)
+                                .map((a, i) => {
+                                  return (
+                                    <option key={i}>
+                                      {(a + i).toString().length < 2
+                                        ? '0' + (a + i)
+                                        : a + i}
+                                    </option>
+                                  );
+                                })}
+                            </select>/
+                            <select
+                              className="setTime__button"
+                              defaultValue="시"
+                            >
+                              <option disabled>시</option>
+                              {Array(24)
+                                .fill(1)
+                                .map((a, i) => {
+                                  return (
+                                    <option key={i}>
+                                      {(a + i).toString().length < 2
+                                        ? '0' + (a + i)
+                                        : a + i}
+                                    </option>
+                                  );
+                                })}
+                            </select>
+                            ~
+                            <select
+                              className="setTime__button"
+                              defaultValue="시"
+                            >
+                              <option disabled>시</option>
+                              {Array(24)
+                                .fill(1)
+                                .map((a, i) => {
+                                  return (
+                                    <option key={i}>
+                                      {(a + i).toString().length < 2
+                                        ? '0' + (a + i)
+                                        : a + i}
+                                    </option>
+                                  );
+                                })}
+                            </select>
+                            <button
+                              className="customerInfo__button"
+                              onClick={this.submitCareDate}
+                            >
+                              등록
+                            </button>
+                            <button
+                              className="customerInfo__button"
+                              onClick={() => this.handleChangeCare({ i })}
+                            >
+                              취소
+                            </button>
+                          </td>
+                        )}
+                        <td>{reserve.status}</td>
+                        <td>
                           <button
                             className="customerInfo__button"
                             onClick={() => this.handleChangeCare({ i })}
                           >
-                            취소
+                            변경
                           </button>
+                          <button className="customerInfo__button">취소</button>
                         </td>
-                      )}
-                      <td>{reserve.status}</td>
-                      <td>
-                        <button
-                          className="customerInfo__button"
-                          onClick={() => this.handleChangeCare({ i })}
-                        >
-                          변경
-                        </button>
-                        <button className="customerInfo__button">취소</button>
-                      </td>
-                    </tr>
-                  );
-                })}
+                      </tr>
+                    );
+                  })}
               </tbody>
             </table>
           </div>

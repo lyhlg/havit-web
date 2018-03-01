@@ -24,7 +24,8 @@ class ManageProduct extends Component {
       <div className="manageProduct">
         <div className="manageProduct__wrapper">
           <div className="manageProduct__tab">
-            {this.props.hospital.hospitalProducts.length === 0 ? (
+            {this.props.hospital.hospitalProducts &&
+            this.props.hospital.hospitalProducts.length === 0 ? (
               <div>
                 <p>없어</p>
               </div>
@@ -43,23 +44,24 @@ class ManageProduct extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.props.hospital.hospitalProducts.map((product, i) => {
-                    return (
-                      <tr
-                        key={i}
-                        id={product.productId}
-                        onClick={this.redirectProduct.bind(this)}
-                      >
-                        <td>{type[product.type]}</td>
-                        <td>{type[product.subType]}</td>
-                        <td>{product.productName}</td>
-                        <td>{product.price}</td>
-                        <td>{product.purchased}</td>
-                        <td>별점X</td>
-                        <td>{product.reviews.length}</td>
-                      </tr>
-                    );
-                  })}
+                  {this.props.hospital.hospitalProducts &&
+                    this.props.hospital.hospitalProducts.map((product, i) => {
+                      return (
+                        <tr
+                          key={i}
+                          id={product.productId}
+                          onClick={this.redirectProduct.bind(this)}
+                        >
+                          <td>{type[product.type]}</td>
+                          <td>{type[product.subType]}</td>
+                          <td>{product.productName}</td>
+                          <td>{product.price}</td>
+                          <td>{product.purchased}</td>
+                          <td>별점X</td>
+                          <td>{product.reviews.length}</td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
               </table>
             )}
