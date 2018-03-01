@@ -12,6 +12,7 @@ import ProductCounter from "./models/product-counter-model";
 import Payment from "./models/payment-model";
 import ProductOption from "./models/product-option-model";
 import Event from "./models/event-model";
+import SalesCount from "./models/sales-count-model";
 
 export {
   User,
@@ -27,5 +28,6 @@ export {
   ProductCounter,
   Payment,
   ProductOption,
-  Event
+  Event,
+  SalesCount
 };

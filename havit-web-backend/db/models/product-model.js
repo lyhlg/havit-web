@@ -14,13 +14,13 @@ const productSchema = new Schema({
   description: String,
   price: Number,
   status: { type: String, default: "판매중" },
-  salesCount: [Number],
   purchased: { type: Number, default: 0 },
   productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
   reviews: [String],
   options: String,
   createdOn: { type: Date, default: getCurrentDate() }
 });
+
 
 module.exports = mongoose.model("product", productSchema);
 
