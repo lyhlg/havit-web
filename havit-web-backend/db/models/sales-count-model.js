@@ -13,7 +13,7 @@ const salesCountSchema = new Schema({
 
 salesCountSchema.statics.UpdateFixValue = async function(_id, cb) {
   let tmp = await this.findOne({ _id }, { total: 1, purchased: 1 });
-  if (tmp) return cb(tmp.purchased / tmp.total * 100);
+  if (tmp) return cb( tmp.purchased / tmp.total * 100 );
   return 0;
 };
 
