@@ -23,7 +23,7 @@ class UploadBanner extends Component {
       <div className="uploadBanner">
         <div className="uploadBanner__wrapper">
           <div className="uploadBanner__tab">
-            <h2 className="uploadBanner__title">배너 등록</h2>
+            <h2 className="uploadBanner__title">배너상품 등록</h2>
             <h3 className="uploadBanner__label">우선순위</h3>
             <select id="priority" className="uploadBanner__dropdown">
               <option value="1">1</option>
@@ -58,7 +58,7 @@ class UploadBanner extends Component {
                 onClick={this.submitBanner}
                 className="uploadBanner__button"
               >
-                배너 등록하기
+                배너상품 등록하기
               </button>
               <Link
                 to="/adminPage/manageBanner"
