@@ -39,15 +39,13 @@ class UploadEvent extends Component {
               placeholder="상품 금액을 입력해주세요."
             />
             <h3 className="uploadEvent__label">
-              이벤트 이미지 업로드 (메인 이미지)
+              이벤트 상품 이미지 업로드 (메인 이미지)
             </h3>
             <input type="file" className="uploadEvent__img" />
-            <button className="uploadEvent__uploadbtn">Upload</button>
             <h3 className="uploadEvent__label">
-              이벤트 이미지 업로드 (상세 이미지)
+              이벤트 상품 이미지 업로드 (상세 이미지)
             </h3>
             <input type="file" className="uploadEvent__img" />
-            <button className="uploadEvent__uploadbtn">Upload</button>
             <h3 className="uploadEvent__label">상태</h3>
             <select id="type" className="uploadEvent__dropdown">
               <option value="ing">진행중</option>
@@ -55,7 +53,7 @@ class UploadEvent extends Component {
             </select>
             <div className="uploadEvent__btn">
               <Link to="/adminPage/manageEvent" className="uploadEvent__button">
-                병원 추가하기
+                이벤트 상품 등록하기
               </Link>
               <Link to="/adminPage/manageEvent" className="uploadEvent__button">
                 취소

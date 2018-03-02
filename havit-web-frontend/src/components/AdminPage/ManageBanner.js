@@ -8,11 +8,6 @@ class ManageBanner extends Component {
       <div className="manageBanner">
         <div className="manageBanner__wrapper">
           <div className="manageBanner__tab">
-            <input
-              name="keyword"
-              className="manageHospital__right"
-              placeholder=" Search"
-            />
             <table className="manageBanner__table">
               <thead>
                 <tr>

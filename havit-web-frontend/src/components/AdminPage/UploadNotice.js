@@ -44,7 +44,6 @@ class UploadNotice extends Component {
             />
             <h3 className="uploadNotice__label">이미지 업로드</h3>
             <input type="file" className="uploadNotice__img" />
-            <button className="uploadNotice__uploadbtn">Upload</button>
             <div className="uploadNotice__btn">
               <button
                 onClick={this.submitNotice}
