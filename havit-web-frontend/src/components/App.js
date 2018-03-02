@@ -43,7 +43,6 @@ class App extends Component {
   // }
 
   render() {
-    console.log(this.props.products);
     return (
       <div>
         <Header {...this.props} />

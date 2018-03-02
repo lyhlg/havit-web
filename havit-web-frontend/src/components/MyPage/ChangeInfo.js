@@ -84,7 +84,6 @@ class ChangeInfo extends Component {
   }
 
   render() {
-    console.log(this.props.userInfo.userInfo[0]);
     return (
       <div className="changeInfo">
         <div className="signup__tab">

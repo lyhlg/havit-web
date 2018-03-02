@@ -4,7 +4,6 @@ import 'styles/css/AdminPage/ManageBanner.css';
 
 class ManageBanner extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="manageBanner">
         <div className="manageBanner__wrapper">

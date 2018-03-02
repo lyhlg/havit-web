@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ProductReserve, ProductInfo } from '../index';
+import { ProductReserve, ProductInfo, Loading } from '../index';
 import { Link } from 'react-router-dom';
 import 'styles/css/Common/ProductDetail.css';
 
@@ -50,96 +50,118 @@ class ProductDetail extends Component {
     const toggleBtn = {
       display: this.state.purchaseBtn,
     };
-    console.log(this.props);
     return (
-      <div className="productDetail">
-        <div className="productDetail__category">
-          <p>
-            <Link to="/">홈</Link> >{' '}
-            <Link
-              to={`/${this.props.products.productsList[0] &&
-                this.props.products.productsList[0].type}`}
-            >
-              {this.props.products.productsList[0] &&
-                type[this.props.products.productsList[0].type]}
-            </Link>{' '}
-            >{' '}
-            <Link
-              to={`/${this.props.products.productsList[0] &&
-                this.props.products.productsList[0].type}/${this.props.products
-                .productsList[0] &&
-                this.props.products.productsList[0].subType}`}
-            >
-              {this.props.products.productsList[0] &&
-                type[this.props.products.productsList[0].subType]}
-            </Link>
-          </p>
-        </div>
-        <div className="productDetail__info">
-          <div className="productDetail__img">
-            <img
-              src={
-                this.props.products.productsList[0] &&
-                this.props.products.productsList[0].img
-              }
-              alt="detail"
-              align="left"
-            />
-          </div>
-          <div className="productDetail__text">
-            <h4 className="productDetail__hospital">
-              [{this.props.products.productsList[0] &&
-                this.props.products.productsList[0].hospitalLoc}]{' '}
-              {this.props.products.productsList[0] &&
-                this.props.products.productsList[0].hospitalName}
-            </h4>
-            <h3 className="productDetail__title">
-              {this.props.products.productsList[0] &&
-                this.props.products.productsList[0].productName}
-            </h3>
-            <h5 className="productDetail__description">
-              {this.props.products.productsList[0] &&
-                this.props.products.productsList[0].description}
-            </h5>
-            <div className="productDetail__sales">
-              <h4 className="productDetail__price">
-                {this.props.products.productsList[0] &&
-                  this.props.products.productsList[0].price}원
-              </h4>
-              <h4 className="productDetail__purchased">
-                <span>
+      <main>
+        {this.props.products.loading ? (
+          <Loading />
+        ) : (
+          <div className="productDetail">
+            <div className="productDetail__category">
+              <p>
+                <Link to="/">홈</Link> >{' '}
+                <Link
+                  to={`/${this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].type}`}
+                >
                   {this.props.products.productsList[0] &&
-                    this.props.products.productsList[0].purchased}개{' '}
-                </span>구매
-              </h4>
+                    type[this.props.products.productsList[0].type]}
+                </Link>{' '}
+                >{' '}
+                <Link
+                  to={`/${this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].type}/${this.props
+                    .products.productsList[0] &&
+                    this.props.products.productsList[0].subType}`}
+                >
+                  {this.props.products.productsList[0] &&
+                    type[this.props.products.productsList[0].subType]}
+                </Link>
+              </p>
             </div>
-            <hr className="productDetail__divider" />
-            <select className="productDetail__option">
-              <option>옵션 선택</option>
-            </select>
-            <ProductReserve
-              purchase={this.state.purchase}
-              purchaseBtn={this.state.purchaseBtn}
-              handleReserve={this.handleReserve}
-            />
-            <div className="productDetail__btnWrapper" style={toggleBtn}>
-              <button
-                onClick={this.handleReserve}
-                className="productDetail__reserveBtn"
-              >
-                구매하기
-              </button>
-              <button
-                className="productDetail__likeBtn"
-                onClick={this.addLikeProduct}
-              >
-                찜하기
-              </button>
+            <div className="productDetail__info">
+              <div className="productDetail__img">
+                <img
+                  src={
+                    this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].img
+                  }
+                  alt="detail"
+                  align="left"
+                />
+              </div>
+              <div className="productDetail__text">
+                <h4 className="productDetail__hospital">
+                  [{this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].hospitalLoc}]{' '}
+                  {this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].hospitalName}
+                </h4>
+                <h3 className="productDetail__title">
+                  {this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].productName}
+                </h3>
+                <h5 className="productDetail__description">
+                  {this.props.products.productsList[0] &&
+                    this.props.products.productsList[0].description}
+                </h5>
+                <div className="productDetail__sales">
+                  <h4 className="productDetail__price">
+                    {this.props.products.productsList[0] &&
+                      this.props.products.productsList[0].price}원
+                  </h4>
+                  <h4 className="productDetail__purchased">
+                    <span>
+                      {this.props.products.productsList[0] &&
+                        this.props.products.productsList[0].purchased}개{' '}
+                    </span>구매
+                  </h4>
+                </div>
+                <hr className="productDetail__divider" />
+
+                {this.props.products.productsList[0] &&
+                this.props.products.productsList[0].options ? (
+                  <select className="productDetail__option">
+                    <option>옵션 선택</option>
+                    {this.props.products.productsList[0] &&
+                      this.props.products.productsList[0].options.type.map(
+                        (option, i) => {
+                          return <option key={i}>{option}</option>;
+                        }
+                      )}
+                  </select>
+                ) : (
+                  <select
+                    className="productDetail__option"
+                    defaultValue="옵션 없음"
+                  >
+                    <option disabled>옵션 없음</option>
+                  </select>
+                )}
+                <ProductReserve
+                  purchase={this.state.purchase}
+                  purchaseBtn={this.state.purchaseBtn}
+                  handleReserve={this.handleReserve}
+                />
+                <div className="productDetail__btnWrapper" style={toggleBtn}>
+                  <button
+                    onClick={this.handleReserve}
+                    className="productDetail__reserveBtn"
+                  >
+                    구매하기
+                  </button>
+                  <button
+                    className="productDetail__likeBtn"
+                    onClick={this.addLikeProduct}
+                  >
+                    찜하기
+                  </button>
+                </div>
+              </div>
             </div>
+            <ProductInfo {...this.props} />
           </div>
-        </div>
-        <ProductInfo {...this.props} />
-      </div>
+        )}
+      </main>
     );
   }
 }

@@ -31,7 +31,6 @@ class ProductInfo extends Component {
   }
 
   render() {
-    console.log('aaa', this.props.products);
     return (
       <div className="productInfo">
         <div className="productInfo__btnWrapper">

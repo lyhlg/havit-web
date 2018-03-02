@@ -3,7 +3,6 @@ import { WishListEntry } from '../index';
 
 class WishList extends Component {
   render() {
-    console.log(this.props.likeProducts);
     return (
       <div>
         {this.props.likeProducts &&
