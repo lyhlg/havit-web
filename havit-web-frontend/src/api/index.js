@@ -497,11 +497,16 @@ export const addNotice = (title, body, author) => {
   });
 };
 
-export const addBanner = (title, url, status) => {
+export const addBanner = (priority, title, url, status) => {
   return client.mutate({
     mutation: gql`
-      mutation($title: String, $url: String, $status: String) {
-        addBanner(title: $title, url: $url, status: $status) {
+      mutation($priority: Int, $title: String, $url: String, $status: String) {
+        addBanner(
+          priority: $priority
+          title: $title
+          url: $url
+          status: $status
+        ) {
           _id
           title
           img
@@ -512,9 +517,29 @@ export const addBanner = (title, url, status) => {
       }
     `,
     variables: {
+      priority,
       title,
       url,
       status,
+    },
+  });
+};
+
+export const addHospitalAdmin = (code, name, loc) => {
+  return client.mutate({
+    mutation: gql`
+      mutation($code: String, $name: String, $loc: String) {
+        addHospitalAdmin(code: $code, name: $name, loc: $loc) {
+          code
+          name
+          loc
+        }
+      }
+    `,
+    variables: {
+      code,
+      name,
+      loc,
     },
   });
 };

@@ -374,11 +374,29 @@ const successAddBanner = banner => ({
   banner,
 });
 
-export const addBanner = (title, url, status) => {
+export const addBanner = (priority, title, url, status) => {
   return dispatch => {
     dispatch(requestAddBanner());
-    return api.addBanner(title, url, status).then(res => {
+    return api.addBanner(priority, title, url, status).then(res => {
       dispatch(successAddBanner(res));
+    });
+  };
+};
+
+const requestAddHospitalAdmin = () => ({
+  type: types.REQUEST_ADD_HOSPITALADMIN,
+});
+
+const successAddHospitalAdmin = () => ({
+  type: types.SUCCESS_ADD_HOSPITALADMIN,
+  addHospitalAdmin,
+});
+
+export const addHospitalAdmin = (code, url, loc) => {
+  return dispatch => {
+    dispatch(requestAddHospitalAdmin());
+    return api.addHospitalAdmin(code, url, loc).then(res => {
+      dispatch(successAddHospitalAdmin(res));
     });
   };
 };

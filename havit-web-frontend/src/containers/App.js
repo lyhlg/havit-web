@@ -131,8 +131,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addNotice(title, body, author));
   },
 
-  addBanner: (title, url, status) => {
-    dispatch(actions.addBanner(title, url, status));
+  addBanner: (priority, title, url, status) => {
+    dispatch(actions.addBanner(priority, title, url, status));
+  },
+
+  addHospitalAdmin: (code, name, loc) => {
+    dispatch(actions.addHospitalAdmin(code, name, loc));
   },
 });
 
