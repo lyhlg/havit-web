@@ -482,7 +482,7 @@ export const addNotice = (title, body, author, file) => {
         addNotice(title: $title, body: $body, author: $author, file: $file) {
           _id
           title
-          body2
+          body
           author
           views
           createdOn
