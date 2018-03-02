@@ -56,30 +56,25 @@ class Signup extends Component {
   }
 
   submitUserInfo() {
-    axios({
-      method: 'post',
-      url: 'http://localhost:8080/localLogin',
-      data: {
-        user_id_email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        name: document.getElementById('name').value,
-        phone: document.getElementById('txtMobile').value,
-        birthday:
-          document.getElementById('birthday1').value +
-          document.getElementById('birthday2').value +
-          document.getElementById('birthday3').value,
-        gender: document.querySelector('input[name="gender"]:checked').value,
-        likeArea: Array.prototype.map.call(
-          document.querySelectorAll('input[name="likeArea"]:checked'),
-          area => area.value
-        ),
-        likePoint: Array.prototype.map.call(
-          document.querySelectorAll('input[name="likePoint"]:checked'),
-          point => point.value
-        ),
-        hospitalCode: document.getElementById('code').value || '',
-      },
-    }).then(res => console.log(res));
+    this.props.addUserInfo(
+      document.getElementById('email').value,
+      document.getElementById('name').value,
+      document.getElementById('password').value,
+      document.getElementById('txtMobile').value,
+      document.getElementById('birthday1').value +
+        document.getElementById('birthday2').value +
+        document.getElementById('birthday3').value,
+      document.querySelector('input[name="gender"]:checked').value,
+      Array.prototype.map.call(
+        document.querySelectorAll('input[name="likeArea"]:checked'),
+        area => area.value
+      ),
+      Array.prototype.map.call(
+        document.querySelectorAll('input[name="likePoint"]:checked'),
+        point => point.value
+      ),
+      document.getElementById('code').value || ''
+    );
     setTimeout(() => {
       this.props.history.push('/signupend');
     }, 2000);

@@ -33,8 +33,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.getLikeProducts(email));
   },
 
-  getUserInfo: email => {
-    dispatch(actions.getUserInfo(email));
+  getUserInfo: (email, password) => {
+    dispatch(actions.getUserInfo(email, password));
   },
 
   getHospital: email => {

@@ -179,7 +179,7 @@ class ChangeInfo extends Component {
               <select
                 id="birthday1"
                 className="signup__box1"
-                value={
+                defaultValue={
                   this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].birthday.slice(0, 4)
                 }
@@ -194,7 +194,7 @@ class ChangeInfo extends Component {
                 id="birthday2"
                 className="signup__box2"
                 onChange={this.changeMonth}
-                value={
+                defaultValue={
                   this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].birthday.slice(4, 6)
                 }
@@ -212,11 +212,10 @@ class ChangeInfo extends Component {
               <select
                 id="birthday3"
                 className="signup__box2"
-                value={
+                defaultValue={
                   this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].birthday.slice(6, 8)
                 }
-                defaultValue="일"
               >
                 <option disabled>일</option>
                 {Array(this.state.month)

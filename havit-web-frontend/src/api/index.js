@@ -99,14 +99,14 @@ export const getLikeProducts = email => {
   });
 };
 
-export const getUserInfo = email => {
+export const getUserInfo = (email, password) => {
   return client.query({
     query: gql`
-      query($email: String) {
-        Users(user_id_email: $email) {
+      query($email: String, $password: String) {
+        Users(user_id_email: $email, password: $password) {
+          user_id_email
           specId
           name
-          password
           auth
           phone
           birthday
@@ -120,6 +120,7 @@ export const getUserInfo = email => {
     `,
     variables: {
       email,
+      password,
     },
   });
 };
@@ -305,6 +306,7 @@ export const addReview = (email, stars, comment, product) => {
 export const addUserInfo = (
   email,
   name,
+  password,
   phone,
   birthday,
   gender,
@@ -317,6 +319,7 @@ export const addUserInfo = (
       mutation(
         $email: String
         $name: String
+        $password: String
         $phone: String
         $birthday: String
         $gender: String
@@ -327,6 +330,7 @@ export const addUserInfo = (
         addUserInfo(
           user_id_email: $email
           name: $name
+          password: $password
           phone: $phone
           birthday: $birthday
           gender: $gender
@@ -336,7 +340,6 @@ export const addUserInfo = (
         ) {
           specId
           name
-          password
           auth
           phone
           birthday
@@ -348,6 +351,7 @@ export const addUserInfo = (
     variables: {
       email,
       name,
+      password,
       phone,
       birthday,
       gender,

@@ -6,6 +6,24 @@ import { GoogleLogin } from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';
 
 class Login extends Component {
+  submitLogin() {
+    this.props.getUserInfo(
+      document.getElementById('username').value,
+      document.getElementById('password').value
+    );
+    setTimeout(() => {
+      if (this.props.userInfo.userInfo.length === 1) {
+        localStorage.setItem(
+          'email',
+          this.props.userInfo.userInfo[0].user_id_email
+        );
+        localStorage.setItem('code', this.props.userInfo.userInfo[0].level);
+        this.props.history.push('/');
+      } else {
+        alert('아이디 또는 비번 잘못입력');
+      }
+    }, 1500);
+  }
   authLoginGoogleSucc(res) {
     this.props.addUser(
       res.profileObj.email,
@@ -76,6 +94,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="login">
         <img src={reallogo} className="login__logo" alt="logo" />
@@ -84,18 +103,22 @@ class Login extends Component {
             <h3 className="login__label">이메일 주소</h3>
             <input
               type="text"
-              name="username"
+              id="username"
               className="login__input"
               placeholder="이메일@도메인"
             />
             <h3 className="login__label">비밀번호 입력</h3>
             <input
-              type="text"
-              name="password"
+              type="password"
+              id="password"
               className="login__input"
               placeholder="비밀번호"
             />
-            <button type="submit" className="login__btn">
+            <button
+              type="submit"
+              className="login__btn"
+              onClick={this.submitLogin.bind(this)}
+            >
               로그인
             </button>
             <div className="social__button">
