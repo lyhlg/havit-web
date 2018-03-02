@@ -13,7 +13,13 @@ class UploadNotice extends Component {
       document.getElementById('title').value,
       document.getElementById('content').value,
       '관리자',
-      document.querySelector('input[type=file]').files[0]
+      {
+        name: document.querySelector('input[type=file]').files[0].name,
+        type: document.querySelector('input[type=file]').files[0].type,
+        size: document.querySelector('input[type=file]').files[0].size,
+        path: document.querySelector('input[type=file]').files[0]
+          .webkitRelativePath,
+      }
     );
   }
 
