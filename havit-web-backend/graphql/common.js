@@ -41,7 +41,8 @@ const CHK_HOSPITAL_ADMIN_CODE = async ( params ) => {
 }
 
 const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async (params) => {
-  const [obj, args, { user, hospital, hospitalAdmin }] = [...params];
+  const [obj, args, ctx] = [...params];
+  const { user, hospital, hospitalAdmin } = ctx;
   var email = args.user_id_email;
   if ( args.hospitalCode ){
     //병원 코드 존재시 유효한 병원코드 인지 확인
@@ -49,11 +50,11 @@ const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async (params) => {
     if ( isVerifiedHospitalCode.length ){
       // 유효한 인증 번호이면, Hospital Table에 병원 추가 및 User 정보 업데이트
       await REG_USER_TO_HOSPTIAL([obj, args, { hospital, hospitalAdmin }]);
-      await UPDATE_DB_USER([obj, args, user],3);
+      await UPDATE_DB_USER([obj, args, user],2);
     } else {
       // 아닐 경우에는 잘못된 hospitalCode는 null로 변경하고 User 정보 업데이트
       args.hospitalCode = null;
-      await UPDATE_DB_USER([obj, args, user],2);
+      await UPDATE_DB_USER([obj, args, user],3);
     }
   } else {
     // 병원 코드 존재 하지 않을 경우 hospitalCode는 null로 변경하고 User 정보 업데이트

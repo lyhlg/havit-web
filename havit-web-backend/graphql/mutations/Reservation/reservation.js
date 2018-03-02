@@ -27,7 +27,6 @@ const MODIFY_RESERVATION = async params => {
   const { reservation, hospital, product } = ctx;
   // 폰번호 오픈을 하기 위한 예약 수정 API
   if (args.reserveNum && args.openPhoneNum) {
-    console.log(args.openPhoneNum);
     await reservation.update(
       { reserveNum: args.reserveNum },
       { $set: { openPhoneNum: args.openPhoneNum } }
@@ -62,6 +61,7 @@ const ADD_BILL = async params => {
   const billing =
     (await product.findOne({ hospitalCode: hospitalCode, productName: title }))
       .price * 0.1;
+      console.log( title, billing);
   return await payment.update(
     { code: hospitalCode },
     { $inc: { price: billing } }

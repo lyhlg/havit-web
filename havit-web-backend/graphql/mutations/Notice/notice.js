@@ -1,20 +1,20 @@
 import { autoNumbering } from "../../../utils/index";
 import { CHECK_DUP_DATA } from "../../common";
+import multer from "multer";
 import fs from "fs";
+
+const upload = multer({ dest: "Uploads/" });
 
 const ADD_NOTICE = async params => {
   const [obj, args, ctx] = [...params];
   const { notice, noticeCounter } = ctx;
   const numberOfCount = Object.keys(args).length;
-  console.log(args.file);
-  fs.readFile('../../../resource/images/test.jpg', (err, data) => {
-    console.log("data: ", data);
-  });
+  console.log(args);
+
 
   const chk_dup = await CHECK_DUP_DATA([obj, args, notice]);
   if (!chk_dup && numberOfCount === 3) {
     const number = await autoNumbering("noticeid", noticeCounter);
-    console.log(number);
     let obj_counter = { _id: number };
     let new_args = Object.assign(args, obj_counter);
 
