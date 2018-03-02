@@ -127,8 +127,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addUser(email, specId, user));
   },
 
-  addNotice: (title, body, author) => {
-    dispatch(actions.addNotice(title, body, author));
+  addNotice: (title, body, author, file) => {
+    dispatch(actions.addNotice(title, body, author, file));
   },
 
   addBanner: (title, url, status) => {

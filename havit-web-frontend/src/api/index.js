@@ -472,14 +472,14 @@ export const addUser = (email, specId, user) => {
   });
 };
 
-export const addNotice = (title, body, author) => {
+export const addNotice = (title, body, author, file) => {
   return client.mutate({
     mutation: gql`
-      mutation($title: String, $body: String, $author: String) {
-        addNotice(title: $title, body: $body, author: $author) {
+      mutation($title: String, $body: String, $author: String, $file: Upload) {
+        addNotice(title: $title, body: $body, author: $author, file: $file) {
           _id
           title
-          body
+          body2
           author
           views
           createdOn
@@ -490,6 +490,7 @@ export const addNotice = (title, body, author) => {
       title,
       body,
       author,
+      file,
     },
   });
 };
