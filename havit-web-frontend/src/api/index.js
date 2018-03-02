@@ -33,6 +33,9 @@ export const getProducts = (type, subType, id) => {
             stars
             comment
           }
+          options {
+            type
+          }
         }
       }
     `,

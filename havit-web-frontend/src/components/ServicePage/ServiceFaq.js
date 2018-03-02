@@ -4,7 +4,6 @@ import 'styles/css/ServicePage/ServiceFaq.css';
 
 class ServiceFaq extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="serviceFaq">
         <div className="serviceFaq__wrapper">

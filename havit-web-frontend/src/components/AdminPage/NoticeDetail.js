@@ -4,8 +4,6 @@ import 'styles/css/AdminPage/NoticeDetail.css';
 
 class NoticeDetail extends Component {
   render() {
-    console.log(this.props);
-
     return (
       <div className="noticeDetail">
         <div className="noticeDetail__wrapper">

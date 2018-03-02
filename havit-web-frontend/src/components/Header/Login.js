@@ -76,7 +76,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="login">
         <img src={reallogo} className="login__logo" alt="logo" />
