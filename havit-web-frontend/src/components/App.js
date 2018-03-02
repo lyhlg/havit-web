@@ -66,7 +66,9 @@ class App extends Component {
           <Route path="/event" component={Event} />
           <Route
             path="/adminPage"
-            render={props => <AdminPage {...this.props} />}
+            render={props => (
+              <AdminPage checkAuth={this.checkAuth} {...this.props} />
+            )}
           />
           <Route path="/loading" component={Loading} />
           <Route
