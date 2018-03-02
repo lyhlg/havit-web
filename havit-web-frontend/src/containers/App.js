@@ -109,10 +109,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addLikeProducts(email, productId));
   },
 
-  modifyReservation: (reserveNum, userName, phone, reserveDate) => {
-    dispatch(
-      actions.modifyReservation(reserveNum, userName, phone, reserveDate)
-    );
+  modifyReservation: (reserveNum, openPhoneNum) => {
+    dispatch(actions.modifyReservation(reserveNum, openPhoneNum));
   },
 
   fixReservation: (reserveNum, careDate) => {

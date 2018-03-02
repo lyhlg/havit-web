@@ -12,9 +12,18 @@ class CustomerInfo extends Component {
           this.props.hospital.hospitalReservations.length
       ).fill(true),
     };
+    this.openNum = this.openNum.bind(this);
     this.submitCareDate = this.submitCareDate.bind(this);
     this.changeMonth = this.changeMonth.bind(this);
     this.handleChangeCare = this.handleChangeCare.bind(this);
+  }
+
+  openNum(e) {
+    this.props.modifyReservation(
+      e.currentTarget.parentNode.parentNode.childNodes[0].textContent,
+      1
+    );
+    window.location.href = '/hospitalPage/customerInfo';
   }
 
   submitCareDate(e) {
@@ -81,7 +90,18 @@ class CustomerInfo extends Component {
                       <tr key={i}>
                         <td>{reserve.reserveNum}</td>
                         <td>{reserve.userName}</td>
-                        <td>{reserve.phone}</td>
+                        <td>
+                          {reserve.openPhoneNum ? (
+                            reserve.phone
+                          ) : (
+                            <button
+                              onClick={this.openNum}
+                              className="customerInfo__openNum"
+                            >
+                              번호 보기
+                            </button>
+                          )}
+                        </td>
                         <td>
                           {reserve.productName.length > 12
                             ? reserve.productName.slice(0, 12) + '...'
