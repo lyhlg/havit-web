@@ -543,37 +543,53 @@ export const addHospitalAdmin = (code, name, loc) => {
   });
 };
 
-export const addEvent = (priority, productName, price, purchased, status) => {
+export const addEvent = (
+  hospitalCode,
+  productName,
+  description,
+  price,
+  status,
+  priority,
+  productImage
+) => {
   return client.mutate({
     mutation: gql`
       mutation(
-        $priority: Int
+        $hospitalCode: String
         $productName: String
+        $description: String
         $price: Int
-        $purchased: Int
         $status: String
+        $priority: Int
+        $productImage: String
       ) {
         addEvent(
-          priority: $priority
+          hospitalCode: $hospitalCode
           productName: $productName
+          description: $description
           price: $price
-          purchased: $purchased
           status: $status
+          priority: $priority
+          productImage: $productImage
         ) {
-          priority
+          hospitalCode
           productName
+          description
           price
-          purchased
           status
+          priority
+          productImage
         }
       }
     `,
     variables: {
-      priority,
+      hospitalCode,
       productName,
+      description,
       price,
-      purchased,
       status,
+      priority,
+      productImage,
     },
   });
 };

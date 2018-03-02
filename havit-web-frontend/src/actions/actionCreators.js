@@ -410,11 +410,27 @@ const successAddEvent = () => ({
   addEvent,
 });
 
-export const addEvent = (priority, productName, price, purchased, status) => {
+export const addEvent = (
+  hospitalCode,
+  productName,
+  description,
+  price,
+  status,
+  priority,
+  productImage
+) => {
   return dispatch => {
     dispatch(requestAddEvent());
     return api
-      .addEvent(priority, productName, price, purchased, status)
+      .addEvent(
+        hospitalCode,
+        productName,
+        description,
+        price,
+        status,
+        priority,
+        productImage
+      )
       .then(res => {
         dispatch(successAddEvent(res));
       });
