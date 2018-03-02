@@ -73,7 +73,7 @@ class UploadProduct extends Component {
               className="uploadProduct__img"
               onChange={this.fileSelectedHandler}
             />
-            <button onClick={this.fileUploadHandler}>Upload</button>
+            <button onClick={this.fileUploadHandler}>Upload</button>ㅎ
             <h3 className="uploadProduct__label">상품명</h3>
             <input
               type="text"
