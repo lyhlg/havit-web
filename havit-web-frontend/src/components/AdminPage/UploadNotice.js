@@ -12,7 +12,8 @@ class UploadNotice extends Component {
     this.props.addNotice(
       document.getElementById('title').value,
       document.getElementById('content').value,
-      '관리자'
+      '관리자',
+      document.querySelector('input[type=file]').files[0]
     );
   }
 

@@ -2,7 +2,9 @@ import { autoNumbering } from '../../../utils/index';
 import { CHECK_DUP_DATA } from '../../common';
 
 const ADD_NOTICE = async (params) => {
-  const [obj, args, {notice, noticeCounter}] = [...params];
+  const [obj, args, ctx] = [...params];
+  const {notice, noticeCounter} = ctx;
+  console.log(args);
   const numberOfCount =  Object.keys(args).length;
 
   const chk_dup = await CHECK_DUP_DATA([obj, args, notice]);

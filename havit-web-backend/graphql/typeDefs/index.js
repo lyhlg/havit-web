@@ -1,4 +1,10 @@
 const typeDefs = `
+  input Upload {
+    name : String
+    type : String
+    size : Int
+    path : String
+  }
   type Query {
     Users(user_id_email: String) : [User]
     Reservations(user_id_email:String hospitalCode: String status: String hospitalCode: String) : [Reservation]
@@ -134,6 +140,7 @@ const typeDefs = `
   }
 
   type Mutation {
+    uploadFile(file: Upload): Boolean,
 
     addProduct(
       type: String,
@@ -254,6 +261,7 @@ const typeDefs = `
       title: String
       body: String
       author: String
+      file: Upload
     ) : Notice
 
     delNotice(

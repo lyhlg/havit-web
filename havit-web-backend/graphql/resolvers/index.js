@@ -86,6 +86,10 @@ export default {
 
   // MUTATION (STORE DATA)
   Mutation: {
+    uploadFile: (parent, {file}) => {
+      console.log(file);
+      return true;
+    },
     addProduct: (...params) => ADD_PRODUCT(params),
     editProduct: (...params) => EDIT_PRODUCT(params),
     addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),
