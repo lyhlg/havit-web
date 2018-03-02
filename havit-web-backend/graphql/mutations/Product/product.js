@@ -3,14 +3,16 @@ import { CHECK_DUP_DATA } from "../../common";
 const ObjectId = require("mongodb").ObjectID;
 
 const ADD_LIKE_PRODUCT = async params => {
-  const [obj, args, { user }] = [...params];
+  const [obj, args, ctx] = [...params];
+  const { user_id_email, productId } = args;
+  const { user } = ctx;
   let checkAlreadyLikeIt = false;
 
   // user 테이블에 likeProduct에 이미 해당 상품을 찜 해뒀는지 확인
   (await user.findOne({
-    user_id_email: args.user_id_email
+    user_id_email: user_id_email
   })).likeProduct.forEach(item => {
-    if (item === args.productId) {
+    if (item === productId) {
       checkAlreadyLikeIt = !checkAlreadyLikeIt;
     }
   });
@@ -18,12 +20,12 @@ const ADD_LIKE_PRODUCT = async params => {
   // 해당 상품이 찜이 안되었을 경우에만 추가
   if (!checkAlreadyLikeIt) {
     await user.update(
-      { user_id_email: args.user_id_email },
-      { $push: { likeProduct: args.productId } }
+      { user_id_email: user_id_email },
+      { $push: { likeProduct: productId } }
     );
   }
 
-  return await user.findOne({ user_id_email: args.user_id_email });
+  return await user.findOne({ user_id_email: user_id_email });
 };
 
 const ADD_PRODUCT = async params => {

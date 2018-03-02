@@ -27,18 +27,18 @@ const userSchema = new Schema({
 });
 // likeProduct: [{type: mongoose.Schema.Types.ObjectId, ref: 'Product' }],
 
-userSchema.methods.comparePassword = async (id, inputPassword, cb) => {
-  const passwd = (await this.findOne(
-    { user_id_email: id },
-    { password: 1, _id: 0 }
-  )).password;
-  console.log(passwd);
-  if (inputPassword === passwd) {
-    cb(null, true);
-  } else {
-    cb("error");
-  }
-};
+// userSchema.methods.comparePassword = async (id, inputPassword, cb) => {
+//   const passwd = (await this.findOne(
+//     { user_id_email: id },
+//     { password: 1, _id: 0 }
+//   )).password;
+//   console.log(passwd);
+//   if (inputPassword === passwd) {
+//     cb(null, true);
+//   } else {
+//     cb("error");
+//   }
+// };
 
 module.exports = mongoose.model("user", userSchema, "users");
 
