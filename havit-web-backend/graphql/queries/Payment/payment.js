@@ -5,6 +5,4 @@ const GET_PAYMENT = async params => {
   return await payment.findOne({code:code});
 };
 
-export {
-  GET_PAYMENT
-};
+export { GET_PAYMENT };

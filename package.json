@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "apollo-upload-server": "^4.0.2",
+    "graphql": "^0.13.1"
+  }
+}

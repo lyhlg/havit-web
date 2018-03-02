@@ -17,15 +17,16 @@ import {
   Event,
   SalesCount
 } from "../db";
-import schema from "../graphql";
-
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
+import { apolloUploadExpress } from "apollo-upload-server";
+import schema from "../graphql";
 
 // Using GraphQL
 router.use(
   "/graphql",
   bodyParser.json(),
   cors(),
+  apolloUploadExpress({ uploadDir: "../resource/images" }),
   graphqlExpress({
     schema,
     context: {
