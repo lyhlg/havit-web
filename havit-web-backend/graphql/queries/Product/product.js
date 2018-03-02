@@ -34,7 +34,7 @@ const FIND_PRODUCT = async ( params ) => {
 
 const LIKE_PRODUCT = async ( params ) => {
   const [obj, args, ctx] = [...params];
-  const { user_id_email } = obj;
+  const { user_id_email } = args;
   const { user, product } = ctx;
   if ( obj ) {
     return (await user.findOne({ user_id_email })).likeProduct

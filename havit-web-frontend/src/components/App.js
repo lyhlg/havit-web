@@ -53,7 +53,7 @@ class App extends Component {
             path="/privacy"
             render={props => <Privacy {...this.props} />}
           />
-          <Route path="/signup" component={Signup} />
+          <Route path="/signup" render={props => <Signup {...this.props} />} />
           <Route
             path="/mypage"
             render={props => (

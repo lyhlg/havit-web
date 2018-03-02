@@ -64,10 +64,10 @@ const successGetUserInfo = userInfo => ({
   userInfo,
 });
 
-export const getUserInfo = email => {
+export const getUserInfo = (email, password) => {
   return dispatch => {
     dispatch(requestGetUserInfo());
-    return api.getUserInfo(email).then(res => {
+    return api.getUserInfo(email, password).then(res => {
       dispatch(successGetUserInfo(res));
     });
   };
@@ -229,6 +229,7 @@ const successAddUserInfo = newUserInfo => ({
 export const addUserInfo = (
   email,
   name,
+  password,
   phone,
   birthday,
   gender,
@@ -242,6 +243,7 @@ export const addUserInfo = (
       .addUserInfo(
         email,
         name,
+        password,
         phone,
         birthday,
         gender,

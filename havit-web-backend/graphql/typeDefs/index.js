@@ -6,7 +6,7 @@ const typeDefs = `
     path : String
   }
   type Query {
-    Users(user_id_email: String) : [User]
+    Users(user_id_email: String, password: String) : [User]
     Reservations(user_id_email:String hospitalCode: String status: String hospitalCode: String) : [Reservation]
     Products (type: String subType: String limit: Int page: Int productId: Int) : [Product]
     Events(hospitalCode: String productId: Int limit: Int page: Int) : [Event]
