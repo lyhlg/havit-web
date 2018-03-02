@@ -7,7 +7,10 @@ class ProductReserve extends Component {
     };
     return (
       <div className="productReserve" style={purchaseView}>
-        <p>하이하이</p>
+        <p>예약자</p>
+        <input type="text" id="reserve__username" />
+        <p>예약자</p>
+        <p>전화상담 날짜</p>
         <button onClick={this.props.handleReserve}>취소</button>
       </div>
     );

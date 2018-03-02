@@ -15,7 +15,6 @@ class Notice extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div className="notice">
         <div className="notice__wrapper">

@@ -15,7 +15,6 @@ class ServicePage extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <main>
         <div className="servicePage">

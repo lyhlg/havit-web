@@ -2,6 +2,7 @@ import * as types from 'actions/actionTypes';
 
 const initialState = {
   productsList: [],
+  loading: false,
 };
 
 const products = (state = initialState, action) => {
@@ -10,8 +11,13 @@ const products = (state = initialState, action) => {
       return {
         ...state,
         productsList: action.products.data.Products,
+        loading: false,
       };
     case types.REQUEST_GET_PRODUCTS:
+      return {
+        ...state,
+        loading: true,
+      };
     default:
       return state;
   }

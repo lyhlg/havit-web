@@ -18,7 +18,6 @@ class ManageHospital extends Component {
     }
   }
   render() {
-    console.log(this.props);
     return (
       <div className="manageHospital">
         <div className="manageHospital__wrapper">
