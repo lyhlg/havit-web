@@ -17,7 +17,7 @@ class NoticeDetail extends Component {
             <h2 className="noticeDetail__label">작성일</h2>
             <input id="createdOn" type="text" className="noticeDetail__input" />
             <h2 className="noticeDetail__label">내용</h2>
-            <input id="body" type="text" className="noticeDetail__input" />
+            <input id="body" type="text" className="noticeDetail__bigInput" />
             <Link to="/adminPage/notice" className="noticeDetail__button">
               공지사항으로 이동
             </Link>

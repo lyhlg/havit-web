@@ -5,15 +5,12 @@ import 'styles/css/AdminPage/Notice.css';
 class Notice extends Component {
   constructor(props) {
     super(props);
-    this.moveHospital = this.moveHospital.bind(this);
+    this.moveNoticeDetail = this.moveNoticeDetail.bind(this);
   }
 
-  moveHospital(e) {
+  moveNoticeDetail(e) {
     if (e.currentTarget.childNodes[3].textContent !== '미등록') {
-      localStorage.setItem(
-        'hospital',
-        e.currentTarget.childNodes[3].textContent
-      );
+      localStorage.setItem('notice', e.currentTarget.childNodes[3].textContent);
       this.props.history.push('/adminPage/noticeDetail');
     }
   }
@@ -40,7 +37,7 @@ class Notice extends Component {
               <tbody>
                 {this.props.notices.noticesList.map((notice, i) => {
                   return (
-                    <tr key={i} onClick={this.moveHospital}>
+                    <tr key={i} onClick={this.moveNoticeDetail}>
                       <td>{notice._id}</td>
                       <td>{notice.title}</td>
                       <td>{notice.author}</td>
