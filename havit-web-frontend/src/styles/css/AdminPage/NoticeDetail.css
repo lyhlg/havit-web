@@ -14,6 +14,13 @@
   border: solid 1px #dce2eb;
   padding-left: 10px; }
 
+.noticeDetail__bigInput {
+  width: 600px;
+  height: 150px;
+  background-color: #ffffff;
+  border: solid 1px #dce2eb;
+  padding-left: 10px; }
+
 .noticeDetail__button {
   float: right;
   margin: 15px;
