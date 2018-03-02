@@ -19,11 +19,6 @@ class Notice extends Component {
       <div className="notice">
         <div className="notice__wrapper">
           <div className="notice__tab">
-            <input
-              name="keyword"
-              className="notice__right"
-              placeholder=" Search"
-            />
             <table className="notice__table">
               <thead>
                 <tr>

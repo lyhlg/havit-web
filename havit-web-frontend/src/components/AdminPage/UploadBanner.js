@@ -53,7 +53,6 @@ class UploadBanner extends Component {
             </select>
             <h3 className="uploadBanner__label">배너 이미지 업로드</h3>
             <input type="file" className="uploadBanner__img" />
-            <button className="uploadBanner__uploadbtn">Upload</button>
             <div className="uploadBanner__btn">
               <button
                 onClick={this.submitBanner}

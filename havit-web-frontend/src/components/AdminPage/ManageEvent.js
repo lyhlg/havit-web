@@ -8,11 +8,6 @@ class ManageEvent extends Component {
       <div className="manageEvent">
         <div className="manageEvent__wrapper">
           <div className="manageEvent__tab">
-            <input
-              name="keyword"
-              className="manageHospital__right"
-              placeholder=" Search"
-            />
             <table className="manageEvent__table">
               <thead>
                 <tr>
