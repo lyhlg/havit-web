@@ -25,7 +25,7 @@ class ManageEvent extends Component {
                       <td>{event.priority}</td>
                       <td>{event.productName}</td>
                       <td>{event.price}</td>
-                      <td>{event.purchased}</td>
+                      <td>{event.price}</td>
                       <td>{event.status}</td>
                     </tr>
                   );
