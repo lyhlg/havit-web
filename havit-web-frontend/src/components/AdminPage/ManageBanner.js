@@ -31,7 +31,7 @@ class ManageBanner extends Component {
               </tbody>
             </table>
             <Link to="/adminPage/uploadBanner" className="manageBanner__button">
-              배너 등록하기
+              배너상품 등록하기
             </Link>
           </div>
         </div>

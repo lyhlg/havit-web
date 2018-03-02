@@ -197,6 +197,7 @@ export const getNotices = () => {
           title
           body
           author
+          createdOn
         }
       }
     `,
@@ -538,6 +539,41 @@ export const addHospitalAdmin = (code, name, loc) => {
       code,
       name,
       loc,
+    },
+  });
+};
+
+export const addEvent = (priority, productName, price, purchased, status) => {
+  return client.mutate({
+    mutation: gql`
+      mutation(
+        $priority: Int
+        $productName: String
+        $price: Int
+        $purchased: Int
+        $status: String
+      ) {
+        addEvent(
+          priority: $priority
+          productName: $productName
+          price: $price
+          purchased: $purchased
+          status: $status
+        ) {
+          priority
+          productName
+          price
+          purchased
+          status
+        }
+      }
+    `,
+    variables: {
+      priority,
+      productName,
+      price,
+      purchased,
+      status,
     },
   });
 };

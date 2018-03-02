@@ -63,7 +63,7 @@ class App extends Component {
           <Route path="/signupend" component={SignupEnd} />
           <Route path="/skin" render={props => <Skin {...this.props} />} />
           <Route path="/beauty" render={props => <Beauty {...this.props} />} />
-          <Route path="/event" component={Event} />
+          <Route path="/event" render={props => <Event {...this.props} />} />
           <Route
             path="/adminPage"
             render={props => (
