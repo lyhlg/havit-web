@@ -28,6 +28,15 @@ const ADD_LIKE_PRODUCT = async params => {
   return await user.findOne({ user_id_email: user_id_email });
 };
 
+const DEL_LIKE_PRODUCT = async params => {
+  const [obj, args, ctx] = [...params];
+  const { user_id_email, productId } = args;
+  const { user } = ctx;
+
+  await user.update({user_id_email}, {$pull: { likeProduct: productId } })
+  return await user.findOne({user_id_email});
+};
+
 const ADD_PRODUCT = async params => {
   const [obj, args, ctx] = [...params];
   const {
@@ -159,4 +168,4 @@ const SAVE_N_UP_PRODUCT_OPTION = async (pid, o1, o2, productOption, type) => {
   }
 };
 
-export { ADD_LIKE_PRODUCT, ADD_PRODUCT, EDIT_PRODUCT };
+export { ADD_LIKE_PRODUCT, DEL_LIKE_PRODUCT, ADD_PRODUCT, EDIT_PRODUCT };

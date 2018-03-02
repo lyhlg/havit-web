@@ -216,6 +216,11 @@ const typeDefs = `
       productId :Int
     ) : User
 
+    delLikeProducts(
+      user_id_email: String
+      productId :Int
+    ) : User
+
     modifyReservation(
       reserveNum : String
       userName : String

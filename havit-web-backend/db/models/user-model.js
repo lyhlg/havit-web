@@ -21,7 +21,7 @@ const userSchema = new Schema({
   likeArea: [String],
   likePoint: [String],
   reservation: [String],
-  likeProduct: [String],
+  likeProduct: [Number],
   reviews: [String],
   hospitalCode: { type: String, default: null }
 });
