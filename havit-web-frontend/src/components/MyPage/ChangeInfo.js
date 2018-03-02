@@ -292,7 +292,7 @@ class ChangeInfo extends Component {
           </h6>
           <div className="signup__btn">
             <button onClick={this.changeUserInfo} className="signup__button">
-              회원가입
+              회원정보 수정
             </button>
           </div>
         </div>
