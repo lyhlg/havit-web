@@ -120,17 +120,15 @@ class ProductDetail extends Component {
 
                 {this.props.products.productsList[0] &&
                 this.props.products.productsList[0].options ? (
-                  this.props.products.productsList[0] &&
-                  this.props.products.productsList[0].options.type.map(
-                    (option, i) => {
-                      return (
-                        <select className="productDetail__option" key={i}>
-                          <option>옵션 선택</option>
-                          <option>{option}</option>
-                        </select>
-                      );
-                    }
-                  )
+                  <select className="productDetail__option">
+                    <option>옵션 선택</option>
+                    {this.props.products.productsList[0] &&
+                      this.props.products.productsList[0].options.type.map(
+                        (option, i) => {
+                          return <option key={i}>{option}</option>;
+                        }
+                      )}
+                  </select>
                 ) : (
                   <select
                     className="productDetail__option"

@@ -40,12 +40,12 @@ class UploadBanner extends Component {
             <h3 className="uploadBanner__label">상품 URL</h3>
             <input
               type="text"
-              id="title"
+              id="url"
               className="uploadBanner__input"
               placeholder="상품 URL을 입력해주세요."
             />
             <h3 className="uploadBanner__label">상태</h3>
-            <select id="type" className="uploadBanner__dropdown">
+            <select id="status" className="uploadBanner__dropdown">
               <option value="ing">판매중</option>
               <option value="done">판매종료</option>
             </select>
