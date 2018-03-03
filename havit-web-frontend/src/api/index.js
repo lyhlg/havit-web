@@ -246,6 +246,23 @@ export const getEvents = () => {
   });
 };
 
+export const getPayment = email => {
+  return client.query({
+    query: gql`
+      query($email: String) {
+        Payments(user_id_email: $email) {
+          code
+          count
+          price
+        }
+      }
+    `,
+    variables: {
+      email,
+    },
+  });
+};
+
 export const addReservation = (
   email,
   hospitalCode,

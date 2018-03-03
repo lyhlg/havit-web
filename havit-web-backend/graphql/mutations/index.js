@@ -7,7 +7,12 @@ import {
 } from "./Reservation/reservation";
 import ADD_REVIEW from "./Review/review";
 import { ADD_USER_INFO, EDIT_USER_INFO, ADD_USER } from "./User/user";
-import { ADD_LIKE_PRODUCT, ADD_PRODUCT, EDIT_PRODUCT } from "./Product/product";
+import {
+  ADD_LIKE_PRODUCT,
+  DEL_LIKE_PRODUCT,
+  ADD_PRODUCT,
+  EDIT_PRODUCT
+} from "./Product/product";
 
 import {
   ADD_HOSPITAL_ADMIN,
@@ -30,6 +35,7 @@ export {
   ADD_USER_INFO,
   ADD_USER,
   ADD_LIKE_PRODUCT,
+  DEL_LIKE_PRODUCT,
   ADD_PRODUCT,
   EDIT_PRODUCT,
   EDIT_USER_INFO,

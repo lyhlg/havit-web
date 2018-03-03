@@ -1,5 +1,7 @@
 const FIND_NOTICE = async params => {
-  const [obj, { id }, { notice }] = [...params];
+  const [obj, args, ctx] = [...params];
+  const { id } = args;
+  const { notice } = ctx;
   const arg = { _id: id };
   return id
     ? await notice.find(arg).sort({ _id: -1 })

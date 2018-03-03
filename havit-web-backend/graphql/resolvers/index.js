@@ -4,6 +4,7 @@ import {
   FIND_RESERVATION,
   FIND_PRODUCT,
   LIKE_PRODUCT,
+  GET_OPENED_NUMBER,
   FIND_EVENT,
   GET_PRODUCT_RESERVATION,
   GET_REVIEW_LIST_OF_PRODUCT,
@@ -29,6 +30,7 @@ import {
   ADD_REVIEW,
   ADD_USER_INFO,
   ADD_LIKE_PRODUCT,
+  DEL_LIKE_PRODUCT,
   ADD_PRODUCT,
   EDIT_PRODUCT,
   EDIT_USER_INFO,
@@ -50,9 +52,10 @@ export default {
     Users: (...params) => FIND_USER(params),
     Reservations: (...params) => FIND_RESERVATION(params),
     LikeProducts: (...params) => LIKE_PRODUCT(params),
+    OpenedNumbers: (...params) => GET_OPENED_NUMBER(params),
     Products: (...params) => FIND_PRODUCT(params),
     Events: (...params) => FIND_EVENT(params),
-    Reviews: (...params) => FIND_REVIEW(params,),
+    Reviews: (...params) => FIND_REVIEW(params),
     Notices: (...params) => FIND_NOTICE(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
@@ -86,13 +89,14 @@ export default {
 
   // MUTATION (STORE DATA)
   Mutation: {
-    uploadFile: (parent, {file}) => {
+    uploadFile: (parent, { file }) => {
       console.log(file);
       return true;
     },
     addProduct: (...params) => ADD_PRODUCT(params),
     editProduct: (...params) => EDIT_PRODUCT(params),
     addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),
+    delLikeProducts: (...params) => DEL_LIKE_PRODUCT(params),
     addReservation: (...params) => ADD_RESERVATION(params, reserveNumCal),
     modifyReservation: (...params) => MODIFY_RESERVATION(params),
     delReservation: (...params) => DEL_RESERVATION(params),

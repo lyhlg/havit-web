@@ -9,10 +9,7 @@ class Notice extends Component {
   }
 
   moveNoticeDetail(e) {
-    if (e.currentTarget.childNodes[3].textContent !== '미등록') {
-      localStorage.setItem('notice', e.currentTarget.childNodes[3].textContent);
-      this.props.history.push('/adminPage/noticeDetail');
-    }
+    this.props.history.push('/adminPage/noticeDetail');
   }
   render() {
     return (

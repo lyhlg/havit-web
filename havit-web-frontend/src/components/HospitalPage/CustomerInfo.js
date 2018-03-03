@@ -93,6 +93,7 @@ class CustomerInfo extends Component {
                 </tr>
               </thead>
               <tbody>
+                {console.log('aasdfasfasd', this.props)}
                 {this.props.hospital.hospitalReservations &&
                   this.props.hospital.hospitalReservations.map((reserve, i) => {
                     return (

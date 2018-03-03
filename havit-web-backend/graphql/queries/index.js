@@ -1,7 +1,5 @@
 import { FIND_USER, EDIT_USER_INFO } from "./User/user";
-import {
-  FIND_RESERVATION,
-} from "./Reservation/reservation";
+import { FIND_RESERVATION, GET_OPENED_NUMBER } from "./Reservation/reservation";
 import {
   FIND_PRODUCT,
   LIKE_PRODUCT,
@@ -20,7 +18,7 @@ import { GET_BANNER_LIST, GET_BANNER_FROM_PRODUCT } from "./Banner/banner";
 import { GET_PAYMENT } from "./Payment/payment";
 import { GET_OPTIONS_OF_PRODUCT } from "./Option/option";
 import { FIND_EVENT } from "./Event/event";
-import { GET_DASHBOARD_COUNT } from './Dashboard/dashboard';
+import { GET_DASHBOARD_COUNT } from "./Dashboard/dashboard";
 
 export {
   FIND_USER,
@@ -29,6 +27,7 @@ export {
   GET_DASHBOARD_COUNT,
   FIND_PRODUCT,
   FIND_NOTICE,
+  GET_OPENED_NUMBER,
   LIKE_PRODUCT,
   GET_REVIEW_LIST_OF_PRODUCT,
   GET_PRODUCT_RESERVATION,

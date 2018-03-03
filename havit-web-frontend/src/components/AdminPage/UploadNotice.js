@@ -22,6 +22,7 @@ class UploadNotice extends Component {
       }
     );
   }
+  //`Uploads/${document.querySelector("input[type=file]").files[0].name}`
 
   render() {
     return (
