@@ -7,14 +7,14 @@ const typeDefs = `
   }
   type Query {
     Users(user_id_email: String, password: String) : [User]
-    Reservations(user_id_email:String hospitalCode: String status: String hospitalCode: String) : [Reservation]
-    OpenedNumbers(hospitalCode: String) : [Reservation]
+    Reservations(user_id_email:String status: String page: Int) : [Reservation]
+    Hospitals(adminAccount: String) : [Hospital]
+    OpenedNumbers(user_id_email: String, page: Int) : [Reservation]
     Products (type: String subType: String limit: Int page: Int productId: Int) : [Product]
     Events(user_id_email: String, productId: Int, limit: Int, page: Int) : [Event]
     Notices(id: Int) : [Notice]
     Banners(status: String): [Banner]
     Reviews: [Review]
-    Hospitals(adminAccount: String) : [Hospital]
     HospitalAdmin(page:Int) : [HospitalAdmin]
     LikeProducts(user_id_email:String) : [Product]
     Dashboard(user_id_email: String) : [SalesCount]
@@ -27,30 +27,38 @@ const typeDefs = `
     user_id_email: String!
     password: String
     auth: String
-    phone: String
-    birthday: String
+    phone: Int
+    birthday: Int
     gender: String
     level: Int
-    likeArea: [String]
-    likePoint: [String]
     hospitalCode: String
-    reservation: [Reservation]
-    likeProduct: [Product]
+    likeAreas: [String]
+    likePoints: [String]
+    reservations: [Reservation]
+    likeProducts: [Product]
     reviews: [Review]
   }
   type Reservation {
     _id: ID
-    reserveNum: String
+    reserveNum: Float
     user_id_email: String
     hospitalCode: String
     userName: String
-    phone: String
+    phone: Int
     openPhoneNum: Int
+    productId: Int
     productName: String
-    reserveDate: String
-    careDate: String
+    reserveDate: Float
+    careDate: Float
     status: String
+    maxPage: Int
     product: [Product]
+  }
+  type Hospital {
+    code : String
+    adminAccount : String
+    reservations: [Reservation],
+    products: [Product]
   }
   type Event {
     _id: ID
@@ -107,13 +115,6 @@ const typeDefs = `
     stars : Float
     comment: String
     product: Product
-  }
-  type Hospital {
-    code : String
-    adminAccount : String
-    billing: Int
-    reservations: [Reservation],
-    products: [Product]
   }
   type HospitalAdmin {
     code : String,
@@ -175,16 +176,32 @@ const typeDefs = `
       user_id_email: String
       hospitalCode: String
       userName: String
-      phone: String
+      phone: Int
       productId: Int
-      productName: String
-      reserveDate: String
+      reserveDate: Float
     ) : Reservation
 
     delReservation(
       user_id_email : String
       productId: Int
-      reserveNum : String
+      reserveNum : Float
+    ) : Reservation
+
+    modifyReservation(
+      reserveNum : Float
+      userName : String
+      phone : Int
+      reserveDate: Float
+      openPhoneNum: Int
+    ) : Reservation
+
+    fixReservation(
+      reserveNum : Float
+      careDate : Float
+    ) : Reservation
+
+    confirmPurchase(
+      reserveNum : Float
     ) : Reservation
 
     addReview(
@@ -205,12 +222,23 @@ const typeDefs = `
       password: String
       auth: String
       name: String
-      phone: String
-      birthday: String
+      phone: Int
+      birthday: Int
+      gender: String
+      likeAreas: [String]
+      likePoints: [String]
+      hospitalCode : String
+    ) : User
+
+    editUserInfo(
+      name: String
+      user_id_email: String
+      phone: Int
+      birthday: Int
       gender: String
       likeArea: [String]
       likePoint: [String]
-      hospitalCode : String
+      hospitalCode: String
     ) : User
 
     addLikeProducts(
@@ -221,36 +249,6 @@ const typeDefs = `
     delLikeProducts(
       user_id_email: String
       productId :Int
-    ) : User
-
-    modifyReservation(
-      reserveNum : String
-      userName : String
-      phone : String
-      reserveDate: String
-      openPhoneNum: Int
-    ) : Reservation
-
-    fixReservation(
-      productId :Int
-      reserveNum : String
-      careDate : String
-    ) : Reservation
-
-    confirmPurchase(
-      productId :Int
-      reserveNum : String
-    ) : Reservation
-
-    editUserInfo(
-      name: String
-      user_id_email: String
-      phone: String
-      birthday: String
-      gender: String
-      likeArea: [String]
-      likePoint: [String]
-      hospitalCode: String
     ) : User
 
     addHospitalAdmin(

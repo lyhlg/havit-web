@@ -258,7 +258,25 @@ db.products.insert([{
   reviews: []
 }])
 */
-
+// {
+// 	"_id" : ObjectId("5a9251b746a67f4df7a9b926"),
+// 	"type" : "beauty",
+// 	"subType" : "shot",
+// 	"hospitalCode" : "AAAA100002",
+// 	"hospitalLoc" : "천호",
+// 	"hospitalName" : "코코클리닉",
+// 	"productName" : "HPL 지방파괴주사 + 고주파 레이저",
+// 	"description" : "쉽게! 빠르게! 간단하게!",
+// 	"price" : 85000,
+// 	"productId" : 16,
+// 	"img" : "https://dummyimage.com/280x280",
+// 	"status" : "판매중",
+// 	"salesCount" : [ ],
+// 	"purchased" : 0,
+// 	"productDetail" : "https://dummyimage.com/1180x560",
+// 	"reviews" : [ ],
+// 	"__v" : 0
+// }
 // optaion dummy
 // {
 //   type: 'skin',

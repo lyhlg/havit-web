@@ -1,4 +1,5 @@
 import { reserveNumCal } from "../../utils";
+
 import {
   FIND_USER,
   FIND_RESERVATION,
@@ -79,8 +80,8 @@ export default {
     options: (...params) => GET_OPTIONS_OF_PRODUCT(params)
   },
   User: {
-    reservation: (...params) => FIND_RESERVATION(params),
-    likeProduct: (...params) => LIKE_PRODUCT(params),
+    reservations: (...params) => FIND_RESERVATION(params),
+    likeProducts: (...params) => LIKE_PRODUCT(params),
     reviews: (...params) => FIND_REVIEW(params)
   },
   Review: {
