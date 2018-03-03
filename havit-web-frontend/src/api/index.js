@@ -246,11 +246,11 @@ export const getEvents = () => {
   });
 };
 
-export const getPayment = code => {
+export const getPayment = email => {
   return client.query({
     query: gql`
-      query($code: String) {
-        Payments(code: $code) {
+      query($email: String) {
+        Payments(user_id_email: $email) {
           code
           count
           price
@@ -258,7 +258,7 @@ export const getPayment = code => {
       }
     `,
     variables: {
-      code,
+      email,
     },
   });
 };
