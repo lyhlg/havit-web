@@ -14,6 +14,7 @@ class UploadHospital extends Component {
       document.getElementById('name').value,
       document.getElementById('loc').value
     );
+    window.location.href = '/adminPage/manageHospital';
   }
 
   render() {
