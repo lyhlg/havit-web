@@ -45,7 +45,7 @@ export const reserveNumCal = () => {
   let ChangeNumToStr = (...dateParams) => {
     return dateParams.map(item => item.toString()).join("");
   };
-  return ChangeNumToStr(year, month, day, hour, minute, second, millisecond);
+  return Number(ChangeNumToStr(year, month, day, hour, minute, second, millisecond));
 };
 
 export const autoNumbering = async (sequenceName, targetCounter) => {

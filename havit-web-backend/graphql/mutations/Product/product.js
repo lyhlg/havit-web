@@ -33,8 +33,8 @@ const DEL_LIKE_PRODUCT = async params => {
   const { user_id_email, productId } = args;
   const { user } = ctx;
 
-  await user.update({user_id_email}, {$pull: { likeProduct: productId } })
-  return await user.findOne({user_id_email});
+  await user.update({ user_id_email }, { $pull: { likeProduct: productId } });
+  return await user.findOne({ user_id_email });
 };
 
 const ADD_PRODUCT = async params => {
@@ -74,11 +74,13 @@ const ADD_PRODUCT = async params => {
   let option2 = [];
   let inputTarget = 0;
 
-  SEPERATE_TYPE_FOR_PRODUCT_OPTIONS(options, (o1, o2) => {
-    option1 = o1;
-    option2 = o2;
-  });
-  delete args.options;
+  if (options) {
+    SEPERATE_TYPE_FOR_PRODUCT_OPTIONS(options, (o1, o2) => {
+      option1 = o1;
+      option2 = o2;
+    });
+    delete args.options;
+  }
 
   if (!chk_dup) {
     const number = await autoNumbering("productid", productCounter);
