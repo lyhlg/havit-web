@@ -229,7 +229,6 @@ const typeDefs = `
       phone : String
       reserveDate: String
       openPhoneNum: Int
-      hospitalCode: String
     ) : Reservation
 
     fixReservation(

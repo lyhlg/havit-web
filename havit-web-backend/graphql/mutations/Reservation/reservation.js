@@ -29,42 +29,55 @@ const MODIFY_RESERVATION = async params => {
 
   if (reserveNum && openPhoneNum) {
     await reservation.update(
-      { reserveNum: reserveNum },
+      { reserveNum },
       { $set: { openPhoneNum: openPhoneNum } }
     );
     await ADD_BILL([obj, args, ctx]);
     return await reservation.findOne({ reserveNum: reserveNum });
   } else {
-    let updateUserReservation = async () => {
-      return await reservation.update(
-        { reserveNum: reserveNum },
-        {
-          $set: {
-            reserveDate: reserveDate,
-            userName: userName,
-            phone: phone
+    userName && Phone
+      ? await reservation.update(
+          { reserveNum: reserveNum },
+          {
+            $set: {
+              reserveDate: reserveDate,
+              userName: userName,
+              phone: phone
+            }
           }
-        }
-      );
-    };
-    updateUserReservation();
+        )
+      : await reservation.update(
+          { reserveNum: reserveNum },
+          {
+            $set: {
+              reserveDate: reserveDate
+            }
+          }
+        );
+
+
     return await reservation.findOne({ reserveNum: reserveNum });
   }
 };
 
 const ADD_BILL = async params => {
   const [obj, args, ctx] = [...params];
-  const { reserveNum, hospitalCode } = args;
+  const { reserveNum } = args;
   const { hospital, product, reservation, payment } = ctx;
+
+  let res = {},
+    code;
+
+  if (Object.keys(args).length) {
+    code = (await reservation.findOne({ reserveNum })).hospitalCode;
+  }
+
   const title = (await reservation.findOne({ reserveNum: reserveNum }))
     .productName;
   const billing =
-    (await product.findOne({ hospitalCode: hospitalCode, productName: title }))
-      .price * 0.1;
-  return await payment.update(
-    { code: hospitalCode },
-    { $inc: { price: billing, count : 1 } }
-  );
+    (await product.findOne({ hospitalCode: code, productName: title })).price *
+    0.1;
+  return await payment.update({ code }, { $inc: { price: billing, count: 1 } });
 };
 
 // 예약 삭제 (고객) - 아에 삭제할건지 취소된걸로 할건지 고민 필요

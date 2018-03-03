@@ -8,7 +8,7 @@ const UPDATE_DB_USER = async (params, level) => {
   }
   const memberLevel = { level: level };
   const new_args = Object.assign(args, memberLevel);
-  console.log(new_args);
+
   delete args.user_id_email;
   return await user.update(
     { user_id_email: email },
