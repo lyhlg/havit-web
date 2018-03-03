@@ -18,7 +18,7 @@ const typeDefs = `
     HospitalAdmin(page:Int) : [HospitalAdmin]
     LikeProducts(user_id_email:String) : [Product]
     Dashboard(user_id_email: String) : [SalesCount]
-    Payments(code: String) : Payment
+    Payments(user_id_email: String) : Payment
     Options : [Option]
   }
   type User {
