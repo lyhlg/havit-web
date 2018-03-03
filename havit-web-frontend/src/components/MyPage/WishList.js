@@ -7,7 +7,7 @@ class WishList extends Component {
       <div>
         {this.props.likeProducts &&
           this.props.likeProducts.likeProductsList.map((product, i) => {
-            return <WishListEntry product={product} key={i} />;
+            return <WishListEntry product={product} {...this.props} key={i} />;
           })}
       </div>
     );

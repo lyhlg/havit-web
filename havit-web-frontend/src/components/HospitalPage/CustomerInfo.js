@@ -16,6 +16,7 @@ class CustomerInfo extends Component {
     this.submitCareDate = this.submitCareDate.bind(this);
     this.changeMonth = this.changeMonth.bind(this);
     this.handleChangeCare = this.handleChangeCare.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   openNum(e) {
@@ -65,7 +66,15 @@ class CustomerInfo extends Component {
     });
   }
 
+  handleCancel(e) {
+    console.log(e.currentTarget.parentNode);
+    // this.props.delReservation(
+    //   localStorage.getItem('email'),
+
+    // )(email, productId, reserveNum)
+  }
   render() {
+    console.log(this.props.hospital.hospitalReservations);
     return (
       <div className="customerInfo">
         <div className="customerInfo__wrapper">
@@ -228,7 +237,12 @@ class CustomerInfo extends Component {
                           >
                             변경
                           </button>
-                          <button className="customerInfo__button">취소</button>
+                          <button
+                            className="customerInfo__button"
+                            onClick={this.handleCancel}
+                          >
+                            취소
+                          </button>
                         </td>
                       </tr>
                     );

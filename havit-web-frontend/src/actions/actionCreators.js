@@ -311,6 +311,24 @@ export const fixReservation = (reserveNum, careDate) => {
   };
 };
 
+const requestDelReservation = () => ({
+  type: types.REQUEST_DEL_RESERVATION,
+});
+
+const successDelReservation = reservation => ({
+  type: types.SUCCESS_DEL_RESERVATION,
+  reservation,
+});
+
+export const delReservation = (email, productId, reserveNum) => {
+  return dispatch => {
+    dispatch(requestDelReservation());
+    return api.delReservation(email, productId, reserveNum).then(res => {
+      dispatch(successDelReservation(res));
+    });
+  };
+};
+
 const requestConfirmPurchase = () => ({
   type: types.REQUEST_CONFIRM_PURCHASE,
 });
