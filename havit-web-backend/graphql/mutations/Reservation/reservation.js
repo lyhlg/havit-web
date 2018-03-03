@@ -131,8 +131,8 @@ const CONFIRM_PURCHASE = async params => {
 const ADD_BILL = async params => {
   const [obj, args, ctx] = [...params];
   const { reserveNum } = args;
-  const { hospital, product, reservation, payment } = ctx;
-
+  const { hospital, product, reservation, payment, monthPayment } = ctx;
+  console.log("ADD_BILL");
   let res = {},
     code;
 
@@ -145,7 +145,11 @@ const ADD_BILL = async params => {
   const billing =
     (await product.findOne({ hospitalCode: code, productName: title })).price *
     0.1;
-  return await payment.update({ code }, { $inc: { price: billing, count: 1 } });
+  return await payment.update(
+    { code },
+    { $inc: { price: billing, count: 1 } },
+    { upsert: 1 }
+  );
 };
 
 export {
