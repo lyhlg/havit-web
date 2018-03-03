@@ -23,7 +23,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <Provider store={store}>
-      <Router onUpdate={() => window.scrollTo(0, 0)}>
+      <Router>
         <App />
       </Router>
     </Provider>
