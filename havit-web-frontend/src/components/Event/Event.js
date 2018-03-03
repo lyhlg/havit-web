@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import { Nav, Banner, Product } from '../index';
 
 class Event extends Component {
+  componentDidMount() {
+    this.props.getEvents();
+  }
   render() {
+    console.log(this.props);
     return (
       <main>
         <Nav />
         <Banner />
-        <Product />
+        <div className="home__category">
+          <h2>이벤트</h2>
+        </div>
+        <Product products={this.props.events.eventsList} />
       </main>
     );
   }

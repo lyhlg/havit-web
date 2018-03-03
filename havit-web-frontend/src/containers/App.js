@@ -114,12 +114,16 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addLikeProducts(email, productId));
   },
 
-  modifyReservation: (reserveNum, openPhoneNum) => {
-    dispatch(actions.modifyReservation(reserveNum, openPhoneNum));
+  modifyReservation: (reserveNum, openPhoneNum, reserveDate) => {
+    dispatch(actions.modifyReservation(reserveNum, openPhoneNum, reserveDate));
   },
 
   fixReservation: (reserveNum, careDate) => {
     dispatch(actions.fixReservation(reserveNum, careDate));
+  },
+
+  delReservation: (email, productId, reserveNum) => {
+    dispatch(actions.delReservation(email, productId, reserveNum));
   },
 
   confirmPurchase: reserveNum => {

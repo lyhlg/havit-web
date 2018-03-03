@@ -22,10 +22,10 @@ import {
 import 'styles/css/index.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    // this.checkAuth = this.checkAuth.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   // this.checkAuth = this.checkAuth.bind(this);
+  // }
 
   // checkAuth(url) {
   //   if ( url.includes('adminPage') && localStorage.getItem('code') !== 3) {
@@ -43,8 +43,13 @@ class App extends Component {
   // }
 
   render() {
+    const ScrollToTop = () => {
+      window.scrollTo(0, 0);
+      return null;
+    };
     return (
       <div>
+        <Route component={ScrollToTop} />
         <Header {...this.props} />
         <Switch>
           <Route exact path="/" render={props => <Home {...this.props} />} />

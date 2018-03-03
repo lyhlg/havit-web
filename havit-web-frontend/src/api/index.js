@@ -58,6 +58,7 @@ export const getReservations = (email, code) => {
           hospitalCode
           userName
           phone
+          openPhoneNum
           productName
           reserveDate
           careDate
@@ -144,6 +145,9 @@ export const getHospital = email => {
             reserveDate
             careDate
             status
+            product {
+              productId
+            }
           }
           products {
             _id
@@ -224,11 +228,18 @@ export const getEvents = () => {
     query: gql`
       query {
         Events {
-          priority
+          _id
+          productId
+          hospitalCode
+          hospitalLoc
+          hospitalName
           productName
+          description
           price
-          purchased
           status
+          priority
+          purchased
+          productImage
         }
       }
     `,
@@ -257,6 +268,7 @@ export const addReservation = (
   hospitalCode,
   userName,
   phone,
+  productId,
   productName,
   reserveDate
 ) => {
@@ -267,6 +279,7 @@ export const addReservation = (
         $hospitalCode: String
         $userName: String
         $phone: String
+        $productId: Int
         $productName: String
         $reserveDate: String
       ) {
@@ -275,6 +288,7 @@ export const addReservation = (
           hospitalCode: $hospitalCode
           userName: $userName
           phone: $phone
+          productId: $productId
           productName: $productName
           reserveDate: $reserveDate
         )
@@ -285,6 +299,7 @@ export const addReservation = (
       hospitalCode,
       userName,
       phone,
+      productId,
       productName,
       reserveDate,
     },
@@ -397,13 +412,14 @@ export const addLikeProducts = (email, productId) => {
   });
 };
 
-export const modifyReservation = (reserveNum, openPhoneNum) => {
+export const modifyReservation = (reserveNum, openPhoneNum, reserveDate) => {
   return client.mutate({
     mutation: gql`
-      mutation($reserveNum: String, $openPhoneNum: Int) {
+      mutation($reserveNum: String, $openPhoneNum: Int, $reserveDate: String) {
         modifyReservation(
           reserveNum: $reserveNum
           openPhoneNum: $openPhoneNum
+          reserveDate: $reserveDate
         ) {
           _id
           reserveNum
@@ -422,6 +438,7 @@ export const modifyReservation = (reserveNum, openPhoneNum) => {
     variables: {
       reserveNum,
       openPhoneNum,
+      reserveDate,
     },
   });
 };
@@ -442,6 +459,26 @@ export const fixReservation = (reserveNum, careDate) => {
   });
 };
 
+export const delReservation = (email, productId, reserveNum) => {
+  return client.mutate({
+    mutation: gql`
+      mutation($email: String, $productId: Int, $reserveNum: String) {
+        delReservation(
+          user_id_email: $email
+          productId: $productId
+          reserveNum: $reserveNum
+        ) {
+          user_id_email
+        }
+      }
+    `,
+    variables: {
+      email,
+      productId,
+      reserveNum,
+    },
+  });
+};
 export const confirmPurchase = reserveNum => {
   return client.mutate({
     mutation: gql`

@@ -1,0 +1,83 @@
+.wishList {
+  width: 1140px;
+  height: 120px;
+  border: solid 1px #dce2eb;
+  padding: 20px;
+
+  .wishList__img {
+    float: left;
+    width: 120px;
+    height: 120px;
+  }
+  .wishList__content {
+    display: inline-block;
+    width: 960px;
+    height: 120px;
+    padding-left: 30px;
+
+    .wishList__left {
+      float: left;
+
+      .wishList__hospital {
+        font-size: 15px;
+        color: #647dff;
+        padding: 10px 0 30px 0;
+      }
+      .wishList__name {
+        font-size: 20px;
+        color: #414d6b;
+        padding-bottom: 15px;
+      }
+
+      .wishList__description {
+        font-size: 15px;
+        color: #414d6b;
+      }
+    }
+
+    .wishList__right {
+      float: right;
+
+      .wishList__price {
+        text-align: right;
+        font-size: 20px;
+        font-weight: bold;
+        color: #647dff;
+        padding-bottom: 60px;
+      }
+
+      button {
+        width: 84px;
+        height: 40px;
+      }
+      .wishList__purchaseBtn {
+        font-size: 15px;
+        color: #ffffff;
+        border-radius: 2px;
+        border: solid 1px #647dff;
+        background-color: #647dff;
+      }
+
+      .wishList__removeBtn {
+        font-size: 15px;
+        text-align: center;
+        color: #647dff;
+        background-color: #ffffff;
+        border-radius: 2px;
+        border: solid 1px #647dff;
+      }
+    }
+
+    &::after {
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+
+  &::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
+}

@@ -302,12 +302,14 @@ const successModifyReservation = reservation => ({
   reservation,
 });
 
-export const modifyReservation = (reserveNum, openPhoneNum) => {
+export const modifyReservation = (reserveNum, openPhoneNum, reserveDate) => {
   return dispatch => {
     dispatch(requestModifyReservation());
-    return api.modifyReservation(reserveNum, openPhoneNum).then(res => {
-      dispatch(successModifyReservation(res));
-    });
+    return api
+      .modifyReservation(reserveNum, openPhoneNum, reserveDate)
+      .then(res => {
+        dispatch(successModifyReservation(res));
+      });
   };
 };
 
@@ -325,6 +327,24 @@ export const fixReservation = (reserveNum, careDate) => {
     dispatch(requestFixReservation());
     return api.fixReservation(reserveNum, careDate).then(res => {
       dispatch(successFixReservation(res));
+    });
+  };
+};
+
+const requestDelReservation = () => ({
+  type: types.REQUEST_DEL_RESERVATION,
+});
+
+const successDelReservation = reservation => ({
+  type: types.SUCCESS_DEL_RESERVATION,
+  reservation,
+});
+
+export const delReservation = (email, productId, reserveNum) => {
+  return dispatch => {
+    dispatch(requestDelReservation());
+    return api.delReservation(email, productId, reserveNum).then(res => {
+      dispatch(successDelReservation(res));
     });
   };
 };
