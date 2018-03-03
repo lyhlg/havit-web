@@ -12,11 +12,6 @@ class ServiceNotice extends Component {
       <div className="serviceNotice">
         <div className="serviceNotice__wrapper">
           <div className="serviceNotice__tab">
-            <input
-              name="keyword"
-              className="serviceNotice__right"
-              placeholder=" Search"
-            />
             <table className="serviceNotice__table">
               <thead>
                 <tr>

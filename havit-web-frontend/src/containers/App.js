@@ -141,8 +141,26 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addHospitalAdmin(code, name, loc));
   },
 
-  addEvent: (priority, productName, price, purchased, status) => {
-    dispatch(actions.addEvent(priority, productName, price, purchased, status));
+  addEvent: (
+    hospitalCode,
+    productName,
+    description,
+    price,
+    status,
+    priority,
+    productImage
+  ) => {
+    dispatch(
+      actions.addEvent(
+        hospitalCode,
+        productName,
+        description,
+        price,
+        status,
+        priority,
+        productImage
+      )
+    );
   },
 });
 
