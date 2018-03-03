@@ -284,12 +284,14 @@ const successModifyReservation = reservation => ({
   reservation,
 });
 
-export const modifyReservation = (reserveNum, openPhoneNum) => {
+export const modifyReservation = (reserveNum, openPhoneNum, reserveDate) => {
   return dispatch => {
     dispatch(requestModifyReservation());
-    return api.modifyReservation(reserveNum, openPhoneNum).then(res => {
-      dispatch(successModifyReservation(res));
-    });
+    return api
+      .modifyReservation(reserveNum, openPhoneNum, reserveDate)
+      .then(res => {
+        dispatch(successModifyReservation(res));
+      });
   };
 };
 

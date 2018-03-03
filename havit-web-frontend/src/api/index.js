@@ -58,6 +58,7 @@ export const getReservations = (email, code) => {
           hospitalCode
           userName
           phone
+          openPhoneNum
           productName
           reserveDate
           careDate
@@ -394,13 +395,14 @@ export const addLikeProducts = (email, productId) => {
   });
 };
 
-export const modifyReservation = (reserveNum, openPhoneNum) => {
+export const modifyReservation = (reserveNum, openPhoneNum, reserveDate) => {
   return client.mutate({
     mutation: gql`
-      mutation($reserveNum: String, $openPhoneNum: Int) {
+      mutation($reserveNum: String, $openPhoneNum: Int, $reserveDate: String) {
         modifyReservation(
           reserveNum: $reserveNum
           openPhoneNum: $openPhoneNum
+          reserveDate: $reserveDate
         ) {
           _id
           reserveNum
@@ -419,6 +421,7 @@ export const modifyReservation = (reserveNum, openPhoneNum) => {
     variables: {
       reserveNum,
       openPhoneNum,
+      reserveDate,
     },
   });
 };
