@@ -400,3 +400,39 @@ export const addHospitalAdmin = (code, url, loc) => {
     });
   };
 };
+
+const requestAddEvent = () => ({
+  type: types.REQUEST_ADD_EVENT,
+});
+
+const successAddEvent = () => ({
+  type: types.SUCCESS_ADD_EVENT,
+  addEvent,
+});
+
+export const addEvent = (
+  hospitalCode,
+  productName,
+  description,
+  price,
+  status,
+  priority,
+  productImage
+) => {
+  return dispatch => {
+    dispatch(requestAddEvent());
+    return api
+      .addEvent(
+        hospitalCode,
+        productName,
+        description,
+        price,
+        status,
+        priority,
+        productImage
+      )
+      .then(res => {
+        dispatch(successAddEvent(res));
+      });
+  };
+};

@@ -136,6 +136,28 @@ const mapDispatchToProps = dispatch => ({
   addHospitalAdmin: (code, name, loc) => {
     dispatch(actions.addHospitalAdmin(code, name, loc));
   },
+
+  addEvent: (
+    hospitalCode,
+    productName,
+    description,
+    price,
+    status,
+    priority,
+    productImage
+  ) => {
+    dispatch(
+      actions.addEvent(
+        hospitalCode,
+        productName,
+        description,
+        price,
+        status,
+        priority,
+        productImage
+      )
+    );
+  },
 });
 
 const AppContainer = withRouter(

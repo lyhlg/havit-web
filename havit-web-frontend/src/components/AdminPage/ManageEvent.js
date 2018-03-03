@@ -15,8 +15,6 @@ class ManageEvent extends Component {
                   <th>상품명</th>
                   <th>상품 금액</th>
                   <th>판매수</th>
-                  <th>별점수</th>
-                  <th>리뷰수</th>
                   <th>상태</th>
                 </tr>
               </thead>
@@ -27,9 +25,7 @@ class ManageEvent extends Component {
                       <td>{event.priority}</td>
                       <td>{event.productName}</td>
                       <td>{event.price}</td>
-                      <td>{event.purchased}</td>
-                      <td>{event.productId}</td>
-                      <td>{event.productId}</td>
+                      <td>{event.price}</td>
                       <td>{event.status}</td>
                     </tr>
                   );
@@ -37,7 +33,7 @@ class ManageEvent extends Component {
               </tbody>
             </table>
             <Link to="/adminPage/uploadEvent" className="manageEvent__button">
-              이벤트 등록하기
+              이벤트상품 등록하기
             </Link>
           </div>
         </div>

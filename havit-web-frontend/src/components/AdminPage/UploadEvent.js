@@ -3,14 +3,32 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/UploadEvent.css';
 
 class UploadEvent extends Component {
+  constructor(props) {
+    super(props);
+    this.submitEvent = this.submitEvent.bind(this);
+  }
+
+  submitEvent() {
+    this.props.addEvent(
+      document.getElementById('hospitalCode').value,
+      document.getElementById('productName').value,
+      document.getElementById('description').value,
+      document.getElementById('price').value,
+      document.getElementById('status').value,
+      document.getElementById('priority').value,
+      document.getElementById('productImage').value
+    );
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="uploadEvent">
         <div className="uploadEvent__wrapper">
           <div className="uploadEvent__tab">
             <h2 className="uploadEvent__title">이벤트 등록</h2>
             <h3 className="uploadEvent__label">우선순위</h3>
-            <select id="type" className="uploadEvent__dropdown">
+            <select id="priority" className="uploadEvent__dropdown">
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -20,41 +38,51 @@ class UploadEvent extends Component {
             <h3 className="uploadEvent__label">상품명</h3>
             <input
               type="text"
-              id="title"
+              id="productName"
               className="uploadEvent__input"
               placeholder="상품명을 입력해주세요."
+            />
+            <h3 className="uploadEvent__label">병원 코드</h3>
+            <input
+              type="text"
+              id="hospitalCode"
+              className="uploadEvent__input"
+              placeholder="병원 코드를 입력해주세요."
             />
             <h3 className="uploadEvent__label">상품 설명</h3>
             <input
               type="text"
-              id="title"
+              id="description"
               className="uploadEvent__input"
               placeholder="상품에 대한 정보를 입력해주세요."
             />
             <h3 className="uploadEvent__label">상품 금액</h3>
             <input
               type="text"
-              id="title"
+              id="price"
               className="uploadEvent__input"
               placeholder="상품 금액을 입력해주세요."
             />
             <h3 className="uploadEvent__label">
               이벤트 상품 이미지 업로드 (메인 이미지)
             </h3>
-            <input type="file" className="uploadEvent__img" />
+            <input type="file" id="productImage" className="uploadEvent__img" />
             <h3 className="uploadEvent__label">
               이벤트 상품 이미지 업로드 (상세 이미지)
             </h3>
-            <input type="file" className="uploadEvent__img" />
+            <input type="file" id="productImage" className="uploadEvent__img" />
             <h3 className="uploadEvent__label">상태</h3>
-            <select id="type" className="uploadEvent__dropdown">
-              <option value="ing">진행중</option>
-              <option value="done">종료</option>
+            <select id="status" className="uploadEvent__dropdown">
+              <option value="진행중">진행중</option>
+              <option value="종료">종료</option>
             </select>
             <div className="uploadEvent__btn">
-              <Link to="/adminPage/manageEvent" className="uploadEvent__button">
-                이벤트 상품 등록하기
-              </Link>
+              <button
+                onClick={this.submitEvent}
+                className="uploadEvent__button"
+              >
+                이벤트상품 등록하기
+              </button>
               <Link to="/adminPage/manageEvent" className="uploadEvent__button">
                 취소
               </Link>

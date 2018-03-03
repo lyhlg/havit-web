@@ -57,7 +57,10 @@ class AdminPage extends Component {
                 path="/adminPage/uploadBanner"
                 render={props => <UploadBanner {...this.props} />}
               />
-              <Route path="/adminPage/uploadEvent" component={UploadEvent} />
+              <Route
+                path="/adminPage/uploadEvent"
+                render={props => <UploadEvent {...this.props} />}
+              />
               <Route
                 path="/adminPage/uploadNotice"
                 render={props => <UploadNotice {...this.props} />}
