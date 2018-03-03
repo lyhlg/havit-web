@@ -17,7 +17,9 @@ class ProductEntry extends Component {
           />
           <div className="productEntry__text">
             <h4 className="productEntry__hospital">
-              {this.props.product.hospitalLoc}
+              [{this.props.product.hospitalLoc}]{
+                this.props.product.hospitalName
+              }
             </h4>
             <h3 className="productEntry__title">
               {this.props.product.productName.length > 15

@@ -22,10 +22,10 @@ import {
 import 'styles/css/index.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    // this.checkAuth = this.checkAuth.bind(this);
-  }
+  // constructor(props) {
+  //   super(props);
+  //   // this.checkAuth = this.checkAuth.bind(this);
+  // }
 
   // checkAuth(url) {
   //   if ( url.includes('adminPage') && localStorage.getItem('code') !== 3) {

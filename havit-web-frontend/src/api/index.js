@@ -227,11 +227,18 @@ export const getEvents = () => {
     query: gql`
       query {
         Events {
-          priority
+          _id
+          productId
+          hospitalCode
+          hospitalLoc
+          hospitalName
           productName
+          description
           price
-          purchased
           status
+          priority
+          purchased
+          productImage
         }
       }
     `,

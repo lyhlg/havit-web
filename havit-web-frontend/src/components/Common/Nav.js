@@ -30,7 +30,7 @@ class Nav extends Component {
             뷰티시술
           </NavLink>
           <NavLink
-            to="/beauty"
+            to="/event"
             className="nav__list"
             activeClassName="nav__list--selected"
           >
