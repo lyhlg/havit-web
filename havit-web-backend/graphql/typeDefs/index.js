@@ -8,15 +8,16 @@ const typeDefs = `
   type Query {
     Users(user_id_email: String, password: String) : [User]
     Reservations(user_id_email:String hospitalCode: String status: String hospitalCode: String) : [Reservation]
+    OpenedNumbers(hospitalCode: String) : [Reservation]
     Products (type: String subType: String limit: Int page: Int productId: Int) : [Product]
-    Events(hospitalCode: String productId: Int limit: Int page: Int) : [Event]
+    Events(user_id_email: String, productId: Int, limit: Int, page: Int) : [Event]
     Notices(id: Int) : [Notice]
     Banners(status: String): [Banner]
     Reviews: [Review]
     Hospitals(adminAccount: String) : [Hospital]
-    HospitalAdmin(code:String) : [HospitalAdmin]
+    HospitalAdmin(page:Int) : [HospitalAdmin]
     LikeProducts(user_id_email:String) : [Product]
-    Dashboard(code : String) : [SalesCount]
+    Dashboard(user_id_email: String) : [SalesCount]
     Payments(code: String) : Payment
     Options : [Option]
   }
@@ -202,6 +203,7 @@ const typeDefs = `
     addUserInfo(
       user_id_email: String
       password: String
+      auth: String
       name: String
       phone: String
       birthday: String

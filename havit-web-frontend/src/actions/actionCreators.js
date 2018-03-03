@@ -163,6 +163,24 @@ export const getEvents = () => {
   };
 };
 
+const requestGetPayment = () => ({
+  type: types.REQUEST_GET_PAYMENT,
+});
+
+const successGetPayment = payment => ({
+  type: types.SUCCESS_GET_PAYMENT,
+  payment,
+});
+
+export const getPayment = () => {
+  return dispatch => {
+    dispatch(requestGetPayment());
+    return api.getPayment().then(res => {
+      dispatch(successGetPayment(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddReservation = () => ({

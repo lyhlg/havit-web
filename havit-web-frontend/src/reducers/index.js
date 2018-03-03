@@ -11,6 +11,7 @@ import hospitalAdmin from './hospitalAdmin';
 import notices from './notices';
 import banners from './banners';
 import events from './events';
+import payment from './payment';
 
 export default combineReducers({
   products,
@@ -25,4 +26,5 @@ export default combineReducers({
   notices,
   banners,
   events,
+  payment,
 });

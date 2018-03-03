@@ -17,6 +17,7 @@ const mapStateToProps = state => ({
   notices: state.notices,
   banners: state.banners,
   events: state.events,
+  payment: state.payment,
   email: window.localStorage.getItem('email') || '',
 });
 
@@ -55,6 +56,10 @@ const mapDispatchToProps = dispatch => ({
 
   getEvents: () => {
     dispatch(actions.getEvents());
+  },
+
+  getPayment: code => {
+    dispatch(actions.getPayment());
   },
 
   addReservation: (

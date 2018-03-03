@@ -24,47 +24,46 @@ const ADD_RESERVATION = async (params, reserveNumCal) => {
 
 const MODIFY_RESERVATION = async params => {
   const [obj, args, ctx] = [...params];
+  const { reserveNum, openPhoneNum, reserveDate, userName, phone } = args;
   const { reservation, hospital, product } = ctx;
-  // 폰번호 오픈을 하기 위한 예약 수정 API
-  if (args.reserveNum && args.openPhoneNum) {
+
+  if (reserveNum && openPhoneNum) {
     await reservation.update(
-      { reserveNum: args.reserveNum },
-      { $set: { openPhoneNum: args.openPhoneNum } }
+      { reserveNum: reserveNum },
+      { $set: { openPhoneNum: openPhoneNum } }
     );
     await ADD_BILL([obj, args, ctx]);
-    return await reservation.findOne({ reserveNum: args.reserveNum });
-    // Client에서 예약을 수정하기 위한 함수
+    return await reservation.findOne({ reserveNum: reserveNum });
   } else {
     let updateUserReservation = async () => {
       return await reservation.update(
-        { reserveNum: args.reserveNum },
+        { reserveNum: reserveNum },
         {
           $set: {
-            reserveDate: args.reserveDate,
-            userName: args.userName,
-            phone: args.phone
+            reserveDate: reserveDate,
+            userName: userName,
+            phone: phone
           }
         }
       );
     };
     updateUserReservation();
-    return await reservation.findOne({ reserveNum: args.reserveNum });
+    return await reservation.findOne({ reserveNum: reserveNum });
   }
 };
 
 const ADD_BILL = async params => {
   const [obj, args, ctx] = [...params];
-  const { hospitalCode } = args;
+  const { reserveNum, hospitalCode } = args;
   const { hospital, product, reservation, payment } = ctx;
-  const title = (await reservation.findOne({ reserveNum: args.reserveNum }))
+  const title = (await reservation.findOne({ reserveNum: reserveNum }))
     .productName;
   const billing =
     (await product.findOne({ hospitalCode: hospitalCode, productName: title }))
       .price * 0.1;
-      console.log( title, billing);
   return await payment.update(
     { code: hospitalCode },
-    { $inc: { price: billing } }
+    { $inc: { price: billing, count : 1 } }
   );
 };
 

@@ -59,7 +59,10 @@ const GET_REVIEW_LIST_OF_PRODUCT = async params => {
 };
 
 const GET_PRODUCT_RESERVATION = async params => {
-  const [{ hospitalCode, productName }, args, { product }] = [...params];
+  const [obj, args, ctx] = [...params];
+  const { hospitalCode, productName } = obj;
+  const { product } = ctx;
+
   return await product.find({
     hospitalCode: hospitalCode,
     productName: productName
