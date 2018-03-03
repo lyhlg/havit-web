@@ -117,6 +117,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.fixReservation(reserveNum, careDate));
   },
 
+  delReservation: (email, productId, reserveNum) => {
+    dispatch(actions.delReservation(email, productId, reserveNum));
+  },
+
   confirmPurchase: reserveNum => {
     dispatch(actions.confirmPurchase(reserveNum));
   },
