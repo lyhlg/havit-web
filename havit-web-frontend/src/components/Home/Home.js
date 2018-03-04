@@ -3,8 +3,17 @@ import { Nav, Banner, Product, Pagination } from '../index';
 import 'styles/css/Home/Home.css';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePage = this.handlePage.bind(this);
+  }
+
   componentDidMount() {
-    this.props.getProducts('', '', 1);
+    this.props.getProducts('', '', 0, 1);
+  }
+
+  handlePage(e) {
+    this.props.getProducts('', '', 0, e.target.textContent);
   }
 
   render() {
@@ -17,6 +26,7 @@ class Home extends Component {
         </div>
         <Product products={this.props.products.productsList} />
         <Pagination
+          handlePage={this.handlePage}
           max={
             this.props.products.productsList[0] &&
             this.props.products.productsList[0].maxPage
