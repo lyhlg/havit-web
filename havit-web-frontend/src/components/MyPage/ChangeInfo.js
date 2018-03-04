@@ -23,7 +23,7 @@ class ChangeInfo extends Component {
         '피부톤',
         '노화',
         '탈모',
-        ' 점/검버섯',
+        '점/검버섯',
         '볼꺼짐',
         '문신제거',
         '기타고민',
@@ -42,6 +42,7 @@ class ChangeInfo extends Component {
         '서대문구',
         '송파구',
       ],
+      check: [false, 0],
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.changeUserInfo = this.changeUserInfo.bind(this);
@@ -59,31 +60,58 @@ class ChangeInfo extends Component {
 
   changeUserInfo() {
     let data = [
-      document.getElementById('email').value,
-      document.getElementById('name').value,
-      document.getElementById('txtMobile').value,
-      document.getElementById('birthday1').value +
-        document.getElementById('birthday2').value +
-        document.getElementById('birthday3').value,
-      document.querySelector('input[name="gender"]:checked').value,
+      localStorage.getItem('email'),
+      '',
+      this.props.userInfo.userInfo[0].auth,
+      document.getElementById('name').value || '',
+      Number(
+        document
+          .getElementById('txtMobile')
+          .value.toString()
+          .slice(1)
+      ) || '',
+      Number(
+        document.getElementById('birthday1').value +
+          document.getElementById('birthday2').value +
+          document.getElementById('birthday3').value
+      ),
+      Array.prototype.map.call(
+        document.querySelectorAll('input[name="gender"]:checked'),
+        gender => gender.value
+      )[0] || '',
       Array.prototype.map.call(
         document.querySelectorAll('input[name="likeArea"]:checked'),
         area => area.value
-      ),
+      ) || '',
       Array.prototype.map.call(
         document.querySelectorAll('input[name="likePoint"]:checked'),
         point => point.value
-      ),
+      ) || '',
       document.getElementById('code').value || '',
     ];
     setTimeout(() => {
-      console.log(data);
-      // this.props.addUserInfo(...data);
-      // this.props.history.push('/signupend');
+      if (
+        !data[3] ||
+        data[4] === NaN ||
+        data[4].toString().length < 9 ||
+        data[4].toString().length > 10 ||
+        data[5] === NaN ||
+        !data[6].length ||
+        !data[7].length ||
+        !data[8].length
+      ) {
+        this.setState({
+          check: [false, 1],
+        });
+      } else {
+        this.props.addUserInfo(...data);
+        window.location.href = '/mypage/changeInfo';
+      }
     }, 2000);
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="changeInfo">
         <div className="signup__tab">
@@ -98,19 +126,24 @@ class ChangeInfo extends Component {
             style={{ backgroundColor: '#f7f8fb' }}
             disabled
           />
-          <h3 className="signup__label">비밀번호 입력</h3>
-          <input
-            id="password"
-            type="password"
-            className="signup__input"
-            placeholder="영문, 숫자로 6자 이상 입력해주세요."
-          />
-          <h3 className="signup__label">비밀번호 확인</h3>
-          <input
-            type="password"
-            className="signup__input"
-            placeholder="동일하게 다시 한 번 입력해주세요."
-          />
+          {this.props.userInfo.userInfo[0] &&
+            this.props.userInfo.userInfo[0].auth === 'login' && (
+              <div>
+                <h3 className="signup__label">비밀번호 입력</h3>
+                <input
+                  id="password"
+                  type="password"
+                  className="signup__input"
+                  placeholder="영문, 숫자로 6자 이상 입력해주세요."
+                />
+                <h3 className="signup__label">비밀번호 확인</h3>
+                <input
+                  type="password"
+                  className="signup__input"
+                  placeholder="동일하게 다시 한 번 입력해주세요."
+                />
+              </div>
+            )}
           <div className="signup__box">
             <div className="signup__box3">
               <h3 className="signup__label">이름</h3>
@@ -168,10 +201,8 @@ class ChangeInfo extends Component {
                 size="4"
                 className="signup__input"
                 placeholder="- 빼고 숫자만 입력"
-                value={
-                  this.props.userInfo.userInfo[0] &&
-                  this.props.userInfo.userInfo[0].phone
-                }
+                value={`0${this.props.userInfo.userInfo[0] &&
+                  this.props.userInfo.userInfo[0].phone}`}
               />
             </div>
             <div className="signup__box4">
@@ -181,7 +212,9 @@ class ChangeInfo extends Component {
                 className="signup__box1"
                 defaultValue={
                   this.props.userInfo.userInfo[0] &&
-                  this.props.userInfo.userInfo[0].birthday.slice(0, 4)
+                  this.props.userInfo.userInfo[0].birthday
+                    .toString()
+                    .slice(0, 4)
                 }
               >
                 {Array(81)
@@ -196,7 +229,9 @@ class ChangeInfo extends Component {
                 onChange={this.changeMonth}
                 defaultValue={
                   this.props.userInfo.userInfo[0] &&
-                  this.props.userInfo.userInfo[0].birthday.slice(4, 6)
+                  this.props.userInfo.userInfo[0].birthday
+                    .toString()
+                    .slice(4, 6)
                 }
               >
                 {Array(12)
@@ -214,7 +249,9 @@ class ChangeInfo extends Component {
                 className="signup__box2"
                 defaultValue={
                   this.props.userInfo.userInfo[0] &&
-                  this.props.userInfo.userInfo[0].birthday.slice(6, 8)
+                  this.props.userInfo.userInfo[0].birthday
+                    .toString()
+                    .slice(6, 8)
                 }
               >
                 <option disabled>일</option>
@@ -242,7 +279,8 @@ class ChangeInfo extends Component {
                     value={region}
                     defaultChecked={
                       this.props.userInfo.userInfo[0] &&
-                      this.props.userInfo.userInfo[0].likeArea.includes(
+                      Array.prototype.includes.call(
+                        this.props.userInfo.userInfo[0].likeAreas,
                         this.state.regions[i]
                       )
                     }
@@ -264,7 +302,8 @@ class ChangeInfo extends Component {
                     value={clinic}
                     defaultChecked={
                       this.props.userInfo.userInfo[0] &&
-                      this.props.userInfo.userInfo[0].likePoint.includes(
+                      Array.prototype.includes.call(
+                        this.props.userInfo.userInfo[0].likePoints,
                         this.state.clinics[i]
                       )
                     }

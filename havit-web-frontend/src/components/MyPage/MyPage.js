@@ -4,9 +4,10 @@ import { Menu, Reserve, WishList, ChangeInfo, Loading } from '../index';
 import 'styles/css/MyPage/MyPage.css';
 
 class MyPage extends Component {
-  // componentWillMount() {
-  //   this.props.checkAuth();
-  // }
+  componentDidMount() {
+    this.props.getReservations(localStorage.getItem('email'), '', 1);
+    this.props.getReservations(localStorage.getItem('email'));
+  }
 
   render() {
     return (
