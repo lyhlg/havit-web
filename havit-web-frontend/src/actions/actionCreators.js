@@ -154,10 +154,10 @@ const successGetEvents = events => ({
   events,
 });
 
-export const getEvents = () => {
+export const getEvents = (email, productId, page) => {
   return dispatch => {
     dispatch(requestGetEvents());
-    return api.getEvents().then(res => {
+    return api.getEvents(email, productId, page).then(res => {
       dispatch(successGetEvents(res));
     });
   };
@@ -197,7 +197,7 @@ export const addReservation = (
   hospitalCode,
   userName,
   phone,
-  productName,
+  productId,
   reserveDate
 ) => {
   return dispatch => {
@@ -208,7 +208,7 @@ export const addReservation = (
         hospitalCode,
         userName,
         phone,
-        productName,
+        productId,
         reserveDate
       )
       .then(res => {
@@ -226,10 +226,10 @@ const successAddReview = review => ({
   review,
 });
 
-export const addReview = (email, stars, comment, product) => {
+export const addReview = (email, stars, comment, productId) => {
   return dispatch => {
     dispatch(requestAddReview());
-    return api.addReview(email, stars, comment, product).then(res => {
+    return api.addReview(email, stars, comment, productId).then(res => {
       dispatch(successAddReview(res));
     });
   };
@@ -246,34 +246,38 @@ const successAddUserInfo = newUserInfo => ({
 
 export const addUserInfo = (
   email,
-  name,
   password,
+  auth,
+  name,
   phone,
   birthday,
   gender,
-  likeArea,
-  likePoint,
-  code
+  likeAreas,
+  likePoints,
+  hospitalCode
 ) => {
   return dispatch => {
     dispatch(requestAddUserInfo());
     return api
       .addUserInfo(
         email,
-        name,
         password,
+        auth,
+        name,
         phone,
         birthday,
         gender,
-        likeArea,
-        likePoint,
-        code
+        likeAreas,
+        likePoints,
+        hospitalCode
       )
       .then(res => {
         dispatch(successAddUserInfo(res));
       });
   };
 };
+
+// likeProduct
 
 const requestAddLikeProducts = () => ({
   type: types.REQUEST_ADD_LIKEPRODUCTS,
@@ -289,6 +293,24 @@ export const addLikeProducts = (email, productId) => {
     dispatch(requestAddLikeProducts());
     return api.addLikeProducts(email, productId).then(res => {
       dispatch(successAddLikeProducts(res));
+    });
+  };
+};
+
+const requestDelLikeProducts = () => ({
+  type: types.REQUEST_DEL_LIKEPRODUCTS,
+});
+
+const successDelLikeProducts = newLikeProduct => ({
+  type: types.SUCCESS_DEL_LIKEPRODUCTS,
+  newLikeProduct,
+});
+
+export const DelLikeProducts = (email, productId) => {
+  return dispatch => {
+    dispatch(requestDelLikeProducts());
+    return api.DelLikeProducts(email, productId).then(res => {
+      dispatch(successDelLikeProducts(res));
     });
   };
 };
@@ -394,10 +416,10 @@ const successAddNotice = notice => ({
   notice,
 });
 
-export const addNotice = (title, body, author, file) => {
+export const addNotice = (title, body, author) => {
   return dispatch => {
     dispatch(requestAddNotice());
-    return api.addNotice(title, body, author, file).then(res => {
+    return api.addNotice(title, body, author).then(res => {
       dispatch(successAddNotice(res));
     });
   };
@@ -412,10 +434,10 @@ const successAddBanner = banner => ({
   banner,
 });
 
-export const addBanner = (priority, title, url, status) => {
+export const addBanner = (img, title, url, priority, status) => {
   return dispatch => {
     dispatch(requestAddBanner());
-    return api.addBanner(priority, title, url, status).then(res => {
+    return api.addBanner(img, title, url, priority, status).then(res => {
       dispatch(successAddBanner(res));
     });
   };
@@ -472,5 +494,23 @@ export const addEvent = (
       .then(res => {
         dispatch(successAddEvent(res));
       });
+  };
+};
+
+const requestDelEvent = () => ({
+  type: types.REQUEST_DEL_EVENT,
+});
+
+const successDelEvent = () => ({
+  type: types.SUCCESS_DEL_EVENT,
+  addEvent,
+});
+
+export const delEvent = (hospitalCode, productId) => {
+  return dispatch => {
+    dispatch(requestDelEvent());
+    return api.delEvent(hospitalCode, productId).then(res => {
+      dispatch(successDelEvent(res));
+    });
   };
 };

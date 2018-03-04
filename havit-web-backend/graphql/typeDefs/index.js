@@ -12,20 +12,16 @@ const typeDefs = `
       page: Int
     ) : [Reservation]
 
-    Hospitals(
-      adminAccount: String
-    ) : [Hospital]
-
     OpenedNumbers(
       user_id_email: String
       page: Int
     ) : [Reservation]
 
     Products (
-      type: String,
-      subType: String,
-      page: Int,
+      type: String
+      subType: String
       productId: Int
+      page: Int
     ) : [Product]
 
     Notices(
@@ -33,13 +29,23 @@ const typeDefs = `
       page: Int
     ) : [Notice]
 
-    Events(user_id_email: String, productId: Int, page: Int) : [Event]
+    Events(
+      user_id_email: String
+      productId: Int
+      status: String,
+      page: Int
+    ) : [Event]
 
     Banners(
       url: String
     ): [Banner]
 
     Reviews: [Review]
+
+    Hospitals(
+      adminAccount: String
+    ) : [Hospital]
+
     HospitalAdmin(page:Int) : [HospitalAdmin]
     LikeProducts(user_id_email:String) : [Product]
     Dashboard(user_id_email: String) : [SalesCount]
@@ -47,7 +53,6 @@ const typeDefs = `
     Options : [Option]
   }
   type User {
-    specId: Float
     name: String
     user_id_email: String!
     password: String
@@ -90,6 +95,7 @@ const typeDefs = `
   type Event {
     _id: ID
     productId : Int
+    img: String
     hospitalCode: String
     hospitalLoc: String
     hospitalName: String
@@ -99,14 +105,14 @@ const typeDefs = `
     status: String
     priority: Int
     purchased: Int
-    productImage: String
-    reviews: [Review]
+    productDetail: String
     options: Option
+    reviews: [Review]
   }
   type Product {
     _id: ID
-    type: String
     productId: Int
+    type: String
     subType: String
     img: String
     hospitalCode: String
@@ -316,7 +322,7 @@ const typeDefs = `
       price: Int
       status: String
       priority: Int
-      productImage: String
+      productDetails: String
     ) : Event
 
     delEvent(

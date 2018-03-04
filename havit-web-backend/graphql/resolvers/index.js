@@ -13,7 +13,6 @@ import {
   FIND_NOTICE,
   FIND_HOSPITAL,
   GET_PAYMENT,
-  GET_HOSPITAL_RESERVATION_INFO,
   GET_HOSPITAL_PRODUCT_LIST,
   FIND_HOSPITAL_ADMIN,
   GET_BANNER_LIST,
@@ -71,7 +70,7 @@ export default {
     options: (...params) => FIND_OPTION(params)
   },
   Hospital: {
-    reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
+    reservations: (...params) => FIND_RESERVATION(params),
     products: (...params) => FIND_PRODUCT(params)
   },
   Product: {

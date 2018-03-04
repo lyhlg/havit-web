@@ -18,7 +18,7 @@ class Reserve extends Component {
   }
 
   componentDidMount() {
-    this.props.getReservations(localStorage.getItem('email'));
+    this.props.getReservations(localStorage.getItem('email'), '', 1);
   }
 
   changeMonth(e) {
