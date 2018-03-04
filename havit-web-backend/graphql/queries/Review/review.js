@@ -4,6 +4,7 @@ const FIND_REVIEW = async params => {
   const [obj, args, ctx] = [...params];
 
   if (obj) {
+    //
     return obj.reviews.map(async item => {
       return await ctx.review.findOne({ _id: ObjectId(item) });
     });

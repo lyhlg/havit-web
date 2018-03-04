@@ -2,9 +2,9 @@ import { autoNumbering } from "../../../utils/index";
 
 const ADD_EVENT = async params => {
   const [obj, args, ctx] = [...params];
-  const { event, productCounter, hospitalAdmin } = ctx;
+  const { event, counter, hospitalAdmin } = ctx;
   const realVal = Object.keys(args).length;
-  const number = await autoNumbering("productid", productCounter);
+  const number = await autoNumbering("productid", counter);
   const hospitalInfo = await hospitalAdmin.findOne(
     { code: args.hospitalCode },
     { loc: 1, name: 1, _id: 0 }

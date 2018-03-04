@@ -19,7 +19,7 @@ import {
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
   GET_DASHBOARD_COUNT,
-  GET_OPTIONS_OF_PRODUCT
+  FIND_OPTION
 } from "../queries";
 
 import {
@@ -35,7 +35,6 @@ import {
   ADD_PRODUCT,
   EDIT_PRODUCT,
   EDIT_USER_INFO,
-  ADD_USER,
   ADD_HOSPITAL_ADMIN,
   DEL_HOSPITAL_ADMIN,
   ADD_NOTICE,
@@ -68,16 +67,16 @@ export default {
     product: (...params) => FIND_PRODUCT(params)
   },
   Event: {
-    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
-    options: (...params) => GET_OPTIONS_OF_PRODUCT(params)
+    reviews: (...params) => FIND_REVIEW(params),
+    options: (...params) => FIND_OPTION(params)
   },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
     products: (...params) => FIND_PRODUCT(params)
   },
   Product: {
-    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
-    options: (...params) => GET_OPTIONS_OF_PRODUCT(params)
+    reviews: (...params) => FIND_REVIEW(params),
+    options: (...params) => FIND_OPTION(params)
   },
   User: {
     reservations: (...params) => FIND_RESERVATION(params),
@@ -98,18 +97,23 @@ export default {
     modifyReservation: (...params) => MODIFY_RESERVATION(params),
     delReservation: (...params) => DEL_RESERVATION(params),
     fixReservation: (...params) => FIX_RESERVATION(params),
+    confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
     addReview: (...params) => ADD_REVIEW(params),
     addUserInfo: (...params) => ADD_USER_INFO(params),
-    confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
     editUserInfo: (...params) => EDIT_USER_INFO(params),
-    addUser: (...params) => ADD_USER(params),
     addHospitalAdmin: (...params) => ADD_HOSPITAL_ADMIN(params),
     delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params),
+
+    // Notice (공지))
     addNotice: (...params) => ADD_NOTICE(params),
     delNotice: (...params) => DEL_NOTICE(params),
+
+    // Banner
     addBanner: (...params) => ADD_BANNER(params),
     modifyBanner: (...params) => MODIFY_BANNER(params),
     delBanner: (...params) => DEL_BANNER(params),
+
+    // Event
     addEvent: (...params) => ADD_EVENT(params),
     delEvent: (...params) => DEL_EVENT(params)
   }

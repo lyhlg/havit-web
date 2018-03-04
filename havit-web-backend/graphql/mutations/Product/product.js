@@ -52,7 +52,7 @@ const ADD_PRODUCT = async params => {
   } = args;
   const {
     product,
-    productCounter,
+    counter,
     hospital,
     hospitalAdmin,
     productOption,
@@ -83,7 +83,7 @@ const ADD_PRODUCT = async params => {
   }
 
   if (!chk_dup) {
-    const number = await autoNumbering("productid", productCounter);
+    const number = await autoNumbering("productid", counter);
     let productSubNumber = { productId: number };
     const optionUpdate = await SAVE_N_UP_PRODUCT_OPTION(
       number,
