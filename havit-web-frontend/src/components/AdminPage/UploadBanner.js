@@ -15,6 +15,9 @@ class UploadBanner extends Component {
       document.getElementById('url').value,
       document.getElementById('status').value
     );
+    setTimeout(() => {
+      window.location.href = '/adminPage/manageBanner';
+    }, 1000);
   }
 
   render() {
