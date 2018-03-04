@@ -7,7 +7,7 @@ const reviewSchema = new Schema({
   stars: Number,
   comment: String,
   createdOn: { type: Date, default: getCurrentDate() },
-  product: String
+  productId: Number
 });
 
 module.exports = mongoose.model('review', reviewSchema);
@@ -16,15 +16,15 @@ module.exports = mongoose.model('review', reviewSchema);
 /*
 db.reviews.insert([{
   user_id_email: 'lyhlg0201@gmail.com',
-  stars: '4.5',
+  stars: 4,
   comment: '좋았다',
-  product: ObjectId("5a9250bbaaa388d7cbd18f24")
+  productId: 53
 },
 {
-  user_id_email: 'lyhlg0201@gmail.com',
-  stars: '4.5',
+  user_id_email: 'dubbsong@gmail.com',
+  stars: '5',
   comment: 'This is really Good ! .',
-  product: ObjectId("5a9251b746a67f4df7a9b926")
+  productId: 53
 },
 {
   user_id_email: 'iam.yonghyun@gmail.com',

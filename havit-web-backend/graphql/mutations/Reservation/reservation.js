@@ -1,15 +1,36 @@
 const ADD_RESERVATION = async (params, reserveNumCal) => {
   const [obj, args, ctx] = [...params];
   const { hospitalCode, user_id_email, productId } = args;
-  const { user, product, hospital, reservation, salesCount } = ctx;
+  const {
+    user,
+    product,
+    hospital,
+    hospitalAdmin,
+    reservation,
+    salesCount
+  } = ctx;
+
+  const hospitalInfo = await hospitalAdmin.findOne(
+    { code: args.hospitalCode },
+    { loc: 1, name: 1, _id: 0 }
+  );
+
+  const getHospitalInfo = {
+    hospitalName: hospitalInfo.name,
+    hospitalLoc: hospitalInfo.loc
+  };
 
   let getProductName = {
     productName: (await product.findOne({ productId })).productName
   };
   let obj_reserveNum = { reserveNum: reserveNumCal() };
-  let new_args = Object.assign(args, obj_reserveNum, getProductName, {
-    openPhoneNum: 0
-  });
+  let new_args = Object.assign(
+    args,
+    obj_reserveNum,
+    getHospitalInfo,
+    getProductName,
+    { openPhoneNum: 0 }
+  );
 
   await hospital.update(
     { code: hospitalCode },

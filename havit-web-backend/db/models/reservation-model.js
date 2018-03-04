@@ -6,6 +6,8 @@ const reservationSchema = new Schema({
   reserveNum: { type: Number, required: true },
   user_id_email: String,
   hospitalCode: String,
+  hospitalLoc: String,
+  hospitalName: String,
   userName: String,
   phone: Number,
   openPhoneNum: Number,
