@@ -28,10 +28,10 @@ const successGetProducts = products => ({
   products,
 });
 
-export const getProducts = (type, subType, page, productId) => {
+export const getProducts = (type, subType, productId, page) => {
   return dispatch => {
     dispatch(requestGetProducts());
-    return api.getProducts(type, subType, page, productId).then(res => {
+    return api.getProducts(type, subType, productId, page).then(res => {
       dispatch(successGetProducts(res));
     });
   };
@@ -64,10 +64,10 @@ const successGetLikeProducts = likeProducts => ({
   likeProducts,
 });
 
-export const getLikeProducts = email => {
+export const getLikeProducts = (email, page) => {
   return dispatch => {
     dispatch(requestGetLikeProducts());
-    return api.getLikeProducts(email).then(res => {
+    return api.getLikeProducts(email, page).then(res => {
       dispatch(successGetLikeProducts(res));
     });
   };
@@ -100,10 +100,10 @@ const successGetHospitalAdmin = hospitalAdmin => ({
   hospitalAdmin,
 });
 
-export const getHospitalAdmin = () => {
+export const getHospitalAdmin = page => {
   return dispatch => {
     dispatch(requestGetHospitalAdmin());
-    return api.getHospitalAdmin().then(res => {
+    return api.getHospitalAdmin(page).then(res => {
       dispatch(successGetHospitalAdmin(res));
     });
   };
@@ -118,10 +118,10 @@ const successGetNotices = notices => ({
   notices,
 });
 
-export const getNotices = () => {
+export const getNotices = (id, page) => {
   return dispatch => {
     dispatch(requestGetNotices());
-    return api.getNotices().then(res => {
+    return api.getNotices(id, page).then(res => {
       dispatch(successGetNotices(res));
     });
   };
@@ -136,10 +136,10 @@ const successGetBanners = banners => ({
   banners,
 });
 
-export const getBanners = () => {
+export const getBanners = id => {
   return dispatch => {
     dispatch(requestGetBanners());
-    return api.getBanners().then(res => {
+    return api.getBanners(id).then(res => {
       dispatch(successGetBanners(res));
     });
   };
@@ -154,10 +154,10 @@ const successGetEvents = events => ({
   events,
 });
 
-export const getEvents = (email, productId, page) => {
+export const getEvents = (email, productId, status, page) => {
   return dispatch => {
     dispatch(requestGetEvents());
-    return api.getEvents(email, productId, page).then(res => {
+    return api.getEvents(email, productId, status, page).then(res => {
       dispatch(successGetEvents(res));
     });
   };
@@ -172,10 +172,10 @@ const successGetPayment = payment => ({
   payment,
 });
 
-export const getPayment = () => {
+export const getPayment = email => {
   return dispatch => {
     dispatch(requestGetPayment());
-    return api.getPayment().then(res => {
+    return api.getPayment(email).then(res => {
       dispatch(successGetPayment(res));
     });
   };
@@ -306,10 +306,10 @@ const successDelLikeProducts = newLikeProduct => ({
   newLikeProduct,
 });
 
-export const DelLikeProducts = (email, productId) => {
+export const delLikeProducts = (email, productId) => {
   return dispatch => {
     dispatch(requestDelLikeProducts());
-    return api.DelLikeProducts(email, productId).then(res => {
+    return api.delLikeProducts(email, productId).then(res => {
       dispatch(successDelLikeProducts(res));
     });
   };
@@ -324,11 +324,17 @@ const successModifyReservation = reservation => ({
   reservation,
 });
 
-export const modifyReservation = (reserveNum, openPhoneNum, reserveDate) => {
+export const modifyReservation = (
+  reserveNum,
+  userName,
+  phone,
+  reserveDate,
+  openPhoneNum
+) => {
   return dispatch => {
     dispatch(requestModifyReservation());
     return api
-      .modifyReservation(reserveNum, openPhoneNum, reserveDate)
+      .modifyReservation(reserveNum, userName, phone, reserveDate, openPhoneNum)
       .then(res => {
         dispatch(successModifyReservation(res));
       });
@@ -389,24 +395,6 @@ export const confirmPurchase = reserveNum => {
   };
 };
 
-const requestAddUser = () => ({
-  type: types.REQUEST_ADD_USER,
-});
-
-const successAddUser = newUser => ({
-  type: types.SUCCESS_ADD_USER,
-  newUser,
-});
-
-export const addUser = (email, specId, user) => {
-  return dispatch => {
-    dispatch(requestAddUser());
-    return api.addUser(email, specId, user).then(res => {
-      dispatch(successAddUser(res));
-    });
-  };
-};
-
 const requestAddNotice = () => ({
   type: types.REQUEST_ADD_NOTICE,
 });
@@ -434,11 +422,29 @@ const successAddBanner = banner => ({
   banner,
 });
 
-export const addBanner = (img, title, url, priority, status) => {
+export const addBanner = (img, title, url, priority) => {
   return dispatch => {
     dispatch(requestAddBanner());
-    return api.addBanner(img, title, url, priority, status).then(res => {
+    return api.addBanner(img, title, url, priority).then(res => {
       dispatch(successAddBanner(res));
+    });
+  };
+};
+
+const requestDelBanner = () => ({
+  type: types.REQUEST_DEL_BANNER,
+});
+
+const successDelBanner = banner => ({
+  type: types.SUCCESS_DEL_BANNER,
+  banner,
+});
+
+export const delBanner = id => {
+  return dispatch => {
+    dispatch(requestDelBanner());
+    return api.delBanner(id).then(res => {
+      dispatch(successDelBanner(res));
     });
   };
 };

@@ -26,40 +26,40 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.getUserInfo(email, password));
   },
 
-  getProducts: (type, subType, page, productId) => {
-    dispatch(actions.getProducts(type, subType, page, productId));
+  getProducts: (type, subType, productId, page) => {
+    dispatch(actions.getProducts(type, subType, productId, page));
   },
 
   getReservations: (email, status, page) => {
     dispatch(actions.getReservations(email, status, page));
   },
 
-  getLikeProducts: email => {
-    dispatch(actions.getLikeProducts(email));
+  getLikeProducts: (email, page) => {
+    dispatch(actions.getLikeProducts(email, page));
   },
 
   getHospital: email => {
     dispatch(actions.getHospital(email));
   },
 
-  getHospitalAdmin: () => {
-    dispatch(actions.getHospitalAdmin());
+  getHospitalAdmin: page => {
+    dispatch(actions.getHospitalAdmin(page));
   },
 
-  getNotices: () => {
-    dispatch(actions.getNotices());
+  getNotices: (id, page) => {
+    dispatch(actions.getNotices(id, page));
   },
 
-  getBanners: () => {
-    dispatch(actions.getBanners());
+  getBanners: id => {
+    dispatch(actions.getBanners(id));
   },
 
-  getEvents: (email, productId, page) => {
-    dispatch(actions.getEvents(email, productId, page));
+  getEvents: (email, productId, status, page) => {
+    dispatch(actions.getEvents(email, productId, status, page));
   },
 
-  getPayment: code => {
-    dispatch(actions.getPayment());
+  getPayment: email => {
+    dispatch(actions.getPayment(email));
   },
 
   addReservation: (
@@ -152,16 +152,16 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.confirmPurchase(reserveNum));
   },
 
-  addUser: (email, specId, user) => {
-    dispatch(actions.addUser(email, specId, user));
-  },
-
   addNotice: (title, body, author) => {
     dispatch(actions.addNotice(title, body, author));
   },
 
-  addBanner: (img, title, url, priority, status) => {
-    dispatch(actions.addBanner(img, title, url, priority, status));
+  addBanner: (img, title, url, priority) => {
+    dispatch(actions.addBanner(img, title, url, priority));
+  },
+
+  delBanner: id => {
+    dispatch(actions.delBanner(id));
   },
 
   addHospitalAdmin: (code, name, loc) => {

@@ -34,15 +34,15 @@ export const getUserInfo = (email, password) => {
   });
 };
 
-export const getProducts = (type, subType, page, productId) => {
+export const getProducts = (type, subType, productId, page) => {
   return client.query({
     query: gql`
-      query($type: String, $subType: String, $page: Int, $productId: Int) {
+      query($type: String, $subType: String, $productId: Int, $page: Int) {
         Products(
           type: $type
           subType: $subType
-          page: $page
           productId: $productId
+          page: $page
         ) {
           type
           subType
@@ -71,8 +71,8 @@ export const getProducts = (type, subType, page, productId) => {
     variables: {
       type,
       subType,
-      page,
       productId,
+      page,
     },
   });
 };
@@ -105,11 +105,11 @@ export const getReservations = (email, status, page) => {
   });
 };
 
-export const getLikeProducts = email => {
+export const getLikeProducts = (email, page) => {
   return client.query({
     query: gql`
-      query($email: String) {
-        LikeProducts(user_id_email: $email) {
+      query($email: String, $page: Int) {
+        LikeProducts(user_id_email: $email, page: $page) {
           _id
           type
           productId
@@ -123,11 +123,13 @@ export const getLikeProducts = email => {
           price
           purchased
           productDetail
+          maxPage
         }
       }
     `,
     variables: {
       email,
+      page,
     },
   });
 };
@@ -179,11 +181,11 @@ export const getHospital = email => {
   });
 };
 
-export const getHospitalAdmin = () => {
+export const getHospitalAdmin = page => {
   return client.query({
     query: gql`
-      query {
-        HospitalAdmin {
+      query($page: Int) {
+        HospitalAdmin(page: $page) {
           code
           name
           loc
@@ -191,14 +193,17 @@ export const getHospitalAdmin = () => {
         }
       }
     `,
+    variables: {
+      page,
+    },
   });
 };
 
-export const getNotices = id => {
+export const getNotices = (id, page) => {
   return client.query({
     query: gql`
-      query($id: Int) {
-        Notices(id: $id) {
+      query($id: Int, $page: Int) {
+        Notices(id: $id, page: $page) {
           _id
           title
           body
@@ -210,15 +215,16 @@ export const getNotices = id => {
     `,
     variables: {
       id,
+      page,
     },
   });
 };
 
-export const getBanners = () => {
+export const getBanners = id => {
   return client.query({
     query: gql`
-      query {
-        Banners {
+      query($id: Int) {
+        Banners(id: $id) {
           title
           url
           priority
@@ -226,15 +232,22 @@ export const getBanners = () => {
         }
       }
     `,
+    variables: {
+      id,
+    },
   });
 };
 
-export const getEvents = (email, productId, page) => {
+export const getEvents = (email, productId, status, page) => {
   return client.query({
     query: gql`
-      query($email: String, $productId: Int, $page: Int) {
-        Events(user_id_email: $email, productId: $productId, page: $page) {
-          _id
+      query($email: String, $productId: Int, $status: String, $page: Int) {
+        Events(
+          user_id_email: $email
+          productId: $productId
+          status: $status
+          page: $page
+        ) {
           productId
           hospitalCode
           hospitalLoc
@@ -252,6 +265,7 @@ export const getEvents = (email, productId, page) => {
     variables: {
       email,
       productId,
+      status,
       page,
     },
   });
@@ -439,12 +453,6 @@ export const delLikeProducts = (email, productId) => {
   });
 };
 
-reserveNum: Float;
-userName: String;
-phone: Int;
-reserveDate: Float;
-openPhoneNum: Int;
-
 export const modifyReservation = (
   reserveNum,
   userName,
@@ -552,30 +560,6 @@ export const confirmPurchase = reserveNum => {
   });
 };
 
-export const addUser = (email, specId, user) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($email: String, $specId: Float, $user: String) {
-        addUser(user_id_email: $email, specId: $specId, name: $user) {
-          specId
-          name
-          password
-          auth
-          phone
-          birthday
-          gender
-          hospitalCode
-        }
-      }
-    `,
-    variables: {
-      email,
-      specId,
-      user,
-    },
-  });
-};
-
 export const addNotice = (title, body, author) => {
   return client.mutate({
     mutation: gql`
@@ -598,29 +582,16 @@ export const addNotice = (title, body, author) => {
   });
 };
 
-export const addBanner = (img, title, url, priority, status) => {
+export const addBanner = (img, title, url, priority) => {
   return client.mutate({
     mutation: gql`
-      mutation(
-        $img: String
-        $title: String
-        $url: String
-        $priority: Int
-        $status: String
-      ) {
-        addBanner(
-          img: $img
-          title: $title
-          url: $url
-          priority: $priority
-          status: $status
-        ) {
+      mutation($img: String, $title: String, $url: String, $priority: Int) {
+        addBanner(img: $img, title: $title, url: $url, priority: $priority) {
           _id
           title
           img
           url
           priority
-          status
         }
       }
     `,
@@ -629,7 +600,21 @@ export const addBanner = (img, title, url, priority, status) => {
       title,
       url,
       priority,
-      status,
+    },
+  });
+};
+
+export const delBanner = id => {
+  return client.mutate({
+    mutation: gql`
+      mutation($id: Int) {
+        addHospitalAdmin(id: $id) {
+          title
+        }
+      }
+    `,
+    variables: {
+      id,
     },
   });
 };
