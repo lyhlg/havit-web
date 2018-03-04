@@ -14,9 +14,9 @@ class ServiceFaq extends Component {
   toggleFaq(i) {
     this.setState({
       isOpened: [
-        ...this.state.isOpened.slice(0, i),
+        ...Array(i).fill(false),
         !this.state.isOpened[i],
-        ...this.state.isOpened.slice(i + 1),
+        ...Array(9 - i).fill(false),
       ],
     });
   }
