@@ -396,7 +396,6 @@ export const addUserInfo = (
           likePoints: $likePoints
           hospitalCode: $hospitalCode
         ) {
-          specId
           name
           auth
           phone

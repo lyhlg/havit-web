@@ -33,7 +33,7 @@ class Login extends Component {
     );
     setTimeout(() => {
       this.props.getUserInfo(res.profileObj.email);
-    }, 1000);
+    }, 1500);
     setTimeout(() => {
       const phone = this.props.userInfo.userInfo[0].phone;
       const code = this.props.userInfo.userInfo[0].level;
@@ -49,7 +49,7 @@ class Login extends Component {
         localStorage.setItem('auth', 'google');
         this.props.history.push('/privacy');
       }
-    }, 2000);
+    }, 3000);
   }
 
   authLoginGoogleFail(res) {
@@ -58,7 +58,7 @@ class Login extends Component {
   }
 
   authLoginKakaoSucc(res) {
-    this.props.addUser(
+    this.props.addUserInfo(
       res.profile.kaccount_email,
       '',
       'kakao',
@@ -66,9 +66,9 @@ class Login extends Component {
     );
     setTimeout(() => {
       this.props.getUserInfo(res.profile.kaccount_email);
-    }, 1000);
+    }, 1500);
     setTimeout(() => {
-      const phone = this.props.userInfo.userInfo.phone;
+      const phone = this.props.userInfo.userInfo[0].phone;
       const code = this.props.userInfo.userInfo[0].level;
       if (phone !== null) {
         if (localStorage.getItem('email')) localStorage.removeItem('email');
@@ -82,7 +82,7 @@ class Login extends Component {
         localStorage.setItem('auth', 'kakao');
         this.props.history.push('/privacy');
       }
-    }, 2000);
+    }, 3000);
   }
   authLoginKakaoFail(res) {
     console.log(res);
@@ -90,7 +90,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="login">
         <img src={reallogo} className="login__logo" alt="logo" />
