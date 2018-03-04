@@ -17,15 +17,20 @@ export const getCurrentDate = () => {
 };
 
 export const reserveNumCal = () => {
-    let date = new Date(),
-      year = date.getFullYear().toString().slice(2),
-      month = date.getMonth() + 1,
-      day = date.getDate(),
-      hour = date.getHours(),
-      minute = date.getMinutes(),
-      second = date.getSeconds(),
-      millisecond = date.getMilliseconds().toString().slice(0,1);
-
+  let date = new Date(),
+    year = date
+      .getFullYear()
+      .toString()
+      .slice(2),
+    month = date.getMonth() + 1,
+    day = date.getDate(),
+    hour = date.getHours(),
+    minute = date.getMinutes(),
+    second = date.getSeconds(),
+    millisecond = date
+      .getMilliseconds()
+      .toString()
+      .slice(0, 1);
 
   if (month < 10) {
     month = "0" + month.toString();
@@ -45,13 +50,13 @@ export const reserveNumCal = () => {
   let ChangeNumToStr = (...dateParams) => {
     return dateParams.map(item => item.toString()).join("");
   };
-  return Number(ChangeNumToStr(year, month, day, hour, minute, second, millisecond));
+  return Number(
+    ChangeNumToStr(year, month, day, hour, minute, second, millisecond)
+  );
 };
 
 export const autoNumbering = async (sequenceName, targetCounter) => {
-  switch (sequenceName) {
-    case "productid": {
-      const exist = await targetCounter.findOne({ _id: sequenceName });
+  const exist = await targetCounter.findOne({ _id: sequenceName });
 
       if (!exist) {
         await targetCounter({ _id: sequenceName, sequence_value: 0 }).save();
@@ -63,21 +68,4 @@ export const autoNumbering = async (sequenceName, targetCounter) => {
 
       return (await targetCounter.findOne({ _id: sequenceName }))
         .sequence_value;
-      break;
-    }
-    case "noticeid": {
-      const exist = await targetCounter.findOne({ _id: sequenceName });
-
-      if (!exist) {
-        await targetCounter({ _id: sequenceName, sequence_value: 0 }).save();
-      }
-      const sequenceDocument = await targetCounter.update(
-        { _id: sequenceName },
-        { $inc: { sequence_value: 1 } }
-      );
-
-      return (await targetCounter.findOne({ _id: sequenceName }))
-        .sequence_value;
-    }
-  }
 };

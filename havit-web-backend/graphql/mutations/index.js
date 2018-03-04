@@ -6,7 +6,7 @@ import {
   CONFIRM_PURCHASE
 } from "./Reservation/reservation";
 import ADD_REVIEW from "./Review/review";
-import { ADD_USER_INFO, EDIT_USER_INFO, ADD_USER } from "./User/user";
+import { ADD_USER_INFO, EDIT_USER_INFO } from "./User/user";
 import {
   ADD_LIKE_PRODUCT,
   DEL_LIKE_PRODUCT,
@@ -33,7 +33,6 @@ export {
   CONFIRM_PURCHASE,
   ADD_REVIEW,
   ADD_USER_INFO,
-  ADD_USER,
   ADD_LIKE_PRODUCT,
   DEL_LIKE_PRODUCT,
   ADD_PRODUCT,

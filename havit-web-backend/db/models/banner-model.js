@@ -4,6 +4,7 @@ import { getCurrentDate } from "../../utils/index";
 
 // 변경 필요
 const bannerSchema = new Schema({
+  _id: Number,
   img: { type: String, default: "https://dummyimage.com/1180x560" },
   title: String,
   url: String,

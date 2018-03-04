@@ -122,7 +122,7 @@ const typeDefs = `
     reviews: [Review]
   }
   type Notice {
-    _id: ID
+    _id: Int
     title: String
     body: String
     author: String
@@ -130,7 +130,7 @@ const typeDefs = `
     createdOn: String
   }
   type Banner {
-    _id: ID
+    _id: Int
     title: String
     img: String
     url: String
@@ -246,12 +246,6 @@ const typeDefs = `
       productId: Int
     ) : Review
 
-    addUser(
-      specId: Float
-      name: String
-      user_id_email: String
-    ) : User
-
     addUserInfo(
       user_id_email: String
       password: String
@@ -304,6 +298,7 @@ const typeDefs = `
     ) : Banner
 
     modifyBanner(
+      id: Int,
       img: String
       title: String
       url: String
@@ -311,7 +306,7 @@ const typeDefs = `
     ) : Banner
 
     delBanner(
-      url: String
+      id: Int
     ) : Banner
 
     addEvent(
