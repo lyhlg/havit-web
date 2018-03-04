@@ -88,24 +88,28 @@ const mapDispatchToProps = dispatch => ({
 
   addUserInfo: (
     email,
+    password,
+    auth,
     name,
     phone,
     birthday,
     gender,
-    likeArea,
-    likePoint,
-    code
+    likeAreas,
+    likePoints,
+    hospitalCode
   ) => {
     dispatch(
       actions.addUserInfo(
         email,
+        password,
+        auth,
         name,
         phone,
         birthday,
         gender,
-        likeArea,
-        likePoint,
-        code
+        likeAreas,
+        likePoints,
+        hospitalCode
       )
     );
   },
@@ -114,8 +118,26 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addLikeProducts(email, productId));
   },
 
-  modifyReservation: (reserveNum, openPhoneNum, reserveDate) => {
-    dispatch(actions.modifyReservation(reserveNum, openPhoneNum, reserveDate));
+  delLikeProducts: (email, productId) => {
+    dispatch(actions.delLikeProducts(email, productId));
+  },
+
+  modifyReservation: (
+    reserveNum,
+    userName,
+    phone,
+    reserveDate,
+    openPhoneNum
+  ) => {
+    dispatch(
+      actions.modifyReservation(
+        reserveNum,
+        userName,
+        phone,
+        reserveDate,
+        openPhoneNum
+      )
+    );
   },
 
   fixReservation: (reserveNum, careDate) => {
@@ -134,12 +156,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addUser(email, specId, user));
   },
 
-  addNotice: (title, body, author, file) => {
-    dispatch(actions.addNotice(title, body, author, file));
+  addNotice: (title, body, author) => {
+    dispatch(actions.addNotice(title, body, author));
   },
 
-  addBanner: (priority, title, url, status) => {
-    dispatch(actions.addBanner(priority, title, url, status));
+  addBanner: (img, title, url, priority, status) => {
+    dispatch(actions.addBanner(img, title, url, priority, status));
   },
 
   addHospitalAdmin: (code, name, loc) => {
@@ -166,6 +188,10 @@ const mapDispatchToProps = dispatch => ({
         productImage
       )
     );
+  },
+
+  delEvent: (hospitalCode, productId) => {
+    dispatch(actions.delEvent(hospitalCode, productId));
   },
 });
 
