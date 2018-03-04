@@ -154,10 +154,10 @@ const successGetEvents = events => ({
   events,
 });
 
-export const getEvents = () => {
+export const getEvents = (email, productId, page) => {
   return dispatch => {
     dispatch(requestGetEvents());
-    return api.getEvents().then(res => {
+    return api.getEvents(email, productId, page).then(res => {
       dispatch(successGetEvents(res));
     });
   };
@@ -197,7 +197,7 @@ export const addReservation = (
   hospitalCode,
   userName,
   phone,
-  productName,
+  productId,
   reserveDate
 ) => {
   return dispatch => {
@@ -208,7 +208,7 @@ export const addReservation = (
         hospitalCode,
         userName,
         phone,
-        productName,
+        productId,
         reserveDate
       )
       .then(res => {
@@ -226,10 +226,10 @@ const successAddReview = review => ({
   review,
 });
 
-export const addReview = (email, stars, comment, product) => {
+export const addReview = (email, stars, comment, productId) => {
   return dispatch => {
     dispatch(requestAddReview());
-    return api.addReview(email, stars, comment, product).then(res => {
+    return api.addReview(email, stars, comment, productId).then(res => {
       dispatch(successAddReview(res));
     });
   };

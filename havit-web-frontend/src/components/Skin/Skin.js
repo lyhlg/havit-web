@@ -89,7 +89,7 @@ class Skin extends Component {
           <div className="skin__category">
             <h2>피부시술</h2>
           </div>
-          <Product products={this.props.products.productsList} />
+          <Product />
         </main>
       </div>
     );

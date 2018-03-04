@@ -11,6 +11,7 @@ export { default as Empty } from './Common/Empty';
 export { default as Loading } from './Common/Loading';
 export { default as NotFound } from './Common/NotFound';
 export { default as Footer } from './Common/Footer';
+export { default as Pagination } from './Common/Pagination';
 
 // Header
 export { default as Login } from './Header/Login';

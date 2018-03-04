@@ -56,6 +56,7 @@ export const getProducts = (type, subType, page, productId) => {
           price
           purchased
           productDetail
+          maxPage
           options {
             type
           }
@@ -82,7 +83,8 @@ export const getReservations = (email, status, page) => {
       query($email: String, $status: String, $page: Int) {
         Reservations(user_id_email: $email, status: $status, page: $page) {
           reserveNum
-          hospitalCode
+          hospitalLoc
+          hospitalName
           userName
           phone
           openPhoneNum
@@ -227,11 +229,11 @@ export const getBanners = () => {
   });
 };
 
-export const getEvents = () => {
+export const getEvents = (email, productId, page) => {
   return client.query({
     query: gql`
-      query {
-        Events {
+      query($email: String, $productId: Int, $page: Int) {
+        Events(user_id_email: $email, productId: $productId, page: $page) {
           _id
           productId
           hospitalCode
@@ -247,6 +249,11 @@ export const getEvents = () => {
         }
       }
     `,
+    variables: {
+      email,
+      productId,
+      page,
+    },
   });
 };
 
@@ -273,7 +280,6 @@ export const addReservation = (
   userName,
   phone,
   productId,
-  productName,
   reserveDate
 ) => {
   return client.mutate({
@@ -282,10 +288,9 @@ export const addReservation = (
         $email: String
         $hospitalCode: String
         $userName: String
-        $phone: String
+        $phone: Int
         $productId: Int
-        $productName: String
-        $reserveDate: String
+        $reserveDate: Float
       ) {
         addReservation(
           user_id_email: $email
@@ -293,7 +298,6 @@ export const addReservation = (
           userName: $userName
           phone: $phone
           productId: $productId
-          productName: $productName
           reserveDate: $reserveDate
         )
       }
@@ -304,26 +308,25 @@ export const addReservation = (
       userName,
       phone,
       productId,
-      productName,
       reserveDate,
     },
   });
 };
 
-export const addReview = (email, stars, comment, product) => {
+export const addReview = (email, stars, comment, productId) => {
   return client.mutate({
     mutation: gql`
       mutation(
         $email: String
-        $stars: String
+        $stars: Float
         $comment: String
-        $product: String
+        $productId: Int
       ) {
         addReview(
           user_id_email: $email
           stars: $stars
           comment: $comment
-          product: $product
+          productId: $productId
         ) {
           _id
           user_id_email
@@ -336,7 +339,7 @@ export const addReview = (email, stars, comment, product) => {
       email,
       stars,
       comment,
-      product,
+      productId,
     },
   });
 };

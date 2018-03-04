@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Banner, Product } from '../index';
+import { Nav, Banner, Product, Pagination } from '../index';
 import 'styles/css/Home/Home.css';
 
 class Home extends Component {
@@ -16,6 +16,12 @@ class Home extends Component {
           <h2>전체보기</h2>
         </div>
         <Product products={this.props.products.productsList} />
+        <Pagination
+          max={
+            this.props.products.productsList[0] &&
+            this.props.products.productsList[0].maxPage
+          }
+        />
       </main>
     );
   }

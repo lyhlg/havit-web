@@ -54,8 +54,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.getBanners());
   },
 
-  getEvents: () => {
-    dispatch(actions.getEvents());
+  getEvents: (email, productId, page) => {
+    dispatch(actions.getEvents(email, productId, page));
   },
 
   getPayment: code => {
@@ -67,7 +67,7 @@ const mapDispatchToProps = dispatch => ({
     hospitalCode,
     userName,
     phone,
-    productName,
+    productId,
     reserveDate
   ) => {
     dispatch(
@@ -76,14 +76,14 @@ const mapDispatchToProps = dispatch => ({
         hospitalCode,
         userName,
         phone,
-        productName,
+        productId,
         reserveDate
       )
     );
   },
 
-  addReview: (email, stars, comment, product) => {
-    dispatch(actions.addReview(email, stars, comment, product));
+  addReview: (email, stars, comment, productId) => {
+    dispatch(actions.addReview(email, stars, comment, productId));
   },
 
   addUserInfo: (
