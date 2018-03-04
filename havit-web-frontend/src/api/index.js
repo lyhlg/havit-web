@@ -9,15 +9,44 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-export const getProducts = (type, subType, id) => {
+export const getUserInfo = (email, password) => {
   return client.query({
     query: gql`
-      query($type: String, $subType: String, $id: Int) {
-        Products(type: $type, subType: $subType, productId: $id) {
-          _id
+      query($email: String, $password: String) {
+        Users(user_id_email: $email, password: $password) {
+          user_id_email
+          name
+          auth
+          phone
+          birthday
+          gender
+          level
+          hospitalCode
+          likeAreas
+          likePoints
+        }
+      }
+    `,
+    variables: {
+      email,
+      password,
+    },
+  });
+};
+
+export const getProducts = (type, subType, page, productId) => {
+  return client.query({
+    query: gql`
+      query($type: String, $subType: String, $page: Int, $productId: Int) {
+        Products(
+          type: $type
+          subType: $subType
+          page: $page
+          productId: $productId
+        ) {
           type
-          productId
           subType
+          productId
           img
           hospitalCode
           hospitalLoc
@@ -27,14 +56,13 @@ export const getProducts = (type, subType, id) => {
           price
           purchased
           productDetail
+          options {
+            type
+          }
           reviews {
-            _id
             user_id_email
             stars
             comment
-          }
-          options {
-            type
           }
         }
       }
@@ -42,33 +70,35 @@ export const getProducts = (type, subType, id) => {
     variables: {
       type,
       subType,
-      id,
+      page,
+      productId,
     },
   });
 };
 
-export const getReservations = (email, code) => {
+export const getReservations = (email, status, page) => {
   return client.query({
     query: gql`
-      query($email: String, $code: String) {
-        Reservations(user_id_email: $email, hospitalCode: $code) {
-          _id
+      query($email: String, $status: String, $page: Int) {
+        Reservations(user_id_email: $email, status: $status, page: $page) {
           reserveNum
-          user_id_email
           hospitalCode
           userName
           phone
           openPhoneNum
+          productId
           productName
           reserveDate
           careDate
           status
+          maxPage
         }
       }
     `,
     variables: {
       email,
-      code,
+      status,
+      page,
     },
   });
 };
@@ -100,32 +130,6 @@ export const getLikeProducts = email => {
   });
 };
 
-export const getUserInfo = (email, password) => {
-  return client.query({
-    query: gql`
-      query($email: String, $password: String) {
-        Users(user_id_email: $email, password: $password) {
-          user_id_email
-          specId
-          name
-          auth
-          phone
-          birthday
-          gender
-          level
-          likeArea
-          likePoint
-          hospitalCode
-        }
-      }
-    `,
-    variables: {
-      email,
-      password,
-    },
-  });
-};
-
 export const getHospital = email => {
   return client.query({
     query: gql`
@@ -134,26 +138,22 @@ export const getHospital = email => {
           code
           adminAccount
           reservations {
-            _id
             reserveNum
-            user_id_email
             hospitalCode
             userName
-            openPhoneNum
             phone
+            openPhoneNum
+            productId
             productName
             reserveDate
             careDate
             status
-            product {
-              productId
-            }
+            maxPage
           }
           products {
-            _id
             type
-            productId
             subType
+            productId
             img
             hospitalCode
             hospitalLoc
@@ -192,19 +192,23 @@ export const getHospitalAdmin = () => {
   });
 };
 
-export const getNotices = () => {
+export const getNotices = id => {
   return client.query({
     query: gql`
-      query {
-        Notices {
+      query($id: Int) {
+        Notices(id: $id) {
           _id
           title
           body
           author
+          views
           createdOn
         }
       }
     `,
+    variables: {
+      id,
+    },
   });
 };
 

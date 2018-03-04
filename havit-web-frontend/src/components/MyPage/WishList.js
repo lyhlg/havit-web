@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { WishListEntry } from '../index';
 
 class WishList extends Component {
+  componentDidMount() {
+    this.props.getLikeProducts(localStorage.getItem('email'));
+  }
+
   render() {
     return (
       <div>

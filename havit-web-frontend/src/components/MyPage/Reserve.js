@@ -17,6 +17,10 @@ class Reserve extends Component {
     this.handleChangeCare = this.handleChangeCare.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getReservations(localStorage.getItem('email'));
+  }
+
   changeMonth(e) {
     this.setState({
       month: this.state.arr[Number(e.currentTarget.value) - 1],

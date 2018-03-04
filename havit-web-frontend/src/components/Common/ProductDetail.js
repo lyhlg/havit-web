@@ -15,7 +15,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    this.props.getProducts('', '', this.props.location.pathname.slice(10));
+    this.props.getProducts('', '', 1, this.props.location.pathname.slice(10));
   }
 
   handleReserve() {

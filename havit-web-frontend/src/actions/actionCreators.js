@@ -1,6 +1,24 @@
 import * as types from './actionTypes';
 import * as api from 'api';
 
+const requestGetUserInfo = () => ({
+  type: types.REQUEST_GET_USERINFO,
+});
+
+const successGetUserInfo = userInfo => ({
+  type: types.SUCCESS_GET_USERINFO,
+  userInfo,
+});
+
+export const getUserInfo = (email, password) => {
+  return dispatch => {
+    dispatch(requestGetUserInfo());
+    return api.getUserInfo(email, password).then(res => {
+      dispatch(successGetUserInfo(res));
+    });
+  };
+};
+
 const requestGetProducts = () => ({
   type: types.REQUEST_GET_PRODUCTS,
 });
@@ -10,10 +28,10 @@ const successGetProducts = products => ({
   products,
 });
 
-export const getProducts = (type, subType, id) => {
+export const getProducts = (type, subType, page, productId) => {
   return dispatch => {
     dispatch(requestGetProducts());
-    return api.getProducts(type, subType, id).then(res => {
+    return api.getProducts(type, subType, page, productId).then(res => {
       dispatch(successGetProducts(res));
     });
   };
@@ -28,10 +46,10 @@ const successGetReservations = reservations => ({
   reservations,
 });
 
-export const getReservations = email => {
+export const getReservations = (email, status, page) => {
   return dispatch => {
     dispatch(requestGetReservations());
-    return api.getReservations(email).then(res => {
+    return api.getReservations(email, status, page).then(res => {
       dispatch(successGetReservations(res));
     });
   };
@@ -51,24 +69,6 @@ export const getLikeProducts = email => {
     dispatch(requestGetLikeProducts());
     return api.getLikeProducts(email).then(res => {
       dispatch(successGetLikeProducts(res));
-    });
-  };
-};
-
-const requestGetUserInfo = () => ({
-  type: types.REQUEST_GET_USERINFO,
-});
-
-const successGetUserInfo = userInfo => ({
-  type: types.SUCCESS_GET_USERINFO,
-  userInfo,
-});
-
-export const getUserInfo = (email, password) => {
-  return dispatch => {
-    dispatch(requestGetUserInfo());
-    return api.getUserInfo(email, password).then(res => {
-      dispatch(successGetUserInfo(res));
     });
   };
 };

@@ -4,7 +4,7 @@ import 'styles/css/Home/Home.css';
 
 class Home extends Component {
   componentDidMount() {
-    this.props.getProducts();
+    this.props.getProducts('', '', 1);
   }
 
   render() {

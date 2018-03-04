@@ -22,20 +22,20 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProducts: (type, subType, id) => {
-    dispatch(actions.getProducts(type, subType, id));
+  getUserInfo: (email, password) => {
+    dispatch(actions.getUserInfo(email, password));
   },
 
-  getReservations: (email, code) => {
-    dispatch(actions.getReservations(email, code));
+  getProducts: (type, subType, page, productId) => {
+    dispatch(actions.getProducts(type, subType, page, productId));
+  },
+
+  getReservations: (email, status, page) => {
+    dispatch(actions.getReservations(email, status, page));
   },
 
   getLikeProducts: email => {
     dispatch(actions.getLikeProducts(email));
-  },
-
-  getUserInfo: (email, password) => {
-    dispatch(actions.getUserInfo(email, password));
   },
 
   getHospital: email => {

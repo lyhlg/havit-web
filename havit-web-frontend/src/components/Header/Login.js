@@ -89,10 +89,6 @@ class Login extends Component {
     this.props.history.push('/login');
   }
 
-  checkUserInfo(res) {
-    return this.props.getUserInfo(res.profileObj.email);
-  }
-
   render() {
     console.log(this.props);
     return (
