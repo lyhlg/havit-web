@@ -30,13 +30,6 @@ class ServiceMenu extends Component {
             >
               FAQ
             </NavLink>
-            <NavLink
-              to="/servicePage/servicePartner"
-              className="serviceMenu__button"
-              activeClassName="serviceMenu__button--selected"
-            >
-              제휴/광고
-            </NavLink>
           </div>
         </div>
       </div>

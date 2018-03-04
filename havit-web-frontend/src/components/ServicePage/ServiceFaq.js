@@ -14,9 +14,9 @@ class ServiceFaq extends Component {
   toggleFaq(i) {
     this.setState({
       isOpened: [
-        ...this.state.isOpened.slice(0, i),
+        ...Array(i).fill(false),
         !this.state.isOpened[i],
-        ...this.state.isOpened.slice(i + 1),
+        ...Array(9 - i).fill(false),
       ],
     });
   }
@@ -96,8 +96,13 @@ class ServiceFaq extends Component {
                   <tr className="q1">
                     <td className="qa">A.</td>
                     <td>
-                      상품 취소는 [마이페이지] - [예약내역]에서 가능합니다.
-                      [예약취소]를 클릭하시면 해당 병원에서도 확인이 가능합니다.
+                      <p>
+                        상품 취소는 [마이페이지] - [예약내역]에서 가능합니다.
+                      </p>
+                      <p>
+                        [예약취소]를 클릭하시면 해당 병원에서도 확인이
+                        가능합니다.
+                      </p>
                     </td>
                   </tr>
                 )}

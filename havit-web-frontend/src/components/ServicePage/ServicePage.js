@@ -5,7 +5,6 @@ import {
   ServiceCenter,
   ServiceNotice,
   ServiceFaq,
-  ServicePartner,
 } from '../index';
 import 'styles/css/ServicePage/ServicePage.css';
 
@@ -31,10 +30,6 @@ class ServicePage extends Component {
             <Route
               path="/servicePage/serviceFaq"
               render={props => <ServiceFaq {...this.props} />}
-            />
-            <Route
-              path="/servicePage/servicePartner"
-              render={props => <ServicePartner {...this.props} />}
             />
           </div>
         </div>
