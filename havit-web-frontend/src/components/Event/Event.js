@@ -3,7 +3,7 @@ import { Nav, Banner, Product } from '../index';
 
 class Event extends Component {
   componentDidMount() {
-    this.props.getEvents();
+    this.props.getEvents(localStorage.getItem('email'), '', 1);
   }
   render() {
     console.log(this.props);

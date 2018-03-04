@@ -1,17 +1,35 @@
 import React, { Component } from 'react';
-import { Nav, Banner, Product } from '../index';
+import { Nav, Banner, Product, Pagination } from '../index';
 import { NavLink } from 'react-router-dom';
 import 'styles/css/Beauty/Beauty.css';
 
 class Beauty extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: 1,
+    };
+    this.handlePage = this.handlePage.bind(this);
+  }
+
   componentDidMount() {
     this.props.getProducts(
       this.props.history.location.pathname.slice(1, 7),
-      this.props.history.location.pathname.slice(8),
+      this.props.history.location.pathname.slice(8) || '',
       1
     );
   }
 
+  handlePage(e) {
+    this.setState({
+      page: e.target.textContent,
+    });
+    this.props.getProducts(
+      this.props.history.location.pathname.slice(1, 7),
+      this.props.history.location.pathname.slice(8) || '',
+      this.state.page
+    );
+  }
   render() {
     return (
       <div>
@@ -24,9 +42,7 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', '', 1)}>
-                전체보기
-              </li>
+              <li>전체보기</li>
             </NavLink>
             <NavLink
               to="/beauty/filler"
@@ -76,6 +92,13 @@ class Beauty extends Component {
             <h2>뷰티시술</h2>
           </div>
           <Product products={this.props.products.productsList} />
+          <Pagination
+            handlePage={this.handlePage}
+            max={
+              this.props.products.productsList[0] &&
+              this.props.products.productsList[0].maxPage
+            }
+          />
         </main>
       </div>
     );
