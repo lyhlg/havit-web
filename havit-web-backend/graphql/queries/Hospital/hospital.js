@@ -18,18 +18,18 @@ const GET_HOSPITAL_RESERVATION_INFO = async params => {
   });
 };
 
-const GET_HOSPITAL_PRODUCT_LIST = async params => {
-  const [obj, args, ctx] = [...params];
-  const { product } = ctx;
-  const a = await obj.products.map(async item => {
-    return await product.findOne({ productId: item });
-  });
-  console.log( a )
-  return a;
-};
+// const GET_HOSPITAL_PRODUCT_LIST = async params => {
+//   const [obj, args, ctx] = [...params];
+//   const { product } = ctx;
+//   const a = await obj.products.map(async item => {
+//     return await product.findOne({ productId: item });
+//   });
+//   console.log( a )
+//   return a;
+// };
 
 export {
   FIND_HOSPITAL,
-  GET_HOSPITAL_RESERVATION_INFO,
-  GET_HOSPITAL_PRODUCT_LIST
+  GET_HOSPITAL_RESERVATION_INFO
+  // GET_HOSPITAL_PRODUCT_LIST
 };

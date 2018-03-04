@@ -22,8 +22,8 @@ const FIND_RESERVATION = async params => {
       .limit(limit);
   }
 
-  // 고객정보(병원)에서 상태별 정보 요청 API
   if (user_id_email && status) {
+    // 고객정보(병원)에서 상태별 정보 요청 API
     return await reservation
       .find({
         user_id_email: user_id_email,
@@ -34,8 +34,8 @@ const FIND_RESERVATION = async params => {
       .limit(limit);
   }
 
-  // 계정별 (고객/병원) 예약 내역 조회
   if (user_id_email) {
+    // 계정별 (고객/병원) 예약 내역 조회
     const findCode = await hospital.findOne({ adminAccount: user_id_email });
     if (findCode) {
       // 병원

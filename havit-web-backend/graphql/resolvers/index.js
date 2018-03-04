@@ -65,7 +65,7 @@ export default {
     Payments: (...params) => GET_PAYMENT(params)
   },
   Reservation: {
-    product: (...params) => GET_PRODUCT_RESERVATION(params)
+    product: (...params) => FIND_PRODUCT(params)
   },
   Event: {
     reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
@@ -73,7 +73,7 @@ export default {
   },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
-    products: (...params) => GET_HOSPITAL_PRODUCT_LIST(params)
+    products: (...params) => FIND_PRODUCT(params)
   },
   Product: {
     reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
@@ -90,10 +90,6 @@ export default {
 
   // MUTATION (STORE DATA)
   Mutation: {
-    uploadFile: (parent, { file }) => {
-      console.log(file);
-      return true;
-    },
     addProduct: (...params) => ADD_PRODUCT(params),
     editProduct: (...params) => EDIT_PRODUCT(params),
     addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),

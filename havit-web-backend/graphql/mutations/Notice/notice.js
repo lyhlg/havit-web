@@ -1,15 +1,11 @@
 import { autoNumbering } from "../../../utils/index";
 import { CHECK_DUP_DATA } from "../../common";
-import multer from "multer";
-import fs from "fs";
 
-const upload = multer({ dest: "Uploads/" });
 
 const ADD_NOTICE = async params => {
   const [obj, args, ctx] = [...params];
   const { notice, noticeCounter } = ctx;
   const numberOfCount = Object.keys(args).length;
-  console.log(args);
 
 
   const chk_dup = await CHECK_DUP_DATA([obj, args, notice]);

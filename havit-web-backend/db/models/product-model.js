@@ -16,6 +16,7 @@ const productSchema = new Schema({
   status: { type: String, default: "판매중" },
   purchased: { type: Number, default: 0 },
   productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
+  maxPage: Number,
   reviews: [String],
   options: String,
   createdOn: { type: Date, default: getCurrentDate() }
