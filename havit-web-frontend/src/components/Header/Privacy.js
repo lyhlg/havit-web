@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import 'styles/css/Header/Privacy.css';
 
 class Privacy extends Component {
@@ -42,6 +41,7 @@ class Privacy extends Component {
         '서대문구',
         '송파구',
       ],
+      check: [false, 0],
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.submitPrivacy = this.submitPrivacy.bind(this);
@@ -56,26 +56,55 @@ class Privacy extends Component {
   submitPrivacy() {
     let data = [
       localStorage.getItem('temp'),
-      document.getElementById('name').value,
-      document.getElementById('txtMobile').value,
-      document.getElementById('birthday1').value +
-        document.getElementById('birthday2').value +
-        document.getElementById('birthday3').value,
-      document.querySelector('input[name="gender"]:checked').value,
+      '',
+      localStorage.getItem('auth'),
+      document.getElementById('name').value || '',
+      Number(
+        document
+          .getElementById('txtMobile')
+          .value.toString()
+          .slice(1)
+      ) || '',
+      Number(
+        document.getElementById('birthday1').value +
+          document.getElementById('birthday2').value +
+          document.getElementById('birthday3').value
+      ),
+      Array.prototype.map.call(
+        document.querySelectorAll('input[name="gender"]:checked'),
+        gender => gender.value
+      )[0] || '',
       Array.prototype.map.call(
         document.querySelectorAll('input[name="likeArea"]:checked'),
         area => area.value
-      ),
+      ) || '',
       Array.prototype.map.call(
         document.querySelectorAll('input[name="likePoint"]:checked'),
         point => point.value
-      ),
+      ) || '',
       document.getElementById('code').value || '',
     ];
     setTimeout(() => {
-      this.props.addUserInfo(...data);
-      localStorage.removeItem('temp');
-      this.props.history.push('/signupend');
+      console.log(data);
+      if (
+        !data[3] ||
+        data[4] === NaN ||
+        data[4].toString().length < 9 ||
+        data[4].toString().length > 10 ||
+        data[5] === NaN ||
+        !data[6].length ||
+        !data[7].length ||
+        !data[8].length
+      ) {
+        this.setState({
+          check: [false, 1],
+        });
+      } else {
+        this.props.addUserInfo(...data);
+        localStorage.removeItem('temp');
+        localStorage.removeItem('auth');
+        this.props.history.push('/');
+      }
     }, 2000);
   }
 
@@ -227,10 +256,10 @@ class Privacy extends Component {
             </h6>
             <div className="signup__btn">
               <button onClick={this.submitPrivacy} className="signup__button">
-                <Link to="/signup" className="signup__btntext">
-                  회원가입
-                </Link>
+                회원가입
               </button>
+              {!this.state.check[0] &&
+                this.state.check[1] > 0 && <p>올바른 값을 입력하세요</p>}
             </div>
           </div>
         </div>

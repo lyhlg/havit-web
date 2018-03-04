@@ -5,7 +5,6 @@ import likeProducts from './likeProducts';
 import userInfo from './userInfo';
 import addLikeProducts from './addLikeProducts';
 import addUserInfo from './addUserInfo';
-import newUser from './newUser';
 import hospital from './hospital';
 import hospitalAdmin from './hospitalAdmin';
 import notices from './notices';
@@ -20,7 +19,6 @@ export default combineReducers({
   userInfo,
   addLikeProducts,
   addUserInfo,
-  newUser,
   hospital,
   hospitalAdmin,
   notices,
