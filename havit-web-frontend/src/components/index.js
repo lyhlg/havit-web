@@ -54,7 +54,6 @@ export { default as ServiceMenu } from './ServicePage/ServiceMenu';
 export { default as ServiceCenter } from './ServicePage/ServiceCenter';
 export { default as ServiceNotice } from './ServicePage/ServiceNotice';
 export { default as ServiceFaq } from './ServicePage/ServiceFaq';
-export { default as ServicePartner } from './ServicePage/ServicePartner';
 
 // Home
 export { default as Home } from './Home/Home';
