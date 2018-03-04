@@ -22,7 +22,7 @@ class Privacy extends Component {
         '피부톤',
         '노화',
         '탈모',
-        ' 점/검버섯',
+        '점/검버섯',
         '볼꺼짐',
         '문신제거',
         '기타고민',
@@ -99,6 +99,7 @@ class Privacy extends Component {
           check: [false, 1],
         });
       } else {
+        this.props.addUserInfo(...data);
         localStorage.setItem('email', localStorage.getItem('temp'));
         localStorage.setItem('code', 3);
         localStorage.removeItem('temp');

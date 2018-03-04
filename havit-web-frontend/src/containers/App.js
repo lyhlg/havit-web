@@ -17,7 +17,6 @@ const mapStateToProps = state => ({
   banners: state.banners,
   events: state.events,
   payment: state.payment,
-  email: window.localStorage.getItem('email') || '',
 });
 
 const mapDispatchToProps = dispatch => ({
