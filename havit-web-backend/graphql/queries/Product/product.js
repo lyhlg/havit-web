@@ -37,7 +37,7 @@ const FIND_PRODUCT = async params => {
   };
 
   // 전체 상품 검색
-  if ( !(type && subType) ) return results({});
+  if (!(type && subType)) return results({});
 
   // 상품 상세 정보
   if (productId) {
@@ -56,23 +56,23 @@ const FIND_PRODUCT = async params => {
 
 const LIKE_PRODUCT = async params => {
   const [obj, args, ctx] = [...params];
-  const { user, product } = ctx;
+  const { page, user, product } = ctx;
+  const limit = 12;
+
+  page ? page : 1;
+
   if (obj) {
     const { user_id_email } = obj;
-    return (await user.findOne({ user_id_email })).likeProduct.map(
+    return (await user.findOne({ user_id_email })).likeProducts.map(
       async item => {
         return await product.findOne({ productId: item });
       }
     );
   } else {
-    return (await user.findOne(args)).likeProduct.map(async item => {
+    return (await user.findOne(args)).likeProducts.map(async item => {
       return await product.findOne({ productId: item });
     });
   }
 };
 
-
-export {
-  FIND_PRODUCT,
-  LIKE_PRODUCT
-};
+export { FIND_PRODUCT, LIKE_PRODUCT };

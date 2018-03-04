@@ -6,17 +6,6 @@ const typeDefs = `
       password: String
     ) : [User]
 
-    Reservations(
-      user_id_email:String
-      status: String
-      page: Int
-    ) : [Reservation]
-
-    OpenedNumbers(
-      user_id_email: String
-      page: Int
-    ) : [Reservation]
-
     Products (
       type: String
       subType: String
@@ -24,10 +13,19 @@ const typeDefs = `
       page: Int
     ) : [Product]
 
-    Notices(
-      id: Int
+    Reservations(
+      user_id_email:String
+      status: String
       page: Int
-    ) : [Notice]
+    ) : [Reservation]
+
+    Hospitals(
+      adminAccount: String
+    ) : [Hospital]
+
+    HospitalAdmin(
+      page:Int
+    ) : [HospitalAdmin]
 
     Events(
       user_id_email: String
@@ -36,22 +34,38 @@ const typeDefs = `
       page: Int
     ) : [Event]
 
+    Notices(
+      id: Int
+      page: Int
+    ) : [Notice]
+
     Banners(
-      url: String
+      id: Int
     ): [Banner]
+
+    Dashboard(
+      user_id_email: String
+    ) : [SalesCount]
+
+    Payments(
+      user_id_email: String
+    ) : Payment
+
+    LikeProducts(
+      user_id_email:String
+      page: Int
+    ) : [Product]
+
+    OpenedNumbers(
+      user_id_email: String
+      page: Int
+    ) : [Reservation]
 
     Reviews: [Review]
 
-    Hospitals(
-      adminAccount: String
-    ) : [Hospital]
-
-    HospitalAdmin(page:Int) : [HospitalAdmin]
-    LikeProducts(user_id_email:String) : [Product]
-    Dashboard(user_id_email: String) : [SalesCount]
-    Payments(user_id_email: String) : Payment
     Options : [Option]
   }
+
   type User {
     name: String
     user_id_email: String!
