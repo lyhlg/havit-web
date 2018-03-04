@@ -1,17 +1,31 @@
 import React, { Component } from 'react';
-import { Nav, Banner, Product } from '../index';
+import { Nav, Banner, Product, Pagination } from '../index';
 import { NavLink } from 'react-router-dom';
 import 'styles/css/Skin/Skin.css';
 
 class Skin extends Component {
+  constructor(props) {
+    super(props);
+    this.handlePage = this.handlePage.bind(this);
+  }
+
   componentDidMount() {
     this.props.getProducts(
-      this.props.history.location.pathname.slice(1, 5),
-      this.props.history.location.pathname.slice(6),
+      'skin',
+      this.props.history.location.pathname.slice(6) || '',
+      0,
       1
     );
   }
 
+  handlePage(e) {
+    this.props.getProducts(
+      'skin',
+      this.props.history.location.pathname.slice(6) || '',
+      0,
+      e.target.textContent
+    );
+  }
   render() {
     return (
       <div>
@@ -24,7 +38,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', '', 1)}>
+              <li onClick={() => this.props.getProducts('skin', '', 0, 1)}>
                 전체보기
               </li>
             </NavLink>
@@ -33,7 +47,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'laser', 1)}>
+              <li onClick={() => this.props.getProducts('skin', 'laser', 0, 1)}>
                 피부레이저
               </li>
             </NavLink>
@@ -42,7 +56,9 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'scaling', 1)}>
+              <li
+                onClick={() => this.props.getProducts('skin', 'scaling', 0, 1)}
+              >
                 스케일링
               </li>
             </NavLink>
@@ -51,7 +67,9 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'peeling', 1)}>
+              <li
+                onClick={() => this.props.getProducts('skin', 'peeling', 0, 1)}
+              >
                 필링
               </li>
             </NavLink>
@@ -60,7 +78,9 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'waxing', 1)}>
+              <li
+                onClick={() => this.props.getProducts('skin', 'waxing', 0, 1)}
+              >
                 제모
               </li>
             </NavLink>
@@ -69,7 +89,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'semi', 1)}>
+              <li onClick={() => this.props.getProducts('skin', 'semi', 0, 1)}>
                 반영구
               </li>
             </NavLink>
@@ -78,7 +98,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'shot', 1)}>
+              <li onClick={() => this.props.getProducts('skin', 'shot', 0, 1)}>
                 미용주사
               </li>
             </NavLink>
@@ -89,7 +109,14 @@ class Skin extends Component {
           <div className="skin__category">
             <h2>피부시술</h2>
           </div>
-          <Product />
+          <Product products={this.props.products.productsList} />
+          <Pagination
+            handlePage={this.handlePage}
+            max={
+              this.props.products.productsList[0] &&
+              this.props.products.productsList[0].maxPage
+            }
+          />
         </main>
       </div>
     );

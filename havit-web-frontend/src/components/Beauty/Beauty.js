@@ -6,30 +6,26 @@ import 'styles/css/Beauty/Beauty.css';
 class Beauty extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      page: 1,
-    };
     this.handlePage = this.handlePage.bind(this);
   }
 
   componentDidMount() {
     this.props.getProducts(
-      this.props.history.location.pathname.slice(1, 7),
+      'beauty',
       this.props.history.location.pathname.slice(8) || '',
+      0,
       1
     );
   }
 
   handlePage(e) {
-    this.setState({
-      page: e.target.textContent,
-    });
     this.props.getProducts(
-      this.props.history.location.pathname.slice(1, 7),
+      'beauty',
       this.props.history.location.pathname.slice(8) || '',
-      this.state.page
+      e.target.textContent
     );
   }
+
   render() {
     return (
       <div>
@@ -49,7 +45,9 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', 'filler', 1)}>
+              <li
+                onClick={() => this.props.getProducts('beauty', 'filler', 0, 1)}
+              >
                 필러
               </li>
             </NavLink>
@@ -58,7 +56,9 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', 'botox', 1)}>
+              <li
+                onClick={() => this.props.getProducts('beauty', 'botox', 0, 1)}
+              >
                 보톡스
               </li>
             </NavLink>
@@ -68,7 +68,9 @@ class Beauty extends Component {
               activeClassName="subNav__li--selected"
             >
               <li
-                onClick={() => this.props.getProducts('beauty', 'outline', 1)}
+                onClick={() =>
+                  this.props.getProducts('beauty', 'outline', 0, 1)
+                }
               >
                 윤곽
               </li>
@@ -79,7 +81,9 @@ class Beauty extends Component {
               activeClassName="subNav__li--selected"
             >
               <li
-                onClick={() => this.props.getProducts('beauty', 'lifting', 1)}
+                onClick={() =>
+                  this.props.getProducts('beauty', 'lifting', 0, 1)
+                }
               >
                 리프팅
               </li>
