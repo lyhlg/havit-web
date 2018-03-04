@@ -85,7 +85,6 @@ class Privacy extends Component {
       document.getElementById('code').value || '',
     ];
     setTimeout(() => {
-      console.log(data);
       if (
         !data[3] ||
         data[4] === NaN ||
@@ -100,7 +99,8 @@ class Privacy extends Component {
           check: [false, 1],
         });
       } else {
-        this.props.addUserInfo(...data);
+        localStorage.setItem('email', localStorage.getItem('temp'));
+        localStorage.setItem('code', 3);
         localStorage.removeItem('temp');
         localStorage.removeItem('auth');
         this.props.history.push('/');
