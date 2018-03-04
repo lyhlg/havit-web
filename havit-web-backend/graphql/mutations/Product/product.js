@@ -11,7 +11,7 @@ const ADD_LIKE_PRODUCT = async params => {
   // user 테이블에 likeProduct에 이미 해당 상품을 찜 해뒀는지 확인
   (await user.findOne({
     user_id_email: user_id_email
-  })).likeProduct.forEach(item => {
+  })).likeProducts.forEach(item => {
     if (item === productId) {
       checkAlreadyLikeIt = !checkAlreadyLikeIt;
     }
@@ -21,7 +21,7 @@ const ADD_LIKE_PRODUCT = async params => {
   if (!checkAlreadyLikeIt) {
     await user.update(
       { user_id_email: user_id_email },
-      { $push: { likeProduct: productId } }
+      { $push: { likeProducts: productId } }
     );
   }
 
@@ -33,7 +33,7 @@ const DEL_LIKE_PRODUCT = async params => {
   const { user_id_email, productId } = args;
   const { user } = ctx;
 
-  await user.update({ user_id_email }, { $pull: { likeProduct: productId } });
+  await user.update({ user_id_email }, { $pull: { likeProducts: productId } });
   return await user.findOne({ user_id_email });
 };
 

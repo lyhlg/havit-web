@@ -4,7 +4,7 @@ const ADD_EVENT = async params => {
   const [obj, args, ctx] = [...params];
   const { event, counter, hospitalAdmin } = ctx;
   const realVal = Object.keys(args).length;
-  const number = await autoNumbering("productid", counter);
+  const number = await autoNumbering("eventid", counter);
   const hospitalInfo = await hospitalAdmin.findOne(
     { code: args.hospitalCode },
     { loc: 1, name: 1, _id: 0 }
@@ -18,9 +18,8 @@ const ADD_EVENT = async params => {
   let productId_counter = { productId: number };
   let new_args = Object.assign(args, productId_counter, new_hospitalInfo);
 
-  if (realVal === 7) {
-    return await event(new_args).save();
-  }
+  return await event(new_args).save();
+
 };
 
 const DEL_EVENT = async params => {
