@@ -32,6 +32,7 @@ const typeDefs = `
     Events(
       user_id_email: String
       productId: Int
+      status: String,
       page: Int
     ) : [Event]
 
@@ -94,6 +95,7 @@ const typeDefs = `
   type Event {
     _id: ID
     productId : Int
+    img: String
     hospitalCode: String
     hospitalLoc: String
     hospitalName: String
@@ -103,14 +105,14 @@ const typeDefs = `
     status: String
     priority: Int
     purchased: Int
-    productImage: String
-    reviews: [Review]
+    productDetail: String
     options: Option
+    reviews: [Review]
   }
   type Product {
     _id: ID
-    type: String
     productId: Int
+    type: String
     subType: String
     img: String
     hospitalCode: String
@@ -320,7 +322,7 @@ const typeDefs = `
       price: Int
       status: String
       priority: Int
-      productImage: String
+      productDetails: String
     ) : Event
 
     delEvent(

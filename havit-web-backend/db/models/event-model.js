@@ -5,6 +5,7 @@ import { getCurrentDate } from "../../utils/index";
 // 변경 필요
 const eventSchema = new Schema({
   productId: Number,
+  img: String,
   hospitalCode: String,
   hospitalLoc: String,
   hospitalName: String,
@@ -14,7 +15,7 @@ const eventSchema = new Schema({
   status: { type: String, default: "진행중"},
   priority: { type: Number, default: 100 },
   purchased: { type: Number, default: 0 },
-  productImage: { type: String, default: "https://dummyimage.com/1180x560" },
+  productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
   reviews: [String],
   options: String,
   createdOn: { type: Date, default: getCurrentDate() }
