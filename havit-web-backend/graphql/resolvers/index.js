@@ -49,38 +49,38 @@ export default {
   // QUERY (GET DATA)
   Query: {
     Users: (...params) => FIND_USER(params),
-    Reservations: (...params) => FIND_RESERVATION(params),
-    LikeProducts: (...params) => LIKE_PRODUCT(params),
-    OpenedNumbers: (...params) => GET_OPENED_NUMBER(params),
     Products: (...params) => FIND_PRODUCT(params),
-    Events: (...params) => FIND_EVENT(params),
-    Reviews: (...params) => FIND_REVIEW(params),
-    Notices: (...params) => FIND_NOTICE(params),
+    Reservations: (...params) => FIND_RESERVATION(params),
     Hospitals: (...params) => FIND_HOSPITAL(params),
     HospitalAdmin: (...params) => FIND_HOSPITAL_ADMIN(params),
+    Events: (...params) => FIND_EVENT(params),
+    Notices: (...params) => FIND_NOTICE(params),
     Banners: (...params) => GET_BANNER_LIST(params),
     Dashboard: (...params) => GET_DASHBOARD_COUNT(params),
-    Payments: (...params) => GET_PAYMENT(params)
-  },
-  Reservation: {
-    product: (...params) => FIND_PRODUCT(params)
-  },
-  Event: {
-    reviews: (...params) => FIND_REVIEW(params),
-    options: (...params) => FIND_OPTION(params)
-  },
-  Hospital: {
-    reservations: (...params) => FIND_RESERVATION(params),
-    products: (...params) => FIND_PRODUCT(params)
-  },
-  Product: {
-    reviews: (...params) => FIND_REVIEW(params),
-    options: (...params) => FIND_OPTION(params)
+    Payments: (...params) => GET_PAYMENT(params),
+    LikeProducts: (...params) => LIKE_PRODUCT(params),
+    OpenedNumbers: (...params) => GET_OPENED_NUMBER(params),
+    Reviews: (...params) => FIND_REVIEW(params)
   },
   User: {
     reservations: (...params) => FIND_RESERVATION(params),
     likeProducts: (...params) => LIKE_PRODUCT(params),
     reviews: (...params) => FIND_REVIEW(params)
+  },
+  Product: {
+    reviews: (...params) => FIND_REVIEW(params),
+    options: (...params) => FIND_OPTION(params)
+  },
+  Reservation: {
+    product: (...params) => FIND_PRODUCT(params)
+  },
+  Hospital: {
+    reservations: (...params) => FIND_RESERVATION(params),
+    products: (...params) => FIND_PRODUCT(params)
+  },
+  Event: {
+    reviews: (...params) => FIND_REVIEW(params),
+    options: (...params) => FIND_OPTION(params)
   },
   Review: {
     product: (...params) => FIND_PRODUCT(params)
@@ -88,22 +88,32 @@ export default {
 
   // MUTATION (STORE DATA)
   Mutation: {
+    // User
+    addUserInfo: (...params) => ADD_USER_INFO(params),
+    editUserInfo: (...params) => EDIT_USER_INFO(params),
+
+    // Product
     addProduct: (...params) => ADD_PRODUCT(params),
     editProduct: (...params) => EDIT_PRODUCT(params),
     addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),
     delLikeProducts: (...params) => DEL_LIKE_PRODUCT(params),
+
+    // Reservation
     addReservation: (...params) => ADD_RESERVATION(params, reserveNumCal),
     modifyReservation: (...params) => MODIFY_RESERVATION(params),
     delReservation: (...params) => DEL_RESERVATION(params),
     fixReservation: (...params) => FIX_RESERVATION(params),
     confirmPurchase: (...params) => CONFIRM_PURCHASE(params),
-    addReview: (...params) => ADD_REVIEW(params),
-    addUserInfo: (...params) => ADD_USER_INFO(params),
-    editUserInfo: (...params) => EDIT_USER_INFO(params),
+
+    // Hospital Admin
     addHospitalAdmin: (...params) => ADD_HOSPITAL_ADMIN(params),
     delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params),
 
-    // Notice (공지))
+    // Event
+    addEvent: (...params) => ADD_EVENT(params),
+    delEvent: (...params) => DEL_EVENT(params),
+
+    // Notice (공지)
     addNotice: (...params) => ADD_NOTICE(params),
     delNotice: (...params) => DEL_NOTICE(params),
 
@@ -112,8 +122,7 @@ export default {
     modifyBanner: (...params) => MODIFY_BANNER(params),
     delBanner: (...params) => DEL_BANNER(params),
 
-    // Event
-    addEvent: (...params) => ADD_EVENT(params),
-    delEvent: (...params) => DEL_EVENT(params)
+    // Review
+    addReview: (...params) => ADD_REVIEW(params)
   }
 };

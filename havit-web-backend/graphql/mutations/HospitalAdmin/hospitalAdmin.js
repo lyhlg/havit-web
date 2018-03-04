@@ -1,10 +1,11 @@
 const ADD_HOSPITAL_ADMIN = async (params) => {
   const [obj, args, ctx] = [...params];
+  const { code, name, loc } = args;
   const { hospitalAdmin } = ctx;
 
-  return await hospitalAdmin.findOne(args).then ( async res => {
+  return await hospitalAdmin.findOne({code}).then ( async res => {
     if (res) {
-      return await hospitalAdmin.findOne(args);
+      return await hospitalAdmin.findOne({code});
     }
     await new hospitalAdmin(args).save();
     return await hospitalAdmin.findOne(args);
@@ -12,10 +13,12 @@ const ADD_HOSPITAL_ADMIN = async (params) => {
 }
 
 const DEL_HOSPITAL_ADMIN = async (params) => {
-  const [obj, args, { hospitalAdmin }] = [...params];
-  return await hospitalAdmin.findOne(args).then ( async res => {
+  const [obj, args, ctx] = [...params];
+  const { code } = args;
+  const { hospitalAdmin } = ctx;
+  return await hospitalAdmin.findOne({code}).then ( async res => {
     if (res) {
-      await hospitalAdmin.remove(args);
+      await hospitalAdmin.remove({code});
       return res;
     }
   })
