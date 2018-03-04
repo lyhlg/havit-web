@@ -15,6 +15,14 @@ const FIND_RESERVATION = async params => {
   page ? page : 1;
 
   if (obj) {
+    if (obj.adminAccount) {
+      return (await hospital.findOne(
+        { adminAccount: obj.adminAccount },
+        { reservations: 1 }
+      )).reservations.map(async item => {
+        return await reservation.findOne({ reserveNum: item });
+      });
+    }
     return await reservation
       .find({ user_id_email: obj.user_id_email })
       .sort({ _id: -1 })

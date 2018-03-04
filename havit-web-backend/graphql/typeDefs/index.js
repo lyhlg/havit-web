@@ -12,20 +12,16 @@ const typeDefs = `
       page: Int
     ) : [Reservation]
 
-    Hospitals(
-      adminAccount: String
-    ) : [Hospital]
-
     OpenedNumbers(
       user_id_email: String
       page: Int
     ) : [Reservation]
 
     Products (
-      type: String,
-      subType: String,
-      page: Int,
+      type: String
+      subType: String
       productId: Int
+      page: Int
     ) : [Product]
 
     Notices(
@@ -33,13 +29,22 @@ const typeDefs = `
       page: Int
     ) : [Notice]
 
-    Events(user_id_email: String, productId: Int, page: Int) : [Event]
+    Events(
+      user_id_email: String
+      productId: Int
+      page: Int
+    ) : [Event]
 
     Banners(
       url: String
     ): [Banner]
 
     Reviews: [Review]
+
+    Hospitals(
+      adminAccount: String
+    ) : [Hospital]
+
     HospitalAdmin(page:Int) : [HospitalAdmin]
     LikeProducts(user_id_email:String) : [Product]
     Dashboard(user_id_email: String) : [SalesCount]
@@ -47,7 +52,6 @@ const typeDefs = `
     Options : [Option]
   }
   type User {
-    specId: Float
     name: String
     user_id_email: String!
     password: String

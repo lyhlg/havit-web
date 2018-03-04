@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 import { getCurrentDate } from "../../utils/index";
 
 const userSchema = new Schema({
-  specId: Number,
   name: String,
   user_id_email: {
     type: String,
