@@ -8,7 +8,6 @@ const bannerSchema = new Schema({
   title: String,
   url: String,
   priority: { type: Number, default: 10000 },
-  status: String,
   createdOn: { type: Date, default: getCurrentDate() }
 });
 

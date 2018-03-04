@@ -19,7 +19,7 @@ import {
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
   GET_DASHBOARD_COUNT,
-  GET_OPTIONS_OF_PRODUCT
+  FIND_OPTION
 } from "../queries";
 
 import {
@@ -68,16 +68,16 @@ export default {
     product: (...params) => FIND_PRODUCT(params)
   },
   Event: {
-    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
-    options: (...params) => GET_OPTIONS_OF_PRODUCT(params)
+    reviews: (...params) => FIND_REVIEW(params),
+    options: (...params) => FIND_OPTION(params)
   },
   Hospital: {
     reservations: (...params) => GET_HOSPITAL_RESERVATION_INFO(params),
     products: (...params) => FIND_PRODUCT(params)
   },
   Product: {
-    reviews: (...params) => GET_REVIEW_LIST_OF_PRODUCT(params),
-    options: (...params) => GET_OPTIONS_OF_PRODUCT(params)
+    reviews: (...params) => FIND_REVIEW(params),
+    options: (...params) => FIND_OPTION(params)
   },
   User: {
     reservations: (...params) => FIND_RESERVATION(params),

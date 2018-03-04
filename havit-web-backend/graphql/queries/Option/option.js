@@ -1,4 +1,4 @@
-const GET_OPTIONS_OF_PRODUCT = params => {
+const FIND_OPTION = params => {
   const [obj, args, ctx] = [...params];
   const { productId } = obj;
   const { productOption } = ctx;
@@ -6,4 +6,4 @@ const GET_OPTIONS_OF_PRODUCT = params => {
   return productOption.findOne({productId});
 };
 
-export { GET_OPTIONS_OF_PRODUCT };
+export { FIND_OPTION };

@@ -28,9 +28,17 @@ const typeDefs = `
       productId: Int
     ) : [Product]
 
+    Notices(
+      id: Int
+      page: Int
+    ) : [Notice]
+
     Events(user_id_email: String, productId: Int, page: Int) : [Event]
-    Notices(id: Int) : [Notice]
-    Banners(status: String): [Banner]
+
+    Banners(
+      url: String
+    ): [Banner]
+
     Reviews: [Review]
     HospitalAdmin(page:Int) : [HospitalAdmin]
     LikeProducts(user_id_email:String) : [Product]
@@ -127,7 +135,6 @@ const typeDefs = `
     img: String
     url: String
     priority: Int
-    status: String
   }
   type Review {
     _id: ID
@@ -294,7 +301,6 @@ const typeDefs = `
       title: String
       url: String
       priority: Int
-      status: String
     ) : Banner
 
     modifyBanner(
@@ -302,7 +308,6 @@ const typeDefs = `
       title: String
       url: String
       priority: Int
-      status: String
     ) : Banner
 
     delBanner(
