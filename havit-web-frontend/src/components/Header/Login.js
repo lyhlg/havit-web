@@ -25,28 +25,28 @@ class Login extends Component {
     }, 1500);
   }
   authLoginGoogleSucc(res) {
-    this.props.addUser(
+    this.props.addUserInfo(
       res.profileObj.email,
-      Number(res.profileObj.googleId),
+      '',
+      'google',
       res.profileObj.name
     );
     setTimeout(() => {
       this.props.getUserInfo(res.profileObj.email);
     }, 1000);
     setTimeout(() => {
-      const phone = this.props.newUser.newUser.phone;
+      const phone = this.props.userInfo.userInfo[0].phone;
       const code = this.props.userInfo.userInfo[0].level;
-      if (code !== null) {
-        if (localStorage.getItem('code')) localStorage.removeItem('code');
-        localStorage.setItem('code', code);
-      }
       if (phone !== null) {
         if (localStorage.getItem('email')) localStorage.removeItem('email');
+        if (localStorage.getItem('code')) localStorage.removeItem('code');
         localStorage.setItem('email', res.profileObj.email);
+        localStorage.setItem('code', code);
         this.props.history.push('/');
       } else {
         if (localStorage.getItem('temp')) localStorage.removeItem('temp');
         localStorage.setItem('temp', res.profileObj.email);
+        localStorage.setItem('auth', 'google');
         this.props.history.push('/privacy');
       }
     }, 2000);
@@ -60,26 +60,26 @@ class Login extends Component {
   authLoginKakaoSucc(res) {
     this.props.addUser(
       res.profile.kaccount_email,
-      res.profile.id,
+      '',
+      'kakao',
       res.profile.properties.nickname
     );
     setTimeout(() => {
       this.props.getUserInfo(res.profile.kaccount_email);
     }, 1000);
     setTimeout(() => {
-      const phone = this.props.newUser.newUser.phone;
+      const phone = this.props.userInfo.userInfo.phone;
       const code = this.props.userInfo.userInfo[0].level;
-      if (code !== null) {
-        if (localStorage.getItem('code')) localStorage.removeItem('code');
-        localStorage.setItem('code', code);
-      }
       if (phone !== null) {
         if (localStorage.getItem('email')) localStorage.removeItem('email');
+        if (localStorage.getItem('code')) localStorage.removeItem('code');
         localStorage.setItem('email', res.profile.kaccount_email);
+        localStorage.setItem('code', code);
         this.props.history.push('/');
       } else {
         if (localStorage.getItem('temp')) localStorage.removeItem('temp');
         localStorage.setItem('temp', res.profile.kaccount_email);
+        localStorage.setItem('auth', 'kakao');
         this.props.history.push('/privacy');
       }
     }, 2000);
