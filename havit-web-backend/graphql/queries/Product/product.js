@@ -1,8 +1,6 @@
 import { CHK_MAX_PAGE } from "../../common";
-const ObjectId = require("mongodb").ObjectID;
 
 const FIND_PRODUCT = async params => {
-  console.log("FIND_PRUDUCT");
   const [obj, args, ctx] = [...params];
   const { type, subType, page, productId } = args;
   const { product, review } = ctx;
