@@ -10,7 +10,7 @@ const FIND_EVENT = async params => {
     console.log("target:", target);
     return await event
       .find(target)
-      .sort({ priority: 1 })
+      .sort({ priority: 1, hospitalCode : 1})
       .skip((page - 1) * limit)
       .limit(limit);
   };
@@ -24,7 +24,7 @@ const FIND_EVENT = async params => {
   }
 
   // 관리자 - 상태별 필터 적용
-  if (status) await results({ status });
+  if (status) return await results({ status });
 
   if (user_id_email && status) {
     // 병원 - 상태별 필터 적용

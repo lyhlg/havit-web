@@ -319,6 +319,7 @@ const typeDefs = `
       hospitalCode: String
       productName: String
       description: String
+      img: String
       price: Int
       status: String
       priority: Int

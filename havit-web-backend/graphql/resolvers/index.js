@@ -103,7 +103,7 @@ export default {
     addHospitalAdmin: (...params) => ADD_HOSPITAL_ADMIN(params),
     delHospitalAdmin: (...params) => DEL_HOSPITAL_ADMIN(params),
 
-    // Notice (공지))
+    // Notice (공지)
     addNotice: (...params) => ADD_NOTICE(params),
     delNotice: (...params) => DEL_NOTICE(params),
 
