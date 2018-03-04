@@ -40,7 +40,7 @@ const FIND_PRODUCT = async params => {
   };
 
   // 전체 상품 검색
-  if (Object.keys(args).length === 0) return results({});
+  if ( !(type && subType)) return results({});
 
   // 상품 상세 정보
   if (productId) {
