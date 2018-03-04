@@ -16,7 +16,6 @@ const FIND_PRODUCT = async params => {
   page ? page : 1;
 
   if (obj) {
-    console.log("2level Query 요청");
     if (obj.productId && !obj.stars) {
       // 예약 -> 제품검색
       return await product.find({ productId: obj.productId });
@@ -40,7 +39,7 @@ const FIND_PRODUCT = async params => {
   };
 
   // 전체 상품 검색
-  if ( !(type && subType)) return results({});
+  if ( !(type && subType) ) return results({});
 
   // 상품 상세 정보
   if (productId) {
@@ -74,16 +73,8 @@ const LIKE_PRODUCT = async params => {
   }
 };
 
-const GET_REVIEW_LIST_OF_PRODUCT = async params => {
-  const [obj, args, ctx] = [...params];
-  const { review } = ctx;
-  return obj.reviews.map(async item => {
-    return await review.findOne({ _id: ObjectId(item) });
-  });
-};
 
 export {
   FIND_PRODUCT,
-  LIKE_PRODUCT,
-  GET_REVIEW_LIST_OF_PRODUCT
+  LIKE_PRODUCT
 };
