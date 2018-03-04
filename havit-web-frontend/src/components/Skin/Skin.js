@@ -7,7 +7,8 @@ class Skin extends Component {
   componentDidMount() {
     this.props.getProducts(
       this.props.history.location.pathname.slice(1, 5),
-      this.props.history.location.pathname.slice(6)
+      this.props.history.location.pathname.slice(6),
+      1
     );
   }
 
@@ -23,14 +24,16 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin')}>전체보기</li>
+              <li onClick={() => this.props.getProducts('skin', '', 1)}>
+                전체보기
+              </li>
             </NavLink>
             <NavLink
               to="/skin/laser"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'laser')}>
+              <li onClick={() => this.props.getProducts('skin', 'laser', 1)}>
                 피부레이저
               </li>
             </NavLink>
@@ -39,7 +42,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'scaling')}>
+              <li onClick={() => this.props.getProducts('skin', 'scaling', 1)}>
                 스케일링
               </li>
             </NavLink>
@@ -48,7 +51,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'peeling')}>
+              <li onClick={() => this.props.getProducts('skin', 'peeling', 1)}>
                 필링
               </li>
             </NavLink>
@@ -57,7 +60,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'waxing')}>
+              <li onClick={() => this.props.getProducts('skin', 'waxing', 1)}>
                 제모
               </li>
             </NavLink>
@@ -66,7 +69,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'semi')}>
+              <li onClick={() => this.props.getProducts('skin', 'semi', 1)}>
                 반영구
               </li>
             </NavLink>
@@ -75,7 +78,7 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'shot')}>
+              <li onClick={() => this.props.getProducts('skin', 'shot', 1)}>
                 미용주사
               </li>
             </NavLink>

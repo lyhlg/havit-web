@@ -7,7 +7,8 @@ class Beauty extends Component {
   componentDidMount() {
     this.props.getProducts(
       this.props.history.location.pathname.slice(1, 7),
-      this.props.history.location.pathname.slice(8)
+      this.props.history.location.pathname.slice(8),
+      1
     );
   }
 
@@ -23,14 +24,16 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty')}>전체보기</li>
+              <li onClick={() => this.props.getProducts('beauty', '', 1)}>
+                전체보기
+              </li>
             </NavLink>
             <NavLink
               to="/beauty/filler"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', 'filler')}>
+              <li onClick={() => this.props.getProducts('beauty', 'filler', 1)}>
                 필러
               </li>
             </NavLink>
@@ -39,7 +42,7 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', 'botox')}>
+              <li onClick={() => this.props.getProducts('beauty', 'botox', 1)}>
                 보톡스
               </li>
             </NavLink>
@@ -48,7 +51,9 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', 'outline')}>
+              <li
+                onClick={() => this.props.getProducts('beauty', 'outline', 1)}
+              >
                 윤곽
               </li>
             </NavLink>
@@ -57,7 +62,9 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('beauty', 'lifting')}>
+              <li
+                onClick={() => this.props.getProducts('beauty', 'lifting', 1)}
+              >
                 리프팅
               </li>
             </NavLink>

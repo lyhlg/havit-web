@@ -7,11 +7,6 @@ class MyPage extends Component {
   // componentWillMount() {
   //   this.props.checkAuth();
   // }
-  componentDidMount() {
-    this.props.getReservations(localStorage.getItem('email'));
-    this.props.getLikeProducts(localStorage.getItem('email'));
-    this.props.getUserInfo(localStorage.getItem('email'));
-  }
 
   render() {
     return (

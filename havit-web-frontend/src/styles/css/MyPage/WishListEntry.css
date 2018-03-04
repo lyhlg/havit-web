@@ -2,7 +2,8 @@
   width: 1140px;
   height: 120px;
   border: solid 1px #dce2eb;
-  padding: 20px; }
+  padding: 20px;
+  margin-bottom: 20px; }
   .wishList .wishList__img {
     float: left;
     width: 120px;
