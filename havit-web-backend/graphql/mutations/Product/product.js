@@ -108,7 +108,7 @@ const ADD_PRODUCT = async params => {
     return chk_dup;
   }
 };
-
+// dd
 const EDIT_PRODUCT = async params => {
   console.log("EDIT_PRODUCT");
   const [obj, args, ctx] = [...params];
