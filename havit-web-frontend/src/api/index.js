@@ -399,6 +399,7 @@ export const addUserInfo = (
           name
           auth
           phone
+          level
           birthday
           gender
           hospitalCode

@@ -9,7 +9,7 @@ const userInfo = (state = initialState, action) => {
     case types.SUCCESS_ADD_USERINFO:
       return {
         ...state,
-        newUserInfo: action.newUserInfo,
+        newUserInfo: action.newUserInfo.data.addUserInfo,
       };
     case types.REQUEST_ADD_USERINFO:
     default:

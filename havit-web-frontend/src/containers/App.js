@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
   likeProducts: state.likeProducts,
   newLikeProduct: state.newLikeProduct,
   userInfo: state.userInfo,
-  newUserInfo: state.newUserInfo,
+  newUserInfo: state.addUserInfo,
   review: state.review,
   hospital: state.hospital,
   hospitalAdmin: state.hospitalAdmin,
