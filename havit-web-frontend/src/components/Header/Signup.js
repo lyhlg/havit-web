@@ -44,6 +44,7 @@ class Signup extends Component {
         '서대문구',
         '송파구',
       ],
+      check: [false, 0],
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.submitUserInfo = this.submitUserInfo.bind(this);
@@ -56,28 +57,60 @@ class Signup extends Component {
   }
 
   submitUserInfo() {
-    this.props.addUserInfo(
+    let data = [
       document.getElementById('email').value,
-      document.getElementById('name').value,
       document.getElementById('password').value,
-      document.getElementById('txtMobile').value,
-      document.getElementById('birthday1').value +
-        document.getElementById('birthday2').value +
-        document.getElementById('birthday3').value,
-      document.querySelector('input[name="gender"]:checked').value,
+      'local',
+      document.getElementById('name').value || '',
+      Number(
+        document
+          .getElementById('txtMobile')
+          .value.toString()
+          .slice(1)
+      ) || '',
+      Number(
+        document.getElementById('birthday1').value +
+          document.getElementById('birthday2').value +
+          document.getElementById('birthday3').value
+      ),
+      Array.prototype.map.call(
+        document.querySelectorAll('input[name="gender"]:checked'),
+        gender => gender.value
+      )[0] || '',
       Array.prototype.map.call(
         document.querySelectorAll('input[name="likeArea"]:checked'),
         area => area.value
-      ),
+      ) || '',
       Array.prototype.map.call(
         document.querySelectorAll('input[name="likePoint"]:checked'),
         point => point.value
-      ),
-      document.getElementById('code').value || ''
-    );
+      ) || '',
+      document.getElementById('code').value || '',
+    ];
     setTimeout(() => {
-      this.props.history.push('/signupend');
-    }, 2000);
+      if (
+        !/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
+          data[0]
+        ) ||
+        !/^[a-zA-Z0-9]{6,20}$/.test(data[1]) ||
+        data[1] !== document.getElementById('password2').value ||
+        !data[3] ||
+        data[4] === NaN ||
+        data[4].toString().length < 9 ||
+        data[4].toString().length > 10 ||
+        data[5] === NaN ||
+        !data[6].length ||
+        !data[7].length ||
+        !data[8].length
+      ) {
+        this.setState({
+          check: [false, 1],
+        });
+      } else {
+        this.props.addUserInfo(...data);
+        this.props.history.push('/signupend');
+      }
+    }, 0);
   }
 
   render() {
@@ -104,6 +137,7 @@ class Signup extends Component {
             />
             <h3 className="signup__label">비밀번호 확인</h3>
             <input
+              id="password2"
               type="password"
               className="signup__input"
               placeholder="동일하게 다시 한 번 입력해주세요."
@@ -252,6 +286,8 @@ class Signup extends Component {
               <button onClick={this.submitUserInfo} className="signup__button">
                 회원가입
               </button>
+              {!this.state.check[0] &&
+                this.state.check[1] > 0 && <p>올바른 값을 입력하세요</p>}
             </div>
           </div>
         </div>
