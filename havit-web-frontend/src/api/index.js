@@ -768,7 +768,7 @@ export const delHospitalAdmin = code => {
   return client.mutate({
     mutation: gql`
       mutation($code: String) {
-        addHospitalAdmin(code: $code) {
+        delHospitalAdmin(code: $code) {
           name
         }
       }
