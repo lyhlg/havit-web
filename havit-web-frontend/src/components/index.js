@@ -40,6 +40,7 @@ export { default as AdminMenu } from './AdminPage/AdminMenu';
 export { default as ManageHospital } from './AdminPage/ManageHospital';
 export { default as Notice } from './AdminPage/Notice';
 export { default as NoticeDetail } from './AdminPage/NoticeDetail';
+export { default as ChangeNotice } from './AdminPage/ChangeNotice';
 export { default as ManageBanner } from './AdminPage/ManageBanner';
 export { default as ManageEvent } from './AdminPage/ManageEvent';
 export { default as UploadHospital } from './AdminPage/UploadHospital';
@@ -53,6 +54,9 @@ export { default as ServiceMenu } from './ServicePage/ServiceMenu';
 export { default as ServiceCenter } from './ServicePage/ServiceCenter';
 export { default as ServiceNotice } from './ServicePage/ServiceNotice';
 export { default as ServiceFaq } from './ServicePage/ServiceFaq';
+export {
+  default as ServiceNoticeDetail,
+} from './ServicePage/ServiceNoticeDetail';
 
 // Home
 export { default as Home } from './Home/Home';

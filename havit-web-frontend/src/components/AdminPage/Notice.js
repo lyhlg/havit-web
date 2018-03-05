@@ -23,6 +23,7 @@ class Notice extends Component {
                   <th>제목</th>
                   <th>작성자</th>
                   <th>작성일</th>
+                  <th>수정</th>
                 </tr>
               </thead>
               <tbody>
@@ -33,6 +34,9 @@ class Notice extends Component {
                       <td>{notice.title}</td>
                       <td>{notice.author}</td>
                       <td>{notice.createdOn}</td>
+                      <td>
+                        <button className="Notice__modify">수정하기</button>
+                      </td>
                     </tr>
                   );
                 })}

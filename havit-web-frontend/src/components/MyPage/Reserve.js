@@ -63,24 +63,22 @@ class Reserve extends Component {
       <div className="reserve">
         <div className="reserve__wrapper">
           <div className="reserve__tab">
-            <table className="reserve__table">
-              <thead>
-                <tr>
-                  <th>예약번호</th>
-                  <th>이름</th>
-                  <th>연락처</th>
-                  <th>상품명</th>
-                  <th>상담예약일자/시간</th>
-                  <th>시술일자/시간</th>
-                  <th>상태</th>
-                  <th>예약변경/취소</th>
-                </tr>
-              </thead>
-              {this.props.reservations.reservationsList.length === 0 ? (
-                <tbody>
-                  <Empty />
-                </tbody>
-              ) : (
+            {this.props.reservations.reservationsList.length === 0 ? (
+              <Empty />
+            ) : (
+              <table className="reserve__table">
+                <thead>
+                  <tr>
+                    <th>예약번호</th>
+                    <th>이름</th>
+                    <th>연락처</th>
+                    <th>상품명</th>
+                    <th>상담예약일자/시간</th>
+                    <th>시술일자/시간</th>
+                    <th>상태</th>
+                    <th>예약변경/취소</th>
+                  </tr>
+                </thead>
                 <tbody>
                   {this.props.reservations.reservationsList.map((reser, i) => {
                     return (
@@ -244,8 +242,8 @@ class Reserve extends Component {
                     );
                   })}
                 </tbody>
-              )}
-            </table>
+              </table>
+            )}
           </div>
         </div>
       </div>

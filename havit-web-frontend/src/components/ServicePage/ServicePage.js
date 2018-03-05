@@ -5,14 +5,11 @@ import {
   ServiceCenter,
   ServiceNotice,
   ServiceFaq,
+  ServiceNoticeDetail,
 } from '../index';
 import 'styles/css/ServicePage/ServicePage.css';
 
 class ServicePage extends Component {
-  componentDidMount() {
-    this.props.get;
-  }
-
   render() {
     return (
       <main>
@@ -30,6 +27,10 @@ class ServicePage extends Component {
             <Route
               path="/servicePage/serviceFaq"
               render={props => <ServiceFaq {...this.props} />}
+            />
+            <Route
+              path="/servicePage/notice/:noticeId"
+              render={props => <ServiceNoticeDetail {...this.props} />}
             />
           </div>
         </div>
