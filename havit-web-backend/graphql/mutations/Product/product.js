@@ -168,7 +168,7 @@ const DEL_PRODUCT = async params => {
   })
   await reservation.remove({productId});
 
-  // [병원] 병원 테이블에 products에서 id 삭제
+  // [병원] 병원 테이블에 products에서 id삭제
   await hospital.update(
     { code },
     { $pull : { products: productId } }
