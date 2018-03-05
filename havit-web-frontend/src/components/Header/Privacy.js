@@ -87,10 +87,10 @@ class Privacy extends Component {
     setTimeout(() => {
       if (
         !data[3] ||
-        data[4] === NaN ||
+        isNaN(data[4]) ||
         data[4].toString().length < 9 ||
         data[4].toString().length > 10 ||
-        data[5] === NaN ||
+        isNaN(data[5]) ||
         !data[6].length ||
         !data[7].length ||
         !data[8].length

@@ -33,7 +33,9 @@ class WishListEntry extends Component {
             </h4>
           </div>
           <div className="wishList__right">
-            <h4 className="wishList__price">{this.props.product.price}원</h4>
+            <h4 className="wishList__price">
+              {this.props.product.price.toLocaleString('en')}원
+            </h4>
             <button className="wishList__removeBtn">상품 삭제</button>
             <button
               className="wishList__purchaseBtn"

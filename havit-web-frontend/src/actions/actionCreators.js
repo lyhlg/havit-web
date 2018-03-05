@@ -238,6 +238,7 @@ export const addReservation = (
   userName,
   phone,
   productId,
+  option,
   reserveDate
 ) => {
   return dispatch => {
@@ -249,6 +250,7 @@ export const addReservation = (
         userName,
         phone,
         productId,
+        option,
         reserveDate
       )
       .then(res => {

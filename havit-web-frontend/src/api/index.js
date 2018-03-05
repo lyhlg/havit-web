@@ -57,7 +57,7 @@ export const getProducts = (type, subType, productId, page) => {
           price
           purchased
           productDetail
-          maxPage
+
           options {
             type
           }
@@ -95,7 +95,6 @@ export const getReservations = (email, status, page) => {
           reserveDate
           careDate
           status
-          maxPage
         }
       }
     `,
@@ -125,7 +124,6 @@ export const getLikeProducts = email => {
           price
           purchased
           productDetail
-          maxPage
         }
       }
     `,
@@ -153,7 +151,6 @@ export const getHospital = email => {
             reserveDate
             careDate
             status
-            maxPage
           }
           products {
             type
@@ -346,6 +343,7 @@ export const addReservation = (
   userName,
   phone,
   productId,
+  option,
   reserveDate
 ) => {
   return client.mutate({
@@ -356,6 +354,7 @@ export const addReservation = (
         $userName: String
         $phone: Int
         $productId: Int
+        $option: String
         $reserveDate: Float
       ) {
         addReservation(
@@ -364,8 +363,11 @@ export const addReservation = (
           userName: $userName
           phone: $phone
           productId: $productId
+          option: $option
           reserveDate: $reserveDate
-        )
+        ) {
+          userName
+        }
       }
     `,
     variables: {
@@ -374,6 +376,7 @@ export const addReservation = (
       userName,
       phone,
       productId,
+      option,
       reserveDate,
     },
   });

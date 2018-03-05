@@ -92,6 +92,7 @@ const mapDispatchToProps = dispatch => ({
     userName,
     phone,
     productId,
+    option,
     reserveDate
   ) => {
     dispatch(
@@ -101,6 +102,7 @@ const mapDispatchToProps = dispatch => ({
         userName,
         phone,
         productId,
+        option,
         reserveDate
       )
     );

@@ -1,0 +1,32 @@
+.productReserve {
+  border: 1px solid #dce2eb;
+  margin-top: 10px;
+  padding: 20px;
+  height: 200px;
+
+  .left {
+    float: left;
+    .productReserve__label {
+      padding-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .productReserve__input {
+      width: 150px;
+      height: 30px;
+      background-color: #ffffff;
+      border: solid 1px #dce2eb;
+      padding-left: 10px;
+      margin-bottom: 15px;
+    }
+  }
+  .right {
+    float: right;
+  }
+
+  &::after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+}
