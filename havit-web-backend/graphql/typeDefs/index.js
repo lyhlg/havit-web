@@ -62,6 +62,8 @@ const typeDefs = `
     Reviews: [Review]
 
     Options : [Option]
+
+    MaxPages : [MaxPage]
   }
 
   type User {
@@ -183,6 +185,13 @@ const typeDefs = `
     canceled: Int
     fix: String
     stars: Float
+  }
+  type MaxPage {
+    products_count: Int
+    reservations_count: Int
+    hospitalAdmins_count: Int
+    events_count: Int
+    notices_count: Int
   }
 
   type Mutation {

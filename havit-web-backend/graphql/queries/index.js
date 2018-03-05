@@ -19,6 +19,7 @@ import { GET_PAYMENT } from "./Payment/payment";
 import { FIND_OPTION } from "./Option/option";
 import { FIND_EVENT } from "./Event/event";
 import { GET_DASHBOARD_COUNT } from "./Dashboard/dashboard";
+import { MAX_PAGE } from "./MaxPage/maxPage";
 
 export {
   FIND_USER,
@@ -40,5 +41,6 @@ export {
   GET_BANNER_FROM_PRODUCT,
   GET_PAYMENT,
   FIND_OPTION,
-  FIND_EVENT
+  FIND_EVENT,
+  MAX_PAGE
 };

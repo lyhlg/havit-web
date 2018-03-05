@@ -18,7 +18,8 @@ import {
   GET_BANNER_LIST,
   GET_BANNER_FROM_PRODUCT,
   GET_DASHBOARD_COUNT,
-  FIND_OPTION
+  FIND_OPTION,
+  MAX_PAGE
 } from "../queries";
 
 import {
@@ -60,7 +61,8 @@ export default {
     Payments: (...params) => GET_PAYMENT(params),
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     OpenedNumbers: (...params) => GET_OPENED_NUMBER(params),
-    Reviews: (...params) => FIND_REVIEW(params)
+    Reviews: (...params) => FIND_REVIEW(params),
+    MaxPages: (...params) => MAX_PAGE(params)
   },
   User: {
     reservations: (...params) => FIND_RESERVATION(params),
