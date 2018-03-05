@@ -51,9 +51,9 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[0] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        네, havit은 회원제를 시행하고 있습니다.
+                        네, <span>havit</span>은 회원제를 시행하고 있습니다.
                       </p>
                       <p className="serviceFaq__answer">
                         회원가입을 하시면 다양한 혜택을 받으실 수 있습니다.
@@ -68,10 +68,11 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[1] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        고객님이 예약하신 상품은 우측상단 [마이페이지] -
-                        [구매내역]에서 확인하실 수 있습니다.
+                        고객님이 예약하신 상품은 우측상단{' '}
+                        <span>[마이페이지]</span> -
+                        <span> [구매내역]</span>에서 확인하실 수 있습니다.
                       </p>
                     </td>
                   </tr>
@@ -83,7 +84,7 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[2] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
                         상품을 예약함과 동시에 상담전화 예약을 하게됩니다.
                       </p>
@@ -91,8 +92,8 @@ class ServiceFaq extends Component {
                         통화 가능한 시간대에 예약하실 수 있습니다.
                       </p>
                       <p className="serviceFaq__answer">
-                        havit 이용에 관한 사항의 경우 1544-3441로 전화주시기
-                        바랍니다.
+                        <span>havit</span> 이용에 관한 사항의 경우{' '}
+                        <span>1544-3441</span>로 전화주시기 바랍니다.
                       </p>
                     </td>
                   </tr>
@@ -104,13 +105,14 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[3] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        상품 취소는 [마이페이지] - [예약내역]에서 가능합니다.
+                        상품 취소는 <span>[마이페이지]</span> -{' '}
+                        <span>[예약내역]</span>에서 가능합니다.
                       </p>
                       <p className="serviceFaq__answer">
-                        [예약취소]를 클릭하시면 해당 병원에서도 확인이
-                        가능합니다.
+                        <span>[예약취소]</span>를 클릭하시면 해당 병원에서도
+                        확인이 가능합니다.
                       </p>
                     </td>
                   </tr>
@@ -122,10 +124,10 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[4] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        고객님의 개인정보는 우측상단 [마이페이지] -
-                        [정보수정]에서 수정하실 수 있습니다.
+                        고객님의 개인정보는 우측상단 <span>[마이페이지]</span> -
+                        <span>[정보수정]</span>에서 수정하실 수 있습니다.
                       </p>
                     </td>
                   </tr>
@@ -137,7 +139,7 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[5] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
                         크레딧은 현금처럼 사용이 가능합니다.
                       </p>
@@ -154,10 +156,11 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[6] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        이용후기는 [마이페이지] - [예약내역]에서 시술한 상품을
-                        선택하신 후 작성이 가능합니다.
+                        이용후기는 <span>[마이페이지]</span> -{' '}
+                        <span>[예약내역]</span>에서 시술한 상품을 선택하신 후
+                        작성이 가능합니다.
                       </p>
                     </td>
                   </tr>
@@ -169,7 +172,7 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[7] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
                         각 이벤트 상품의 유효기간은 상품 페이지 내에 기재되어
                         있습니다.
@@ -189,7 +192,7 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[8] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
                         다회권을 구매하여 본인 이외의 사람이 나누어 시술 받는
                         것은 어렵습니다.
@@ -208,10 +211,11 @@ class ServiceFaq extends Component {
                 {this.state.isOpened[9] && (
                   <tr className="q1">
                     <td className="serviceFaq__a">A.</td>
-                    <td>
+                    <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        havit에서 진행하고 있는 모든 상품은 부가세가 포함된
-                        가격으로, 추가 금액 없이 시술을 받으실 수 있습니다.
+                        <span>havit</span>에서 진행하고 있는 모든 상품은
+                        부가세가 포함된 가격으로, 추가 금액 없이 시술을 받으실
+                        수 있습니다.
                       </p>
                     </td>
                   </tr>

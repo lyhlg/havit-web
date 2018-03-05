@@ -14,7 +14,6 @@ class ManageBanner extends Component {
                   <th>우선순위</th>
                   <th>상품명</th>
                   <th>상품 URL</th>
-                  <th>상태</th>
                 </tr>
               </thead>
               <tbody>
@@ -24,7 +23,6 @@ class ManageBanner extends Component {
                       <td>{banner.priority}</td>
                       <td>{banner.title}</td>
                       <td>{banner.url}</td>
-                      <td>{banner.status}</td>
                     </tr>
                   );
                 })}

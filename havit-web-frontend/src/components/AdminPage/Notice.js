@@ -5,11 +5,11 @@ import 'styles/css/AdminPage/Notice.css';
 class Notice extends Component {
   constructor(props) {
     super(props);
-    this.moveNoticeDetail = this.moveNoticeDetail.bind(this);
+    this.moveChangeNotice = this.moveChangeNotice.bind(this);
   }
 
-  moveNoticeDetail(e) {
-    this.props.history.push('/adminPage/noticeDetail');
+  moveChangeNotice(e) {
+    this.props.history.push('/adminPage/changeNotice');
   }
   render() {
     return (
@@ -23,20 +23,16 @@ class Notice extends Component {
                   <th>제목</th>
                   <th>작성자</th>
                   <th>작성일</th>
-                  <th>수정</th>
                 </tr>
               </thead>
               <tbody>
                 {this.props.notices.noticesList.map((notice, i) => {
                   return (
-                    <tr key={i} onClick={this.moveNoticeDetail}>
+                    <tr key={i} onClick={this.moveChangeNotice}>
                       <td>{notice._id}</td>
                       <td>{notice.title}</td>
                       <td>{notice.author}</td>
                       <td>{notice.createdOn}</td>
-                      <td>
-                        <button className="Notice__modify">수정하기</button>
-                      </td>
                     </tr>
                   );
                 })}
