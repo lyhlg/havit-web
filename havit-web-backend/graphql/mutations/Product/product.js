@@ -74,7 +74,6 @@ const ADD_PRODUCT = async params => {
     product
   ]);
 
-  console.log(chk_dup);
   if (!chk_dup) {
     const number = await autoNumbering("productid", counter);
     let productSubNumber = { productId: number };
@@ -108,7 +107,6 @@ const ADD_PRODUCT = async params => {
 };
 
 const EDIT_PRODUCT = async params => {
-  console.log("EDIT_PRODUCT");
   const [obj, args, ctx] = [...params];
   const { productId } = args;
   const { product, productOption } = ctx;
@@ -136,7 +134,6 @@ const SAVE_N_UPDATE_PRODUCT_OPTION = async (
   productOption,
   processing
 ) => {
-  console.log("pid, type, type: ", productId, type, type);
   if (processing === "SAVE") {
     return await productOption({
       productId,
@@ -149,4 +146,50 @@ const SAVE_N_UPDATE_PRODUCT_OPTION = async (
   }
 };
 
-export { ADD_LIKE_PRODUCT, DEL_LIKE_PRODUCT, ADD_PRODUCT, EDIT_PRODUCT };
+const DEL_PRODUCT = async params => {
+  const [obj, args, ctx] = [...params];
+  const { productId } = args;
+  const { reservation, hospital, productOption, salesCount, product, user } = ctx;
+
+  const findProduct = await product.findOne({productId});
+  const code = findProduct.hospitalCode;
+
+  // [예약] 예약에서 pid에 해당하는 것들 삭제
+  // + 예약 id 확인해서 user/hospitals 에서 예약된 내용 확인해서 삭제
+  (await reservation.find()).forEach(async item => {
+    await user.update(
+      { user_id_email: item.user_id_email },
+      { $pull: { reservations: item.reserveNum } }
+    );
+    await hospital.update(
+      { code },
+      { $pull: { reservations: item.reserveNum } }
+    )
+  })
+  await reservation.remove({productId});
+
+  // [병원] 병원 테이블에 products에서 id삭제
+  await hospital.update(
+    { code },
+    { $pull : { products: productId } }
+  );
+
+  // [옵션] 제품 옵션 삭제
+  await productOption.remove({productId});
+
+  // [제품별 판매 건] 테이블 document 삭제
+  await salesCount.remove({_id: productId});
+
+  // [제품] product 테이블에서 해당 productId삭제
+  await product.remove({productId});
+
+  return findProduct;
+};
+
+export {
+  ADD_LIKE_PRODUCT,
+  DEL_LIKE_PRODUCT,
+  ADD_PRODUCT,
+  DEL_PRODUCT,
+  EDIT_PRODUCT
+};

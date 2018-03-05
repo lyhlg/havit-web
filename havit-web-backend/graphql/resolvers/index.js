@@ -33,6 +33,7 @@ import {
   ADD_LIKE_PRODUCT,
   DEL_LIKE_PRODUCT,
   ADD_PRODUCT,
+  DEL_PRODUCT,
   EDIT_PRODUCT,
   EDIT_USER_INFO,
   ADD_HOSPITAL_ADMIN,
@@ -96,6 +97,7 @@ export default {
 
     // Product
     addProduct: (...params) => ADD_PRODUCT(params),
+    delProduct: (...params) => DEL_PRODUCT(params),
     editProduct: (...params) => EDIT_PRODUCT(params),
     addLikeProducts: (...params) => ADD_LIKE_PRODUCT(params),
     delLikeProducts: (...params) => DEL_LIKE_PRODUCT(params),

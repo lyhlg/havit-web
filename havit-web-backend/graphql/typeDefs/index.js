@@ -208,6 +208,10 @@ const typeDefs = `
       options: [String]
     ) : Product,
 
+    delProduct(
+      productId: Int
+    ) : Product,
+
     editProduct(
       productId: Int
       type: String,
