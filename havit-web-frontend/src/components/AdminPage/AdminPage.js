@@ -5,6 +5,7 @@ import {
   ManageHospital,
   Notice,
   NoticeDetail,
+  ChangeNotice,
   ManageBanner,
   ManageEvent,
   UploadPage,
@@ -68,6 +69,10 @@ class AdminPage extends Component {
               <Route
                 path="/adminPage/noticeDetail"
                 render={props => <NoticeDetail {...this.props} />}
+              />
+              <Route
+                path="/adminPage/changeNotice"
+                render={props => <ChangeNotice {...this.props} />}
               />
             </div>
           </div>

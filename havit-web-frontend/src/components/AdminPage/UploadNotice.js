@@ -12,14 +12,7 @@ class UploadNotice extends Component {
     this.props.addNotice(
       document.getElementById('title').value,
       document.getElementById('content').value,
-      '관리자',
-      {
-        name: document.querySelector('input[type=file]').files[0].name,
-        type: document.querySelector('input[type=file]').files[0].type,
-        size: document.querySelector('input[type=file]').files[0].size,
-        path: document.querySelector('input[type=file]').files[0]
-          .webkitRelativePath,
-      }
+      '관리자'
     );
     setTimeout(() => {
       window.location.href = '/adminPage/notice';
