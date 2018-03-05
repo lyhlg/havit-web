@@ -200,13 +200,19 @@ class Reserve extends Component {
                         <td>
                           {reser.status === '전화대기중'
                             ? reser.status
-                            : `${reser.careDate.slice(
-                                4,
-                                6
-                              )}월 ${reser.careDate.slice(
-                                6,
-                                8
-                              )}일 ${reser.careDate.slice(8, 10)}시`}
+                            : `${reser.careDate
+                                .toString()
+                                .slice(
+                                  4,
+                                  6
+                                )}월 ${reser.careDate
+                                .toString()
+                                .slice(
+                                  6,
+                                  8
+                                )}일 ${reser.careDate
+                                .toString()
+                                .slice(8, 10)}시`}
                         </td>
                         <td>{reser.status}</td>
                         {this.state.input[{ i }.i] ? (
