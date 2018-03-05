@@ -3,9 +3,8 @@
   .loading .loading__text {
     padding-left: 150px;
     line-height: 2.0;
-    color: #869ab7;
     position: absolute;
-    top: 30%;
+    top: 25%;
     left: 50%;
     transform: translate(-40%, -50%);
     font-size: 18px;
@@ -15,11 +14,13 @@
       width: 500px;
       height: 400px;
       content: ""; }
+  .loading .loading__label {
+    color: #869ab7; }
   .loading .loading__spinner {
     background-color: #ffffff; }
     .loading .loading__spinner .container {
       position: absolute;
-      top: 30%;
+      top: 25%;
       left: 50%;
       transform: translate(-40%, -50%);
       transform-style: preserve-3d;
@@ -27,7 +28,7 @@
       transform: rotateX(-30deg) rotateY(-45deg); }
     .loading .loading__spinner .holder {
       position: absolute;
-      top: 30%;
+      top: 25%;
       left: 50%;
       transform: translate(-40%, -50%);
       transform-style: preserve-3d;
@@ -56,7 +57,7 @@
           background-color: #f089a9; }
     .loading .loading__spinner .box {
       position: absolute;
-      top: 30%;
+      top: 25%;
       left: 50%;
       transform: translate(-40%, -50%);
       transform-style: preserve-3d;
