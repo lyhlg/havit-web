@@ -7,7 +7,7 @@
   .notFound__logo {
     width: 160px;
     height: 64px;
-    margin-top: 300px;
+    margin-top: 210px;
     margin-left: 620px;
   }
 
@@ -29,11 +29,12 @@
     }
   }
 
-  .notFound__btn {
-    margin: 15px;
-    width: 150px;
-    height: 60px;
-    line-height: 60px;
+  .notFound__button {
+    display: inline-block;
+    margin: 15px 0 0 650px;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
     vertical-align: middle;
     margin-right: 5px;
     font-size: 12px;
@@ -44,9 +45,5 @@
     background-color: #647dff;
     border: solid 1px #647dff;
 
-    .notice__button--selected {
-      font-weight: bold;
-      color: #647dff;
-    }
   }
 }

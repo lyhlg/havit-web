@@ -5,24 +5,27 @@
     .serviceCenter__tab {
 
       .serviceCenter__part1 {
-        font-size: 15px;
-        font-weight: normal;
-        color: #869ab7;
-        margin: 60px 0 10px 0;
+
+        p {
+          font-size: 17px;
+          font-weight: normal;
+          color: #869ab7;
+          margin: 20px 0 10px 0;
+        }
       }
 
       .serviceCenter__part2 {
         font-size: 15px;
         font-weight: normal;
         color: #869ab7;
-        margin: 60px 0 10px 0;
+        margin: 50px 0 10px 0;
       }
 
       .serviceCenter__part3 {
         font-size: 15px;
         font-weight: normal;
         color: #869ab7;
-        margin: 60px 0 10px 0;
+        margin: 40px 0 10px 0;
       }
     }
   }

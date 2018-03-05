@@ -17,7 +17,7 @@ class UploadBanner extends Component {
     );
     setTimeout(() => {
       window.location.href = '/adminPage/manageBanner';
-    }, 1000);
+    }, 1500);
   }
 
   render() {
