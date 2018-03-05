@@ -6,7 +6,8 @@ import 'styles/css/MyPage/MyPage.css';
 class MyPage extends Component {
   componentDidMount() {
     this.props.getReservations(localStorage.getItem('email'), '', 1);
-    this.props.getReservations(localStorage.getItem('email'));
+    this.props.getLikeProducts(localStorage.getItem('email'));
+    this.props.getUserInfo(localStorage.getItem('email'));
   }
 
   render() {

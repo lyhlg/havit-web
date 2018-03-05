@@ -32,8 +32,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.getReservations(email, status, page));
   },
 
-  getLikeProducts: (email, page) => {
-    dispatch(actions.getLikeProducts(email, page));
+  getLikeProducts: email => {
+    dispatch(actions.getLikeProducts(email));
   },
 
   getHospital: email => {

@@ -16,6 +16,7 @@ class Reserve extends Component {
     this.changeMonth = this.changeMonth.bind(this);
     this.modifyReserveDate = this.modifyReserveDate.bind(this);
     this.handleChangeCare = this.handleChangeCare.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   changeMonth(e) {
@@ -46,6 +47,17 @@ class Reserve extends Component {
       ],
     });
   }
+
+  handleCancel(i) {
+    if (window.confirm('예약 삭제 하시겠습니까?')) {
+      this.props.delReservation(
+        localStorage.getItem('email'),
+        this.props.reservations.reservationsList[i.i].productId,
+        this.props.reservations.reservationsList[i.i].reserveNum
+      );
+    }
+  }
+
   render() {
     return (
       <div className="reserve">
@@ -75,19 +87,25 @@ class Reserve extends Component {
                       <tr key={i}>
                         <td>{reser.reserveNum}</td>
                         <td>{reser.userName}</td>
-                        <td>{reser.phone}</td>
+                        <td>{'0' + reser.phone}</td>
                         <td>{reser.productName}</td>
                         {this.state.input[{ i }.i] ? (
-                          <td>{`${reser.reserveDate.slice(
-                            4,
-                            6
-                          )}월 ${reser.reserveDate.slice(
-                            6,
-                            8
-                          )}일/${reser.reserveDate.slice(
-                            8,
-                            10
-                          )}시~${reser.reserveDate.slice(10, 12) ||
+                          <td>{`${reser.reserveDate
+                            .toString()
+                            .slice(
+                              4,
+                              6
+                            )}월 ${reser.reserveDate
+                            .toString()
+                            .slice(
+                              6,
+                              8
+                            )}일/${reser.reserveDate
+                            .toString()
+                            .slice(
+                              8,
+                              10
+                            )}시~${reser.reserveDate.toString().slice(10, 12) ||
                             '00'}시`}</td>
                         ) : (
                           <td>
@@ -180,18 +198,17 @@ class Reserve extends Component {
                           </td>
                         )}
                         <td>
-                          {reser.careDate === '전화대기중'
-                            ? reser.careDate
+                          {reser.status === '전화대기중'
+                            ? reser.status
                             : `${reser.careDate.slice(
                                 4,
                                 6
-                              )}월 ${reser.careDate.slice(6, 8)}일`}
+                              )}월 ${reser.careDate.slice(
+                                6,
+                                8
+                              )}일 ${reser.careDate.slice(8, 10)}시`}
                         </td>
-                        <td>
-                          {reser.careDate === '전화대기중'
-                            ? reser.careDate
-                            : `${reser.careDate.slice(8, 10)}시`}
-                        </td>
+                        <td>{reser.status}</td>
                         {this.state.input[{ i }.i] ? (
                           <td>
                             <button
@@ -202,7 +219,7 @@ class Reserve extends Component {
                             </button>
                             <button
                               className="customerInfo__button"
-                              onClick={this.handleCancel}
+                              onClick={() => this.handleCancel({ i })}
                             >
                               취소
                             </button>
@@ -211,7 +228,7 @@ class Reserve extends Component {
                           <td style={{ textAlign: 'center' }}>
                             <button
                               className="customerInfo__button"
-                              onClick={this.handleCancel}
+                              onClick={() => this.handleCancel({ i })}
                             >
                               취소
                             </button>
