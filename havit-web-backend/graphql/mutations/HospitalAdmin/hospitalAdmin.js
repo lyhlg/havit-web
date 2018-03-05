@@ -51,20 +51,17 @@ const DEL_HOSPITAL_ADMIN = async params => {
   });
 
   // [예약] Reservation Table 삭제
-  const b = await reservation.remove({ hospitalCode: code });
-  console.log(" RESERVATION 삭제 : ", b);
+  await reservation.remove({ hospitalCode: code });
 
   // [제품] Product 삭제
-  const c = await product.remove({ hospitalCode: code });
-  console.log(" PRODUCT 삭제 : ", c);
+  await product.remove({ hospitalCode: code });
 
   // [제품별 판매 건] 테이블 document 삭제
-  const d = (await salesCount.find()).forEach(async item => {
+   (await salesCount.find()).forEach(async item => {
     if (hospitalRsrvList.products.includes(item._id)) {
       await salesCount.remove({ _id: item._id });
     }
   });
-  console.log(" salesCount 삭제 : ", d);
 
   // [병원] 테이블 삭제
   await hospital.remove({ code });
