@@ -83,6 +83,7 @@ export const getReservations = (email, status, page) => {
       query($email: String, $status: String, $page: Int) {
         Reservations(user_id_email: $email, status: $status, page: $page) {
           reserveNum
+          hospitalCode
           hospitalLoc
           hospitalName
           userName
@@ -105,11 +106,11 @@ export const getReservations = (email, status, page) => {
   });
 };
 
-export const getLikeProducts = (email, page) => {
+export const getLikeProducts = email => {
   return client.query({
     query: gql`
-      query($email: String, $page: Int) {
-        LikeProducts(user_id_email: $email, page: $page) {
+      query($email: String) {
+        LikeProducts(user_id_email: $email) {
           _id
           type
           productId
@@ -129,7 +130,6 @@ export const getLikeProducts = (email, page) => {
     `,
     variables: {
       email,
-      page,
     },
   });
 };
@@ -478,7 +478,6 @@ export const modifyReservation = (
           _id
           reserveNum
           user_id_email
-          hospitalCode
           openPhoneNum
           userName
           phone
@@ -525,6 +524,7 @@ export const delReservation = (email, productId, reserveNum) => {
           reserveNum: $reserveNum
         ) {
           user_id_email
+          hospitalCode
         }
       }
     `,
@@ -535,6 +535,7 @@ export const delReservation = (email, productId, reserveNum) => {
     },
   });
 };
+
 export const confirmPurchase = reserveNum => {
   return client.mutate({
     mutation: gql`
