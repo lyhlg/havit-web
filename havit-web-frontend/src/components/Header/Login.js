@@ -37,7 +37,7 @@ class Login extends Component {
     setTimeout(() => {
       const phone = this.props.userInfo.userInfo[0].phone;
       const code = this.props.userInfo.userInfo[0].level;
-      if (phone !== null) {
+      if (phone) {
         if (localStorage.getItem('email')) localStorage.removeItem('email');
         if (localStorage.getItem('code')) localStorage.removeItem('code');
         localStorage.setItem('email', res.profileObj.email);

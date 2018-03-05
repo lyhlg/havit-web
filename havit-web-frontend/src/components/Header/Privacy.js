@@ -100,13 +100,11 @@ class Privacy extends Component {
         });
       } else {
         this.props.addUserInfo(...data);
-        localStorage.setItem('email', localStorage.getItem('temp'));
-        localStorage.setItem('code', 3);
         localStorage.removeItem('temp');
         localStorage.removeItem('auth');
-        this.props.history.push('/');
+        this.props.history.push('/signupend');
       }
-    }, 2000);
+    }, 0);
   }
 
   render() {
