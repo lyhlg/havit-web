@@ -11,7 +11,7 @@ const payment = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        paymentList: action.payment.data.Payment,
+        paymentList: action.payment.data.Payments,
       };
     case types.REQUEST_GET_PAYMENT:
       return {

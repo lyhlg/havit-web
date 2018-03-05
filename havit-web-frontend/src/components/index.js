@@ -33,7 +33,6 @@ export { default as HospitalMenu } from './HospitalPage/HospitalMenu';
 export { default as CustomerInfo } from './HospitalPage/CustomerInfo';
 export { default as UploadProduct } from './HospitalPage/UploadProduct';
 export { default as ManageProduct } from './HospitalPage/ManageProduct';
-export { default as Balance } from './HospitalPage/Balance';
 
 // AdminPage
 export { default as AdminPage } from './AdminPage/AdminPage';

@@ -60,6 +60,32 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.getPayment(email));
   },
 
+  addProduct: (
+    type,
+    subType,
+    img,
+    email,
+    productName,
+    description,
+    price,
+    ProductDetail,
+    options
+  ) => {
+    dispatch(
+      actions.addProduct(
+        type,
+        subType,
+        img,
+        email,
+        productName,
+        description,
+        price,
+        ProductDetail,
+        options
+      )
+    );
+  },
+
   addReservation: (
     email,
     hospitalCode,

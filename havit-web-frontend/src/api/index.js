@@ -3,6 +3,7 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
 import * as url from 'utils';
+import ProductDetail from '../components/Common/ProductDetail';
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: `${url.API_DEV}/graphql` }),
@@ -288,6 +289,57 @@ export const getPayment = email => {
   });
 };
 
+export const addProduct = (
+  type,
+  subType,
+  img,
+  email,
+  productName,
+  description,
+  price,
+  ProductDetail,
+  options
+) => {
+  return client.mutate({
+    mutation: gql`
+      mutation(
+        $type: String
+        $subType: String
+        $img: String
+        $email: String
+        $description: String
+        $price: Int
+        $productDetail: String
+        $option: [String]
+      ) {
+        addProduct(
+          type: $type
+          subType: $subType
+          img: $img
+          user_id_email: $email
+          productName: $productName
+          description: $description
+          price: $price
+          ProductDetail: $ProductDetail
+          options: $options
+        ) {
+          productId
+        }
+      }
+    `,
+    variables: {
+      type,
+      subType,
+      img,
+      email,
+      productName,
+      description,
+      price,
+      ProductDetail,
+      options,
+    },
+  });
+};
 export const addReservation = (
   email,
   hospitalCode,

@@ -18,6 +18,8 @@ const products = (state = initialState, action) => {
         ...state,
         loading: true,
       };
+    case types.REQUEST_ADD_PRODUCT:
+    case types.SUCCESS_ADD_PRODUCT:
     default:
       return state;
   }
