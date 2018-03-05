@@ -7,6 +7,9 @@
   text-align: left;
   font-size: 10px;
   margin: 60px 0 10px 0; }
+  .serviceFaq__table span {
+    color: #48c0e0;
+    font-weight: bold; }
   .serviceFaq__table tr {
     border: solid 1px #dce2eb;
     height: 20px;
@@ -36,6 +39,10 @@
     color: #647dff; }
   .serviceFaq__table .serviceFaq__a {
     font-weight: bold;
-    color: #48c0e0; }
+    color: #48c0e0;
+    background-color: #f7f8fb; }
   .serviceFaq__table .serviceFaq__answer {
-    color: #869ab7; }
+    color: #869ab7;
+    background-color: #f7f8fb; }
+  .serviceFaq__table .serviceFaq__answerBack {
+    background-color: #f7f8fb; }

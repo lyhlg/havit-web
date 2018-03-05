@@ -5,18 +5,26 @@ import 'styles/css/AdminPage/ChangeNotice.css';
 class ChangeNotice extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.changeNoticeAdmin = this.changeNoticeAdmin.bind(this);
   }
 
   componentDidMount() {
-    this.props.getNotices();
+    this.props.getNotices('id');
   }
 
-  changeNoticeAdmin() {}
+  changeNoticeAdmin() {
+    this.props.addNotice(
+      document.getElementById('title').value,
+      document.getElementById('content').value,
+      '관리자'
+    );
+    setTimeout(() => {
+      window.location.href = '/adminPage/notice';
+    }, 1500);
+  }
 
   render() {
-    console.log(this.props.getNotices);
+    console.log(this.props);
     return (
       <div className="ChangeNotice">
         <div className="ChangeNotice__wrapper">
@@ -28,7 +36,7 @@ class ChangeNotice extends Component {
               type="text"
               className="ChangeNotice__input"
               placeholder="제목을 입력해주세요."
-              value={this.props.getNotices}
+              value={this.props.addNotice}
               style={{ backgroundColor: '#f7f8fb' }}
               disabled
             />
@@ -37,7 +45,7 @@ class ChangeNotice extends Component {
               id="body"
               className="ChangeNotice__body"
               placeholder="내용을 입력해주세요."
-              value={this.props.getNotices}
+              value={this.props.addNotice}
               style={{ backgroundColor: '#f7f8fb' }}
               disabled
             />
