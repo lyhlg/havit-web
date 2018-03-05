@@ -217,6 +217,10 @@ const mapDispatchToProps = dispatch => ({
   delEvent: (hospitalCode, productId) => {
     dispatch(actions.delEvent(hospitalCode, productId));
   },
+
+  delHospitalAdmin: code => {
+    dispatch(actions.delHospitalAdmin(code));
+  },
 });
 
 const AppContainer = withRouter(
