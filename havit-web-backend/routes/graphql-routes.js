@@ -15,7 +15,8 @@ import {
   ProductOption,
   Event,
   SalesCount,
-  MonthPayment
+  MonthPayment,
+  MaxPage
 } from "../db";
 import { graphqlExpress, graphiqlExpress } from "apollo-server-express";
 import { apolloUploadExpress } from "apollo-upload-server";
@@ -43,7 +44,8 @@ router.use(
       productOption: ProductOption,
       event: Event,
       salesCount: SalesCount,
-      monthPayment: MonthPayment
+      monthPayment: MonthPayment,
+      maxPage: MaxPage
     }
   })
 );

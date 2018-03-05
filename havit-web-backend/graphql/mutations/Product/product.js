@@ -40,9 +40,9 @@ const DEL_LIKE_PRODUCT = async params => {
 const ADD_PRODUCT = async params => {
   const [obj, args, ctx] = [...params];
   const {
+    user_id_email,
     type,
     subType,
-    hospitalCode,
     productName,
     description,
     price,
@@ -58,26 +58,23 @@ const ADD_PRODUCT = async params => {
   } = ctx;
 
   const hospitalInfo = await hospitalAdmin.findOne(
-    { code: args.hospitalCode },
-    { loc: 1, name: 1, _id: 0 }
+    { adminAccount: user_id_email },
+    { loc: 1, name: 1, code: 1, _id: 0 }
   );
 
   const new_hospitalInfo = {
     hospitalName: hospitalInfo.name,
-    hospitalLoc: hospitalInfo.loc
+    hospitalLoc: hospitalInfo.loc,
+    hospitalCode: hospitalInfo.code
   };
 
   const chk_dup = await CHECK_DUP_DATA([
     obj,
-    {
-      type: type,
-      subType: subType,
-      hospitalCode: hospitalCode,
-      productName: new_hospitalInfo.hospitalName
-    },
+    { type, subType, hospitalCode: hospitalInfo.code, productName },
     product
   ]);
 
+  console.log(chk_dup);
   if (!chk_dup) {
     const number = await autoNumbering("productid", counter);
     let productSubNumber = { productId: number };
@@ -99,8 +96,9 @@ const ADD_PRODUCT = async params => {
     const newProduct = await new product(new_args).save();
     // 새 제품 병원의 리스트로 업데이트
     await hospital.update(
-      { code: args.hospitalCode },
-      { $push: { products: newProduct.productId } }
+      { code: hospitalInfo.code },
+      { $push: { products: newProduct.productId } },
+      { upsert: 1 }
     );
     await salesCount({ _id: number }).save();
     return newProduct;

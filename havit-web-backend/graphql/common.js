@@ -1,5 +1,6 @@
 const CHECK_DUP_DATA = async params => {
   const [obj, args, db] = [...params];
+  console.log( args);
   return await db.findOne(args);
 };
 

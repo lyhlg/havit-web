@@ -4,7 +4,7 @@ const FIND_PRODUCT = async params => {
   const [obj, args, ctx] = [...params];
   const { type, subType, page, productId } = args;
   const { product, review } = ctx;
-  const limit = 12;
+  const limit = 20;
 
   // For pagenation
   const maxPage = await CHK_MAX_PAGE(product);

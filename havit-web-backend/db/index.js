@@ -13,6 +13,7 @@ import ProductOption from "./models/product-option-model";
 import Event from "./models/event-model";
 import SalesCount from "./models/sales-count-model";
 import MonthPayment from "./models/month-payment-model";
+import MaxPage from "./models/maxPage-model";
 
 export {
   User,
@@ -29,5 +30,6 @@ export {
   ProductOption,
   Event,
   SalesCount,
-  MonthPayment
+  MonthPayment,
+  MaxPage
 };

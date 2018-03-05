@@ -3,11 +3,6 @@ const ADD_USER_INFO = async params => {
   return await CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE([obj, args, ctx]);
 };
 
-const EDIT_USER_INFO = async params => {
-  const [obj, args, ctx] = [...params];
-  return await CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE([obj, args, ctx]);
-};
-
 const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async params => {
   const [obj, pre_args, ctx] = [...params];
   const { user, hospital, hospitalAdmin } = ctx;
@@ -71,6 +66,7 @@ const UPDATE_DB_HOSPITAL = async params => {
   const [obj, { hospitalCode, user_id_email }, { hospital, hospitalAdmin }] = [
     ...params
   ];
+  console.log( hospitalCode, user_id_email)
   await UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT([
     obj,
     { hospitalCode, user_id_email },
@@ -118,6 +114,7 @@ const REG_USER_TO_HOSPTIAL = async params => {
     ...params
   ];
   const isRegHospital = await hospital.findOne({ code: hospitalCode });
+
   return (await isRegHospital)
     ? await UPDATE_DB_HOSPITAL([
         obj,
@@ -152,4 +149,4 @@ const ADD_DB_USER = async params => {
   return await new user(args).save();
 };
 
-export { ADD_USER_INFO, EDIT_USER_INFO };
+export { ADD_USER_INFO };
