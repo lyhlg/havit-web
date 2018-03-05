@@ -18,6 +18,9 @@ class UploadEvent extends Component {
       document.getElementById('priority').value,
       document.getElementById('productImage').value
     );
+    setTimeout(() => {
+      window.location.href = '/adminPage/manageEvent';
+    }, 1500);
   }
 
   render() {
