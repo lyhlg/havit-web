@@ -52,13 +52,6 @@ class Header extends Component {
             관리자페이지
           </NavLink>
           <NavLink
-            to="/hospitalPage/customerInfo"
-            className="header__link"
-            activeClassName="header__link--selected"
-          >
-            병원페이지
-          </NavLink>
-          <NavLink
             to="/"
             className="header__link"
             onClick={this.handleLogout.bind(this)}
