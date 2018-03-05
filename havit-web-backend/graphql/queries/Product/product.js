@@ -29,49 +29,45 @@ const FIND_PRODUCT = async params => {
   }
 
   const results = async target => {
+    console.log(target);
     return await product
       .find(target)
-      .sort({ productId: -1 })
+      .sort({ _id: -1 })
       .skip((page - 1) * limit)
       .limit(limit);
   };
 
-  // 전체 상품 검색
-  if (!(type && subType)) return results({});
-
   // 상품 상세 정보
-  if (productId) {
-    console.log("productId만 들어왔을 때 ");
-    return results({ productId });
-  }
+  if (productId) return results({ productId });
 
   // type 과 subtype이 모두 넘어왔을 경우
-  if (type && subType) {
-    return results({ type, subType });
-  }
+  if (type && subType && !productId) return results({ type, subType });
 
   // type만 넘어올 경우
-  if (type) results({ type: args.type });
+  if (type && !productId) return results({ type: args.type });
+
+  // 전체검색
+  if (!type && !subType && !productId) return results({});
 };
 
 const LIKE_PRODUCT = async params => {
   const [obj, args, ctx] = [...params];
-  const { page, user, product } = ctx;
-  const limit = 12;
-
-  page ? page : 1;
+  const { user_id_email, page } = args;
+  const { user, product } = ctx;
 
   if (obj) {
     const { user_id_email } = obj;
     return (await user.findOne({ user_id_email })).likeProducts.map(
-      async item => {
-        return await product.findOne({ productId: item });
+      async productId => {
+        return await product.findOne({ productId });
       }
     );
   } else {
-    return (await user.findOne(args)).likeProducts.map(async item => {
-      return await product.findOne({ productId: item });
-    });
+    return (await user.findOne({ user_id_email })).likeProducts.map(
+      async productId => {
+        return await product.findOne({ productId });
+      }
+    );
   }
 };
 

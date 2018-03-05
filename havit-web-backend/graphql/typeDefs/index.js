@@ -52,8 +52,7 @@ const typeDefs = `
     ) : Payment
 
     LikeProducts(
-      user_id_email:String
-      page: Int
+      user_id_email: String
     ) : [Product]
 
     OpenedNumbers(
@@ -175,8 +174,8 @@ const typeDefs = `
     price: Int
   }
   type Option {
-    type : [String],
     productId: Int
+    type : [String]
   }
   type SalesCount {
     _id: ID
@@ -194,8 +193,6 @@ const typeDefs = `
       subType: String,
       img: String,
       hospitalCode: String,
-      hospitalLoc: String,
-      hospitalName: String,
       productName: String,
       description: String,
       price: Int,
@@ -204,12 +201,10 @@ const typeDefs = `
     ) : Product,
 
     editProduct(
-      id: Int,
+      productId: Int
       type: String,
       subType: String,
       img: String,
-      hospitalLoc: String,
-      hospitalName: String,
       productName: String,
       description: String,
       price: Int,

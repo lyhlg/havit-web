@@ -43,8 +43,6 @@ const ADD_PRODUCT = async params => {
     type,
     subType,
     hospitalCode,
-    hospitalLoc,
-    hospitalName,
     productName,
     description,
     price,
@@ -59,42 +57,44 @@ const ADD_PRODUCT = async params => {
     salesCount
   } = ctx;
 
+  const hospitalInfo = await hospitalAdmin.findOne(
+    { code: args.hospitalCode },
+    { loc: 1, name: 1, _id: 0 }
+  );
+
+  const new_hospitalInfo = {
+    hospitalName: hospitalInfo.name,
+    hospitalLoc: hospitalInfo.loc
+  };
+
   const chk_dup = await CHECK_DUP_DATA([
     obj,
     {
       type: type,
       subType: subType,
       hospitalCode: hospitalCode,
-      productName: productName
+      productName: new_hospitalInfo.hospitalName
     },
     product
   ]);
 
-  let option1 = [];
-  let option2 = [];
-  let inputTarget = 0;
-
-  if (options) {
-    SEPERATE_TYPE_FOR_PRODUCT_OPTIONS(options, (o1, o2) => {
-      option1 = o1;
-      option2 = o2;
-    });
-    delete args.options;
-  }
-
   if (!chk_dup) {
     const number = await autoNumbering("productid", counter);
     let productSubNumber = { productId: number };
-    const optionUpdate = await SAVE_N_UP_PRODUCT_OPTION(
+    const optionUpdate = await SAVE_N_UPDATE_PRODUCT_OPTION(
       number,
-      option1,
-      option2,
+      options,
       productOption,
       "SAVE"
     );
     const optionObj = { options: optionUpdate._id };
 
-    let new_args = Object.assign(args, productSubNumber, optionObj);
+    let new_args = Object.assign(
+      args,
+      productSubNumber,
+      optionObj,
+      new_hospitalInfo
+    );
 
     const newProduct = await new product(new_args).save();
     // 새 제품 병원의 리스트로 업데이트
@@ -108,65 +108,46 @@ const ADD_PRODUCT = async params => {
     return chk_dup;
   }
 };
-// dd
+
 const EDIT_PRODUCT = async params => {
   console.log("EDIT_PRODUCT");
   const [obj, args, ctx] = [...params];
+  const { productId } = args;
   const { product, productOption } = ctx;
 
-  const pid = args.id;
   const needToCngOptions = args.options;
   if (!args.options) {
-    await product.update({ productId: pid }, { $set: args });
-    return product.findOne({ productId: pid });
-  } else {
-    let option1 = [];
-    let option2 = [];
-    delete args.id;
-    delete args.options;
-    SEPERATE_TYPE_FOR_PRODUCT_OPTIONS(needToCngOptions, (o1, o2) => {
-      option1 = o1;
-      option2 = o2;
-    });
-    // console.log(pid, option1, option2);
-    await SAVE_N_UP_PRODUCT_OPTION(
-      pid,
-      option1,
-      option2,
-      productOption,
-      "UPDATE"
-    );
-    await product.update({ productId: pid }, { $set: args });
-    return product.findOne({ productId: pid });
+    await product.update({ productId }, { $set: args });
+    return product.findOne({ productId });
   }
+
+  await SAVE_N_UPDATE_PRODUCT_OPTION(
+    productId,
+    option,
+    productOption,
+    "UPDATE"
+  );
+  delete args.productId;
+  await product.update({ productId }, { $set: args });
+  return product.findOne({ productId });
 };
 
-const SEPERATE_TYPE_FOR_PRODUCT_OPTIONS = (options, cb) => {
-  let option1 = [];
-  let option2 = [];
-  let inputTarget = 0;
-  options.forEach(item => {
-    if (item.length === 0) inputTarget = !inputTarget;
-    else {
-      inputTarget ? option2.push(item) : option1.push(item);
-    }
-  });
-  return cb(option1, option2);
-};
-
-const SAVE_N_UP_PRODUCT_OPTION = async (pid, o1, o2, productOption, type) => {
-  console.log(pid, o1, o2, type);
-  if (type === "SAVE") {
+const SAVE_N_UPDATE_PRODUCT_OPTION = async (
+  productId,
+  type,
+  productOption,
+  processing
+) => {
+  console.log("pid, type, type: ", productId, type, type);
+  if (processing === "SAVE") {
     return await productOption({
-      productId: pid,
-      type: o1,
-      subType: o2
+      productId,
+      type
     }).save();
-  } else if (type === "UPDATE") {
-    return await productOption.update(
-      { productId: pid },
-      { $set: { type: o1, subType: o2 } }
-    );
+  }
+
+  if (processing === "UPDATE") {
+    return await productOption.update({ productId }, { $set: { type } });
   }
 };
 
