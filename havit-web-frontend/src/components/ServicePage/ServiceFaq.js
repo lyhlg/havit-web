@@ -36,7 +36,6 @@ class ServiceFaq extends Component {
       <div className="serviceFaq">
         <div className="serviceFaq__wrapper">
           <div className="serviceFaq__tab">
-            <h2 className="serviceFaq__title">FAQ (자주묻는질문)</h2>
             <table className="serviceFaq__table">
               <thead>
                 <tr>

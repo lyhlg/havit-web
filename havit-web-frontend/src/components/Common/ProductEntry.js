@@ -36,7 +36,7 @@ class ProductEntry extends Component {
                 <span>{this.props.product.purchased}</span>구매
               </h4>
               <h4 className="productEntry__price">
-                {this.props.product.price}원
+                {this.props.product.price.toLocaleString('en')}원
               </h4>
             </div>
           </div>

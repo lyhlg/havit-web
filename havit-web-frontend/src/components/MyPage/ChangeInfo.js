@@ -115,7 +115,6 @@ class ChangeInfo extends Component {
     return (
       <div className="changeInfo">
         <div className="signup__tab">
-          <h2 className="signup__title">정보 수정</h2>
           <h3 className="signup__label">이메일 주소</h3>
           <input
             id="email"

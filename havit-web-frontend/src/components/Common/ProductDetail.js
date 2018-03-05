@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ProductReserve, ProductInfo, Loading } from '../index';
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import 'styles/css/Common/ProductDetail.css';
 
 class ProductDetail extends Component {
@@ -15,7 +15,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
-    this.props.getProducts('', '', 1, this.props.location.pathname.slice(10));
+    this.props.getProducts('', '', this.props.location.pathname.slice(10));
   }
 
   handleReserve() {
@@ -107,7 +107,9 @@ class ProductDetail extends Component {
                 <div className="productDetail__sales">
                   <h4 className="productDetail__price">
                     {this.props.products.productsList[0] &&
-                      this.props.products.productsList[0].price}원
+                      this.props.products.productsList[0].price.toLocaleString(
+                        'en'
+                      )}원
                   </h4>
                   <h4 className="productDetail__purchased">
                     <span>
@@ -120,7 +122,7 @@ class ProductDetail extends Component {
 
                 {this.props.products.productsList[0] &&
                 this.props.products.productsList[0].options ? (
-                  <select className="productDetail__option">
+                  <select id="option" className="productDetail__option">
                     <option>옵션 선택</option>
                     {this.props.products.productsList[0] &&
                       this.props.products.productsList[0].options.type.map(
@@ -131,6 +133,7 @@ class ProductDetail extends Component {
                   </select>
                 ) : (
                   <select
+                    id="option"
                     className="productDetail__option"
                     defaultValue="옵션 없음"
                   >
@@ -141,13 +144,14 @@ class ProductDetail extends Component {
                   purchase={this.state.purchase}
                   purchaseBtn={this.state.purchaseBtn}
                   handleReserve={this.handleReserve}
+                  {...this.props}
                 />
                 <div className="productDetail__btnWrapper" style={toggleBtn}>
                   <button
                     onClick={this.handleReserve}
                     className="productDetail__reserveBtn"
                   >
-                    구매하기
+                    예약하기
                   </button>
                   <button
                     className="productDetail__likeBtn"
