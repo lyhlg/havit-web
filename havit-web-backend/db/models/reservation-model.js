@@ -15,8 +15,8 @@ const reservationSchema = new Schema({
   productName: String,
   reserveDate: Number,
   careDate: Number,
+  option: String,
   status: { type: String, default: "전화대기중" },
-  maxPage: Number,
   createdOn: { type: Date, default: getCurrentDate() }
 });
 

@@ -97,7 +97,7 @@ const typeDefs = `
     reserveDate: Float
     careDate: Float
     status: String
-    maxPage: Int
+    option: String
     product: [Product]
   }
   type Hospital {
@@ -138,7 +138,6 @@ const typeDefs = `
     purchased: Int
     productDetail: String
     options: Option
-    maxPage: Int
     reviews: [Review]
   }
   type Notice {
@@ -240,6 +239,7 @@ const typeDefs = `
       userName: String
       phone: Int
       productId: Int
+      option: String
       reserveDate: Float
     ) : Reservation
 

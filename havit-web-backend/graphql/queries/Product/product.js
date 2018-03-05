@@ -6,10 +6,6 @@ const FIND_PRODUCT = async params => {
   const { product, review } = ctx;
   const limit = 20;
 
-  // For pagenation
-  const maxPage = await CHK_MAX_PAGE(product);
-  await product.updateMany({}, { $set: { maxPage: maxPage } });
-
   // page 설정
   page ? page : 1;
 
