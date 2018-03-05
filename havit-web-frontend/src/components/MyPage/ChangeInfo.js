@@ -48,10 +48,6 @@ class ChangeInfo extends Component {
     this.changeUserInfo = this.changeUserInfo.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getUserInfo(localStorage.getItem('email'));
-  }
-
   changeMonth(e) {
     this.setState({
       month: this.state.arr[Number(e.currentTarget.value) - 1],
@@ -198,10 +194,9 @@ class ChangeInfo extends Component {
               <input
                 type="text"
                 id="txtMobile"
-                size="4"
                 className="signup__input"
                 placeholder="- 빼고 숫자만 입력"
-                value={`0${this.props.userInfo.userInfo[0] &&
+                defaultValue={`0${this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].phone}`}
               />
             </div>
@@ -319,10 +314,9 @@ class ChangeInfo extends Component {
             type="text"
             className="signup__input"
             placeholder="병원 관리자 전용입니다"
-            value={
-              (this.props.userInfo.userInfo[0] &&
-                this.props.userInfo.userInfo[0].hospitalCode) ||
-              ''
+            defaultValue={
+              this.props.userInfo.userInfo[0] &&
+              this.props.userInfo.userInfo[0].hospitalCode
             }
           />
           <hr className="signup__hr" />

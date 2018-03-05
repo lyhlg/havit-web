@@ -64,10 +64,10 @@ const successGetLikeProducts = likeProducts => ({
   likeProducts,
 });
 
-export const getLikeProducts = (email, page) => {
+export const getLikeProducts = email => {
   return dispatch => {
     dispatch(requestGetLikeProducts());
-    return api.getLikeProducts(email, page).then(res => {
+    return api.getLikeProducts(email).then(res => {
       dispatch(successGetLikeProducts(res));
     });
   };
