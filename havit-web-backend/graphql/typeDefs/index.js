@@ -57,7 +57,6 @@ const typeDefs = `
 
     OpenedNumbers(
       user_id_email: String
-      page: Int
     ) : [Reservation]
 
     Reviews: [Review]
@@ -189,10 +188,10 @@ const typeDefs = `
   type Mutation {
 
     addProduct(
+      user_id_email: String,
       type: String,
       subType: String,
       img: String,
-      hospitalCode: String,
       productName: String,
       description: String,
       price: Int,

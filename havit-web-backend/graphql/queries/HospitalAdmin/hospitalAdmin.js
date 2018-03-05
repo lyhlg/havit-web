@@ -2,7 +2,7 @@ const FIND_HOSPITAL_ADMIN = async params => {
   const [obj, args, ctx] = [...params];
   const { page } = args;
   const { hospitalAdmin } = ctx;
-  const limit = 12;
+  const limit = 20;
 
   page ? page : 1
 

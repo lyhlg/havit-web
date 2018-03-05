@@ -2,7 +2,7 @@ const FIND_EVENT = async params => {
   const [obj, args, ctx] = [...params];
   const { user_id_email, productId, status, page } = args;
   const { event, hospital } = ctx;
-  const limit = 12;
+  const limit = 20;
   let existCode = {},
     code;
 

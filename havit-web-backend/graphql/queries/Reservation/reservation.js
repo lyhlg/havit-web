@@ -5,7 +5,7 @@ const FIND_RESERVATION = async params => {
   const { user_id_email, status } = args;
   let { page } = args;
   const { reservation, hospital } = ctx;
-  const limit = 12;
+  const limit = 20;
   let code;
 
   // For pagenation
@@ -71,7 +71,7 @@ const GET_OPENED_NUMBER = async params => {
   const [obj, args, ctx] = [...params];
   const { user_id_email } = args;
   const { reservation, hospital } = ctx;
-  const limit = 12;
+  const limit = 20;
   let { page } = args,
     findCode;
 

@@ -2,7 +2,7 @@ const FIND_NOTICE = async params => {
   const [obj, args, ctx] = [...params];
   const { id, page } = args;
   const { notice } = ctx;
-  const limit = 12;
+  const limit = 20;
   const arg = { _id: id };
   // page 설정
   page ? page : 1;
