@@ -16,12 +16,17 @@ class NoticeDetail extends Component {
             <input id="createdOn" type="text" className="noticeDetail__input" />
             <h2 className="noticeDetail__label">내용</h2>
             <input id="body" type="text" className="noticeDetail__bigInput" />
-            <Link to="/adminPage/notice" className="noticeDetail__button">
-              공지사항으로 이동
-            </Link>
-            <Link to="/adminPage/uploadNotice" className="noticeDetail__button">
-              수정
-            </Link>
+            <div className="noticeDetail__btn">
+              <Link to="/adminPage/notice" className="noticeDetail__button">
+                공지사항으로 이동
+              </Link>
+              <Link
+                to="/adminPage/uploadNotice"
+                className="noticeDetail__button"
+              >
+                수정
+              </Link>
+            </div>
           </div>
         </div>
       </div>

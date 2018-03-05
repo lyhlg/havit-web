@@ -1,11 +1,11 @@
 .loading {
-  height: 600px;
+  height: 800px;
   $s: 3em;
   $colors: #1fbcd3, #cbe2b4, #f6b6ca;
 
   @mixin cbox {
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 50%;
     transform: translate(-40%, -50%);
   }
@@ -17,14 +17,16 @@
 
   .loading__text {
     padding-left: 150px;
+    line-height: 2.0;
+    color: #869ab7;
     &::before {
       display: block;
       width: 500px;
-      height: 300px;
+      height: 400px;
       content: "";
     }
     @include cbox;
-    font-size: 40px;
+    font-size: 18px;
     font-weight: normal;
   }
 

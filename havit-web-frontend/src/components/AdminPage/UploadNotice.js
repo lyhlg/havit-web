@@ -21,6 +21,9 @@ class UploadNotice extends Component {
           .webkitRelativePath,
       }
     );
+    setTimeout(() => {
+      window.location.href = '/adminPage/notice';
+    }, 1500);
   }
   //`Uploads/${document.querySelector("input[type=file]").files[0].name}`
 
