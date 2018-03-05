@@ -30,15 +30,22 @@ class ServiceNotice extends Component {
         Sun: '일',
       },
     };
+    this.moveNoticeDetail = this.moveNoticeDetail.bind(this);
   }
 
   componentDidMount() {
     this.props.getNotices();
   }
 
+  moveNoticeDetail(e) {
+    this.props.history.push(
+      `/servicePage/notice/${e.currentTarget.childNodes[0].textContent}`
+    );
+  }
+
   render() {
     return (
-      <div className="serviceNotice">
+      <main className="serviceNotice">
         <div className="serviceNotice__wrapper">
           <div className="serviceNotice__tab">
             <table className="serviceNotice__table">
@@ -53,7 +60,7 @@ class ServiceNotice extends Component {
               <tbody>
                 {this.props.notices.noticesList.map((notice, i) => {
                   return (
-                    <tr key={i}>
+                    <tr key={i} onClick={this.moveNoticeDetail}>
                       <td>{notice._id}</td>
                       <td>{notice.title}</td>
                       <td>{notice.author}</td>
@@ -73,7 +80,7 @@ class ServiceNotice extends Component {
             </table>
           </div>
         </div>
-      </div>
+      </main>
     );
   }
 }
