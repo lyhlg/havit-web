@@ -6,6 +6,7 @@ import 'styles/css/Common/Header.css';
 class Header extends Component {
   handleLogout() {
     this.props.userInfo.userInfo = [];
+    this.props.newUserInfo.newUserInfo = [];
     localStorage.removeItem('email');
     localStorage.removeItem('code');
     if (localStorage.getItem('kakao_32d45b3f136b81e89905f794f933f564'))
