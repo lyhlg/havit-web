@@ -20,6 +20,7 @@ import {
   ServicePage,
 } from './index';
 import 'styles/css/index.css';
+import NoticeDetail from './AdminPage/NoticeDetail';
 
 class App extends Component {
   // constructor(props) {
