@@ -30,3 +30,11 @@
     padding-left: 20px;
     font-size: 15px;
     color: #495057; }
+  .serviceFaq__table p {
+    line-height: 23px; }
+  .serviceFaq__table .serviceFaq__q {
+    color: #647dff; }
+  .serviceFaq__table .serviceFaq__a {
+    color: #48c0e0; }
+  .serviceFaq__table .serviceFaq__answer {
+    color: #869ab7; }
