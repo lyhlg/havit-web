@@ -1,6 +1,6 @@
 const ADD_RESERVATION = async (params, reserveNumCal) => {
   const [obj, args, ctx] = [...params];
-  const { hospitalCode, user_id_email, productId } = args;
+  const { hospitalCode, user_id_email, productId, option } = args;
   const {
     user,
     product,
