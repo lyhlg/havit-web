@@ -6,6 +6,7 @@ class ManageHospital extends Component {
   constructor(props) {
     super(props);
     this.moveHospital = this.moveHospital.bind(this);
+    this.delHospital = this.delHospital.bind(this);
   }
 
   moveHospital(e) {
@@ -18,9 +19,15 @@ class ManageHospital extends Component {
     }
   }
 
-  delHospital(e) {}
+  delHospital(e) {
+    this.props.delHospitalAdmin(
+      e.currentTarget.parentNode.parentNode.childNodes[0].textContent
+    );
+    window.location.href = '/adminPage/manageHospital';
+  }
 
   render() {
+    console.log(this.props);
     return (
       <div className="manageHospital">
         <div className="manageHospital__wrapper">
