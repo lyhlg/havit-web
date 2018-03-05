@@ -55,9 +55,13 @@ class ChangeInfo extends Component {
   }
 
   changeUserInfo() {
+    const password =
+      document.getElementById('password') === null
+        ? ''
+        : document.getElementById('password').value;
     let data = [
       localStorage.getItem('email'),
-      '',
+      password,
       this.props.userInfo.userInfo[0].auth,
       document.getElementById('name').value || '',
       Number(
@@ -103,11 +107,11 @@ class ChangeInfo extends Component {
         this.props.addUserInfo(...data);
         window.location.href = '/mypage/changeInfo';
       }
-    }, 2000);
+    }, 0);
   }
 
   render() {
-    console.log(this.props);
+    console.log(this.props.userInfo);
     return (
       <div className="changeInfo">
         <div className="signup__tab">
@@ -123,7 +127,7 @@ class ChangeInfo extends Component {
             disabled
           />
           {this.props.userInfo.userInfo[0] &&
-            this.props.userInfo.userInfo[0].auth === 'login' && (
+            this.props.userInfo.userInfo[0].auth === 'local' && (
               <div>
                 <h3 className="signup__label">비밀번호 입력</h3>
                 <input
@@ -134,6 +138,7 @@ class ChangeInfo extends Component {
                 />
                 <h3 className="signup__label">비밀번호 확인</h3>
                 <input
+                  id="password2"
                   type="password"
                   className="signup__input"
                   placeholder="동일하게 다시 한 번 입력해주세요."

@@ -6,6 +6,16 @@ import { GoogleLogin } from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';
 
 class Login extends Component {
+  constructor(props) {
+    super(props);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+  }
+
+  handleKeyPress(e) {
+    console.log(e);
+    if (e.key === 'Enter') this.submitLogin();
+  }
+
   submitLogin() {
     this.props.getUserInfo(
       document.getElementById('username').value,
@@ -102,6 +112,7 @@ class Login extends Component {
               id="password"
               className="login__input"
               placeholder="비밀번호"
+              onKeyPress={this.handleKeyPress}
             />
             <button
               type="submit"
