@@ -24,7 +24,7 @@ class NoticeDetail extends Component {
                 to="/adminPage/uploadNotice"
                 className="noticeDetail__button"
               >
-                수정
+                수정으로 이동
               </Link>
             </div>
           </div>
