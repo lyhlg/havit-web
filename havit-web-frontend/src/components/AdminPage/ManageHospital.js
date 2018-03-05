@@ -17,6 +17,9 @@ class ManageHospital extends Component {
       this.props.history.push('/hospitalPage/customerInfo');
     }
   }
+
+  delHospital(e) {}
+
   render() {
     return (
       <div className="manageHospital">
@@ -42,7 +45,12 @@ class ManageHospital extends Component {
                         <td>{hospital.loc}</td>
                         <td>{hospital.adminAccount}</td>
                         <td>
-                          <button>x</button>
+                          <button
+                            className="manageHospital__delete"
+                            onClick={this.delHospital}
+                          >
+                            x
+                          </button>
                         </td>
                       </tr>
                     );

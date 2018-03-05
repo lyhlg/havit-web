@@ -560,3 +560,21 @@ export const delEvent = (hospitalCode, productId) => {
     });
   };
 };
+
+const requestDelHospitalAdmin = () => ({
+  type: types.REQUEST_DEL_HOSPITALADMIN,
+});
+
+const successDelHospitalAdmin = hospitalAdmin => ({
+  type: types.SUCCESS_DEL_HOSPITALADMIN,
+  hospitalAdmin,
+});
+
+export const delHospitalAdmin = code => {
+  return dispatch => {
+    dispatch(requestDelHospitalAdmin());
+    return api.delHospitalAdmin(code).then(res => {
+      dispatch(successDelHospitalAdmin(res));
+    });
+  };
+};
