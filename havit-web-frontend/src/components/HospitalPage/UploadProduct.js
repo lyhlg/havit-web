@@ -10,6 +10,23 @@ class UploadProduct extends Component {
       selectedFile: null,
       type: true,
     };
+    this.uploadProduct = this.uploadProduct.bind(this);
+  }
+
+  uploadProduct() {
+    let data = [
+      document.getElementById('type').value,
+      document.getElementById('subType').value,
+      '',
+      localStorage.getItem('email'),
+      document.getElementById('title').value,
+      document.getElementById('description').value,
+      document.getElementById('price').value,
+      '',
+      document.getElementById('options').value.split(','),
+    ];
+    this.props.addProduct(...data);
+    window.location.href = '/hospitalPage/manageProduct';
   }
 
   fileSelectedHandler = event => {
@@ -35,6 +52,7 @@ class UploadProduct extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="uploadProduct">
         <div className="uploadProduct__wrapper">
@@ -73,7 +91,6 @@ class UploadProduct extends Component {
               className="uploadProduct__img"
               onChange={this.fileSelectedHandler}
             />
-            <button onClick={this.fileUploadHandler}>Upload</button>ㅎ
             <h3 className="uploadProduct__label">상품명</h3>
             <input
               type="text"
@@ -85,7 +102,7 @@ class UploadProduct extends Component {
             <input
               type="text"
               id="description"
-              className="uploadProduct__inputbig"
+              className="uploadProduct__input"
               placeholder="상품에 대한 정보를 한문장으로 입력해주세요."
             />
             <h3 className="uploadProduct__label">시술 금액</h3>
@@ -101,9 +118,20 @@ class UploadProduct extends Component {
               className="uploadProduct__img"
               onChange={this.fileSelectedHandler}
             />
-            <button onClick={this.fileUploadHandler}>Upload</button>
+            <h3 className="uploadProduct__label">옵션 설정</h3>
+            <input
+              type="text"
+              id="options"
+              className="uploadProduct__input"
+              placeholder="옵션 리스트 ( 콤마로 구분지어 옵션 설정 )"
+            />
             <div>
-              <button className="uploadProduct__btn">상품 등록</button>
+              <button
+                className="uploadProduct__btn"
+                onClick={this.uploadProduct}
+              >
+                상품 등록
+              </button>
             </div>
           </div>
         </div>

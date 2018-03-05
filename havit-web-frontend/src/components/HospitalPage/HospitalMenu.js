@@ -30,13 +30,10 @@ class HospitalMenu extends Component {
             >
               상품관리
             </NavLink>
-            <NavLink
-              to="/hospitalPage/balance"
-              className="hospitalMenu__button"
-              activeClassName="hospitalMenu__button--selected"
-            >
-              정산
-            </NavLink>
+            <span>
+              정산 : {this.props.payment.paymentList.count}건 /{' '}
+              {this.props.payment.paymentList.price}원
+            </span>
           </div>
         </div>
       </div>

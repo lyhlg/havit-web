@@ -183,6 +183,46 @@ export const getPayment = email => {
 
 // mutation
 
+const requestAddProduct = () => ({
+  type: types.REQUEST_ADD_PRODUCT,
+});
+
+const successAddProduct = product => ({
+  type: types.SUCCESS_ADD_PRODUCT,
+  product,
+});
+
+export const addProduct = (
+  type,
+  subType,
+  img,
+  email,
+  productName,
+  description,
+  price,
+  ProductDetail,
+  options
+) => {
+  return dispatch => {
+    dispatch(requestAddProduct());
+    return api
+      .addProduct(
+        type,
+        subType,
+        img,
+        email,
+        productName,
+        description,
+        price,
+        ProductDetail,
+        options
+      )
+      .then(res => {
+        dispatch(successAddProduct(res));
+      });
+  };
+};
+
 const requestAddReservation = () => ({
   type: types.REQUEST_ADD_RESERVATION,
 });

@@ -5,7 +5,6 @@ import {
   CustomerInfo,
   UploadProduct,
   ManageProduct,
-  Balance,
   Loading,
 } from '../index';
 import 'styles/css/HospitalPage/HospitalPage.css';
@@ -14,24 +13,26 @@ class HospitalPage extends Component {
   componentWillMount() {
     // this.props.checkAuth(this.props.history.location.pathname);
   }
-
   componentDidMount() {
-    if (localStorage.getItem('code') === '2')
+    if (localStorage.getItem('code') === '2') {
       this.props.getHospital(localStorage.getItem('email'));
-    else if (localStorage.getItem('code') === '1') {
+      this.props.getPayment(localStorage.getItem('email'));
+    } else if (localStorage.getItem('code') === '1') {
       this.props.getHospital(localStorage.getItem('hospital'));
+      this.props.getPayment(localStorage.getItem('hospital'));
       localStorage.removeItem('hospital');
     }
   }
 
   render() {
+    console.log(this.props);
     return (
       <main>
         {this.props.hospital.loading ? (
           <Loading />
         ) : (
           <div className="hospitalPage">
-            <HospitalMenu />
+            <HospitalMenu payment={this.props.payment} />
             <Route
               path="/HospitalPage/CustomerInfo"
               render={props => <CustomerInfo {...this.props} />}
@@ -43,10 +44,6 @@ class HospitalPage extends Component {
             <Route
               path="/HospitalPage/ManageProduct"
               render={props => <ManageProduct {...this.props} />}
-            />
-            <Route
-              path="/HospitalPage/Balance"
-              render={props => <Balance {...this.props} />}
             />
           </div>
         )}
