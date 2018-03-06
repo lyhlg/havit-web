@@ -12,9 +12,8 @@ const events = (state = initialState, action) => {
         eventsList: action.events.data.Events,
       };
     case types.REQUEST_GET_EVENTS:
-      return {
-        ...state,
-      };
+    case types.REQUEST_DEL_EVENT:
+    case types.SUCCESS_DEL_EVENT:
     default:
       return state;
   }

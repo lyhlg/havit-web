@@ -793,25 +793,27 @@ export const addEvent = (
     .then(res => callback(res));
 };
 
-export const delEvent = (hospitalCode, productId) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($hospitalCode: String, $productId: Int) {
-        addEvent(hospitalCode: $hospitalCode, productId: $productId) {
-          hospitalCode
-          productName
-          description
-          price
-          status
-          priority
+export const delEvent = (hospitalCode, productId, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($hospitalCode: String, $productId: Int) {
+          delEvent(hospitalCode: $hospitalCode, productId: $productId) {
+            hospitalCode
+            productName
+            description
+            price
+            status
+            priority
+          }
         }
-      }
-    `,
-    variables: {
-      hospitalCode,
-      productId,
-    },
-  });
+      `,
+      variables: {
+        hospitalCode,
+        productId,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const delHospitalAdmin = (code, callback) => {

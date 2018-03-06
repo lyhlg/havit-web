@@ -577,15 +577,15 @@ const requestDelEvent = () => ({
   type: types.REQUEST_DEL_EVENT,
 });
 
-const successDelEvent = () => ({
+const successDelEvent = event => ({
   type: types.SUCCESS_DEL_EVENT,
-  addEvent,
+  event,
 });
 
-export const delEvent = (hospitalCode, productId) => {
+export const delEvent = (hospitalCode, productId, callback) => {
   return dispatch => {
     dispatch(requestDelEvent());
-    return api.delEvent(hospitalCode, productId).then(res => {
+    return api.delEvent(hospitalCode, productId, callback).then(res => {
       dispatch(successDelEvent(res));
     });
   };

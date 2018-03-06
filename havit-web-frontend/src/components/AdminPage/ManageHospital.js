@@ -43,7 +43,7 @@ class ManageHospital extends Component {
                   <th>병원 이름</th>
                   <th>병원 위치</th>
                   <th>관리자 계정</th>
-                  <th>병원 삭제</th>
+                  <th>삭제</th>
                 </tr>
               </thead>
               <tbody>
