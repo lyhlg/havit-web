@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import UploadReview from './UploadReview';
 import 'styles/css/Common/ProductInfo.css';
 
 class ProductInfo extends Component {
@@ -68,10 +69,12 @@ class ProductInfo extends Component {
               })
             ) : (
               <div className="productInfo__empty">
-                <p>리뷰가 없습니다.</p>
-                <p>리뷰를 작성하고 크레딧을 적립하세요.</p>
+                <p>상품후기가 없습니다.</p>
+                <p>상품후기를 작성하고 크레딧을 적립하세요.</p>
               </div>
             )}
+            <hr />
+            <UploadReview />
           </div>
         )}
       </div>

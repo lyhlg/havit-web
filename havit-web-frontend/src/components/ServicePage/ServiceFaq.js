@@ -53,10 +53,12 @@ class ServiceFaq extends Component {
                     <td className="serviceFaq__a">A.</td>
                     <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        네, <span>havit</span>은 회원제를 시행하고 있습니다.
+                        네, <span>havit</span>은 <span>회원제를 시행</span>하고
+                        있습니다.
                       </p>
                       <p className="serviceFaq__answer">
-                        회원가입을 하시면 다양한 혜택을 받으실 수 있습니다.
+                        회원가입을 하시면 <span>다양한 혜택</span>을 받으실 수
+                        있습니다.
                       </p>
                     </td>
                   </tr>
@@ -141,7 +143,7 @@ class ServiceFaq extends Component {
                     <td className="serviceFaq__a">A.</td>
                     <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        크레딧은 현금처럼 사용이 가능합니다.
+                        <span>크레딧</span>은 <span>현금처럼 사용이 가능</span>합니다.
                       </p>
                       <p className="serviceFaq__answer">
                         이벤트, 시술후기 등으로 적립하실 수 있습니다.
@@ -174,8 +176,8 @@ class ServiceFaq extends Component {
                     <td className="serviceFaq__a">A.</td>
                     <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
-                        각 이벤트 상품의 유효기간은 상품 페이지 내에 기재되어
-                        있습니다.
+                        각 이벤트 상품의 유효기간은{' '}
+                        <span>상품 페이지 내에 기재</span>되어 있습니다.
                       </p>
                       <p className="serviceFaq__answer">
                         여러 회차의 패키지 상품을 구매하신 경우 해당 유효기간
@@ -198,8 +200,9 @@ class ServiceFaq extends Component {
                         것은 어렵습니다.
                       </p>
                       <p className="serviceFaq__answer">
-                        시술의 확실한 효과를 위해 다회권으로 구성된 옵션이 따로
-                        제공되고 있습니다.
+                        시술의 확실한 효과를 위해{' '}
+                        <span>다회권으로 구성된 옵션이 따로 제공</span>되고
+                        있습니다.
                       </p>
                     </td>
                   </tr>
@@ -214,8 +217,8 @@ class ServiceFaq extends Component {
                     <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
                         <span>havit</span>에서 진행하고 있는 모든 상품은
-                        부가세가 포함된 가격으로, 추가 금액 없이 시술을 받으실
-                        수 있습니다.
+                        <span>부가세가 포함된 가격</span>으로,{' '}
+                        <span>추가 금액 없이</span> 시술을 받으실 수 있습니다.
                       </p>
                     </td>
                   </tr>
