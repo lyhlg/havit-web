@@ -174,8 +174,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.fixReservation(reserveNum, careDate));
   },
 
-  delReservation: (email, productId, reserveNum) => {
-    dispatch(actions.delReservation(email, productId, reserveNum));
+  delReservation: (email, productId, reserveNum, callback) => {
+    dispatch(actions.delReservation(email, productId, reserveNum, callback));
   },
 
   confirmPurchase: reserveNum => {
@@ -186,8 +186,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addNotice(title, body, author, img));
   },
 
-  addBanner: (img, title, url, priority) => {
-    dispatch(actions.addBanner(img, title, url, priority));
+  addBanner: (img, title, url, priority, callback) => {
+    dispatch(actions.addBanner(img, title, url, priority, callback));
   },
 
   delBanner: id => {
@@ -202,20 +202,24 @@ const mapDispatchToProps = dispatch => ({
     hospitalCode,
     productName,
     description,
+    img,
     price,
     status,
     priority,
-    productImage
+    productDetails,
+    callback
   ) => {
     dispatch(
       actions.addEvent(
         hospitalCode,
         productName,
         description,
+        img,
         price,
         status,
         priority,
-        productImage
+        productDetails,
+        callback
       )
     );
   },

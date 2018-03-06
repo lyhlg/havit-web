@@ -10,18 +10,17 @@ class UploadBanner extends Component {
 
   submitBanner() {
     this.props.addBanner(
-      document.getElementById('priority').value,
+      '',
       document.getElementById('title').value,
       document.getElementById('url').value,
-      document.getElementById('status').value
+      document.getElementById('priority').value,
+      () => {
+        window.location.href = '/adminPage/manageBanner';
+      }
     );
-    setTimeout(() => {
-      window.location.href = '/adminPage/manageBanner';
-    }, 1500);
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="uploadBanner">
         <div className="uploadBanner__wrapper">
@@ -34,6 +33,7 @@ class UploadBanner extends Component {
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
+              <option value="6">6</option>
             </select>
             <h3 className="uploadBanner__label">상품명</h3>
             <input
@@ -49,11 +49,6 @@ class UploadBanner extends Component {
               className="uploadBanner__input"
               placeholder="상품 URL을 입력해주세요."
             />
-            <h3 className="uploadBanner__label">상태</h3>
-            <select id="status" className="uploadBanner__dropdown">
-              <option value="판매중">판매중</option>
-              <option value="판매종료">판매종료</option>
-            </select>
             <h3 className="uploadBanner__label">배너 이미지 업로드</h3>
             <input type="file" className="uploadBanner__img" />
             <div className="uploadBanner__btn">

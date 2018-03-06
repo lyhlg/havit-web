@@ -414,12 +414,14 @@ const successDelReservation = reservation => ({
   reservation,
 });
 
-export const delReservation = (email, productId, reserveNum) => {
+export const delReservation = (email, productId, reserveNum, callback) => {
   return dispatch => {
     dispatch(requestDelReservation());
-    return api.delReservation(email, productId, reserveNum).then(res => {
-      dispatch(successDelReservation(res));
-    });
+    return api
+      .delReservation(email, productId, reserveNum, callback)
+      .then(res => {
+        dispatch(successDelReservation(res));
+      });
   };
 };
 
@@ -468,10 +470,10 @@ const successAddBanner = banner => ({
   banner,
 });
 
-export const addBanner = (img, title, url, priority) => {
+export const addBanner = (img, title, url, priority, callback) => {
   return dispatch => {
     dispatch(requestAddBanner());
-    return api.addBanner(img, title, url, priority).then(res => {
+    return api.addBanner(img, title, url, priority, callback).then(res => {
       dispatch(successAddBanner(res));
     });
   };
@@ -526,10 +528,12 @@ export const addEvent = (
   hospitalCode,
   productName,
   description,
+  img,
   price,
   status,
   priority,
-  productImage
+  productDetails,
+  callback
 ) => {
   return dispatch => {
     dispatch(requestAddEvent());
@@ -538,10 +542,12 @@ export const addEvent = (
         hospitalCode,
         productName,
         description,
+        img,
         price,
         status,
         priority,
-        productImage
+        productDetails,
+        callback
       )
       .then(res => {
         dispatch(successAddEvent(res));

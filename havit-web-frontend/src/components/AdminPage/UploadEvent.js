@@ -13,14 +13,15 @@ class UploadEvent extends Component {
       document.getElementById('hospitalCode').value,
       document.getElementById('productName').value,
       document.getElementById('description').value,
-      document.getElementById('price').value,
+      'abc',
+      Number(document.getElementById('price').value),
       document.getElementById('status').value,
-      document.getElementById('priority').value,
-      document.getElementById('productImage').value
+      Number(document.getElementById('priority').value),
+      'abc',
+      () => {
+        window.location.href = '/adminPage/manageEvent';
+      }
     );
-    setTimeout(() => {
-      window.location.href = '/adminPage/manageEvent';
-    }, 1500);
   }
 
   render() {
