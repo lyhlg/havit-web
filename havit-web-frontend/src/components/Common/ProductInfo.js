@@ -62,11 +62,12 @@ class ProductInfo extends Component {
           </div>
         ) : (
           <div>
+            <UploadReview />
             {this.props.products.productsList[0] &&
             this.props.products.productsList.reviews ? (
               this.props.products.productsList[0] &&
               this.props.products.productsList.reviews.map((review, i) => {
-                return <div key={i}>리뷰추가하기 귀찮노</div>;
+                return <ReviewBoard />;
               })
             ) : (
               <div className="productInfo__empty">
@@ -75,8 +76,6 @@ class ProductInfo extends Component {
               </div>
             )}
             <hr />
-            <UploadReview />
-            <ReviewBoard />
           </div>
         )}
       </div>
