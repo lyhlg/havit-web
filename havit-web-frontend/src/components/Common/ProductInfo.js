@@ -67,9 +67,31 @@ class ProductInfo extends Component {
                 return <div key={i}>리뷰추가하기 귀찮노</div>;
               })
             ) : (
-              <div className="productInfo__empty">
-                <p>리뷰가 없습니다.</p>
-                <p>리뷰를 작성하고 크레딧을 적립하세요.</p>
+              <div className="productInfoReview">
+                <div className="productInfoReview__wrapper">
+                  <div className="productInfoReview__tab">
+                    <h2 className="productInfoReview__title">
+                      상품후기 남기기
+                    </h2>
+                    <input
+                      id="review"
+                      type="text"
+                      className="productInfoReview__input"
+                      placeholder="시술을 완료한 고객님만 후기 등록이 가능합니다."
+                    />
+                    <button type="submit" className="productInfoReview__submit">
+                      등록하기
+                    </button>
+                    <hr />
+                    <div>
+                      <p className="productInfoReview__id">ID</p>
+                      <p className="productInfoReview__date">DATE</p>
+                    </div>
+                    <div>
+                      <p className="productInfoReview__content">CONTENT</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </div>
