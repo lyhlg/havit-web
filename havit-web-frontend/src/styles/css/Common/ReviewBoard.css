@@ -1,0 +1,17 @@
+.reviewBoard {
+  border: solid 1px #dce2eb;
+  margin-top: 25px; }
+  .reviewBoard .reviewBoard__box1 .reviewBoard__name {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #414d6b;
+    margin-right: 25px; }
+  .reviewBoard .reviewBoard__box1 .reviewBoard__date {
+    display: inline-block;
+    font-size: 10px;
+    color: #869ab7; }
+  .reviewBoard .reviewBoard__box2 .reviewBoard__content {
+    font-size: 15px;
+    font-weight: normal;
+    color: #414d6b; }
