@@ -11,6 +11,7 @@ class Login extends Component {
   constructor(props) {
     super(props);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.submitLogin = this.submitLogin.bind(this);
   }
 
   handleKeyPress(e) {
@@ -19,22 +20,19 @@ class Login extends Component {
   }
 
   submitLogin() {
-    this.props.getUserInfo(
+    this.props.getLogin(
+      res => {
+        if (res.data.Users.length === 1) {
+          localStorage.setItem('email', res.data.Users[0].user_id_email);
+          localStorage.setItem('code', res.data.Users[0].level);
+          this.props.history.push('/');
+        } else {
+          alert('아이디 또는 비번 잘못입력');
+        }
+      },
       document.getElementById('username').value,
       document.getElementById('password').value
     );
-    setTimeout(() => {
-      if (this.props.userInfo.userInfo.length === 1) {
-        localStorage.setItem(
-          'email',
-          this.props.userInfo.userInfo[0].user_id_email
-        );
-        localStorage.setItem('code', this.props.userInfo.userInfo[0].level);
-        this.props.history.push('/');
-      } else {
-        alert('아이디 또는 비번 잘못입력');
-      }
-    }, 1500);
   }
   authLoginGoogleSucc(res) {
     this.props.addUserInfo(
@@ -120,11 +118,10 @@ class Login extends Component {
             <button
               type="submit"
               className="login__btn"
-              onClick={this.submitLogin.bind(this)}
+              onClick={this.submitLogin}
             >
               로그인
             </button>
-
             <div className="social__button">
               <GoogleLogin
                 className="social__google"

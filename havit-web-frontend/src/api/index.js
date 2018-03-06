@@ -10,6 +10,33 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+export const getLogin = (callback, email, password) => {
+  return client
+    .query({
+      query: gql`
+        query($email: String, $password: String) {
+          Users(user_id_email: $email, password: $password) {
+            user_id_email
+            name
+            auth
+            phone
+            birthday
+            gender
+            level
+            hospitalCode
+            likeAreas
+            likePoints
+          }
+        }
+      `,
+      variables: {
+        email,
+        password,
+      },
+    })
+    .then(res => callback(res));
+};
+
 export const getUserInfo = (email, password) => {
   return client.query({
     query: gql`

@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   likeProducts: state.likeProducts,
   newLikeProduct: state.newLikeProduct,
   userInfo: state.userInfo,
+  login: state.login,
   newUserInfo: state.addUserInfo,
   review: state.review,
   hospital: state.hospital,
@@ -20,6 +21,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getLogin: (callback, email, password) => {
+    dispatch(actions.getLogin(callback, email, password));
+  },
+
   getUserInfo: (email, password) => {
     dispatch(actions.getUserInfo(email, password));
   },
