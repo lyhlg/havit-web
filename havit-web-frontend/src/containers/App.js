@@ -144,8 +144,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addLikeProducts(email, productId));
   },
 
-  delLikeProducts: (email, productId) => {
-    dispatch(actions.delLikeProducts(email, productId));
+  delLikeProducts: (email, productId, callback) => {
+    dispatch(actions.delLikeProducts(email, productId, callback));
   },
 
   modifyReservation: (

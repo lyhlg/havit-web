@@ -5,14 +5,27 @@ class WishListEntry extends Component {
   constructor(props) {
     super(props);
     this.movePurchase = this.movePurchase.bind(this);
+    this.delProduct = this.delProduct.bind(this);
   }
 
   movePurchase() {
     this.props.history.push(`/products/${this.props.product.productId}`);
   }
 
+  delProduct() {
+    if (window.confirm('삭제하시겠습니까?')) {
+      this.props.delLikeProducts(
+        localStorage.getItem('email'),
+        this.props.product.productId,
+        () => {
+          window.location.reload();
+        }
+      );
+    }
+  }
+
   render() {
-    console.log(this.props.product);
+    console.log(this.props);
     return (
       <div className="wishList">
         <img
@@ -36,7 +49,9 @@ class WishListEntry extends Component {
             <h4 className="wishList__price">
               {this.props.product.price.toLocaleString('en')}원
             </h4>
-            <button className="wishList__removeBtn">상품 삭제</button>
+            <button className="wishList__removeBtn" onClick={this.delProduct}>
+              상품 삭제
+            </button>
             <button
               className="wishList__purchaseBtn"
               onClick={this.movePurchase}

@@ -206,7 +206,6 @@ export const getNotices = (id, page) => {
           title
           body
           author
-          views
           createdOn
         }
       }
@@ -223,10 +222,11 @@ export const getBanners = id => {
     query: gql`
       query($id: Int) {
         Banners(id: $id) {
+          _id
           title
+          img
           url
           priority
-          status
         }
       }
     `,
@@ -256,7 +256,7 @@ export const getEvents = (email, productId, status, page) => {
           status
           priority
           purchased
-          productImage
+          productDetail
         }
       }
     `,
@@ -492,20 +492,22 @@ export const addLikeProducts = (email, productId) => {
   });
 };
 
-export const delLikeProducts = (email, productId) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($email: String, $productId: Int) {
-        delLikeProducts(user_id_emal: $email, productId: $productId) {
-          user_id_email
+export const delLikeProducts = (email, productId, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($email: String, $productId: Int) {
+          delLikeProducts(user_id_email: $email, productId: $productId) {
+            user_id_email
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      productId,
-    },
-  });
+      `,
+      variables: {
+        email,
+        productId,
+      },
+    })
+    .then(() => callback());
 };
 
 export const modifyReservation = (
@@ -721,7 +723,7 @@ export const addEvent = (
           price: $price
           status: $status
           priority: $priority
-          productImage: $productImage
+          productDetails: $productImage
         ) {
           hospitalCode
           productName
@@ -729,7 +731,6 @@ export const addEvent = (
           price
           status
           priority
-          productImage
         }
       }
     `,
@@ -756,7 +757,6 @@ export const delEvent = (hospitalCode, productId) => {
           price
           status
           priority
-          productImage
         }
       }
     `,

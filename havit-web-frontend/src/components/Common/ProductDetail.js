@@ -121,7 +121,7 @@ class ProductDetail extends Component {
                 <hr className="productDetail__divider" />
 
                 {this.props.products.productsList[0] &&
-                this.props.products.productsList[0].options ? (
+                this.props.products.productsList[0].options.length ? (
                   <select id="option" className="productDetail__option">
                     <option>옵션 선택</option>
                     {this.props.products.productsList[0] &&

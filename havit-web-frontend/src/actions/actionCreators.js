@@ -348,10 +348,10 @@ const successDelLikeProducts = newLikeProduct => ({
   newLikeProduct,
 });
 
-export const delLikeProducts = (email, productId) => {
+export const delLikeProducts = (email, productId, callback) => {
   return dispatch => {
     dispatch(requestDelLikeProducts());
-    return api.delLikeProducts(email, productId).then(res => {
+    return api.delLikeProducts(email, productId, callback).then(res => {
       dispatch(successDelLikeProducts(res));
     });
   };
