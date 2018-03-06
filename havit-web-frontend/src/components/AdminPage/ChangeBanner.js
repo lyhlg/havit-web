@@ -3,12 +3,27 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ChangeNotice.css';
 
 class ChangeBanner extends Component {
-  componentDidMount() {
-    this.props.getBanners(Number(window.location.pathname.slice(24)));
+  constructor(props) {
+    super(props);
+    this.submitBanner = this.submitBanner.bind(this);
   }
 
+  componentDidMount() {
+    this.props.getBanners();
+  }
+
+  submitBanner() {
+    this.props.addBanner(
+      '',
+      document.getElementById('title').value,
+      document.getElementById('url').value,
+      document.getElementById('priority').value,
+      () => {
+        window.location.href = '/adminPage/manageBanner';
+      }
+    );
+  }
   render() {
-    console.log(this.props.banners.bannersList[0]);
     return (
       <div className="uploadBanner">
         <div className="uploadBanner__wrapper">
@@ -20,7 +35,9 @@ class ChangeBanner extends Component {
               className="uploadBanner__dropdown"
               defaultValue={
                 this.props.banners.bannersList[0] &&
-                this.props.banners.bannersList[0].priority
+                this.props.banners.bannersList[
+                  Number(window.location.pathname.slice(24)) - 1
+                ].priority
               }
             >
               <option value="1">1</option>
@@ -38,7 +55,9 @@ class ChangeBanner extends Component {
               placeholder="상품명을 입력해주세요."
               defaultValue={
                 this.props.banners.bannersList[0] &&
-                this.props.banners.bannersList[0].title
+                this.props.banners.bannersList[
+                  Number(window.location.pathname.slice(24)) - 1
+                ].title
               }
             />
             <h3 className="uploadBanner__label">상품 URL</h3>
@@ -49,7 +68,9 @@ class ChangeBanner extends Component {
               placeholder="상품 URL을 입력해주세요."
               defaultValue={
                 this.props.banners.bannersList[0] &&
-                this.props.banners.bannersList[0].url
+                this.props.banners.bannersList[
+                  Number(window.location.pathname.slice(24)) - 1
+                ].url
               }
             />
             <h3 className="uploadBanner__label">배너 이미지 업로드</h3>

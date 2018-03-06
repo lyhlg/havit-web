@@ -195,8 +195,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addBanner(img, title, url, priority, callback));
   },
 
-  delBanner: id => {
-    dispatch(actions.delBanner(id));
+  delBanner: (id, callback) => {
+    dispatch(actions.delBanner(id, callback));
   },
 
   addHospitalAdmin: (code, name, loc) => {
@@ -229,8 +229,8 @@ const mapDispatchToProps = dispatch => ({
     );
   },
 
-  delEvent: (hospitalCode, productId) => {
-    dispatch(actions.delEvent(hospitalCode, productId));
+  delEvent: (hospitalCode, productId, callback) => {
+    dispatch(actions.delEvent(hospitalCode, productId, callback));
   },
 
   delHospitalAdmin: (code, callback) => {
