@@ -206,7 +206,6 @@ export const getNotices = (id, page) => {
           title
           body
           author
-          views
           createdOn
         }
       }
@@ -223,10 +222,11 @@ export const getBanners = id => {
     query: gql`
       query($id: Int) {
         Banners(id: $id) {
+          _id
           title
+          img
           url
           priority
-          status
         }
       }
     `,
@@ -256,7 +256,7 @@ export const getEvents = (email, productId, status, page) => {
           status
           priority
           purchased
-          productImage
+          productDetail
         }
       }
     `,
@@ -344,42 +344,45 @@ export const addReservation = (
   phone,
   productId,
   option,
-  reserveDate
+  reserveDate,
+  callback
 ) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $email: String
-        $hospitalCode: String
-        $userName: String
-        $phone: Int
-        $productId: Int
-        $option: String
-        $reserveDate: Float
-      ) {
-        addReservation(
-          user_id_email: $email
-          hospitalCode: $hospitalCode
-          userName: $userName
-          phone: $phone
-          productId: $productId
-          option: $option
-          reserveDate: $reserveDate
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $email: String
+          $hospitalCode: String
+          $userName: String
+          $phone: Int
+          $productId: Int
+          $option: String
+          $reserveDate: Float
         ) {
-          userName
+          addReservation(
+            user_id_email: $email
+            hospitalCode: $hospitalCode
+            userName: $userName
+            phone: $phone
+            productId: $productId
+            option: $option
+            reserveDate: $reserveDate
+          ) {
+            userName
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      hospitalCode,
-      userName,
-      phone,
-      productId,
-      option,
-      reserveDate,
-    },
-  });
+      `,
+      variables: {
+        email,
+        hospitalCode,
+        userName,
+        phone,
+        productId,
+        option,
+        reserveDate,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addReview = (email, stars, comment, productId) => {
@@ -414,6 +417,7 @@ export const addReview = (email, stars, comment, productId) => {
 };
 
 export const addUserInfo = (
+  callback,
   email,
   password,
   auth,
@@ -425,55 +429,57 @@ export const addUserInfo = (
   likePoints,
   hospitalCode
 ) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $email: String
-        $password: String
-        $auth: String
-        $name: String
-        $phone: Int
-        $birthday: Int
-        $gender: String
-        $likeAreas: [String]
-        $likePoints: [String]
-        $hospitalCode: String
-      ) {
-        addUserInfo(
-          user_id_email: $email
-          password: $password
-          auth: $auth
-          name: $name
-          phone: $phone
-          birthday: $birthday
-          gender: $gender
-          likeAreas: $likeAreas
-          likePoints: $likePoints
-          hospitalCode: $hospitalCode
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $email: String
+          $password: String
+          $auth: String
+          $name: String
+          $phone: Int
+          $birthday: Int
+          $gender: String
+          $likeAreas: [String]
+          $likePoints: [String]
+          $hospitalCode: String
         ) {
-          name
-          auth
-          phone
-          level
-          birthday
-          gender
-          hospitalCode
+          addUserInfo(
+            user_id_email: $email
+            password: $password
+            auth: $auth
+            name: $name
+            phone: $phone
+            birthday: $birthday
+            gender: $gender
+            likeAreas: $likeAreas
+            likePoints: $likePoints
+            hospitalCode: $hospitalCode
+          ) {
+            name
+            auth
+            phone
+            level
+            birthday
+            gender
+            hospitalCode
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      password,
-      auth,
-      name,
-      phone,
-      birthday,
-      gender,
-      likeAreas,
-      likePoints,
-      hospitalCode,
-    },
-  });
+      `,
+      variables: {
+        email,
+        password,
+        auth,
+        name,
+        phone,
+        birthday,
+        gender,
+        likeAreas,
+        likePoints,
+        hospitalCode,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addLikeProducts = (email, productId) => {
@@ -492,20 +498,22 @@ export const addLikeProducts = (email, productId) => {
   });
 };
 
-export const delLikeProducts = (email, productId) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($email: String, $productId: Int) {
-        delLikeProducts(user_id_emal: $email, productId: $productId) {
-          user_id_email
+export const delLikeProducts = (email, productId, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($email: String, $productId: Int) {
+          delLikeProducts(user_id_email: $email, productId: $productId) {
+            user_id_email
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      productId,
-    },
-  });
+      `,
+      variables: {
+        email,
+        productId,
+      },
+    })
+    .then(() => callback());
 };
 
 export const modifyReservation = (
@@ -722,7 +730,7 @@ export const addEvent = (
           price: $price
           status: $status
           priority: $priority
-          productImage: $productImage
+          productDetails: $productImage
         ) {
           hospitalCode
           productName
@@ -730,7 +738,6 @@ export const addEvent = (
           price
           status
           priority
-          productImage
         }
       }
     `,
@@ -757,7 +764,6 @@ export const delEvent = (hospitalCode, productId) => {
           price
           status
           priority
-          productImage
         }
       }
     `,

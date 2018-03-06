@@ -89,25 +89,25 @@ class ChangeInfo extends Component {
       ) || '',
       document.getElementById('code').value || '',
     ];
-    setTimeout(() => {
-      if (
-        !data[3] ||
-        data[4] === NaN ||
-        data[4].toString().length < 9 ||
-        data[4].toString().length > 10 ||
-        data[5] === NaN ||
-        !data[6].length ||
-        !data[7].length ||
-        !data[8].length
-      ) {
-        this.setState({
-          check: [false, 1],
-        });
-      } else {
-        this.props.addUserInfo(...data);
+    if (
+      !data[3] ||
+      data[4] === NaN ||
+      data[4].toString().length < 9 ||
+      data[4].toString().length > 10 ||
+      data[5] === NaN ||
+      !data[6].length ||
+      !data[7].length ||
+      !data[8].length
+    ) {
+      this.setState({
+        check: [false, 1],
+      });
+    } else {
+      // console.log(...data)
+      this.props.addUserInfo(() => {
         window.location.href = '/mypage/changeInfo';
-      }
-    }, 0);
+      }, ...data);
+    }
   }
 
   render() {
@@ -331,6 +331,8 @@ class ChangeInfo extends Component {
             <button onClick={this.changeUserInfo} className="signup__button">
               회원정보 수정
             </button>
+            {!this.state.check[0] &&
+              this.state.check[1] > 0 && <p>올바른 값을 입력하세요</p>}
           </div>
         </div>
       </div>

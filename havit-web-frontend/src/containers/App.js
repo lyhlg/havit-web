@@ -93,7 +93,8 @@ const mapDispatchToProps = dispatch => ({
     phone,
     productId,
     option,
-    reserveDate
+    reserveDate,
+    callback
   ) => {
     dispatch(
       actions.addReservation(
@@ -103,7 +104,8 @@ const mapDispatchToProps = dispatch => ({
         phone,
         productId,
         option,
-        reserveDate
+        reserveDate,
+        callback
       )
     );
   },
@@ -113,6 +115,7 @@ const mapDispatchToProps = dispatch => ({
   },
 
   addUserInfo: (
+    callback,
     email,
     password,
     auth,
@@ -126,6 +129,7 @@ const mapDispatchToProps = dispatch => ({
   ) => {
     dispatch(
       actions.addUserInfo(
+        callback,
         email,
         password,
         auth,
@@ -144,8 +148,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addLikeProducts(email, productId));
   },
 
-  delLikeProducts: (email, productId) => {
-    dispatch(actions.delLikeProducts(email, productId));
+  delLikeProducts: (email, productId, callback) => {
+    dispatch(actions.delLikeProducts(email, productId, callback));
   },
 
   modifyReservation: (

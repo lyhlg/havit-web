@@ -239,7 +239,8 @@ export const addReservation = (
   phone,
   productId,
   option,
-  reserveDate
+  reserveDate,
+  callback
 ) => {
   return dispatch => {
     dispatch(requestAddReservation());
@@ -251,7 +252,8 @@ export const addReservation = (
         phone,
         productId,
         option,
-        reserveDate
+        reserveDate,
+        callback
       )
       .then(res => {
         dispatch(successAddReservation(res));
@@ -287,6 +289,7 @@ const successAddUserInfo = newUserInfo => ({
 });
 
 export const addUserInfo = (
+  callback,
   email,
   password,
   auth,
@@ -302,6 +305,7 @@ export const addUserInfo = (
     dispatch(requestAddUserInfo());
     return api
       .addUserInfo(
+        callback,
         email,
         password,
         auth,
@@ -348,10 +352,10 @@ const successDelLikeProducts = newLikeProduct => ({
   newLikeProduct,
 });
 
-export const delLikeProducts = (email, productId) => {
+export const delLikeProducts = (email, productId, callback) => {
   return dispatch => {
     dispatch(requestDelLikeProducts());
-    return api.delLikeProducts(email, productId).then(res => {
+    return api.delLikeProducts(email, productId, callback).then(res => {
       dispatch(successDelLikeProducts(res));
     });
   };
