@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ChangeNotice.css';
+import { FORMAT_FILENAME } from 'utils';
+
+import { AWS_KEYS } from 'utils/awskey';
+import s3BrowserDirectUpload from 's3-browser-direct-upload';
 
 class ChangeNotice extends Component {
   constructor(props) {
@@ -9,18 +13,39 @@ class ChangeNotice extends Component {
   }
 
   componentDidMount() {
-    this.props.getNotices('id');
+    this.props.getNotices(Number(window.location.pathname.slice(24)));
   }
 
   changeNoticeAdmin() {
-    this.props.addNotice(
-      document.getElementById('title').value,
-      document.getElementById('content').value,
-      '관리자'
-    );
-    setTimeout(() => {
-      window.location.href = '/adminPage/notice';
-    }, 1500);
+    const s3clientOptions = {
+      accessKeyId: `${AWS_KEYS.accessKeyId}`,
+      secretAccessKey: `${AWS_KEYS.secretAccessKey}`,
+      region: 'eu-central-1',
+      signatureVersion: 'v4',
+    };
+    const s3client = new s3BrowserDirectUpload(s3clientOptions);
+
+    var uploadOptions = {
+      data: document.querySelector('input[type=file]').files[0],
+      key: FORMAT_FILENAME(
+        'NOTICE',
+        document.querySelector('input[type=file]').files[0].name
+      ),
+      bucket: 'codestates-havit-web',
+    };
+
+    s3client.upload(uploadOptions, (err, url) => {
+      console.log('aws url@@@@@', url);
+      this.props.addNotice(
+        document.getElementById('title').value,
+        document.getElementById('body').value,
+        '관리자',
+        url
+      );
+      setTimeout(() => {
+        window.location.href = '/adminPage/notice';
+      }, 1500);
+    });
   }
 
   render() {
@@ -36,18 +61,20 @@ class ChangeNotice extends Component {
               type="text"
               className="ChangeNotice__input"
               placeholder="제목을 입력해주세요."
-              value={this.props.addNotice}
-              style={{ backgroundColor: '#f7f8fb' }}
-              disabled
+              defaultValue={
+                this.props.notices.noticesList[0] &&
+                this.props.notices.noticesList[0].title
+              }
             />
             <h3 className="ChangeNotice__label">내용</h3>
             <textarea
               id="body"
               className="ChangeNotice__body"
               placeholder="내용을 입력해주세요."
-              value={this.props.addNotice}
-              style={{ backgroundColor: '#f7f8fb' }}
-              disabled
+              defaultValue={
+                this.props.notices.noticesList[0] &&
+                this.props.notices.noticesList[0].body
+              }
             />
             <h3 className="ChangeNotice__label">이미지 업로드</h3>
             <input type="file" className="ChangeNotice__img" />

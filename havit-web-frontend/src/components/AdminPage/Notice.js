@@ -8,8 +8,12 @@ class Notice extends Component {
     this.moveChangeNotice = this.moveChangeNotice.bind(this);
   }
 
-  moveChangeNotice(e) {
-    this.props.history.push('/adminPage/changeNotice');
+  componentDidMount() {
+    this.props.getNotices();
+  }
+
+  moveChangeNotice(id) {
+    this.props.history.push(`/adminPage/changeNotice/${id}`);
   }
   render() {
     return (
@@ -28,7 +32,10 @@ class Notice extends Component {
               <tbody>
                 {this.props.notices.noticesList.map((notice, i) => {
                   return (
-                    <tr key={i} onClick={this.moveChangeNotice}>
+                    <tr
+                      key={i}
+                      onClick={() => this.moveChangeNotice(notice._id)}
+                    >
                       <td>{notice._id}</td>
                       <td>{notice.title}</td>
                       <td>{notice.author}</td>
