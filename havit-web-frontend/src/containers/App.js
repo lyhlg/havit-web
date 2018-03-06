@@ -113,6 +113,7 @@ const mapDispatchToProps = dispatch => ({
   },
 
   addUserInfo: (
+    callback,
     email,
     password,
     auth,
@@ -126,6 +127,7 @@ const mapDispatchToProps = dispatch => ({
   ) => {
     dispatch(
       actions.addUserInfo(
+        callback,
         email,
         password,
         auth,

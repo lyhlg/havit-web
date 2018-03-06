@@ -414,6 +414,7 @@ export const addReview = (email, stars, comment, productId) => {
 };
 
 export const addUserInfo = (
+  callback,
   email,
   password,
   auth,
@@ -425,55 +426,57 @@ export const addUserInfo = (
   likePoints,
   hospitalCode
 ) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $email: String
-        $password: String
-        $auth: String
-        $name: String
-        $phone: Int
-        $birthday: Int
-        $gender: String
-        $likeAreas: [String]
-        $likePoints: [String]
-        $hospitalCode: String
-      ) {
-        addUserInfo(
-          user_id_email: $email
-          password: $password
-          auth: $auth
-          name: $name
-          phone: $phone
-          birthday: $birthday
-          gender: $gender
-          likeAreas: $likeAreas
-          likePoints: $likePoints
-          hospitalCode: $hospitalCode
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $email: String
+          $password: String
+          $auth: String
+          $name: String
+          $phone: Int
+          $birthday: Int
+          $gender: String
+          $likeAreas: [String]
+          $likePoints: [String]
+          $hospitalCode: String
         ) {
-          name
-          auth
-          phone
-          level
-          birthday
-          gender
-          hospitalCode
+          addUserInfo(
+            user_id_email: $email
+            password: $password
+            auth: $auth
+            name: $name
+            phone: $phone
+            birthday: $birthday
+            gender: $gender
+            likeAreas: $likeAreas
+            likePoints: $likePoints
+            hospitalCode: $hospitalCode
+          ) {
+            name
+            auth
+            phone
+            level
+            birthday
+            gender
+            hospitalCode
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      password,
-      auth,
-      name,
-      phone,
-      birthday,
-      gender,
-      likeAreas,
-      likePoints,
-      hospitalCode,
-    },
-  });
+      `,
+      variables: {
+        email,
+        password,
+        auth,
+        name,
+        phone,
+        birthday,
+        gender,
+        likeAreas,
+        likePoints,
+        hospitalCode,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addLikeProducts = (email, productId) => {

@@ -287,6 +287,7 @@ const successAddUserInfo = newUserInfo => ({
 });
 
 export const addUserInfo = (
+  callback,
   email,
   password,
   auth,
@@ -302,6 +303,7 @@ export const addUserInfo = (
     dispatch(requestAddUserInfo());
     return api
       .addUserInfo(
+        callback,
         email,
         password,
         auth,
