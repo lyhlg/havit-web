@@ -1,6 +1,24 @@
 import * as types from './actionTypes';
 import * as api from 'api';
 
+const requestGetLogin = () => ({
+  type: types.REQUEST_GET_LOGIN,
+});
+
+const successGetLogin = login => ({
+  type: types.SUCCESS_GET_LOGIN,
+  login,
+});
+
+export const getLogin = (callback, email, password) => {
+  return dispatch => {
+    dispatch(requestGetLogin());
+    return api.getLogin(callback, email, password).then(res => {
+      dispatch(successGetLogin(res));
+    });
+  };
+};
+
 const requestGetUserInfo = () => ({
   type: types.REQUEST_GET_USERINFO,
 });
