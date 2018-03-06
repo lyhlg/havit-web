@@ -1,0 +1,26 @@
+.uploadReview {
+
+  .uploadReview__title {
+    margin-top: 45px;
+    font-size: 14px;
+    color: #647dff;
+  }
+
+  .uploadReview__input {
+    width: 650px;
+    height: 100px;
+    background-color: #ffffff;
+    border: solid 1px #dce2eb;
+    padding-left: 10px;
+    margin-top: 15px;
+  }
+
+  .uploadReview__button {
+    display: inline-block;
+    width: 200px;
+    height: 100px;
+    color: #ffffff;
+    background-color: #647dff;
+    border: solid 1px #647dff;
+  }
+}

@@ -158,7 +158,7 @@ class ProductDetail extends Component {
                     className="productDetail__likeBtn"
                     onClick={this.addLikeProduct}
                   >
-                    찜하기
+                    찜
                   </button>
                 </div>
               </div>

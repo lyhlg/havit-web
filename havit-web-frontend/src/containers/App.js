@@ -182,8 +182,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.confirmPurchase(reserveNum));
   },
 
-  addNotice: (title, body, author) => {
-    dispatch(actions.addNotice(title, body, author));
+  addNotice: (title, body, author, url) => {
+    dispatch(actions.addNotice(title, body, author, url));
   },
 
   addBanner: (img, title, url, priority) => {

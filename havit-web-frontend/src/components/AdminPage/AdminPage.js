@@ -20,7 +20,6 @@ import 'styles/css/AdminPage/AdminPage.css';
 class AdminPage extends Component {
   componentDidMount() {
     this.props.getHospitalAdmin();
-    this.props.getNotices();
     this.props.getBanners();
     this.props.getEvents();
   }
@@ -71,7 +70,7 @@ class AdminPage extends Component {
                 render={props => <NoticeDetail {...this.props} />}
               />
               <Route
-                path="/adminPage/changeNotice"
+                path="/adminPage/changeNotice/:id"
                 render={props => <ChangeNotice {...this.props} />}
               />
             </div>

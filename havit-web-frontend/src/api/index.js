@@ -624,11 +624,11 @@ export const confirmPurchase = reserveNum => {
   });
 };
 
-export const addNotice = (title, body, author) => {
+export const addNotice = (title, body, author, url) => {
   return client.mutate({
     mutation: gql`
-      mutation($title: String, $body: String, $author: String) {
-        addNotice(title: $title, body: $body, author: $author) {
+      mutation($title: String, $body: String, $author: String, $url: String) {
+        addNotice(title: $title, body: $body, author: $author, url: $url) {
           _id
           title
           body
@@ -642,6 +642,7 @@ export const addNotice = (title, body, author) => {
       title,
       body,
       author,
+      url,
     },
   });
 };
