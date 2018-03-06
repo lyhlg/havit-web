@@ -582,10 +582,10 @@ const successDelHospitalAdmin = hospitalAdmin => ({
   hospitalAdmin,
 });
 
-export const delHospitalAdmin = code => {
+export const delHospitalAdmin = (code, callback) => {
   return dispatch => {
     dispatch(requestDelHospitalAdmin());
-    return api.delHospitalAdmin(code).then(res => {
+    return api.delHospitalAdmin(code, callback).then(res => {
       dispatch(successDelHospitalAdmin(res));
     });
   };

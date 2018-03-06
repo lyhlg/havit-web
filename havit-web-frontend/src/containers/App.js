@@ -228,8 +228,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.delEvent(hospitalCode, productId));
   },
 
-  delHospitalAdmin: code => {
-    dispatch(actions.delHospitalAdmin(code));
+  delHospitalAdmin: (code, callback) => {
+    dispatch(actions.delHospitalAdmin(code, callback));
   },
 });
 

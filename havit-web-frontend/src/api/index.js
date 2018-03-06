@@ -785,17 +785,19 @@ export const delEvent = (hospitalCode, productId) => {
   });
 };
 
-export const delHospitalAdmin = code => {
-  return client.mutate({
-    mutation: gql`
-      mutation($code: String) {
-        delHospitalAdmin(code: $code) {
-          name
+export const delHospitalAdmin = (code, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($code: String) {
+          delHospitalAdmin(code: $code) {
+            name
+          }
         }
-      }
-    `,
-    variables: {
-      code,
-    },
-  });
+      `,
+      variables: {
+        code,
+      },
+    })
+    .then(res => callback(res));
 };

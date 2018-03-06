@@ -20,10 +20,14 @@ class ManageHospital extends Component {
   }
 
   delHospital(e) {
-    this.props.delHospitalAdmin(
-      e.currentTarget.parentNode.parentNode.childNodes[0].textContent
-    );
-    window.location.href = '/adminPage/manageHospital';
+    if (window.confirm('삭제하시겠습니까?')) {
+      this.props.delHospitalAdmin(
+        e.currentTarget.parentNode.parentNode.childNodes[0].textContent,
+        () => {
+          window.location.href = '/adminPage/manageHospital';
+        }
+      );
+    }
   }
 
   render() {
