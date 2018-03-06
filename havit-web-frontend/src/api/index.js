@@ -578,26 +578,28 @@ export const fixReservation = (reserveNum, careDate) => {
   });
 };
 
-export const delReservation = (email, productId, reserveNum) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($email: String, $productId: Int, $reserveNum: Float) {
-        delReservation(
-          user_id_email: $email
-          productId: $productId
-          reserveNum: $reserveNum
-        ) {
-          user_id_email
-          hospitalCode
+export const delReservation = (email, productId, reserveNum, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($email: String, $productId: Int, $reserveNum: Float) {
+          delReservation(
+            user_id_email: $email
+            productId: $productId
+            reserveNum: $reserveNum
+          ) {
+            user_id_email
+            hospitalCode
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      productId,
-      reserveNum,
-    },
-  });
+      `,
+      variables: {
+        email,
+        productId,
+        reserveNum,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const confirmPurchase = reserveNum => {
@@ -647,26 +649,28 @@ export const addNotice = (title, body, author, img) => {
   });
 };
 
-export const addBanner = (img, title, url, priority) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($img: String, $title: String, $url: String, $priority: Int) {
-        addBanner(img: $img, title: $title, url: $url, priority: $priority) {
-          _id
-          title
-          img
-          url
-          priority
+export const addBanner = (img, title, url, priority, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($img: String, $title: String, $url: String, $priority: Int) {
+          addBanner(img: $img, title: $title, url: $url, priority: $priority) {
+            _id
+            title
+            img
+            url
+            priority
+          }
         }
-      }
-    `,
-    variables: {
-      img,
-      title,
-      url,
-      priority,
-    },
-  });
+      `,
+      variables: {
+        img,
+        title,
+        url,
+        priority,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const delBanner = id => {
@@ -707,50 +711,57 @@ export const addEvent = (
   hospitalCode,
   productName,
   description,
+  img,
   price,
   status,
   priority,
-  productImage
+  productDetails,
+  callback
 ) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $hospitalCode: String
-        $productName: String
-        $description: String
-        $price: Int
-        $status: String
-        $priority: Int
-        $productImage: String
-      ) {
-        addEvent(
-          hospitalCode: $hospitalCode
-          productName: $productName
-          description: $description
-          price: $price
-          status: $status
-          priority: $priority
-          productDetails: $productImage
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $hospitalCode: String
+          $productName: String
+          $description: String
+          $img: String
+          $price: Int
+          $status: String
+          $priority: Int
+          $productDetails: String
         ) {
-          hospitalCode
-          productName
-          description
-          price
-          status
-          priority
+          addEvent(
+            hospitalCode: $hospitalCode
+            productName: $productName
+            description: $description
+            img: $img
+            price: $price
+            status: $status
+            priority: $priority
+            productDetails: $productDetails
+          ) {
+            hospitalCode
+            productName
+            description
+            price
+            status
+            priority
+          }
         }
-      }
-    `,
-    variables: {
-      hospitalCode,
-      productName,
-      description,
-      price,
-      status,
-      priority,
-      productImage,
-    },
-  });
+      `,
+      variables: {
+        hospitalCode,
+        productName,
+        description,
+        img,
+        price,
+        status,
+        priority,
+        productDetails,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const delEvent = (hospitalCode, productId) => {
