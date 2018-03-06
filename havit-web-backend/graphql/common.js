@@ -8,7 +8,4 @@ const CHK_MAX_PAGE = async db => {
   return Math.floor((await db.find().count()) / 12 + 1);
 };
 
-export {
-  CHECK_DUP_DATA,
-  CHK_MAX_PAGE
-};
+export { CHECK_DUP_DATA, CHK_MAX_PAGE };

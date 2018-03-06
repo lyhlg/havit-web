@@ -40,7 +40,6 @@ router.post("/localLogin", async (req, res) => {
   if (findUser) {
     let sess = req.session;
     sess.user_id_email = user_id_email;
-    console.log("sess:", sess);
     res.redirect("http://localhost:3000/");
   } else {
     res.redirect(`"${FRONT_DEV_SRV}/login"`);

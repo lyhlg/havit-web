@@ -145,6 +145,7 @@ const typeDefs = `
     title: String
     body: String
     author: String
+    img: String
     views: Int
     createdOn: String
   }
