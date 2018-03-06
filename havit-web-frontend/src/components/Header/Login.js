@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { reallogo } from 'assets/img';
+import { google } from 'assets/img';
+import { kakao } from 'assets/img';
 import { Route } from 'react-router-dom';
 import 'styles/css/Common/Login.css';
 import { GoogleLogin } from 'react-google-login';
@@ -121,13 +123,15 @@ class Login extends Component {
             >
               로그인
             </button>
+
             <div className="social__button">
               <GoogleLogin
+                className="social__google"
                 clientId="235629451128-6epmo55kkdeiah4phs7psth5e09g1ujj.apps.googleusercontent.com"
                 onSuccess={this.authLoginGoogleSucc.bind(this)}
                 onFailure={this.authLoginGoogleFail.bind(this)}
               >
-                <span>Login</span>
+                <img className="social__google" src={google} alt="logo" />
               </GoogleLogin>
               <KakaoLogin
                 jsKey="268fb9ee81f5cc98b81d5e03e42fdead"
@@ -135,6 +139,8 @@ class Login extends Component {
                 onFailure={this.authLoginKakaoFail.bind(this)}
                 getProfile
               />
+              <img src={google} className="social__google" alt="logo" />
+              <img src={kakao} className="social__kakao" alt="logo" />
             </div>
           </div>
         </div>

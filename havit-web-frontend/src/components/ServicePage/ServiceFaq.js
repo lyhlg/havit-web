@@ -217,8 +217,8 @@ class ServiceFaq extends Component {
                     <td className="serviceFaq__answerBack">
                       <p className="serviceFaq__answer">
                         <span>havit</span>에서 진행하고 있는 모든 상품은
-                        부가세가 포함된 가격으로, 추가 금액 없이 시술을 받으실
-                        수 있습니다.
+                        <span>부가세가 포함된 가격</span>으로,{' '}
+                        <span>추가 금액 없이</span> 시술을 받으실 수 있습니다.
                       </p>
                     </td>
                   </tr>
