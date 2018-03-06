@@ -76,6 +76,7 @@ class ProductInfo extends Component {
               </div>
             )}
             <hr />
+            <ReviewBoard />
           </div>
         )}
       </div>
