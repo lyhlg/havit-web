@@ -446,10 +446,10 @@ const successAddNotice = notice => ({
   notice,
 });
 
-export const addNotice = (title, body, author) => {
+export const addNotice = (title, body, author, url) => {
   return dispatch => {
     dispatch(requestAddNotice());
-    return api.addNotice(title, body, author).then(res => {
+    return api.addNotice(title, body, author, url).then(res => {
       dispatch(successAddNotice(res));
     });
   };
