@@ -26,7 +26,6 @@ class ProductReserve extends Component {
         document.getElementById('setTime2').value
       }`,
     ];
-    console.log(data);
     if (
       !data[2] ||
       isNaN(data[3]) ||
@@ -40,9 +39,9 @@ class ProductReserve extends Component {
         check: [false, 1],
       });
     } else {
-      console.log(data);
-      this.props.addReservation(...data);
-      window.location.href = '/mypage/reserve';
+      this.props.addReservation(...data, () => {
+        window.location.href = '/mypage/reserve';
+      });
     }
   }
 

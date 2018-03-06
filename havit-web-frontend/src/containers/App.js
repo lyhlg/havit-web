@@ -93,7 +93,8 @@ const mapDispatchToProps = dispatch => ({
     phone,
     productId,
     option,
-    reserveDate
+    reserveDate,
+    callback
   ) => {
     dispatch(
       actions.addReservation(
@@ -103,7 +104,8 @@ const mapDispatchToProps = dispatch => ({
         phone,
         productId,
         option,
-        reserveDate
+        reserveDate,
+        callback
       )
     );
   },

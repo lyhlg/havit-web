@@ -344,42 +344,45 @@ export const addReservation = (
   phone,
   productId,
   option,
-  reserveDate
+  reserveDate,
+  callback
 ) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $email: String
-        $hospitalCode: String
-        $userName: String
-        $phone: Int
-        $productId: Int
-        $option: String
-        $reserveDate: Float
-      ) {
-        addReservation(
-          user_id_email: $email
-          hospitalCode: $hospitalCode
-          userName: $userName
-          phone: $phone
-          productId: $productId
-          option: $option
-          reserveDate: $reserveDate
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $email: String
+          $hospitalCode: String
+          $userName: String
+          $phone: Int
+          $productId: Int
+          $option: String
+          $reserveDate: Float
         ) {
-          userName
+          addReservation(
+            user_id_email: $email
+            hospitalCode: $hospitalCode
+            userName: $userName
+            phone: $phone
+            productId: $productId
+            option: $option
+            reserveDate: $reserveDate
+          ) {
+            userName
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      hospitalCode,
-      userName,
-      phone,
-      productId,
-      option,
-      reserveDate,
-    },
-  });
+      `,
+      variables: {
+        email,
+        hospitalCode,
+        userName,
+        phone,
+        productId,
+        option,
+        reserveDate,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addReview = (email, stars, comment, productId) => {

@@ -239,7 +239,8 @@ export const addReservation = (
   phone,
   productId,
   option,
-  reserveDate
+  reserveDate,
+  callback
 ) => {
   return dispatch => {
     dispatch(requestAddReservation());
@@ -251,7 +252,8 @@ export const addReservation = (
         phone,
         productId,
         option,
-        reserveDate
+        reserveDate,
+        callback
       )
       .then(res => {
         dispatch(successAddReservation(res));
