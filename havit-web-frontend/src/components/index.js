@@ -40,6 +40,7 @@ export { default as AdminMenu } from './AdminPage/AdminMenu';
 export { default as ManageHospital } from './AdminPage/ManageHospital';
 export { default as Notice } from './AdminPage/Notice';
 export { default as ChangeNotice } from './AdminPage/ChangeNotice';
+export { default as ChangeBanner } from './AdminPage/ChangeBanner';
 export { default as ManageBanner } from './AdminPage/ManageBanner';
 export { default as ManageEvent } from './AdminPage/ManageEvent';
 export { default as UploadHospital } from './AdminPage/UploadHospital';

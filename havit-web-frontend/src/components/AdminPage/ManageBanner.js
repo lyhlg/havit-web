@@ -3,6 +3,18 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ManageBanner.css';
 
 class ManageBanner extends Component {
+  constructor(props) {
+    super(props);
+    this.moveBannerEdit = this.moveBannerEdit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getBanners();
+  }
+
+  moveBannerEdit(i) {
+    this.props.history.push(`/adminPage/changeBanner/${i}`);
+  }
   render() {
     return (
       <div className="manageBanner">
@@ -19,7 +31,7 @@ class ManageBanner extends Component {
               <tbody>
                 {this.props.banners.bannersList.map((banner, i) => {
                   return (
-                    <tr key={i}>
+                    <tr onClick={() => this.moveBannerEdit(banner._id)} key={i}>
                       <td>{banner.priority}</td>
                       <td>{banner.title}</td>
                       <td>{banner.url}</td>

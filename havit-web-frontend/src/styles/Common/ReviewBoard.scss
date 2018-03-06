@@ -1,31 +1,37 @@
 .reviewBoard {
-  border: solid 1px #dce2eb;
-  margin-top: 25px;
+  width: 1200px;
+  height: 110px;
+  background-color: #ffffff;
 
-  .reviewBoard__box1 {
-    
-
-    .reviewBoard__name {
-      display: inline-block;
-      font-size: 16px;
-      font-weight: bold;
-      color: #414d6b;
-      margin-right: 25px;
-    }
-
-    .reviewBoard__date {
-      display: inline-block;
-      font-size: 10px;
-      color: #869ab7;
-    }
+  .reviewBoard__name {
+    width: 100px;
+    height: 20px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1;
+    color: #414d6b;
   }
 
-  .reviewBoard__box2 {
+  .reviewBoard__menu {
+    width: 100px;
+    height: 15px;
+    font-size: 15px;
+    line-height: 1;
+    color: #647dff;
+    margin-top: 10px;
+  }
 
-    .reviewBoard__content {
-      font-size: 15px;
-      font-weight: normal;
-      color: #414d6b;
-    }
+  .reviewBoard__content {
+    width: 1180px;
+    height: 25px;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.67;
+    color: #414d6b;
+    margin-top: 20px;
+  }
+
+  hr {
+    margin-top: 30px;
   }
 }

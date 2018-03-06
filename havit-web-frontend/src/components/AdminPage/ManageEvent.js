@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ManageEvent.css';
 
 class ManageEvent extends Component {
+  componentDidMount() {
+    this.props.getEvents();
+  }
+
   render() {
     return (
       <div className="manageEvent">

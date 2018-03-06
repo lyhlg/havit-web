@@ -5,6 +5,7 @@ import {
   ManageHospital,
   Notice,
   ChangeNotice,
+  ChangeBanner,
   ManageBanner,
   ManageEvent,
   UploadPage,
@@ -19,8 +20,6 @@ import 'styles/css/AdminPage/AdminPage.css';
 class AdminPage extends Component {
   componentDidMount() {
     this.props.getHospitalAdmin();
-    this.props.getBanners();
-    this.props.getEvents();
   }
 
   render() {
@@ -67,6 +66,10 @@ class AdminPage extends Component {
               <Route
                 path="/adminPage/changeNotice/:id"
                 render={props => <ChangeNotice {...this.props} />}
+              />
+              <Route
+                path="/adminPage/changeBanner/:id"
+                render={props => <ChangeBanner {...this.props} />}
               />
             </div>
           </div>

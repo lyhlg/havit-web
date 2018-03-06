@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import 'styles/css/AdminPage/UploadBanner.css';
+import 'styles/css/AdminPage/ChangeNotice.css';
 
-class UploadBanner extends Component {
-  constructor(props) {
-    super(props);
-    this.submitBanner = this.submitBanner.bind(this);
-  }
-
-  submitBanner() {
-    this.props.addBanner(
-      '',
-      document.getElementById('title').value,
-      document.getElementById('url').value,
-      document.getElementById('priority').value,
-      () => {
-        window.location.href = '/adminPage/manageBanner';
-      }
-    );
+class ChangeBanner extends Component {
+  componentDidMount() {
+    this.props.getBanners(Number(window.location.pathname.slice(24)));
   }
 
   render() {
+    console.log(this.props.banners.bannersList[0]);
     return (
       <div className="uploadBanner">
         <div className="uploadBanner__wrapper">
           <div className="uploadBanner__tab">
             <h2 className="uploadBanner__title">배너상품 등록</h2>
             <h3 className="uploadBanner__label">우선순위</h3>
-            <select id="priority" className="uploadBanner__dropdown">
+            <select
+              id="priority"
+              className="uploadBanner__dropdown"
+              defaultValue={
+                this.props.banners.bannersList[0] &&
+                this.props.banners.bannersList[0].priority
+              }
+            >
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -41,6 +36,10 @@ class UploadBanner extends Component {
               id="title"
               className="uploadBanner__input"
               placeholder="상품명을 입력해주세요."
+              defaultValue={
+                this.props.banners.bannersList[0] &&
+                this.props.banners.bannersList[0].title
+              }
             />
             <h3 className="uploadBanner__label">상품 URL</h3>
             <input
@@ -48,12 +47,16 @@ class UploadBanner extends Component {
               id="url"
               className="uploadBanner__input"
               placeholder="상품 URL을 입력해주세요."
+              defaultValue={
+                this.props.banners.bannersList[0] &&
+                this.props.banners.bannersList[0].url
+              }
             />
             <h3 className="uploadBanner__label">배너 이미지 업로드</h3>
             <input type="file" className="uploadBanner__img" />
             <div className="uploadBanner__btn">
               <a onClick={this.submitBanner} className="uploadBanner__button">
-                배너상품 등록하기
+                배너상품 수정하기
               </a>
               <Link
                 to="/adminPage/manageBanner"
@@ -69,4 +72,4 @@ class UploadBanner extends Component {
   }
 }
 
-export default UploadBanner;
+export default ChangeBanner;
