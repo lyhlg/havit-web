@@ -700,19 +700,21 @@ export const addBanner = (img, title, url, priority, callback) => {
     .then(res => callback(res));
 };
 
-export const delBanner = id => {
-  return client.mutate({
-    mutation: gql`
-      mutation($id: Int) {
-        addHospitalAdmin(id: $id) {
-          title
+export const delBanner = (id, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($id: Int) {
+          delBanner(id: $id) {
+            title
+          }
         }
-      }
-    `,
-    variables: {
-      id,
-    },
-  });
+      `,
+      variables: {
+        id,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addHospitalAdmin = (code, name, loc) => {
