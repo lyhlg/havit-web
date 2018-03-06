@@ -7,6 +7,7 @@ const noticeSchema = new Schema({
   title: String,
   body: String,
   author: String,
+  url: String,
   views: { type: Number, default: 0 },
   createdOn: { type: Date, default: getCurrentDate() }
 });
