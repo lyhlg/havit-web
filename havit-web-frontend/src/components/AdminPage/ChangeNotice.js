@@ -34,13 +34,12 @@ class ChangeNotice extends Component {
       bucket: 'codestates-havit-web',
     };
 
-    s3client.upload(uploadOptions, (err, url) => {
-      console.log('aws url@@@@@', url);
+    s3client.upload(uploadOptions, (err, img) => {
       this.props.addNotice(
         document.getElementById('title').value,
         document.getElementById('body').value,
         '관리자',
-        url
+        img
       );
       setTimeout(() => {
         window.location.href = '/adminPage/notice';
