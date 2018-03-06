@@ -311,6 +311,7 @@ const typeDefs = `
       title: String
       body: String
       author: String
+      url: String
     ) : Notice
 
     delNotice(

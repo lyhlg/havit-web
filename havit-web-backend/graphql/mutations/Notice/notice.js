@@ -4,12 +4,13 @@ import { CHECK_DUP_DATA } from "../../common";
 
 const ADD_NOTICE = async params => {
   const [obj, args, ctx] = [...params];
+  const { title, body, author, url } = args;
   const { notice, counter } = ctx;
   const numberOfCount = Object.keys(args).length;
 
 
-  const chk_dup = await CHECK_DUP_DATA([obj, args, notice]);
-  if (!chk_dup && numberOfCount === 3) {
+  const chk_dup = await CHECK_DUP_DATA([obj, {title, body}, notice]);
+  if (!chk_dup && numberOfCount === 4) {
     const number = await autoNumbering("boardid", counter);
     let obj_counter = { _id: number };
     let new_args = Object.assign(args, obj_counter);
