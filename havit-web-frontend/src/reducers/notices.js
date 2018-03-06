@@ -16,6 +16,7 @@ const notices = (state = initialState, action) => {
     case types.REQUEST_GET_NOTICES:
       return {
         ...state,
+        noticesList: [],
         loading: true,
       };
     default:

@@ -81,12 +81,9 @@ class UploadEvent extends Component {
               <option value="종료">종료</option>
             </select>
             <div className="uploadEvent__btn">
-              <button
-                onClick={this.submitEvent}
-                className="uploadEvent__button"
-              >
+              <a onClick={this.submitEvent} className="uploadEvent__button">
                 이벤트상품 등록하기
-              </button>
+              </a>
               <Link to="/adminPage/manageEvent" className="uploadEvent__button">
                 취소
               </Link>
