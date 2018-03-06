@@ -38,27 +38,27 @@ class Login extends Component {
   }
   authLoginGoogleSucc(res) {
     this.props.addUserInfo(
+      data => {
+        const phone = data.data.addUserInfo.phone;
+        const code = data.data.addUserInfo.level;
+        if (phone) {
+          if (localStorage.getItem('email')) localStorage.removeItem('email');
+          if (localStorage.getItem('code')) localStorage.removeItem('code');
+          localStorage.setItem('email', res.profileObj.email);
+          localStorage.setItem('code', code);
+          this.props.history.push('/');
+        } else {
+          if (localStorage.getItem('temp')) localStorage.removeItem('temp');
+          localStorage.setItem('temp', res.profileObj.email);
+          localStorage.setItem('auth', 'google');
+          this.props.history.push('/privacy');
+        }
+      },
       res.profileObj.email,
       '',
       'google',
       res.profileObj.name
     );
-    setTimeout(() => {
-      const phone = this.props.newUserInfo.newUserInfo.phone;
-      const code = this.props.newUserInfo.newUserInfo.level;
-      if (phone) {
-        if (localStorage.getItem('email')) localStorage.removeItem('email');
-        if (localStorage.getItem('code')) localStorage.removeItem('code');
-        localStorage.setItem('email', res.profileObj.email);
-        localStorage.setItem('code', code);
-        this.props.history.push('/');
-      } else {
-        if (localStorage.getItem('temp')) localStorage.removeItem('temp');
-        localStorage.setItem('temp', res.profileObj.email);
-        localStorage.setItem('auth', 'google');
-        this.props.history.push('/privacy');
-      }
-    }, 1500);
   }
 
   authLoginGoogleFail(res) {
@@ -68,27 +68,27 @@ class Login extends Component {
 
   authLoginKakaoSucc(res) {
     this.props.addUserInfo(
+      data => {
+        const phone = data.data.addUserInfo.phone;
+        const code = data.data.addUserInfo.level;
+        if (phone) {
+          if (localStorage.getItem('email')) localStorage.removeItem('email');
+          if (localStorage.getItem('code')) localStorage.removeItem('code');
+          localStorage.setItem('email', res.profile.kaccount_email);
+          localStorage.setItem('code', code);
+          this.props.history.push('/');
+        } else {
+          if (localStorage.getItem('temp')) localStorage.removeItem('temp');
+          localStorage.setItem('temp', res.profile.kaccount_email);
+          localStorage.setItem('auth', 'kakao');
+          this.props.history.push('/privacy');
+        }
+      },
       res.profile.kaccount_email,
       '',
       'kakao',
       res.profile.properties.nickname
     );
-    setTimeout(() => {
-      const phone = this.props.newUserInfo.newUserInfo.phone;
-      const code = this.props.newUserInfo.newUserInfo.level;
-      if (phone !== null) {
-        if (localStorage.getItem('email')) localStorage.removeItem('email');
-        if (localStorage.getItem('code')) localStorage.removeItem('code');
-        localStorage.setItem('email', res.profile.kaccount_email);
-        localStorage.setItem('code', code);
-        this.props.history.push('/');
-      } else {
-        if (localStorage.getItem('temp')) localStorage.removeItem('temp');
-        localStorage.setItem('temp', res.profile.kaccount_email);
-        localStorage.setItem('auth', 'kakao');
-        this.props.history.push('/privacy');
-      }
-    }, 1500);
   }
   authLoginKakaoFail(res) {
     console.log(res);
@@ -96,6 +96,7 @@ class Login extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="login">
         <img src={reallogo} className="login__logo" alt="logo" />
