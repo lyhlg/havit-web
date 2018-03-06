@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import UploadReview from './UploadReview';
+import ReviewBoard from './ReviewBoard';
 import 'styles/css/Common/ProductInfo.css';
 
 class ProductInfo extends Component {
@@ -75,6 +76,7 @@ class ProductInfo extends Component {
             )}
             <hr />
             <UploadReview />
+            <ReviewBoard />
           </div>
         )}
       </div>
