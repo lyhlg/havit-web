@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'styles/css/HospitalPage/UploadProduct.css';
-import axios from 'axios';
+import { AWS_IMAGE_UPLOAD } from 'utils';
 
 class UploadProduct extends Component {
   constructor(props) {
@@ -14,19 +14,28 @@ class UploadProduct extends Component {
   }
 
   uploadProduct() {
-    let data = [
-      document.getElementById('type').value,
-      document.getElementById('subType').value,
-      '',
-      localStorage.getItem('email'),
-      document.getElementById('title').value,
-      document.getElementById('description').value,
-      document.getElementById('price').value,
-      '',
-      document.getElementById('options').value.split(','),
-    ];
-    this.props.addProduct(...data);
-    window.location.href = '/hospitalPage/manageProduct';
+    let data;
+    AWS_IMAGE_UPLOAD(
+      'PRODUCT',
+      document.getElementsByClassName('upload__img'),
+      img => {
+        console.log('callback 받아 온 이미지 url : ', img);
+        data = [
+          document.getElementById('type').value,
+          document.getElementById('subType').value,
+          img[0],
+          localStorage.getItem('email'),
+          document.getElementById('title').value,
+          document.getElementById('description').value,
+          document.getElementById('price').value,
+          img[1],
+          document.getElementById('options').value.split(','),
+        ];
+      }
+    ).then(res => console.log('URL RESULTS: ', res));
+    // console.log( "DATA @@@@@@@@@@@", data);
+    // this.props.addProduct(...data);
+    // window.location.href = "/hospitalPage/manageProduct";
   }
 
   fileSelectedHandler = event => {
@@ -88,7 +97,7 @@ class UploadProduct extends Component {
             <h3 className="uploadProduct__label">이미지 업로드</h3>
             <input
               type="file"
-              className="uploadProduct__img"
+              className="upload__img"
               onChange={this.fileSelectedHandler}
             />
             <h3 className="uploadProduct__label">상품명</h3>
@@ -115,7 +124,7 @@ class UploadProduct extends Component {
             <h3 className="uploadProduct__label">제품 상세 이미지 업로드</h3>
             <input
               type="file"
-              className="uploadProduct__img"
+              className="upload__img"
               onChange={this.fileSelectedHandler}
             />
             <h3 className="uploadProduct__label">옵션 설정</h3>

@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/UploadBanner.css';
 
 import { AWS_IMAGE_UPLOAD } from 'utils';
-import s3BrowserDirectUpload from 's3-browser-direct-upload';
 
 class UploadBanner extends Component {
   constructor(props) {
@@ -14,10 +13,9 @@ class UploadBanner extends Component {
   submitBanner() {
     AWS_IMAGE_UPLOAD(
       'NOTICE',
-      document.getElementsByClassName('uploadProduct__img'),
-      null,
+      document.getElementsByClassName('upload__img'),
       img => {
-        this.props.addBanner(
+        return this.props.addBanner(
           img,
           document.getElementById('title').value,
           document.getElementById('url').value,
@@ -60,7 +58,7 @@ class UploadBanner extends Component {
               placeholder="상품 URL을 입력해주세요."
             />
             <h3 className="uploadBanner__label">배너 이미지 업로드</h3>
-            <input type="file" className="uploadBanner__img" />
+            <input type="file" className="upload__img" />
             <div className="uploadBanner__btn">
               <a onClick={this.submitBanner} className="uploadBanner__button">
                 배너상품 등록하기
