@@ -81,11 +81,11 @@ class ChangeNotice extends Component {
               <div className="ChangeNotice__btn">
                 <button
                   onClick={this.changeNoticeAdmin}
-                  className="ChangeNotice__button"
+                  className="ChangeNotice__button1"
                 >
                   공지사항 수정하기
                 </button>
-                <Link to="/adminPage/notice" className="ChangeNotice__button">
+                <Link to="/adminPage/notice" className="ChangeNotice__button2">
                   취소
                 </Link>
               </div>

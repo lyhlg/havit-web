@@ -4,14 +4,34 @@
   color: #869ab7;
   margin: 20px 0 10px 0; }
 
+.serviceCenter .serviceCenter__wrapper .serviceCenter__tab .serviceCenter__part1 span {
+  color: #647dff;
+  font-weight: bold; }
+
 .serviceCenter .serviceCenter__wrapper .serviceCenter__tab .serviceCenter__part2 {
   font-size: 15px;
   font-weight: normal;
   color: #869ab7;
   margin: 50px 0 10px 0; }
+  .serviceCenter .serviceCenter__wrapper .serviceCenter__tab .serviceCenter__part2 p {
+    font-size: 12px;
+    font-weight: normal;
+    color: #869ab7;
+    margin: 20px 0 10px 0; }
+  .serviceCenter .serviceCenter__wrapper .serviceCenter__tab .serviceCenter__part2 span {
+    color: #647dff;
+    font-weight: bold; }
 
 .serviceCenter .serviceCenter__wrapper .serviceCenter__tab .serviceCenter__part3 {
   font-size: 15px;
   font-weight: normal;
   color: #869ab7;
   margin: 40px 0 10px 0; }
+  .serviceCenter .serviceCenter__wrapper .serviceCenter__tab .serviceCenter__part3 p {
+    font-size: 14px;
+    font-weight: normal;
+    color: #869ab7;
+    margin: 20px 0 10px 0; }
+  .serviceCenter .serviceCenter__wrapper .serviceCenter__tab .serviceCenter__part3 span {
+    color: #647dff;
+    font-weight: bold; }
