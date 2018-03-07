@@ -1,6 +1,8 @@
 .loading {
   height: 650px; }
   .loading .loading__text {
+    width: 800px;
+    padding-right: 200px;
     line-height: 2.0;
     position: absolute;
     top: 40%;
