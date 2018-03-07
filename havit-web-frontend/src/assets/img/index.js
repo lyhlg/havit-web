@@ -6,3 +6,5 @@ export { default as google } from './google.png';
 export { default as kakao } from './kakao.png';
 export { default as logosong1 } from './logosong1.png';
 export { default as trash } from './trash.png';
+export { default as trash01 } from './trash01.png';
+export { default as trash02 } from './trash02.png';

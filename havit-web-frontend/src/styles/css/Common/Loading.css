@@ -20,7 +20,7 @@
       text-align: center;
       font-size: 22px;
       font-weight: bold;
-      color: #48c0e0; }
+      color: #647dff; }
     .loading .loading__text .loading__label {
       text-align: center;
       font-size: 14px;
@@ -31,7 +31,7 @@
       font-size: 13px;
       color: #869ab7; }
   .loading span {
-    color: #48c0e0;
+    color: #647dff;
     font-weight: bold; }
   .loading .loading__spinner {
     background-color: #ffffff; }

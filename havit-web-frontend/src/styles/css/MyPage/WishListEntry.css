@@ -20,12 +20,14 @@
         color: #647dff;
         padding: 10px 0 30px 0; }
       .wishList .wishList__content .wishList__left .wishList__name {
+        margin-top: 10px;
         font-size: 20px;
         color: #414d6b;
         padding-bottom: 15px; }
       .wishList .wishList__content .wishList__left .wishList__description {
         font-size: 15px;
-        color: #414d6b; }
+        font-weight: normal;
+        color: #869ab7; }
     .wishList .wishList__content .wishList__right {
       float: right; }
       .wishList .wishList__content .wishList__right .wishList__price {
