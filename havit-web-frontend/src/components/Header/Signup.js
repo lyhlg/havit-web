@@ -279,16 +279,19 @@ class Signup extends Component {
             />
             <hr className="signup__hr" />
             <h6 className="signup__info">
-              회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
+              회원가입 시{' '}
+              <Link to="/Header/UserAgree" className="Signup__userAgree">
+                이용약관
+              </Link>, 개인정보 수집 및 이용에 동의로 간주합니다.
             </h6>
             <div className="signup__btn">
+              {!this.state.check[0] &&
+                this.state.check[1] > 0 && (
+                  <p className="signup__alert">* 올바른 값을 입력해주세요.</p>
+                )}
               <button onClick={this.submitUserInfo} className="signup__button">
                 회원가입
               </button>
-              {!this.state.check[0] &&
-                this.state.check[1] > 0 && (
-                  <p className="signup__alert">올바른 값을 입력하세요</p>
-                )}
             </div>
           </div>
         </div>

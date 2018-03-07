@@ -22,7 +22,7 @@
       padding: 80px 160px;
 
       .signup__title {
-        font-size: 26px;
+        font-size: 25px;
         color: #647dff;
         margin-bottom: 60px;
       }
@@ -31,7 +31,7 @@
         font-size: 15px;
         font-weight: normal;
         color: #869ab7;
-        margin: 40px 0 10px 0;
+        margin: 50px 0 10px 0;
       }
 
       .signup__input {
@@ -45,19 +45,23 @@
       .signup__box {
         width: 1100px;
         height: 130px;
+
         .signup__box3 {
           display: inline-block;
           width: 260px;
           height: 100px;
         }
+
         .signup__box4 {
           display: inline-block;
           width: 500px;
           height: 100px;
           vertical-align: top;
+          
           .signup__gender {
             margin-bottom: 30px;
           }
+
           .signup__labelText {
             margin-right: 20px;
             font-size: 15px;
@@ -136,7 +140,9 @@
         }
       }
       .signup__alert {
-        color: #869ab7;
+        color: #ff8282;
+        font-size: 15px;
+        margin-bottom: 5px;
       }
     }
   }
