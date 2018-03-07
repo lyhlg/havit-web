@@ -322,48 +322,52 @@ export const addProduct = (
   productName,
   description,
   price,
-  ProductDetail,
-  options
+  productDetail,
+  options,
+  callback
 ) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $type: String
-        $subType: String
-        $img: String
-        $email: String
-        $description: String
-        $price: Int
-        $productDetail: String
-        $option: [String]
-      ) {
-        addProduct(
-          type: $type
-          subType: $subType
-          img: $img
-          user_id_email: $email
-          productName: $productName
-          description: $description
-          price: $price
-          ProductDetail: $ProductDetail
-          options: $options
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $type: String
+          $subType: String
+          $img: String
+          $email: String
+          $productName: String
+          $description: String
+          $price: Int
+          $productDetail: String
+          $options: [String]
         ) {
-          productId
+          addProduct(
+            type: $type
+            subType: $subType
+            img: $img
+            user_id_email: $email
+            productName: $productName
+            description: $description
+            price: $price
+            productDetail: $productDetail
+            options: $options
+          ) {
+            productId
+          }
         }
-      }
-    `,
-    variables: {
-      type,
-      subType,
-      img,
-      email,
-      productName,
-      description,
-      price,
-      ProductDetail,
-      options,
-    },
-  });
+      `,
+      variables: {
+        type,
+        subType,
+        img,
+        email,
+        productName,
+        description,
+        price,
+        productDetail,
+        options,
+      },
+    })
+    .then(res => callback(res));
 };
 export const addReservation = (
   email,

@@ -27,15 +27,15 @@ class UploadProduct extends Component {
           localStorage.getItem('email'),
           document.getElementById('title').value,
           document.getElementById('description').value,
-          document.getElementById('price').value,
+          Number(document.getElementById('price').value),
           img[1],
           document.getElementById('options').value.split(','),
         ];
+        this.props.addProduct(...data, () => {
+          window.location.href = '/hospitalPage/manageProduct';
+        });
       }
-    ).then(res => console.log('URL RESULTS: ', res));
-    // console.log( "DATA @@@@@@@@@@@", data);
-    // this.props.addProduct(...data);
-    // window.location.href = "/hospitalPage/manageProduct";
+    );
   }
 
   fileSelectedHandler = event => {

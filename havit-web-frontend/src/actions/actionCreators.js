@@ -219,7 +219,8 @@ export const addProduct = (
   description,
   price,
   ProductDetail,
-  options
+  options,
+  callback
 ) => {
   return dispatch => {
     dispatch(requestAddProduct());
@@ -233,7 +234,8 @@ export const addProduct = (
         description,
         price,
         ProductDetail,
-        options
+        options,
+        callback
       )
       .then(res => {
         dispatch(successAddProduct(res));

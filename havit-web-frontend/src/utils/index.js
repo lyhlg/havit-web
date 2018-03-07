@@ -30,18 +30,29 @@ export const AWS_IMAGE_UPLOAD = async (type, elements, callback) => {
   let file = Array.prototype.map.call(elements, el => el.files[0]);
 
   console.log('file: ', file);
-  let res = file.map(async item => {
+  let res = [],
+    count = 0;
+  file.forEach(item => {
     let uploadOptions = {
       data: item,
       key: FORMAT_FILENAME(type, item.name),
       bucket: 'codestates-havit-web',
     };
-    await s3client.upload(uploadOptions, (err, imgURL) => {
-      console.log(imgURL);
-      return imgURL;
+    return s3client.upload(uploadOptions, (err, imgURL) => {
+      if (err) console.log('error', err);
+      res.push(imgURL);
+      console.log('uirlrlrlrl', imgURL);
+      ++count;
+      if (count === file.length) {
+        return callback(res);
+      }
     });
   });
-  return await callback(res);
+  // Promise.all(res).then(async res => {
+  //       console.log( "Promise all " , res) ;
+  //     })
+
+  // return await res;
   // return;
 
   // file1 = elements[0].files[0];
