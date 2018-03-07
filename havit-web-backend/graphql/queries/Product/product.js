@@ -1,6 +1,7 @@
 import { CHK_MAX_PAGE } from "../../common";
 
 const FIND_PRODUCT = async params => {
+  console.log("#@####", args);
   const [obj, args, ctx] = [...params];
   const { type, subType, page, productId } = args;
   const { product, review } = ctx;
@@ -9,28 +10,30 @@ const FIND_PRODUCT = async params => {
   // page 설정
   page ? page : 1;
 
-  if (obj) {
-    if (obj.productId && !obj.stars) {
-      // 예약 -> 제품검색
-      return await product.find({ productId: obj.productId });
-    } else if (obj.code) {
-      // 병원 -> 제품검색
-      return await obj.products.map(async item => {
-        return await product.findOne({ productId: item });
-      });
-    } else if (obj.stars) {
-      // 리뷰 -> 제품검색
-      return await product.findOne({ productId: obj.productId });
-    }
-  }
-
   const results = async target => {
+    console.log(target);
     return await product
       .find(target)
       .sort({ _id: -1 })
       .skip((page - 1) * limit)
       .limit(limit);
   };
+
+  if (obj) {
+    if (obj.productId && !obj.stars) {
+      // 예약 -> 제품검색
+      return result({ productId: obj.productId });
+    } else if (obj.code) {
+      // 병원 -> 제품검색
+      const prod = await obj.products.map(async item => {
+        return await product.findOne({ productId: item });
+      });
+      Promise.all(prod).then(res => res.reverse());
+    } else if (obj.stars) {
+      // 리뷰 -> 제품검색
+      return await product.findOne({ productId: obj.productId });
+    }
+  }
 
   // 상품 상세 정보
   if (productId) return results({ productId });

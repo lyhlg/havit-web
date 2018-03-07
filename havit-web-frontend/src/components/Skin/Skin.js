@@ -30,6 +30,7 @@ class Skin extends Component {
     return (
       <div>
         <Nav />
+        <Banner {...this.props} />
         <div className="subNav__wrapper">
           <ul className="subNav">
             <NavLink
