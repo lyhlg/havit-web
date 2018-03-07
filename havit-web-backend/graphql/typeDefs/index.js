@@ -349,6 +349,17 @@ const typeDefs = `
       productDetails: String
     ) : Event
 
+    modifyEvent(
+      productId: Int
+      productName: String
+      description: String
+      img: String
+      price: Int
+      status: String
+      priority: Int
+      productDetails: String
+    ) : Event
+
     delEvent(
       hospitalCode: String
       productId: Int

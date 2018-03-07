@@ -44,6 +44,7 @@ import {
   MODIFY_BANNER,
   DEL_BANNER,
   ADD_EVENT,
+  MODIFY_EVENT,
   DEL_EVENT
 } from "../mutations";
 
@@ -115,6 +116,7 @@ export default {
 
     // Event
     addEvent: (...params) => ADD_EVENT(params),
+    modifyEvent: (...params) => MODIFY_EVENT(params),
     delEvent: (...params) => DEL_EVENT(params),
 
     // Notice (공지)
