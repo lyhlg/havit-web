@@ -1,7 +1,7 @@
 .login {
   width: 1440px;
   height: 720px;
-  background-color: #6680ff;
+  background-color: #4cc0e0;
   margin: 0 auto; }
   .login .login__logo {
     width: 200px;
@@ -31,6 +31,7 @@
       .login .login__wrapper .login__tab .login__btn {
         width: 160px;
         height: 50px;
+        font-size: 15px;
         border-radius: 2px;
         background-color: #4cc8e5;
         border: solid 1px #4cc8e5;

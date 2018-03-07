@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reallogo } from 'assets/img';
+import { logosong1 } from 'assets/img';
 import { google } from 'assets/img';
 import { kakao } from 'assets/img';
 import { Route } from 'react-router-dom';
@@ -99,7 +99,7 @@ class Login extends Component {
     console.log(this.props);
     return (
       <div className="login">
-        <img src={reallogo} className="login__logo" alt="logo" />
+        <img src={logosong1} className="login__logo" alt="logo" />
         <div className="login__wrapper">
           <div className="login__tab">
             <h3 className="login__label">이메일 주소</h3>

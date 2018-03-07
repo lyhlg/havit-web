@@ -4,3 +4,4 @@ export { default as logo3 } from './logo3.png';
 export { default as reallogo } from './reallogo.png';
 export { default as google } from './google.png';
 export { default as kakao } from './kakao.png';
+export { default as logosong1 } from './logosong1.png';
