@@ -1,6 +1,24 @@
 import * as types from './actionTypes';
 import * as api from 'api';
 
+const requestGetLogin = () => ({
+  type: types.REQUEST_GET_LOGIN,
+});
+
+const successGetLogin = login => ({
+  type: types.SUCCESS_GET_LOGIN,
+  login,
+});
+
+export const getLogin = (callback, email, password) => {
+  return dispatch => {
+    dispatch(requestGetLogin());
+    return api.getLogin(callback, email, password).then(res => {
+      dispatch(successGetLogin(res));
+    });
+  };
+};
+
 const requestGetUserInfo = () => ({
   type: types.REQUEST_GET_USERINFO,
 });
@@ -488,10 +506,10 @@ const successDelBanner = banner => ({
   banner,
 });
 
-export const delBanner = id => {
+export const delBanner = (id, callback) => {
   return dispatch => {
     dispatch(requestDelBanner());
-    return api.delBanner(id).then(res => {
+    return api.delBanner(id, callback).then(res => {
       dispatch(successDelBanner(res));
     });
   };
@@ -559,15 +577,15 @@ const requestDelEvent = () => ({
   type: types.REQUEST_DEL_EVENT,
 });
 
-const successDelEvent = () => ({
+const successDelEvent = event => ({
   type: types.SUCCESS_DEL_EVENT,
-  addEvent,
+  event,
 });
 
-export const delEvent = (hospitalCode, productId) => {
+export const delEvent = (hospitalCode, productId, callback) => {
   return dispatch => {
     dispatch(requestDelEvent());
-    return api.delEvent(hospitalCode, productId).then(res => {
+    return api.delEvent(hospitalCode, productId, callback).then(res => {
       dispatch(successDelEvent(res));
     });
   };

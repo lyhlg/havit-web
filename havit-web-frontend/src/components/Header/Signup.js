@@ -87,30 +87,29 @@ class Signup extends Component {
       ) || '',
       document.getElementById('code').value || '',
     ];
-    setTimeout(() => {
-      if (
-        !/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
-          data[0]
-        ) ||
-        !/^[a-zA-Z0-9]{6,20}$/.test(data[1]) ||
-        data[1] !== document.getElementById('password2').value ||
-        !data[3] ||
-        data[4] === NaN ||
-        data[4].toString().length < 9 ||
-        data[4].toString().length > 10 ||
-        data[5] === NaN ||
-        !data[6].length ||
-        !data[7].length ||
-        !data[8].length
-      ) {
-        this.setState({
-          check: [false, 1],
-        });
-      } else {
-        this.props.addUserInfo(...data);
+    if (
+      !/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/.test(
+        data[0]
+      ) ||
+      !/^[a-zA-Z0-9]{6,20}$/.test(data[1]) ||
+      data[1] !== document.getElementById('password2').value ||
+      !data[3] ||
+      data[4] === NaN ||
+      data[4].toString().length < 9 ||
+      data[4].toString().length > 10 ||
+      data[5] === NaN ||
+      !data[6].length ||
+      !data[7].length ||
+      !data[8].length
+    ) {
+      this.setState({
+        check: [false, 1],
+      });
+    } else {
+      this.props.addUserInfo(() => {
         this.props.history.push('/signupend');
-      }
-    }, 0);
+      }, ...data);
+    }
   }
 
   render() {

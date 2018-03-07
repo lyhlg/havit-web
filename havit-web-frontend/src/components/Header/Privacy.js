@@ -84,27 +84,26 @@ class Privacy extends Component {
       ) || '',
       document.getElementById('code').value || '',
     ];
-    setTimeout(() => {
-      if (
-        !data[3] ||
-        isNaN(data[4]) ||
-        data[4].toString().length < 9 ||
-        data[4].toString().length > 10 ||
-        isNaN(data[5]) ||
-        !data[6].length ||
-        !data[7].length ||
-        !data[8].length
-      ) {
-        this.setState({
-          check: [false, 1],
-        });
-      } else {
-        this.props.addUserInfo(...data);
+    if (
+      !data[3] ||
+      isNaN(data[4]) ||
+      data[4].toString().length < 9 ||
+      data[4].toString().length > 10 ||
+      isNaN(data[5]) ||
+      !data[6].length ||
+      !data[7].length ||
+      !data[8].length
+    ) {
+      this.setState({
+        check: [false, 1],
+      });
+    } else {
+      this.props.addUserInfo(() => {
         localStorage.removeItem('temp');
         localStorage.removeItem('auth');
         this.props.history.push('/signupend');
-      }
-    }, 0);
+      }, ...data);
+    }
   }
 
   render() {

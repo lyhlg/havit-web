@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   likeProducts: state.likeProducts,
   newLikeProduct: state.newLikeProduct,
   userInfo: state.userInfo,
+  login: state.login,
   newUserInfo: state.addUserInfo,
   review: state.review,
   hospital: state.hospital,
@@ -20,6 +21,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getLogin: (callback, email, password) => {
+    dispatch(actions.getLogin(callback, email, password));
+  },
+
   getUserInfo: (email, password) => {
     dispatch(actions.getUserInfo(email, password));
   },
@@ -190,8 +195,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addBanner(img, title, url, priority, callback));
   },
 
-  delBanner: id => {
-    dispatch(actions.delBanner(id));
+  delBanner: (id, callback) => {
+    dispatch(actions.delBanner(id, callback));
   },
 
   addHospitalAdmin: (code, name, loc) => {
@@ -224,8 +229,8 @@ const mapDispatchToProps = dispatch => ({
     );
   },
 
-  delEvent: (hospitalCode, productId) => {
-    dispatch(actions.delEvent(hospitalCode, productId));
+  delEvent: (hospitalCode, productId, callback) => {
+    dispatch(actions.delEvent(hospitalCode, productId, callback));
   },
 
   delHospitalAdmin: (code, callback) => {
