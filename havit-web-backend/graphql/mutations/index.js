@@ -24,7 +24,7 @@ import { ADD_NOTICE, DEL_NOTICE } from "./Notice/notice";
 
 import { ADD_BANNER, MODIFY_BANNER, DEL_BANNER } from "./Banner/banner";
 
-import { ADD_EVENT, DEL_EVENT } from "./Event/event";
+import { ADD_EVENT, MODIFY_EVENT, DEL_EVENT } from "./Event/event";
 
 export {
   ADD_RESERVATION,
@@ -47,5 +47,6 @@ export {
   MODIFY_BANNER,
   DEL_BANNER,
   ADD_EVENT,
+  MODIFY_EVENT,
   DEL_EVENT
 };

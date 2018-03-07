@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Loading } from '../index';
 import 'styles/css/AdminPage/ChangeNotice.css';
-import { FORMAT_FILENAME } from 'utils';
 
+import { FORMAT_FILENAME } from 'utils';
 import { AWS_KEYS } from 'utils/awskey';
 import s3BrowserDirectUpload from 's3-browser-direct-upload';
 
