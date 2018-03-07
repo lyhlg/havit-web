@@ -4,8 +4,8 @@ import {
   AdminMenu,
   ManageHospital,
   Notice,
-  NoticeDetail,
   ChangeNotice,
+  ChangeBanner,
   ManageBanner,
   ManageEvent,
   UploadPage,
@@ -20,8 +20,6 @@ import 'styles/css/AdminPage/AdminPage.css';
 class AdminPage extends Component {
   componentDidMount() {
     this.props.getHospitalAdmin();
-    this.props.getBanners();
-    this.props.getEvents();
   }
 
   render() {
@@ -66,12 +64,12 @@ class AdminPage extends Component {
                 render={props => <UploadNotice {...this.props} />}
               />
               <Route
-                path="/adminPage/noticeDetail"
-                render={props => <NoticeDetail {...this.props} />}
-              />
-              <Route
                 path="/adminPage/changeNotice/:id"
                 render={props => <ChangeNotice {...this.props} />}
+              />
+              <Route
+                path="/adminPage/changeBanner/:id"
+                render={props => <ChangeBanner {...this.props} />}
               />
             </div>
           </div>

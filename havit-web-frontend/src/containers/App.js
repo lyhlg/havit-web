@@ -9,6 +9,7 @@ const mapStateToProps = state => ({
   likeProducts: state.likeProducts,
   newLikeProduct: state.newLikeProduct,
   userInfo: state.userInfo,
+  login: state.login,
   newUserInfo: state.addUserInfo,
   review: state.review,
   hospital: state.hospital,
@@ -20,6 +21,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getLogin: (callback, email, password) => {
+    dispatch(actions.getLogin(callback, email, password));
+  },
+
   getUserInfo: (email, password) => {
     dispatch(actions.getUserInfo(email, password));
   },
@@ -174,8 +179,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.fixReservation(reserveNum, careDate));
   },
 
-  delReservation: (email, productId, reserveNum) => {
-    dispatch(actions.delReservation(email, productId, reserveNum));
+  delReservation: (email, productId, reserveNum, callback) => {
+    dispatch(actions.delReservation(email, productId, reserveNum, callback));
   },
 
   confirmPurchase: reserveNum => {
@@ -186,12 +191,12 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.addNotice(title, body, author, img));
   },
 
-  addBanner: (img, title, url, priority) => {
-    dispatch(actions.addBanner(img, title, url, priority));
+  addBanner: (img, title, url, priority, callback) => {
+    dispatch(actions.addBanner(img, title, url, priority, callback));
   },
 
-  delBanner: id => {
-    dispatch(actions.delBanner(id));
+  delBanner: (id, callback) => {
+    dispatch(actions.delBanner(id, callback));
   },
 
   addHospitalAdmin: (code, name, loc) => {
@@ -202,30 +207,34 @@ const mapDispatchToProps = dispatch => ({
     hospitalCode,
     productName,
     description,
+    img,
     price,
     status,
     priority,
-    productImage
+    productDetails,
+    callback
   ) => {
     dispatch(
       actions.addEvent(
         hospitalCode,
         productName,
         description,
+        img,
         price,
         status,
         priority,
-        productImage
+        productDetails,
+        callback
       )
     );
   },
 
-  delEvent: (hospitalCode, productId) => {
-    dispatch(actions.delEvent(hospitalCode, productId));
+  delEvent: (hospitalCode, productId, callback) => {
+    dispatch(actions.delEvent(hospitalCode, productId, callback));
   },
 
-  delHospitalAdmin: code => {
-    dispatch(actions.delHospitalAdmin(code));
+  delHospitalAdmin: (code, callback) => {
+    dispatch(actions.delHospitalAdmin(code, callback));
   },
 });
 

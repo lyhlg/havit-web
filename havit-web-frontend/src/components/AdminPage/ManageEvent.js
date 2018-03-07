@@ -3,7 +3,21 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ManageEvent.css';
 
 class ManageEvent extends Component {
+  componentDidMount() {
+    this.props.getEvents();
+  }
+
+  deleteEvent(e, code, id) {
+    e.stopPropagation();
+    if (window.confirm('삭제하시겠습니까?')) {
+      this.props.delEvent(code, id, () => {
+        window.location.href = '/adminPage/manageEvent';
+      });
+    }
+  }
+
   render() {
+    console.log(this.props);
     return (
       <div className="manageEvent">
         <div className="manageEvent__wrapper">
@@ -16,6 +30,7 @@ class ManageEvent extends Component {
                   <th>상품 금액</th>
                   <th>판매수</th>
                   <th>상태</th>
+                  <th>삭제</th>
                 </tr>
               </thead>
               <tbody>
@@ -27,6 +42,20 @@ class ManageEvent extends Component {
                       <td>{event.price}</td>
                       <td>{event.purchased}</td>
                       <td>{event.status}</td>
+                      <td>
+                        <button
+                          className="manageEvent__delete"
+                          onClick={e =>
+                            this.deleteEvent(
+                              e,
+                              event.hospitalCode,
+                              event.productId
+                            )
+                          }
+                        >
+                          x
+                        </button>
+                      </td>
                     </tr>
                   );
                 })}

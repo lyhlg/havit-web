@@ -12,9 +12,8 @@ const banners = (state = initialState, action) => {
         bannersList: action.banners.data.Banners,
       };
     case types.REQUEST_GET_BANNERS:
-      return {
-        ...state,
-      };
+    case types.REQUEST_DEL_BANNER:
+    case types.SUCCESS_DEL_BANNER:
     default:
       return state;
   }

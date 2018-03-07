@@ -1,6 +1,24 @@
 import * as types from './actionTypes';
 import * as api from 'api';
 
+const requestGetLogin = () => ({
+  type: types.REQUEST_GET_LOGIN,
+});
+
+const successGetLogin = login => ({
+  type: types.SUCCESS_GET_LOGIN,
+  login,
+});
+
+export const getLogin = (callback, email, password) => {
+  return dispatch => {
+    dispatch(requestGetLogin());
+    return api.getLogin(callback, email, password).then(res => {
+      dispatch(successGetLogin(res));
+    });
+  };
+};
+
 const requestGetUserInfo = () => ({
   type: types.REQUEST_GET_USERINFO,
 });
@@ -414,12 +432,14 @@ const successDelReservation = reservation => ({
   reservation,
 });
 
-export const delReservation = (email, productId, reserveNum) => {
+export const delReservation = (email, productId, reserveNum, callback) => {
   return dispatch => {
     dispatch(requestDelReservation());
-    return api.delReservation(email, productId, reserveNum).then(res => {
-      dispatch(successDelReservation(res));
-    });
+    return api
+      .delReservation(email, productId, reserveNum, callback)
+      .then(res => {
+        dispatch(successDelReservation(res));
+      });
   };
 };
 
@@ -468,10 +488,10 @@ const successAddBanner = banner => ({
   banner,
 });
 
-export const addBanner = (img, title, url, priority) => {
+export const addBanner = (img, title, url, priority, callback) => {
   return dispatch => {
     dispatch(requestAddBanner());
-    return api.addBanner(img, title, url, priority).then(res => {
+    return api.addBanner(img, title, url, priority, callback).then(res => {
       dispatch(successAddBanner(res));
     });
   };
@@ -486,10 +506,10 @@ const successDelBanner = banner => ({
   banner,
 });
 
-export const delBanner = id => {
+export const delBanner = (id, callback) => {
   return dispatch => {
     dispatch(requestDelBanner());
-    return api.delBanner(id).then(res => {
+    return api.delBanner(id, callback).then(res => {
       dispatch(successDelBanner(res));
     });
   };
@@ -526,10 +546,12 @@ export const addEvent = (
   hospitalCode,
   productName,
   description,
+  img,
   price,
   status,
   priority,
-  productImage
+  productDetails,
+  callback
 ) => {
   return dispatch => {
     dispatch(requestAddEvent());
@@ -538,10 +560,12 @@ export const addEvent = (
         hospitalCode,
         productName,
         description,
+        img,
         price,
         status,
         priority,
-        productImage
+        productDetails,
+        callback
       )
       .then(res => {
         dispatch(successAddEvent(res));
@@ -553,15 +577,15 @@ const requestDelEvent = () => ({
   type: types.REQUEST_DEL_EVENT,
 });
 
-const successDelEvent = () => ({
+const successDelEvent = event => ({
   type: types.SUCCESS_DEL_EVENT,
-  addEvent,
+  event,
 });
 
-export const delEvent = (hospitalCode, productId) => {
+export const delEvent = (hospitalCode, productId, callback) => {
   return dispatch => {
     dispatch(requestDelEvent());
-    return api.delEvent(hospitalCode, productId).then(res => {
+    return api.delEvent(hospitalCode, productId, callback).then(res => {
       dispatch(successDelEvent(res));
     });
   };
@@ -576,10 +600,10 @@ const successDelHospitalAdmin = hospitalAdmin => ({
   hospitalAdmin,
 });
 
-export const delHospitalAdmin = code => {
+export const delHospitalAdmin = (code, callback) => {
   return dispatch => {
     dispatch(requestDelHospitalAdmin());
-    return api.delHospitalAdmin(code).then(res => {
+    return api.delHospitalAdmin(code, callback).then(res => {
       dispatch(successDelHospitalAdmin(res));
     });
   };

@@ -13,14 +13,15 @@ class UploadEvent extends Component {
       document.getElementById('hospitalCode').value,
       document.getElementById('productName').value,
       document.getElementById('description').value,
-      document.getElementById('price').value,
+      'abc',
+      Number(document.getElementById('price').value),
       document.getElementById('status').value,
-      document.getElementById('priority').value,
-      document.getElementById('productImage').value
+      Number(document.getElementById('priority').value),
+      'abc',
+      () => {
+        window.location.href = '/adminPage/manageEvent';
+      }
     );
-    setTimeout(() => {
-      window.location.href = '/adminPage/manageEvent';
-    }, 1500);
   }
 
   render() {
@@ -80,12 +81,9 @@ class UploadEvent extends Component {
               <option value="종료">종료</option>
             </select>
             <div className="uploadEvent__btn">
-              <button
-                onClick={this.submitEvent}
-                className="uploadEvent__button"
-              >
+              <a onClick={this.submitEvent} className="uploadEvent__button">
                 이벤트상품 등록하기
-              </button>
+              </a>
               <Link to="/adminPage/manageEvent" className="uploadEvent__button">
                 취소
               </Link>

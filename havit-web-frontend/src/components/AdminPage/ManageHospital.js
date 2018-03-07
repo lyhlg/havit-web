@@ -20,10 +20,14 @@ class ManageHospital extends Component {
   }
 
   delHospital(e) {
-    this.props.delHospitalAdmin(
-      e.currentTarget.parentNode.parentNode.childNodes[0].textContent
-    );
-    window.location.href = '/adminPage/manageHospital';
+    if (window.confirm('삭제하시겠습니까?')) {
+      this.props.delHospitalAdmin(
+        e.currentTarget.parentNode.parentNode.childNodes[0].textContent,
+        () => {
+          window.location.href = '/adminPage/manageHospital';
+        }
+      );
+    }
   }
 
   render() {
@@ -39,7 +43,7 @@ class ManageHospital extends Component {
                   <th>병원 이름</th>
                   <th>병원 위치</th>
                   <th>관리자 계정</th>
-                  <th>병원 삭제</th>
+                  <th>삭제</th>
                 </tr>
               </thead>
               <tbody>

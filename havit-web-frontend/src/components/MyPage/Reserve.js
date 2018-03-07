@@ -49,11 +49,14 @@ class Reserve extends Component {
   }
 
   handleCancel(i) {
-    if (window.confirm('예약 삭제 하시겠습니까?')) {
+    if (window.confirm('삭제 하시겠습니까?')) {
       this.props.delReservation(
         localStorage.getItem('email'),
         this.props.reservations.reservationsList[i.i].productId,
-        this.props.reservations.reservationsList[i.i].reserveNum
+        this.props.reservations.reservationsList[i.i].reserveNum,
+        () => {
+          window.location.reload();
+        }
       );
     }
   }

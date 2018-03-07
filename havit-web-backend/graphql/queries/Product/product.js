@@ -25,7 +25,6 @@ const FIND_PRODUCT = async params => {
   }
 
   const results = async target => {
-    console.log(target);
     return await product
       .find(target)
       .sort({ _id: -1 })
