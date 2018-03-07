@@ -11,12 +11,13 @@ class UploadBanner extends Component {
   }
 
   submitBanner() {
+    let data;
     AWS_IMAGE_UPLOAD(
-      'NOTICE',
+      'PRODUCT',
       document.getElementsByClassName('upload__img'),
       img => {
         return this.props.addBanner(
-          img,
+          img[0],
           document.getElementById('title').value,
           document.getElementById('url').value,
           document.getElementById('priority').value,

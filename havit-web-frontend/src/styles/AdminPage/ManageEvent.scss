@@ -32,7 +32,7 @@
   .manageEvent__delete {
     border: 0px;
     padding-left: 0px;
-    vertical-align: middle; 
+    vertical-align: middle;
 
     .manageEvent__trash {
       width: 30px;
@@ -56,6 +56,7 @@
   border-radius: 2px;
   background-color: #647dff;
   border: solid 1px #647dff;
+  cursor: pointer;
 
   &:last-child {
     margin-right: 0;

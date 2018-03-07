@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/ChangeNotice.css';
 
+import { AWS_IMAGE_UPLOAD } from 'utils';
+
 class ChangeBanner extends Component {
   constructor(props) {
     super(props);
@@ -13,16 +15,24 @@ class ChangeBanner extends Component {
   }
 
   submitBanner() {
-    this.props.addBanner(
-      '',
-      document.getElementById('title').value,
-      document.getElementById('url').value,
-      document.getElementById('priority').value,
-      () => {
-        window.location.href = '/adminPage/manageBanner';
+    let data;
+    AWS_IMAGE_UPLOAD(
+      'PRODUCT',
+      document.getElementsByClassName('upload__img'),
+      img => {
+        return this.props.addBanner(
+          img[0],
+          document.getElementById('title').value,
+          document.getElementById('url').value,
+          document.getElementById('priority').value,
+          () => {
+            window.location.href = '/adminPage/manageBanner';
+          }
+        );
       }
     );
   }
+
   render() {
     return (
       <div className="uploadBanner">

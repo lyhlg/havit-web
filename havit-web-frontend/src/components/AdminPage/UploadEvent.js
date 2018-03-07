@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/UploadEvent.css';
 
+import { AWS_IMAGE_UPLOAD } from 'utils';
+
 class UploadEvent extends Component {
   constructor(props) {
     super(props);
@@ -9,17 +11,24 @@ class UploadEvent extends Component {
   }
 
   submitEvent() {
-    this.props.addEvent(
-      document.getElementById('hospitalCode').value,
-      document.getElementById('productName').value,
-      document.getElementById('description').value,
-      'abc',
-      Number(document.getElementById('price').value),
-      document.getElementById('status').value,
-      Number(document.getElementById('priority').value),
-      'abc',
-      () => {
-        window.location.href = '/adminPage/manageEvent';
+    let data;
+    AWS_IMAGE_UPLOAD(
+      'EVENT',
+      document.getElementsByClassName('upload__img'),
+      img => {
+        this.props.addEvent(
+          document.getElementById('hospitalCode').value,
+          document.getElementById('productName').value,
+          document.getElementById('description').value,
+          img[0],
+          Number(document.getElementById('price').value),
+          document.getElementById('status').value,
+          Number(document.getElementById('priority').value),
+          img[1],
+          () => {
+            window.location.href = '/adminPage/manageEvent';
+          }
+        );
       }
     );
   }

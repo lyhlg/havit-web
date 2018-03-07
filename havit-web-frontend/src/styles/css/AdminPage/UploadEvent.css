@@ -36,7 +36,8 @@
   color: #ffffff;
   border-radius: 2px;
   background-color: #647dff;
-  border: solid 1px #647dff; }
+  border: solid 1px #647dff;
+  cursor: pointer; }
   .uploadEvent__button:last-child {
     margin-right: 0; }
   .uploadEvent__button .uploadEvent__button--selected {
