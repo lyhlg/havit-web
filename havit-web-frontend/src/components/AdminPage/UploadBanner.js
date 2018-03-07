@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/UploadBanner.css';
 
 import { AWS_IMAGE_UPLOAD } from 'utils';
-import s3BrowserDirectUpload from 's3-browser-direct-upload';
 
 class UploadBanner extends Component {
   constructor(props) {
@@ -14,10 +13,9 @@ class UploadBanner extends Component {
   submitBanner() {
     AWS_IMAGE_UPLOAD(
       'NOTICE',
-      document.getElementsByClassName('uploadProduct__img'),
-      null,
+      document.getElementsByClassName('upload__img'),
       img => {
-        this.props.addBanner(
+        return this.props.addBanner(
           img,
           document.getElementById('title').value,
           document.getElementById('url').value,

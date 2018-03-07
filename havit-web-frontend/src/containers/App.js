@@ -74,7 +74,8 @@ const mapDispatchToProps = dispatch => ({
     description,
     price,
     ProductDetail,
-    options
+    options,
+    callback
   ) => {
     dispatch(
       actions.addProduct(
@@ -86,7 +87,8 @@ const mapDispatchToProps = dispatch => ({
         description,
         price,
         ProductDetail,
-        options
+        options,
+        callback
       )
     );
   },
