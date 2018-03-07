@@ -274,6 +274,7 @@ export const getEvents = (email, productId, status, page) => {
           page: $page
         ) {
           productId
+          img
           hospitalCode
           hospitalLoc
           hospitalName

@@ -36,7 +36,7 @@ class ChangeBanner extends Component {
               defaultValue={
                 this.props.banners.bannersList[0] &&
                 this.props.banners.bannersList[
-                  Number(window.location.pathname.slice(24)) - 1
+                  Number(window.location.pathname.slice(24))
                 ].priority
               }
             >
@@ -56,7 +56,7 @@ class ChangeBanner extends Component {
               defaultValue={
                 this.props.banners.bannersList[0] &&
                 this.props.banners.bannersList[
-                  Number(window.location.pathname.slice(24)) - 1
+                  Number(window.location.pathname.slice(24))
                 ].title
               }
             />
@@ -69,7 +69,7 @@ class ChangeBanner extends Component {
               defaultValue={
                 this.props.banners.bannersList[0] &&
                 this.props.banners.bannersList[
-                  Number(window.location.pathname.slice(24)) - 1
+                  Number(window.location.pathname.slice(24))
                 ].url
               }
             />
