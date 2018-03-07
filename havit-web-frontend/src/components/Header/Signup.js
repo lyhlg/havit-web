@@ -187,7 +187,7 @@ class Signup extends Component {
                 />
               </div>
               <div className="signup__box4">
-                <h3 className="signup__label">생년 월 일</h3>
+                <h3 className="signup__label">생년월일</h3>
                 <select
                   id="birthday1"
                   defaultValue="1990"
@@ -286,7 +286,9 @@ class Signup extends Component {
                 회원가입
               </button>
               {!this.state.check[0] &&
-                this.state.check[1] > 0 && <p>올바른 값을 입력하세요</p>}
+                this.state.check[1] > 0 && (
+                  <p className="signup__alert">올바른 값을 입력하세요</p>
+                )}
             </div>
           </div>
         </div>

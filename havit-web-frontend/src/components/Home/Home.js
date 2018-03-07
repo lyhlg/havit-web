@@ -22,7 +22,7 @@ class Home extends Component {
         <Nav />
         <Banner />
         <div className="home__category">
-          <h2>전체보기</h2>
+          <h2 className="home__title">전체보기</h2>
         </div>
         <Product products={this.props.products.productsList} />
         <Pagination

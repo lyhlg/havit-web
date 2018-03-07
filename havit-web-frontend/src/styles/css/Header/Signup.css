@@ -7,7 +7,7 @@
   .signup .signup__title {
     font-size: 30px;
     font-weight: bold;
-    color: #647dff; }
+    color: #4cc8e5; }
   .signup .signup__wrapper {
     width: 1180px;
     height: 1520px;
@@ -16,14 +16,15 @@
     margin: 0 auto; }
     .signup .signup__wrapper .signup__tab {
       padding: 80px 160px; }
-      .signup .signup__wrapper .signup__tab .privacy__title {
-        font-size: 24px;
-        color: #647dff; }
+      .signup .signup__wrapper .signup__tab .signup__title {
+        font-size: 26px;
+        color: #647dff;
+        margin-bottom: 60px; }
       .signup .signup__wrapper .signup__tab .signup__label {
         font-size: 15px;
         font-weight: normal;
         color: #869ab7;
-        margin: 60px 0 10px 0; }
+        margin: 40px 0 10px 0; }
       .signup .signup__wrapper .signup__tab .signup__input {
         width: 220px;
         height: 46px;
@@ -84,20 +85,23 @@
         margin: 40px auto;
         text-align: center; }
       .signup .signup__wrapper .signup__tab .signup__info {
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 300;
         text-align: center;
-        color: #414d6b; }
+        color: #869ab7; }
       .signup .signup__wrapper .signup__tab .signup__btn {
         margin-top: 30px;
         text-align: center; }
       .signup .signup__wrapper .signup__tab .signup__button {
         width: 160px;
         height: 50px;
+        font-size: 15px;
         border-radius: 2px;
-        background-color: #4cc8e5;
-        border: solid 1px #4cc8e5;
+        background-color: #647dff;
+        border: solid 1px #647dff;
         margin-top: 10px;
-        margin-left: 40px; }
+        color: white; }
         .signup .signup__wrapper .signup__tab .signup__button .signup__btntext {
           color: white; }
+        .signup .signup__wrapper .signup__tab .signup__button .signup__alert {
+          color: #869ab7; }

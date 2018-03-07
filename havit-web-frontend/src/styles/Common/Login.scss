@@ -1,7 +1,7 @@
 .login {
   width: 1440px;
   height: 720px;
-  background-color: hsl(230, 100%, 70%);
+  background-color: #647dff;
   margin: 0 auto;
 
   .login__logo {
@@ -26,6 +26,7 @@
         font-size: 15px;
         font-weight: normal;
         color: #869ab7;
+        margin-top: 10px;
       }
 
       .login__input {
@@ -40,10 +41,11 @@
       .login__btn {
         width: 160px;
         height: 50px;
+        font-size: 15px;
         border-radius: 2px;
-        background-color: #4cc8e5;
-        border: solid 1px #4cc8e5;
-        margin-top: 30px;
+        background-color: #647dff;
+        border: solid 1px #647dff;
+        margin-top: 28px;
         margin-left: 40px;
         color: #ffffff;
       }
@@ -53,12 +55,16 @@
 
         .social__google {
           width: 45px;
-          margin-left: 15px;
+          margin-left: 18px;
+          background-image: url('../../../assets/img/google.png');
+          background-repeat: no-repeat;
         }
 
         .social__kakao {
           width: 45px;
-          margin-left: 15px;
+          margin-left: 18px;
+          background-image: url('../../../assets/img/kakao.png');
+          background-repeat: no-repeat;
         }
       }
     }

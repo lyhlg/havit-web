@@ -123,22 +123,20 @@ class Login extends Component {
               로그인
             </button>
             <div className="social__button">
+              <img src={google} className="social__google" alt="logo" />
+              <img src={kakao} className="social__kakao" alt="logo" />
               <GoogleLogin
                 className="social__google"
                 clientId="235629451128-6epmo55kkdeiah4phs7psth5e09g1ujj.apps.googleusercontent.com"
                 onSuccess={this.authLoginGoogleSucc.bind(this)}
                 onFailure={this.authLoginGoogleFail.bind(this)}
-              >
-                <img className="social__google" src={google} alt="logo" />
-              </GoogleLogin>
+              />
               <KakaoLogin
                 jsKey="268fb9ee81f5cc98b81d5e03e42fdead"
                 onSuccess={this.authLoginKakaoSucc.bind(this)}
                 onFailure={this.authLoginKakaoFail.bind(this)}
                 getProfile
               />
-              <img src={google} className="social__google" alt="logo" />
-              <img src={kakao} className="social__kakao" alt="logo" />
             </div>
           </div>
         </div>

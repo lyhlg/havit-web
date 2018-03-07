@@ -3,8 +3,11 @@
   height: 80px;
   line-height: 80px;
   vertical-align: middle;
-  margin: 25px auto 40px auto;
+  margin: 30px auto 20px auto;
   padding: 0 10px; }
+  .home__category .home__title {
+    font-size: 25px;
+    color: #647dff; }
   .home__category h2 {
     float: left;
     padding-left: 10px;

@@ -9,7 +9,7 @@
   .myPageMenu .myPageMenu__wrapper {
     float: left; }
   .myPageMenu .myPageMenu__name {
-    font-size: 40px;
+    font-size: 33px;
     font-weight: bold;
     color: #414d6b;
     margin-top: 80px; }
@@ -19,7 +19,8 @@
     height: 80px;
     line-height: 80px;
     vertical-align: middle;
-    margin-top: 40px; }
+    margin-top: 25px;
+    margin-bottom: 15px; }
     .myPageMenu .myPageMenu__tab .myPageMenu__button {
       font-size: 20px;
       margin-right: 40px;
