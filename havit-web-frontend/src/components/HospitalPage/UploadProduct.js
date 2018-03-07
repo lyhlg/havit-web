@@ -19,7 +19,6 @@ class UploadProduct extends Component {
       'PRODUCT',
       document.getElementsByClassName('upload__img'),
       img => {
-        console.log('callback 받아 온 이미지 url : ', img);
         data = [
           document.getElementById('type').value,
           document.getElementById('subType').value,

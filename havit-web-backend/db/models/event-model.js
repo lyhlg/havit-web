@@ -15,7 +15,7 @@ const eventSchema = new Schema({
   status: { type: String, default: "진행중"},
   priority: { type: Number, default: 100 },
   purchased: { type: Number, default: 0 },
-  productDetail: { type: String, default: "https://dummyimage.com/1180x560" },
+  productDetails: String,
   reviews: [String],
   options: String,
   createdOn: { type: Date, default: getCurrentDate() }

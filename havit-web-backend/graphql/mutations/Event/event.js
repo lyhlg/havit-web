@@ -17,7 +17,7 @@ const ADD_EVENT = async params => {
 
   let productId_counter = { productId: number };
   let new_args = Object.assign(args, productId_counter, new_hospitalInfo);
-
+  console.log(new_args);
   return await event(new_args).save();
 };
 

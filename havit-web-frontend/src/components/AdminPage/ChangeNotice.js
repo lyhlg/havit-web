@@ -78,8 +78,6 @@ class ChangeNotice extends Component {
                   this.props.notices.noticesList[0].body
                 }
               />
-              <h3 className="ChangeNotice__label">이미지 업로드</h3>
-              <input type="file" className="upload__img" />
               <div className="ChangeNotice__btn">
                 <button
                   onClick={this.changeNoticeAdmin}
