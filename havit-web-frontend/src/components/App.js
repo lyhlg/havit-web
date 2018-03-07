@@ -43,12 +43,13 @@ class App extends Component {
   // }
 
   render() {
-    // const ScrollToTop = () => {
-    //   window.scrollTo(0, 0);
-    //   return null;
-    // };
+    const ScrollToTop = () => {
+      window.scrollTo(0, 0);
+      return null;
+    };
     return (
       <div>
+        <Route component={ScrollToTop} />
         <Header {...this.props} />
         <Switch>
           <Route exact path="/" render={props => <Home {...this.props} />} />

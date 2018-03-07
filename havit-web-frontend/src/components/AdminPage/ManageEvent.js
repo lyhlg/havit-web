@@ -1,10 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { trash } from 'assets/img';
 import 'styles/css/AdminPage/ManageEvent.css';
 
 class ManageEvent extends Component {
-  componentDidMount() {
-    this.props.getEvents();
+  constructor(props) {
+    super(props);
+    this.moveEventEdit = this.moveEventEdit.bind(this);
+    this.deleteEvent = this.deleteEvent.bind(this);
+  }
+
+  moveEventEdit(i) {
+    this.props.history.push(`/adminPage/changeEvent/${i.i}`);
   }
 
   deleteEvent(e, code, id) {
@@ -36,7 +43,7 @@ class ManageEvent extends Component {
               <tbody>
                 {this.props.events.eventsList.map((event, i) => {
                   return (
-                    <tr key={i}>
+                    <tr onClick={() => this.moveEventEdit({ i })} key={i}>
                       <td>{event.priority}</td>
                       <td>{event.productName}</td>
                       <td>{event.price}</td>
@@ -53,7 +60,11 @@ class ManageEvent extends Component {
                             )
                           }
                         >
-                          x
+                          <img
+                            src={trash}
+                            className="manageHospital__trash"
+                            alt="x"
+                          />
                         </button>
                       </td>
                     </tr>

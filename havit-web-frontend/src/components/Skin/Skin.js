@@ -107,7 +107,7 @@ class Skin extends Component {
         <main>
           <Banner />
           <div className="skin__category">
-            <h2>피부시술</h2>
+            <h2 className="skin__title">피부시술</h2>
           </div>
           <Product products={this.props.products.productsList} />
           <Pagination

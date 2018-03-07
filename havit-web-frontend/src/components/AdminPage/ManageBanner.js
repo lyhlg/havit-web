@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { trash } from 'assets/img';
 import 'styles/css/AdminPage/ManageBanner.css';
 
 class ManageBanner extends Component {
@@ -9,12 +10,8 @@ class ManageBanner extends Component {
     this.deleteBanner = this.deleteBanner.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getBanners();
-  }
-
   moveBannerEdit(i) {
-    this.props.history.push(`/adminPage/changeBanner/${i}`);
+    this.props.history.push(`/adminPage/changeBanner/${i.i}`);
   }
 
   deleteBanner(e, id) {
@@ -43,7 +40,7 @@ class ManageBanner extends Component {
               <tbody>
                 {this.props.banners.bannersList.map((banner, i) => {
                   return (
-                    <tr onClick={() => this.moveBannerEdit(banner._id)} key={i}>
+                    <tr onClick={() => this.moveBannerEdit({ i })} key={i}>
                       <td>{banner.priority}</td>
                       <td>{banner.title}</td>
                       <td>{banner.url}</td>
@@ -52,7 +49,11 @@ class ManageBanner extends Component {
                           className="manageBanner__delete"
                           onClick={e => this.deleteBanner(e, banner._id)}
                         >
-                          x
+                          <img
+                            src={trash}
+                            className="manageHospital__trash"
+                            alt="x"
+                          />
                         </button>
                       </td>
                     </tr>

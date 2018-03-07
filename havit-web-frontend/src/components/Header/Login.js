@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import 'styles/css/Common/Login.css';
 import { GoogleLogin } from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';
+import FacebookLogin from 'react-facebook-login';
 
 class Login extends Component {
   constructor(props) {
@@ -93,6 +94,31 @@ class Login extends Component {
     this.props.history.push('/login');
   }
 
+  authLoginFacebookSucc(res) {
+    this.props.addUserInfo(
+      data => {
+        const phone = data.data.addUserInfo.phone;
+        const code = data.data.addUserInfo.level;
+        if (phone) {
+          if (localStorage.getItem('email')) localStorage.removeItem('email');
+          if (localStorage.getItem('code')) localStorage.removeItem('code');
+          localStorage.setItem('email', res.email);
+          localStorage.setItem('code', code);
+          this.props.history.push('/');
+        } else {
+          if (localStorage.getItem('temp')) localStorage.removeItem('temp');
+          localStorage.setItem('temp', res.email);
+          localStorage.setItem('auth', 'facebook');
+          this.props.history.push('/privacy');
+        }
+      },
+      res.email,
+      '',
+      'facebook',
+      res.name
+    );
+  }
+
   render() {
     console.log(this.props);
     return (
@@ -128,17 +154,24 @@ class Login extends Component {
                 clientId="235629451128-6epmo55kkdeiah4phs7psth5e09g1ujj.apps.googleusercontent.com"
                 onSuccess={this.authLoginGoogleSucc.bind(this)}
                 onFailure={this.authLoginGoogleFail.bind(this)}
-              >
-                <img className="social__google" src={google} alt="logo" />
-              </GoogleLogin>
+                buttonText=""
+              />
               <KakaoLogin
+                buttonClass="social__kakao"
                 jsKey="268fb9ee81f5cc98b81d5e03e42fdead"
                 onSuccess={this.authLoginKakaoSucc.bind(this)}
                 onFailure={this.authLoginKakaoFail.bind(this)}
                 getProfile
+                buttonText=""
               />
-              <img src={google} className="social__google" alt="logo" />
-              <img src={kakao} className="social__kakao" alt="logo" />
+              <FacebookLogin
+                cssClass="social__facebook"
+                appId="163537854367375"
+                fields="name,email,picture"
+                callback={this.authLoginFacebookSucc.bind(this)}
+                language="ko_KR"
+                textButton=""
+              />
             </div>
           </div>
         </div>

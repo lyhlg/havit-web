@@ -3,8 +3,13 @@
     height: 80px;
     line-height: 80px;
     vertical-align: middle;
-    margin: 25px auto 40px auto;
+    margin: 30px auto 20px auto;
     padding: 0 10px;
+
+    .beauty__title {
+    font-size: 25px;
+    color: #647dff;
+    }
 
     h2 {
       float: left;
