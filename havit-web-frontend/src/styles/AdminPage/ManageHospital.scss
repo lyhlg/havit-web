@@ -56,13 +56,4 @@
   border-radius: 2px;
   background-color: #647dff;
   border: solid 1px #647dff;
-
-  &:last-child {
-    margin-right: 0;
-  }
-
-  .manageHospital__button--selected {
-    font-weight: bold;
-        color: #647dff;
-  }
 }

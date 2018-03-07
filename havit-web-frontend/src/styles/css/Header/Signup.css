@@ -17,14 +17,14 @@
     .signup .signup__wrapper .signup__tab {
       padding: 80px 160px; }
       .signup .signup__wrapper .signup__tab .signup__title {
-        font-size: 26px;
+        font-size: 25px;
         color: #647dff;
         margin-bottom: 60px; }
       .signup .signup__wrapper .signup__tab .signup__label {
         font-size: 15px;
         font-weight: normal;
         color: #869ab7;
-        margin: 40px 0 10px 0; }
+        margin: 50px 0 10px 0; }
       .signup .signup__wrapper .signup__tab .signup__input {
         width: 220px;
         height: 46px;
@@ -104,4 +104,6 @@
         .signup .signup__wrapper .signup__tab .signup__button .signup__btntext {
           color: white; }
       .signup .signup__wrapper .signup__tab .signup__alert {
-        color: #869ab7; }
+        color: #ff8282;
+        font-size: 15px;
+        margin-bottom: 5px; }

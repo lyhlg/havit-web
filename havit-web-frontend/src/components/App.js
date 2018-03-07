@@ -18,6 +18,7 @@ import {
   NotFound,
   Footer,
   ServicePage,
+  UserAgree,
 } from './index';
 import 'styles/css/index.css';
 
@@ -90,6 +91,12 @@ class App extends Component {
             path="/servicePage"
             render={props => (
               <ServicePage checkAuth={this.checkAuth} {...this.props} />
+            )}
+          />
+          <Route
+            path="/userAgree"
+            render={props => (
+              <UserAgree checkAuth={this.checkAuth} {...this.props} />
             )}
           />
           <Route component={NotFound} />
