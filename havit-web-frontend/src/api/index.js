@@ -417,35 +417,37 @@ export const addReservation = (
     .then(res => callback(res));
 };
 
-export const addReview = (email, stars, comment, productId) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $email: String
-        $stars: Float
-        $comment: String
-        $productId: Int
-      ) {
-        addReview(
-          user_id_email: $email
-          stars: $stars
-          comment: $comment
-          productId: $productId
+export const addReview = (email, stars, comment, productId, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $email: String
+          $stars: Float
+          $comment: String
+          $productId: Int
         ) {
-          _id
-          user_id_email
-          stars
-          comment
+          addReview(
+            user_id_email: $email
+            stars: $stars
+            comment: $comment
+            productId: $productId
+          ) {
+            _id
+            user_id_email
+            stars
+            comment
+          }
         }
-      }
-    `,
-    variables: {
-      email,
-      stars,
-      comment,
-      productId,
-    },
-  });
+      `,
+      variables: {
+        email,
+        stars,
+        comment,
+        productId,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addUserInfo = (

@@ -290,12 +290,14 @@ const successAddReview = review => ({
   review,
 });
 
-export const addReview = (email, stars, comment, productId) => {
+export const addReview = (email, stars, comment, productId, callback) => {
   return dispatch => {
     dispatch(requestAddReview());
-    return api.addReview(email, stars, comment, productId).then(res => {
-      dispatch(successAddReview(res));
-    });
+    return api
+      .addReview(email, stars, comment, productId, callback)
+      .then(res => {
+        dispatch(successAddReview(res));
+      });
   };
 };
 

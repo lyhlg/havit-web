@@ -117,8 +117,8 @@ const mapDispatchToProps = dispatch => ({
     );
   },
 
-  addReview: (email, stars, comment, productId) => {
-    dispatch(actions.addReview(email, stars, comment, productId));
+  addReview: (email, stars, comment, productId, callback) => {
+    dispatch(actions.addReview(email, stars, comment, productId, callback));
   },
 
   addUserInfo: (
