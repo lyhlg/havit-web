@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { trash } from 'assets/img';
 import 'styles/css/AdminPage/ManageEvent.css';
 
 class ManageEvent extends Component {
@@ -59,7 +60,11 @@ class ManageEvent extends Component {
                             )
                           }
                         >
-                          x
+                          <img
+                            src={trash}
+                            className="manageHospital__trash"
+                            alt="x"
+                          />
                         </button>
                       </td>
                     </tr>

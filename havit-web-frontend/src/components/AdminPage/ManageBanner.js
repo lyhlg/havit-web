@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { trash } from 'assets/img';
 import 'styles/css/AdminPage/ManageBanner.css';
 
 class ManageBanner extends Component {
@@ -48,7 +49,11 @@ class ManageBanner extends Component {
                           className="manageBanner__delete"
                           onClick={e => this.deleteBanner(e, banner._id)}
                         >
-                          x
+                          <img
+                            src={trash}
+                            className="manageHospital__trash"
+                            alt="x"
+                          />
                         </button>
                       </td>
                     </tr>
