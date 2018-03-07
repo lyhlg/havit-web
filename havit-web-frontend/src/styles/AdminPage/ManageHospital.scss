@@ -28,10 +28,17 @@
     font-size: 15px;
     color: #495057;
   }
-}
 
-.manageHospital__delete {
-  margin-left: 30px;
+  .manageHospital__delete {
+    border: 0px;
+    padding-left: 0px;
+    vertical-align: middle; 
+
+    .manageHospital__trash {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
 .manageHospital__button {

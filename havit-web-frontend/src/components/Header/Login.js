@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { logosong1 } from 'assets/img';
+import { reallogo } from 'assets/img';
 import { google } from 'assets/img';
 import { kakao } from 'assets/img';
 import { Route } from 'react-router-dom';
@@ -97,7 +97,7 @@ class Login extends Component {
     console.log(this.props);
     return (
       <div className="login">
-        <img src={logosong1} className="login__logo" alt="logo" />
+        <img src={reallogo} className="login__logo" alt="logo" />
         <div className="login__wrapper">
           <div className="login__tab">
             <h3 className="login__label">이메일 주소</h3>
@@ -123,22 +123,20 @@ class Login extends Component {
               로그인
             </button>
             <div className="social__button">
+              <img src={google} className="social__google" alt="logo" />
+              <img src={kakao} className="social__kakao" alt="logo" />
               <GoogleLogin
                 className="social__google"
                 clientId="235629451128-6epmo55kkdeiah4phs7psth5e09g1ujj.apps.googleusercontent.com"
                 onSuccess={this.authLoginGoogleSucc.bind(this)}
                 onFailure={this.authLoginGoogleFail.bind(this)}
-              >
-                <img className="social__google" src={google} alt="logo" />
-              </GoogleLogin>
+              />
               <KakaoLogin
                 jsKey="268fb9ee81f5cc98b81d5e03e42fdead"
                 onSuccess={this.authLoginKakaoSucc.bind(this)}
                 onFailure={this.authLoginKakaoFail.bind(this)}
                 getProfile
               />
-              <img src={google} className="social__google" alt="logo" />
-              <img src={kakao} className="social__kakao" alt="logo" />
             </div>
           </div>
         </div>

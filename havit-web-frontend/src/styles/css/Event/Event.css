@@ -1,23 +1,23 @@
-.skin__category {
+.event__category {
   width: 1200px;
   height: 80px;
   line-height: 80px;
   vertical-align: middle;
   margin: 30px auto 20px auto;
   padding: 0 10px; }
-  .skin__category .skin__title {
+  .event__category .event__title {
     font-size: 25px;
     color: #647dff; }
-  .skin__category h2 {
+  .event__category h2 {
     float: left;
     padding-left: 10px;
     font-size: 30px;
     font-weight: normal; }
-  .skin__category p {
+  .event__category p {
     float: right;
     font-size: 20px;
     font-weight: 300; }
-  .skin__category::after {
+  .event__category::after {
     display: block;
     content: '';
     clear: both; }

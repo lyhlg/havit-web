@@ -23,6 +23,13 @@
     padding-left: 20px;
     font-size: 15px;
     color: #495057; }
+  .manageBanner__table .manageBanner__delete {
+    border: 0px;
+    padding-left: 0px;
+    vertical-align: middle; }
+    .manageBanner__table .manageBanner__delete .manageBanner__trash {
+      width: 30px;
+      height: 30px; }
 
 .manageBanner__button {
   float: right;

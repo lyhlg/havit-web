@@ -28,6 +28,17 @@
     font-size: 15px;
     color: #495057;
   }
+
+  .manageBanner__delete {
+    border: 0px;
+    padding-left: 0px;
+    vertical-align: middle; 
+
+    .manageBanner__trash {
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 
 .manageBanner__button {

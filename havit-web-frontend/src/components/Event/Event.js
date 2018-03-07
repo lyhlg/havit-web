@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, Banner, Product } from '../index';
+import 'styles/css/Event/Event.css';
 
 class Event extends Component {
   componentDidMount() {
@@ -11,8 +12,8 @@ class Event extends Component {
       <main>
         <Nav />
         <Banner />
-        <div className="home__category">
-          <h2>이벤트</h2>
+        <div className="event__category">
+          <h2 className="event__title">이벤트</h2>
         </div>
         <Product products={this.props.events.eventsList} />
       </main>

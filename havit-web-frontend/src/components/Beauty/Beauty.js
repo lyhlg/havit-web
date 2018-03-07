@@ -93,7 +93,7 @@ class Beauty extends Component {
         <main>
           <Banner />
           <div className="beauty__category">
-            <h2>뷰티시술</h2>
+            <h2 className="beauty__title">뷰티시술</h2>
           </div>
           <Product products={this.props.products.productsList} />
           <Pagination

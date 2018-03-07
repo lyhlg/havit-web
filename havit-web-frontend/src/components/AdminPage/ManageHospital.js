@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { trash } from 'assets/img';
 import 'styles/css/AdminPage/ManageHospital.css';
 
 class ManageHospital extends Component {
@@ -60,7 +61,11 @@ class ManageHospital extends Component {
                             className="manageHospital__delete"
                             onClick={this.delHospital}
                           >
-                            x
+                            <img
+                              src={trash}
+                              className="manageHospital__trash"
+                              alt="logo"
+                            />
                           </button>
                         </td>
                       </tr>
