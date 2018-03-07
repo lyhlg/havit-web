@@ -3,44 +3,37 @@
   height: 1440px;
   background-color: #ffffff;
   margin: 0 auto; }
-  .changeInfo .signup__title {
-    font-size: 30px;
-    font-weight: bold;
-    color: #647dff; }
-  .changeInfo .signup__tab .privacy__title {
-    font-size: 24px;
-    color: #647dff; }
-  .changeInfo .signup__tab .signup__label {
+  .changeInfo .changeInfo__tab .changeInfo__label {
     font-size: 15px;
     font-weight: normal;
     color: #869ab7;
-    margin: 60px 0 10px 0; }
-  .changeInfo .signup__tab .signup__input {
+    margin: 50px 0 10px 0; }
+  .changeInfo .changeInfo__tab .changeInfo__input {
     width: 220px;
     height: 46px;
     background-color: #ffffff;
     border: solid 1px #dce2eb;
     padding-left: 10px; }
-  .changeInfo .signup__tab .signup__box {
+  .changeInfo .changeInfo__tab .changeInfo__box {
     width: 1100px;
     height: 130px; }
-    .changeInfo .signup__tab .signup__box .signup__box3 {
+    .changeInfo .changeInfo__tab .changeInfo__box .changeInfo__box3 {
       display: inline-block;
       width: 260px;
       height: 100px; }
-    .changeInfo .signup__tab .signup__box .signup__box4 {
+    .changeInfo .changeInfo__tab .changeInfo__box .changeInfo__box4 {
       display: inline-block;
       width: 500px;
       height: 100px;
       vertical-align: top; }
-      .changeInfo .signup__tab .signup__box .signup__box4 .signup__gender {
+      .changeInfo .changeInfo__tab .changeInfo__box .changeInfo__box4 .changeInfo__gender {
         margin-bottom: 30px; }
-      .changeInfo .signup__tab .signup__box .signup__box4 .signup__labelText {
+      .changeInfo .changeInfo__tab .changeInfo__box .changeInfo__box4 .changeInfo__labelText {
         margin-right: 20px;
         font-size: 15px;
         font-weight: 300;
         color: #414d6b; }
-  .changeInfo .signup__tab .signup__box1 {
+  .changeInfo .changeInfo__tab .changeInfo__box1 {
     width: 120px;
     height: 50px;
     padding-left: 15px;
@@ -49,7 +42,7 @@
     border-radius: 0;
     -webkit-appearance: none;
     color: #afc2db; }
-  .changeInfo .signup__tab .signup__box2 {
+  .changeInfo .changeInfo__tab .changeInfo__box2 {
     width: 100px;
     height: 50px;
     margin-left: 10px;
@@ -59,35 +52,41 @@
     border-radius: 0;
     -webkit-appearance: none;
     color: #afc2db; }
-  .changeInfo .signup__tab .signup__checkboxWrapper {
+  .changeInfo .changeInfo__tab .changeInfo__checkboxWrapper {
     display: inline-block;
     width: 130px;
     height: 20px;
     margin-bottom: 10px; }
-    .changeInfo .signup__tab .signup__checkboxWrapper .signup__text {
+    .changeInfo .changeInfo__tab .changeInfo__checkboxWrapper .changeInfo__text {
       font-size: 15px;
       font-weight: 300;
       color: #414d6b; }
-  .changeInfo .signup__tab .signup__hr {
+  .changeInfo .changeInfo__tab .changeInfo__hr {
     width: 1180px;
     height: 1px;
     background-color: #dce2eb;
     margin: 40px auto;
     text-align: center; }
-  .changeInfo .signup__tab .signup__info {
-    font-size: 15px;
+  .changeInfo .changeInfo__tab .changeInfo__info {
+    font-size: 14px;
     font-weight: 300;
     text-align: center;
-    color: #414d6b; }
-  .changeInfo .signup__tab .signup__btn {
+    color: #869ab7; }
+  .changeInfo .changeInfo__tab .changeInfo__btn {
     margin-top: 30px;
     text-align: center; }
-  .changeInfo .signup__tab .signup__button {
+  .changeInfo .changeInfo__tab .changeInfo__button {
     width: 160px;
     height: 50px;
+    font-size: 15px;
     border-radius: 2px;
-    background-color: #4cc8e5;
-    border: solid 1px #4cc8e5;
-    margin-top: 10px; }
-    .changeInfo .signup__tab .signup__button .signup__btntext {
+    background-color: #647dff;
+    border: solid 1px #647dff;
+    margin-top: 10px;
+    color: white; }
+    .changeInfo .changeInfo__tab .changeInfo__button .changeInfo__btntext {
       color: white; }
+  .changeInfo .changeInfo__tab .signup__alert {
+    color: #ff8282;
+    font-size: 15px;
+    margin-bottom: 5px; }

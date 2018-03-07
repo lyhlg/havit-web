@@ -115,12 +115,12 @@ class ChangeInfo extends Component {
     console.log(this.props.userInfo);
     return (
       <div className="changeInfo">
-        <div className="signup__tab">
-          <h3 className="signup__label">이메일 주소</h3>
+        <div className="changeInfo__tab">
+          <h3 className="changeInfo__label">이메일 주소</h3>
           <input
             id="email"
             type="email"
-            className="signup__input"
+            className="changeInfo__input"
             placeholder="이메일@도메인"
             value={localStorage.getItem('email')}
             style={{ backgroundColor: '#f7f8fb' }}
@@ -129,29 +129,29 @@ class ChangeInfo extends Component {
           {this.props.userInfo.userInfo[0] &&
             this.props.userInfo.userInfo[0].auth === 'local' && (
               <div>
-                <h3 className="signup__label">비밀번호 입력</h3>
+                <h3 className="changeInfo__label">비밀번호 입력</h3>
                 <input
                   id="password"
                   type="password"
-                  className="signup__input"
+                  className="changeInfo__input"
                   placeholder="영문, 숫자로 6자 이상 입력해주세요."
                 />
-                <h3 className="signup__label">비밀번호 확인</h3>
+                <h3 className="changeInfo__label">비밀번호 확인</h3>
                 <input
                   id="password2"
                   type="password"
-                  className="signup__input"
+                  className="changeInfo__input"
                   placeholder="동일하게 다시 한 번 입력해주세요."
                 />
               </div>
             )}
-          <div className="signup__box">
-            <div className="signup__box3">
-              <h3 className="signup__label">이름</h3>
+          <div className="changeInfo__box">
+            <div className="changeInfo__box3">
+              <h3 className="changeInfo__label">이름</h3>
               <input
                 id="name"
                 type="text"
-                className="signup__input"
+                className="changeInfo__input"
                 placeholder="실명 한글 이름을 입력해주세요."
                 disabled
                 style={{ backgroundColor: '#f7f8fb' }}
@@ -161,14 +161,14 @@ class ChangeInfo extends Component {
                 }
               />
             </div>
-            <div className="signup__box4">
-              <h3 className="signup__label signup__gender">성별</h3>
-              <label className="signup__labelText">
+            <div className="changeInfo__box4">
+              <h3 className="changeInfo__label changeInfo__gender">성별</h3>
+              <label className="changeInfo__labelText">
                 <input
                   name="gender"
                   id="gender"
                   type="radio"
-                  className="signup__checkbox"
+                  className="changeInfo__checkbox"
                   value="여자"
                   defaultChecked={
                     this.props.userInfo.userInfo[0] &&
@@ -177,12 +177,12 @@ class ChangeInfo extends Component {
                 />
                 여자
               </label>
-              <label className="signup__labelText">
+              <label className="changeInfo__labelText">
                 <input
                   name="gender"
                   id="gender"
                   type="radio"
-                  className="signup__checkbox"
+                  className="changeInfo__checkbox"
                   value="남자"
                   defaultChecked={
                     this.props.userInfo.userInfo[0] &&
@@ -193,23 +193,23 @@ class ChangeInfo extends Component {
               </label>
             </div>
           </div>
-          <div className="signup__box">
-            <div className="signup__box3">
-              <h3 className="signup__label">핸드폰 번호</h3>
+          <div className="changeInfo__box">
+            <div className="changeInfo__box3">
+              <h3 className="changeInfo__label">핸드폰 번호</h3>
               <input
                 type="text"
                 id="txtMobile"
-                className="signup__input"
+                className="changeInfo__input"
                 placeholder="- 빼고 숫자만 입력"
                 defaultValue={`0${this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].phone}`}
               />
             </div>
-            <div className="signup__box4">
-              <h3 className="signup__label">생년 월 일</h3>
+            <div className="changeInfo__box4">
+              <h3 className="changeInfo__label">생년월일</h3>
               <select
                 id="birthday1"
-                className="signup__box1"
+                className="changeInfo__box1"
                 defaultValue={
                   this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].birthday
@@ -225,7 +225,7 @@ class ChangeInfo extends Component {
               </select>
               <select
                 id="birthday2"
-                className="signup__box2"
+                className="changeInfo__box2"
                 onChange={this.changeMonth}
                 defaultValue={
                   this.props.userInfo.userInfo[0] &&
@@ -246,7 +246,7 @@ class ChangeInfo extends Component {
               </select>
               <select
                 id="birthday3"
-                className="signup__box2"
+                className="changeInfo__box2"
                 defaultValue={
                   this.props.userInfo.userInfo[0] &&
                   this.props.userInfo.userInfo[0].birthday
@@ -267,15 +267,15 @@ class ChangeInfo extends Component {
               </select>
             </div>
           </div>
-          <h3 className="signup__label">관심 지역</h3>
+          <h3 className="changeInfo__label">관심 지역</h3>
           {this.state.regions.map((region, i) => {
             return (
-              <div className="signup__checkboxWrapper" key={i}>
-                <label className="signup__text">
+              <div className="changeInfo__checkboxWrapper" key={i}>
+                <label className="changeInfo__text">
                   <input
                     name="likeArea"
                     type="checkbox"
-                    className="signup__checkbox"
+                    className="changeInfo__checkbox"
                     value={region}
                     defaultChecked={
                       this.props.userInfo.userInfo[0] &&
@@ -290,15 +290,15 @@ class ChangeInfo extends Component {
               </div>
             );
           })}
-          <h3 className="signup__label">관심 부위</h3>
+          <h3 className="changeInfo__label">관심 부위</h3>
           {this.state.clinics.map((clinic, i) => {
             return (
-              <div className="signup__checkboxWrapper" key={i}>
-                <label className="signup__text">
+              <div className="changeInfo__checkboxWrapper" key={i}>
+                <label className="changeInfo__text">
                   <input
                     name="likePoint"
                     type="checkbox"
-                    className="signup__checkbox"
+                    className="changeInfo__checkbox"
                     value={clinic}
                     defaultChecked={
                       this.props.userInfo.userInfo[0] &&
@@ -313,23 +313,26 @@ class ChangeInfo extends Component {
               </div>
             );
           })}
-          <h3 className="signup__label">병원 코드</h3>
+          <h3 className="changeInfo__label">병원 코드</h3>
           <input
             id="code"
             type="text"
-            className="signup__input"
+            className="changeInfo__input"
             placeholder="병원 관리자 전용입니다"
             defaultValue={
               this.props.userInfo.userInfo[0] &&
               this.props.userInfo.userInfo[0].hospitalCode
             }
           />
-          <hr className="signup__hr" />
-          <h6 className="signup__info">
+          <hr className="changeInfo__hr" />
+          <h6 className="changeInfo__info">
             회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
           </h6>
-          <div className="signup__btn">
-            <button onClick={this.changeUserInfo} className="signup__button">
+          <div className="changeInfo__btn">
+            <button
+              onClick={this.changeUserInfo}
+              className="changeInfo__button"
+            >
               회원정보 수정
             </button>
             {!this.state.check[0] &&
