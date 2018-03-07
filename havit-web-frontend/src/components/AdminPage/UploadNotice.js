@@ -40,7 +40,7 @@ class UploadNotice extends Component {
               placeholder="내용을 입력해주세요."
             />
             <h3 className="uploadNotice__label">이미지 업로드</h3>
-            <input type="file" className="uploadNotice__img" />
+            <input type="file" className="upload__img" />
             <div className="uploadNotice__btn">
               <button
                 onClick={this.submitNotice}

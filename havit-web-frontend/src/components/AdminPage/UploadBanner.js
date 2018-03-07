@@ -60,7 +60,7 @@ class UploadBanner extends Component {
               placeholder="상품 URL을 입력해주세요."
             />
             <h3 className="uploadBanner__label">배너 이미지 업로드</h3>
-            <input type="file" className="uploadBanner__img" />
+            <input type="file" className="upload__img" />
             <div className="uploadBanner__btn">
               <a onClick={this.submitBanner} className="uploadBanner__button">
                 배너상품 등록하기
