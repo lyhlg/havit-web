@@ -20,7 +20,7 @@ class Home extends Component {
     return (
       <main>
         <Nav />
-        <Banner />
+        <Banner {...this.props} />
         <div className="home__category">
           <h2 className="home__title">전체보기</h2>
         </div>

@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'styles/css/Common/Banner.css';
 class Banner extends Component {
+  componentDidMount() {
+    this.props.getBanners();
+  }
+
   render() {
     return (
       <div className="banner">
@@ -10,17 +14,16 @@ class Banner extends Component {
           showThumbs={false}
           autoPlay={true}
           infiniteLoop={true}
-          interval="3000"
+          interval={3000}
         >
-          <div>
-            <img src="http://dummyimage.com/1440x360/000/fff" alt="banner" />
-          </div>
-          <div>
-            <img src="http://dummyimage.com/1440x360/000/fff" alt="banner" />
-          </div>
-          <div>
-            <img src="http://dummyimage.com/1440x360/000/fff" alt="banner" />
-          </div>
+          {this.props.banners.bannersList[0] &&
+            this.props.banners.bannersList.map((banner, i) => {
+              return (
+                <div key={i}>
+                  <img src={banner.img} />
+                </div>
+              );
+            })}
         </Carousel>
       </div>
     );
