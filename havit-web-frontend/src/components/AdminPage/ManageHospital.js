@@ -64,7 +64,7 @@ class ManageHospital extends Component {
                             <img
                               src={trash}
                               className="manageHospital__trash"
-                              alt="logo"
+                              alt="x"
                             />
                           </button>
                         </td>
