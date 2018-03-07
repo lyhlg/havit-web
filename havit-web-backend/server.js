@@ -1,12 +1,9 @@
-const express = require("express");
-const session = require("express-session");
-// const cookieSession = require("cookie-session");
-const passport = require("passport");
-const authRoutes = require("./routes/auth-routes");
-const graphqlRoutes = require("./routes/graphql-routes");
-const passportSetup = require("./config/passport-setup");
-const mongoose = require("mongoose");
-const keys = require("./config/keys");
+import express from "express";
+import session from "express-session";
+import authRoutes from "./routes/auth-routes";
+import graphqlRoutes from "./routes/graphql-routes";
+import mongoose from "mongoose";
+import keys from "./config/keys";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -21,8 +18,6 @@ const defaultHeader = {
   "access-control-max-age": 10
 };
 
-// Cookie Parser
-
 //  initialize Cookie Session value
 app.use(
   session({
@@ -36,10 +31,6 @@ app.use(
     }
   })
 );
-
-// initialize passport
-app.use(passport.initialize());
-app.use(passport.session());
 
 // connect to mongodb
 mongoose

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import 'styles/css/AdminPage/UploadBanner.css';
 
+import { AWS_IMAGE_UPLOAD } from 'utils';
+import s3BrowserDirectUpload from 's3-browser-direct-upload';
+
 class UploadBanner extends Component {
   constructor(props) {
     super(props);
@@ -9,13 +12,20 @@ class UploadBanner extends Component {
   }
 
   submitBanner() {
-    this.props.addBanner(
-      '',
-      document.getElementById('title').value,
-      document.getElementById('url').value,
-      document.getElementById('priority').value,
-      () => {
-        window.location.href = '/adminPage/manageBanner';
+    AWS_IMAGE_UPLOAD(
+      'NOTICE',
+      document.getElementsByClassName('uploadProduct__img'),
+      null,
+      img => {
+        this.props.addBanner(
+          img,
+          document.getElementById('title').value,
+          document.getElementById('url').value,
+          document.getElementById('priority').value,
+          () => {
+            window.location.href = '/adminPage/manageBanner';
+          }
+        );
       }
     );
   }

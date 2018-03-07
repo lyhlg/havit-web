@@ -145,6 +145,7 @@ const typeDefs = `
     title: String
     body: String
     author: String
+    img: String
     views: Int
     createdOn: String
   }
@@ -339,6 +340,17 @@ const typeDefs = `
 
     addEvent(
       hospitalCode: String
+      productName: String
+      description: String
+      img: String
+      price: Int
+      status: String
+      priority: Int
+      productDetails: String
+    ) : Event
+
+    modifyEvent(
+      productId: Int
       productName: String
       description: String
       img: String

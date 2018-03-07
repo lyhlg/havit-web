@@ -18,13 +18,13 @@ db.reviews.insert([{
   user_id_email: 'lyhlg0201@gmail.com',
   stars: 4,
   comment: '좋았다',
-  productId: 53
+  productId: 3
 },
 {
   user_id_email: 'dubbsong@gmail.com',
   stars: '5',
   comment: 'This is really Good ! .',
-  productId: 53
+  productId: 6
 },
 {
   user_id_email: 'iam.yonghyun@gmail.com',
