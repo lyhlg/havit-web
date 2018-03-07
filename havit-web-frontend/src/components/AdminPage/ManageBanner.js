@@ -9,12 +9,8 @@ class ManageBanner extends Component {
     this.deleteBanner = this.deleteBanner.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getBanners();
-  }
-
   moveBannerEdit(i) {
-    this.props.history.push(`/adminPage/changeBanner/${i}`);
+    this.props.history.push(`/adminPage/changeBanner/${i.i}`);
   }
 
   deleteBanner(e, id) {
@@ -43,7 +39,7 @@ class ManageBanner extends Component {
               <tbody>
                 {this.props.banners.bannersList.map((banner, i) => {
                   return (
-                    <tr onClick={() => this.moveBannerEdit(banner._id)} key={i}>
+                    <tr onClick={() => this.moveBannerEdit({ i })} key={i}>
                       <td>{banner.priority}</td>
                       <td>{banner.title}</td>
                       <td>{banner.url}</td>
