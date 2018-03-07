@@ -16,27 +16,44 @@
   }
 
   .loading__text {
-    padding-left: 190px;
     line-height: 2.0;
+
     &::before {
       display: block;
       width: 500px;
       height: 400px;
       content: "";
     }
+
     @include cbox;
     font-size: 18px;
     font-weight: normal;
+
+    .loading__mainLabel {
+      margin-top: 50px;
+      text-align: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #48c0e0;
+    }
+
+    .loading__label {
+      text-align: center;
+      font-size: 14px;
+      color: #869ab7;
+    }
+
+    .loading__copyright {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 13px;
+      color: #869ab7;
+    }
   }
 
-  .loading__mainLabel {
-    font-size: 30px;
+  span {
+    color: #48c0e0;
     font-weight: bold;
-    color: black;
-  }
-
-  .loading__label {
-    color: #869ab7;
   }
 
   .loading__spinner {

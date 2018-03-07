@@ -7,15 +7,29 @@ class Loading extends Component {
       <div className="loading">
         <div className="loading__text">
           <div>
-            <p className="loading__mainLabel">로딩중 입니다.</p>
+            <p className="loading__mainLabel">
+              해당 병의원 페이지로 이동중 입니다.
+            </p>
           </div>
           <div>
-            <p className="loading__label">havit은 피부과 중개 플랫폼입니다.</p>
             <p className="loading__label">
-              따라서 각 병의원 예약 및 상담과 관련한 문의는
+              <span>havit</span>은 피부과 중개 플랫폼입니다.
             </p>
             <p className="loading__label">
-              병의원으로 직접 연락을 주셔야 합니다.
+              각 병의원의 비급여항목 상품에 직접 관여하지 않으며,
+            </p>
+            <p className="loading__label">
+              결제시스템과 관련된 취소 및 환불의 의무와 책임은 각 병의원에
+              있습니다.
+            </p>
+            <p className="loading__label">
+              해당 병의원의 비급여항목 결제 전 상세정보와 필독유의사항을 반드시
+              확인하세요.
+            </p>
+          </div>
+          <div>
+            <p className="loading__copyright">
+              COPYRIGHT (C) <span>havit</span> ALL RIGHTS RESERVED.
             </p>
           </div>
         </div>
