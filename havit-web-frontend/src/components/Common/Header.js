@@ -59,11 +59,11 @@ class Header extends Component {
             로그아웃
           </NavLink>
           <NavLink
-            to="/mypage/reserve"
+            to="/mypage/changeInfo"
             className="header__link"
             activeClassName="header__link--selected"
           >
-            마이페이지
+            정보수정
           </NavLink>
           <NavLink
             to="/servicePage/serviceCenter"
@@ -92,11 +92,11 @@ class Header extends Component {
             로그아웃
           </NavLink>
           <NavLink
-            to="/mypage/reserve"
+            to="/mypage/changeInfo"
             className="header__link"
             activeClassName="header__link--selected"
           >
-            마이페이지
+            정보수정
           </NavLink>
           <NavLink
             to="/servicePage/serviceCenter"
