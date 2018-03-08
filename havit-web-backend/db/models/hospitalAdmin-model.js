@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 import { getCurrentDate } from "../../utils/index";
 
@@ -10,24 +10,28 @@ const hospitalAdminSchema = new Schema({
   createdOn: { type: Date, default: getCurrentDate() }
 });
 
-module.exports = mongoose.model('hospitalAdmin', hospitalAdminSchema, 'hospitalAdmins');
+module.exports = mongoose.model(
+  "hospitalAdmin",
+  hospitalAdminSchema,
+  "hospitalAdmins"
+);
 
 //dummy -> Admin page에서 추가할 수 있도록 기능 추가 필요
 /*
 db.hospitalAdmins.insert([{
   code: 'AAAA100000',
-  name: '제이디클리닉',
-  loc: "신사"
+  name: '네이처피부과',
+  loc: "강남구"
 },
 {
   code: 'AAAA100001',
-  name: '더밸런스한의원',
-  loc: "대치"
+  name: '네이처피부과',
+  loc: "강남구"
 },
 {
   code: 'AAAA100002',
-  name: '코코클리닉',
-  loc: "천호"
+  name: '설레임의원',
+  loc: "강남구"
 },
 {
   code: 'AAAA100003',

@@ -40,45 +40,11 @@ export const AWS_IMAGE_UPLOAD = async (type, elements, callback) => {
     };
     return s3client.upload(uploadOptions, (err, imgURL) => {
       if (err) console.log('error', err);
-      res.push(imgURL);
-      console.log('uirlrlrlrl', imgURL);
+      res[count] = imgURL;
       ++count;
       if (count === file.length) {
         return callback(res);
       }
     });
   });
-  // Promise.all(res).then(async res => {
-  //       console.log( "Promise all " , res) ;
-  //     })
-
-  // return await res;
-  // return;
-
-  // file1 = elements[0].files[0];
-  // file2 = elements[1].files[0];
 };
-
-/*
-else {
-    file1 = elements[0].files[0];
-    file2 = null;
-    const s3clientOptions = {
-      accessKeyId: `${AWS_KEYS.accessKeyId}`,
-      secretAccessKey: `${AWS_KEYS.secretAccessKey}`,
-      region: "eu-central-1",
-      signatureVersion: "v4"
-    };
-    const s3client = new s3BrowserDirectUpload(s3clientOptions);
-
-    var uploadOptions = {
-      data: file1,
-      key: FORMAT_FILENAME(type, file1.name),
-      bucket: "codestates-havit-web"
-    };
-
-    s3client.upload(uploadOptions, (err, imgURL) => {
-      console.log(imgURL);
-      return callback(imgURL);
-    });
-  }*/
