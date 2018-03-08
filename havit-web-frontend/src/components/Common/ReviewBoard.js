@@ -6,9 +6,11 @@ class ReviewBoard extends Component {
     console.log(this.props.review);
     return (
       <div className="reviewBoard">
-        <p className="reviewBoard__name">{this.props.review.user_id_email}</p>
+        <p className="reviewBoard__name">{this.props.review.comment}</p>
+        <p className="reviewBoard__content">
+          작성자 : {this.props.review.user_id_email}
+        </p>
         <p className="reviewBoard__menu">별점 : {this.props.review.stars}점</p>
-        <p className="reviewBoard__content">{this.props.review.comment}</p>
         <hr />
       </div>
     );

@@ -16,6 +16,7 @@ class Skin extends Component {
       0,
       1
     );
+    this.props.getBanners();
   }
 
   handlePage(e) {
@@ -30,7 +31,6 @@ class Skin extends Component {
     return (
       <div>
         <Nav />
-        <Banner {...this.props} />
         <div className="subNav__wrapper">
           <ul className="subNav">
             <NavLink
@@ -106,7 +106,7 @@ class Skin extends Component {
           </ul>
         </div>
         <main>
-          <Banner />
+          <Banner {...this.props} />
           <div className="skin__category">
             <h2 className="skin__title">피부시술</h2>
           </div>

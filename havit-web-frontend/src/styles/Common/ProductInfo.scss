@@ -1,5 +1,6 @@
 .productInfo {
   width: 1180px;
+  height: auto;
   margin: 0 auto;
   .productInfo__btnWrapper {
     border-bottom: 2px solid #dce2eb;
@@ -13,6 +14,10 @@
       background: #fff;
       border: none;
     }
+  }
+  .productInfo__img {
+    width: 1180px;
+    height: auto;
   }
 
   p {

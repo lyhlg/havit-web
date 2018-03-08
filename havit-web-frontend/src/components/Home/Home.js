@@ -10,6 +10,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.props.getProducts('', '', 0, 1);
+    this.props.getBanners();
   }
 
   handlePage(e) {

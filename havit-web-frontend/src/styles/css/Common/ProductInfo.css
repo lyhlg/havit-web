@@ -1,5 +1,6 @@
 .productInfo {
   width: 1180px;
+  height: auto;
   margin: 0 auto; }
   .productInfo .productInfo__btnWrapper {
     border-bottom: 2px solid #dce2eb;
@@ -11,6 +12,9 @@
       font-size: 20px;
       background: #fff;
       border: none; }
+  .productInfo .productInfo__img {
+    width: 1180px;
+    height: auto; }
   .productInfo p {
     font-size: 17px;
     font-weight: normal;

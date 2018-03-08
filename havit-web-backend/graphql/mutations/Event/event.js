@@ -4,7 +4,7 @@ import { CHECK_DUP_DATA } from "../../common";
 const ADD_EVENT = async params => {
   const [obj, args, ctx] = [...params];
   const { event, counter, hospitalAdmin } = ctx;
-  const number = await autoNumbering("eventid", counter);
+  const number = await autoNumbering("productid", counter);
   const hospitalInfo = await hospitalAdmin.findOne(
     { code: args.hospitalCode },
     { loc: 1, name: 1, _id: 0 }
