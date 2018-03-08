@@ -800,6 +800,23 @@ export const addEvent = (
     .then(res => callback(res));
 };
 
+export const delProduct = (productId, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($productId: Int) {
+          delProduct(productId: $productId) {
+            hospitalCode
+          }
+        }
+      `,
+      variables: {
+        productId,
+      },
+    })
+    .then(res => callback(res));
+};
+
 export const delEvent = (hospitalCode, productId, callback) => {
   return client
     .mutate({

@@ -595,6 +595,24 @@ export const delEvent = (hospitalCode, productId, callback) => {
   };
 };
 
+const requestDelProduct = () => ({
+  type: types.REQUEST_DEL_PRODUCT,
+});
+
+const successDelProduct = product => ({
+  type: types.SUCCESS_DEL_PRODUCT,
+  product,
+});
+
+export const delProduct = (productId, callback) => {
+  return dispatch => {
+    dispatch(requestDelProduct());
+    return api.delProduct(productId, callback).then(res => {
+      dispatch(successDelProduct(res));
+    });
+  };
+};
+
 const requestDelHospitalAdmin = () => ({
   type: types.REQUEST_DEL_HOSPITALADMIN,
 });

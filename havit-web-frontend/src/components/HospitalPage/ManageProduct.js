@@ -2,8 +2,22 @@ import React, { Component } from 'react';
 import 'styles/css/HospitalPage/ManageProduct.css';
 
 class ManageProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.deleteProduct = this.deleteProduct.bind(this);
+  }
+
   redirectProduct(e) {
     this.props.history.push(`/products/${e.currentTarget.id}`);
+  }
+
+  deleteProduct(e, id) {
+    e.stopPropagation();
+    if (window.confirm('삭제하시겠습니까?')) {
+      this.props.delProduct(id, () => {
+        window.location.href = '/hospitalPage/manageProduct';
+      });
+    }
   }
   render() {
     const type = {
@@ -41,7 +55,7 @@ class ManageProduct extends Component {
                     <th>구매수</th>
                     <th>별점수</th>
                     <th>리뷰수</th>
-                    <th>-</th>
+                    <th>변경/삭제</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -60,6 +74,22 @@ class ManageProduct extends Component {
                           <td>{product.purchased}</td>
                           <td>별점X</td>
                           <td>{product.reviews.length}</td>
+                          <td>
+                            <button
+                              className="manageProduct__button"
+                              onClick={() => this.handleChangeCare({ i })}
+                            >
+                              변경
+                            </button>
+                            <button
+                              className="manageProduct__button"
+                              onClick={e =>
+                                this.deleteProduct(e, product.productId)
+                              }
+                            >
+                              삭제
+                            </button>
+                          </td>
                         </tr>
                       );
                     })}
