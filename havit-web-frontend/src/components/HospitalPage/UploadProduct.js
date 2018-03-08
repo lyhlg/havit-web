@@ -87,6 +87,7 @@ class UploadProduct extends Component {
                 <option value="waxing">제모</option>
                 <option value="semi">반영구</option>
                 <option value="shot">미용주사</option>
+                <option value="shot">여드름</option>
               </select>
             ) : (
               <select id="subType" className="uploadProduct__dropdown">
