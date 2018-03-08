@@ -15,10 +15,12 @@ class UploadProduct extends Component {
 
   uploadProduct() {
     let data;
+    console.log('upload Product 1');
     AWS_IMAGE_UPLOAD(
       'PRODUCT',
       document.getElementsByClassName('upload__img'),
       img => {
+        console.log('Return img: ', img);
         data = [
           document.getElementById('type').value,
           document.getElementById('subType').value,
@@ -35,6 +37,7 @@ class UploadProduct extends Component {
         });
       }
     );
+    console.log('upload Product 2');
   }
 
   fileSelectedHandler = event => {
