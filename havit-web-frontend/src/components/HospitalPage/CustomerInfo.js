@@ -78,7 +78,7 @@ class CustomerInfo extends Component {
                   <th>상담예약일자/시간</th>
                   <th>시술일자/시간</th>
                   <th>상태</th>
-                  <th>예약변경/취소</th>
+                  <th>예약변경</th>
                 </tr>
               </thead>
               <tbody>
