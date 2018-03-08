@@ -103,6 +103,15 @@ class Skin extends Component {
                 미용주사
               </li>
             </NavLink>
+            <NavLink
+              to="/skin/acne"
+              className="subNav__li"
+              activeClassName="subNav__li--selected"
+            >
+              <li onClick={() => this.props.getProducts('skin', 'acne', 0, 1)}>
+                여드름
+              </li>
+            </NavLink>
           </ul>
         </div>
         <main>

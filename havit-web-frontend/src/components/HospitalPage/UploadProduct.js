@@ -15,7 +15,6 @@ class UploadProduct extends Component {
 
   uploadProduct() {
     let data;
-    console.log('upload Product 1');
     AWS_IMAGE_UPLOAD(
       'PRODUCT',
       document.getElementsByClassName('upload__img'),
@@ -37,7 +36,6 @@ class UploadProduct extends Component {
         });
       }
     );
-    console.log('upload Product 2');
   }
 
   fileSelectedHandler = event => {
@@ -87,6 +85,7 @@ class UploadProduct extends Component {
                 <option value="waxing">제모</option>
                 <option value="semi">반영구</option>
                 <option value="shot">미용주사</option>
+                <option value="acne">여드름</option>
               </select>
             ) : (
               <select id="subType" className="uploadProduct__dropdown">

@@ -1,7 +1,6 @@
 import { CHK_MAX_PAGE } from "../../common";
 
 const FIND_PRODUCT = async params => {
-  console.log("#@####", args);
   const [obj, args, ctx] = [...params];
   const { type, subType, page, productId } = args;
   const { product, review } = ctx;
@@ -11,7 +10,7 @@ const FIND_PRODUCT = async params => {
   page ? page : 1;
 
   const results = async target => {
-    console.log(target);
+    console.log("[FIND_PRUDCT] target: ", target);
     return await product
       .find(target)
       .sort({ _id: -1 })
