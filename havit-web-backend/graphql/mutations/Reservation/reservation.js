@@ -50,8 +50,17 @@ const ADD_RESERVATION = async (params, reserveNumCal) => {
 
 const MODIFY_RESERVATION = async params => {
   const [obj, args, ctx] = [...params];
-  const { reserveNum, openPhoneNum, reserveDate, userName, phone } = args;
+  const {
+    reserveNum,
+    openPhoneNum,
+    reserveDate,
+    userName,
+    phone,
+  } = args;
   const { reservation, hospital, product } = ctx;
+
+  // img = img || delete args.img;
+  // productDetail = productDetail || delete args.productDetail;
 
   if (reserveNum && openPhoneNum) {
     await reservation.update(
