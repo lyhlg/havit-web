@@ -6,8 +6,8 @@ class Product extends Component {
   render() {
     return (
       <div className="product">
-        {this.props.products.map((product, index) => (
-          <ProductEntry product={product} key={index} />
+        {this.props.products.map((product, i) => (
+          <ProductEntry product={product} key={i} />
         ))}
       </div>
     );

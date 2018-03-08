@@ -8,10 +8,7 @@ class Reserve extends Component {
     this.state = {
       arr: [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31],
       month: 31,
-      input: Array(
-        this.props.reservations.reservationsList &&
-          this.props.reservations.reservationsList.length
-      ).fill(true),
+      input: Array(50).fill(true),
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.modifyReserveDate = this.modifyReserveDate.bind(this);
@@ -89,7 +86,15 @@ class Reserve extends Component {
                         <td>{reser.reserveNum}</td>
                         <td>{reser.userName}</td>
                         <td>{'0' + reser.phone}</td>
-                        <td>{reser.productName}</td>
+                        <td
+                          onClick={() =>
+                            this.props.history.push(
+                              `/products/${reser.productId}`
+                            )
+                          }
+                        >
+                          {reser.productName}
+                        </td>
                         {this.state.input[{ i }.i] ? (
                           <td>{`${reser.reserveDate
                             .toString()

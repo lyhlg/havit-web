@@ -54,6 +54,7 @@ class ProductInfo extends Component {
         {this.state.info ? (
           <div>
             <img
+              className="productInfo__img"
               src={
                 this.props.products.productsList[0] &&
                 this.props.products.productsList[0].productDetail

@@ -4,14 +4,14 @@ import 'styles/css/Event/Event.css';
 
 class Event extends Component {
   componentDidMount() {
-    this.props.getEvents(localStorage.getItem('email'), '', 0, 1);
+    this.props.getEvents();
+    this.props.getBanners();
   }
   render() {
-    console.log(this.props);
     return (
       <main>
         <Nav />
-        <Banner />
+        <Banner {...this.props} />
         <div className="event__category">
           <h2 className="event__title">이벤트</h2>
         </div>

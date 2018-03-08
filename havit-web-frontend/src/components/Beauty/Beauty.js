@@ -16,6 +16,7 @@ class Beauty extends Component {
       0,
       1
     );
+    this.props.getBanners();
   }
 
   handlePage(e) {
@@ -91,7 +92,7 @@ class Beauty extends Component {
           </ul>
         </div>
         <main>
-          <Banner />
+          <Banner {...this.props} />
           <div className="beauty__category">
             <h2 className="beauty__title">뷰티시술</h2>
           </div>
