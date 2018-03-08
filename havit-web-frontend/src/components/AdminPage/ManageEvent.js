@@ -62,7 +62,7 @@ class ManageEvent extends Component {
                         >
                           <img
                             src={trash}
-                            className="manageHospital__trash"
+                            className="manageEvent__trash"
                             alt="x"
                           />
                         </button>

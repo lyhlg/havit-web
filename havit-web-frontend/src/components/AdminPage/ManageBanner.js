@@ -51,7 +51,7 @@ class ManageBanner extends Component {
                         >
                           <img
                             src={trash}
-                            className="manageHospital__trash"
+                            className="manageBanner__trash"
                             alt="x"
                           />
                         </button>
