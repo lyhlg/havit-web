@@ -4,6 +4,9 @@
 */
 @import "http://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css";
 @import "http://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-jp.css";
+* {
+  box-sizing: border-box; }
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -48,3 +51,13 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+.toTop {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #869ab7;
+  background-color: #fff;
+  position: fixed;
+  bottom: 50px;
+  right: 10px; }

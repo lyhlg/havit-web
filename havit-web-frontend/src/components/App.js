@@ -20,6 +20,7 @@ import {
   ServicePage,
   UserAgree,
 } from './index';
+import { up } from 'assets/img';
 import 'styles/css/index.css';
 
 class App extends Component {
@@ -101,6 +102,13 @@ class App extends Component {
           />
           <Route component={NotFound} />
         </Switch>
+        <img
+          className="toTop"
+          onClick={() => {
+            window.scrollTo(0, 0);
+          }}
+          src={up}
+        />
         <Footer />
       </div>
     );
