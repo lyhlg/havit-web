@@ -13,11 +13,11 @@ export const FORMAT_FILENAME = (type, fileName) => {
     .substring(2, 7);
   const cleanFileName = fileName.toLowerCase();
   const newFileName = `images/${type}-${date}-${randomString}$-${cleanFileName}`;
-  console.log('FORMAT_FILENAME', newFileName.substring(0, 40));
   return newFileName.substring(0, 40);
 };
 
 export const AWS_IMAGE_UPLOAD = async (type, elements, callback) => {
+  console.log('IMAGE UPLOAD FUNCTION ');
   var resultUrl = [];
   const s3clientOptions = {
     accessKeyId: `${AWS_KEYS.accessKeyId}`,
@@ -32,7 +32,7 @@ export const AWS_IMAGE_UPLOAD = async (type, elements, callback) => {
   console.log('file: ', file);
   let res = [],
     count = 0;
-  file.forEach(item => {
+  file.forEach((item, idx) => {
     let uploadOptions = {
       data: item,
       key: FORMAT_FILENAME(type, item.name),
@@ -40,7 +40,8 @@ export const AWS_IMAGE_UPLOAD = async (type, elements, callback) => {
     };
     return s3client.upload(uploadOptions, (err, imgURL) => {
       if (err) console.log('error', err);
-      res[count] = imgURL;
+      res[idx] = imgURL;
+      console.log(count, imgURL);
       ++count;
       if (count === file.length) {
         return callback(res);
