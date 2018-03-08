@@ -54,3 +54,14 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+.toTop {
+	display: inline-block;
+	width: 40px;
+	height: 40px;
+	border: 1px solid #869ab7;
+	background-color: #fff;
+	position: fixed;
+	bottom: 50px;
+	right: 10px;
+}
