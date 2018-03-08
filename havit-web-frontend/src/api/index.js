@@ -369,6 +369,63 @@ export const addProduct = (
     })
     .then(res => callback(res));
 };
+
+export const editProduct = (
+  productId,
+  type,
+  subType,
+  img,
+  productName,
+  description,
+  price,
+  productDetail,
+  options,
+  callback
+) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $productId: Int
+          $type: String
+          $subType: String
+          $img: String
+          $productName: String
+          $description: String
+          $price: Int
+          $productDetail: String
+          $options: [String]
+        ) {
+          addProduct(
+            productId: $productId
+            type: $type
+            subType: $subType
+            img: $img
+            productName: $productName
+            description: $description
+            price: $price
+            productDetail: $productDetail
+            options: $options
+          ) {
+            productId
+          }
+        }
+      `,
+      variables: {
+        productId,
+        type,
+        subType,
+        img,
+        productName,
+        description,
+        price,
+        productDetail,
+        options,
+      },
+    })
+    .then(res => callback(res));
+};
+
 export const addReservation = (
   email,
   hospitalCode,
@@ -795,6 +852,23 @@ export const addEvent = (
         status,
         priority,
         productDetails,
+      },
+    })
+    .then(res => callback(res));
+};
+
+export const delProduct = (productId, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($productId: Int) {
+          delProduct(productId: $productId) {
+            hospitalCode
+          }
+        }
+      `,
+      variables: {
+        productId,
       },
     })
     .then(res => callback(res));

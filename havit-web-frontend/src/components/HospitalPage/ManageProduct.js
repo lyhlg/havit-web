@@ -2,8 +2,29 @@ import React, { Component } from 'react';
 import 'styles/css/HospitalPage/ManageProduct.css';
 
 class ManageProduct extends Component {
+  constructor(props) {
+    super(props);
+    this.redirectProduct = this.redirectProduct.bind(this);
+    this.moveProduct = this.moveProduct.bind(this);
+    this.deleteProduct = this.deleteProduct.bind(this);
+  }
+
   redirectProduct(e) {
     this.props.history.push(`/products/${e.currentTarget.id}`);
+  }
+
+  moveProduct(e, id) {
+    e.stopPropagation();
+    this.props.history.push(`/hospitalPage/changeProduct/${id}`);
+  }
+
+  deleteProduct(e, id) {
+    e.stopPropagation();
+    if (window.confirm('삭제하시겠습니까?')) {
+      this.props.delProduct(id, () => {
+        window.location.href = '/hospitalPage/manageProduct';
+      });
+    }
   }
   render() {
     const type = {
@@ -41,7 +62,7 @@ class ManageProduct extends Component {
                     <th>구매수</th>
                     <th>별점수</th>
                     <th>리뷰수</th>
-                    <th>-</th>
+                    <th>변경/삭제</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -51,7 +72,7 @@ class ManageProduct extends Component {
                         <tr
                           key={i}
                           id={product.productId}
-                          onClick={this.redirectProduct.bind(this)}
+                          onClick={this.redirectProduct}
                         >
                           <td>{type[product.type]}</td>
                           <td>{type[product.subType]}</td>
@@ -60,6 +81,24 @@ class ManageProduct extends Component {
                           <td>{product.purchased}</td>
                           <td>별점X</td>
                           <td>{product.reviews.length}</td>
+                          <td>
+                            <button
+                              className="manageProduct__button"
+                              onClick={e =>
+                                this.moveProduct(e, product.productId)
+                              }
+                            >
+                              변경
+                            </button>
+                            <button
+                              className="manageProduct__button"
+                              onClick={e =>
+                                this.deleteProduct(e, product.productId)
+                              }
+                            >
+                              삭제
+                            </button>
+                          </td>
                         </tr>
                       );
                     })}

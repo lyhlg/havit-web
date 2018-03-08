@@ -243,6 +243,48 @@ export const addProduct = (
   };
 };
 
+const requestEditProduct = () => ({
+  type: types.REQUEST_EDIT_PRODUCT,
+});
+
+const successEditProduct = product => ({
+  type: types.SUCCESS_EDIT_PRODUCT,
+  product,
+});
+
+export const editProduct = (
+  productId,
+  type,
+  subType,
+  img,
+  productName,
+  description,
+  price,
+  ProductDetail,
+  options,
+  callback
+) => {
+  return dispatch => {
+    dispatch(requestEditProduct());
+    return api
+      .addProduct(
+        productId,
+        type,
+        subType,
+        img,
+        productName,
+        description,
+        price,
+        ProductDetail,
+        options,
+        callback
+      )
+      .then(res => {
+        dispatch(successEditProduct(res));
+      });
+  };
+};
+
 const requestAddReservation = () => ({
   type: types.REQUEST_ADD_RESERVATION,
 });
@@ -591,6 +633,24 @@ export const delEvent = (hospitalCode, productId, callback) => {
     dispatch(requestDelEvent());
     return api.delEvent(hospitalCode, productId, callback).then(res => {
       dispatch(successDelEvent(res));
+    });
+  };
+};
+
+const requestDelProduct = () => ({
+  type: types.REQUEST_DEL_PRODUCT,
+});
+
+const successDelProduct = product => ({
+  type: types.SUCCESS_DEL_PRODUCT,
+  product,
+});
+
+export const delProduct = (productId, callback) => {
+  return dispatch => {
+    dispatch(requestDelProduct());
+    return api.delProduct(productId, callback).then(res => {
+      dispatch(successDelProduct(res));
     });
   };
 };

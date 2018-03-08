@@ -93,6 +93,34 @@ const mapDispatchToProps = dispatch => ({
     );
   },
 
+  editProduct: (
+    productId,
+    type,
+    subType,
+    img,
+    productName,
+    description,
+    price,
+    ProductDetail,
+    options,
+    callback
+  ) => {
+    dispatch(
+      actions.editProduct(
+        productId,
+        type,
+        subType,
+        img,
+        productName,
+        description,
+        price,
+        ProductDetail,
+        options,
+        callback
+      )
+    );
+  },
+
   addReservation: (
     email,
     hospitalCode,
@@ -233,6 +261,10 @@ const mapDispatchToProps = dispatch => ({
 
   delEvent: (hospitalCode, productId, callback) => {
     dispatch(actions.delEvent(hospitalCode, productId, callback));
+  },
+
+  delProduct: (productId, callback) => {
+    dispatch(actions.delProduct(productId, callback));
   },
 
   delHospitalAdmin: (code, callback) => {
