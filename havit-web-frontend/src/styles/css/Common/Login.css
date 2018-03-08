@@ -46,6 +46,7 @@
           width: 45px;
           height: 45px;
           border: none;
+          background-color: #ffffff;
           background-image: url("../../../assets/img/google.png");
           background-repeat: no-repeat;
           cursor: pointer; }
@@ -54,6 +55,7 @@
           height: 45px;
           margin-left: 18px;
           border: none;
+          background-color: #ffffff;
           background-image: url("../../../assets/img/kakao.png");
           background-repeat: no-repeat;
           cursor: pointer; }
@@ -64,6 +66,7 @@
           vertical-align: top;
           margin-left: 18px;
           border: none;
+          background-color: #ffffff;
           background-image: url("../../../assets/img/facebook.png");
           background-repeat: no-repeat;
           background-size: cover;
