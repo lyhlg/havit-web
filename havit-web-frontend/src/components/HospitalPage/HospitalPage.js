@@ -5,6 +5,7 @@ import {
   CustomerInfo,
   UploadProduct,
   ManageProduct,
+  ChangeProduct,
   Loading,
 } from '../index';
 import 'styles/css/HospitalPage/HospitalPage.css';
@@ -33,16 +34,20 @@ class HospitalPage extends Component {
           <div className="hospitalPage">
             <HospitalMenu payment={this.props.payment} />
             <Route
-              path="/HospitalPage/CustomerInfo"
+              path="/hospitalPage/customerInfo"
               render={props => <CustomerInfo {...this.props} />}
             />
             <Route
-              path="/HospitalPage/UploadProduct"
+              path="/hospitalPage/uploadProduct"
               render={props => <UploadProduct {...this.props} />}
             />
             <Route
-              path="/HospitalPage/ManageProduct"
+              path="/hospitalPage/manageProduct"
               render={props => <ManageProduct {...this.props} />}
+            />
+            <Route
+              path="/hospitalPage/changeProduct/:id"
+              render={props => <ChangeProduct {...this.props} />}
             />
           </div>
         )}

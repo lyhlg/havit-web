@@ -93,6 +93,34 @@ const mapDispatchToProps = dispatch => ({
     );
   },
 
+  editProduct: (
+    productId,
+    type,
+    subType,
+    img,
+    productName,
+    description,
+    price,
+    ProductDetail,
+    options,
+    callback
+  ) => {
+    dispatch(
+      actions.editProduct(
+        productId,
+        type,
+        subType,
+        img,
+        productName,
+        description,
+        price,
+        ProductDetail,
+        options,
+        callback
+      )
+    );
+  },
+
   addReservation: (
     email,
     hospitalCode,

@@ -243,6 +243,48 @@ export const addProduct = (
   };
 };
 
+const requestEditProduct = () => ({
+  type: types.REQUEST_EDIT_PRODUCT,
+});
+
+const successEditProduct = product => ({
+  type: types.SUCCESS_EDIT_PRODUCT,
+  product,
+});
+
+export const editProduct = (
+  productId,
+  type,
+  subType,
+  img,
+  productName,
+  description,
+  price,
+  ProductDetail,
+  options,
+  callback
+) => {
+  return dispatch => {
+    dispatch(requestEditProduct());
+    return api
+      .addProduct(
+        productId,
+        type,
+        subType,
+        img,
+        productName,
+        description,
+        price,
+        ProductDetail,
+        options,
+        callback
+      )
+      .then(res => {
+        dispatch(successEditProduct(res));
+      });
+  };
+};
+
 const requestAddReservation = () => ({
   type: types.REQUEST_ADD_RESERVATION,
 });

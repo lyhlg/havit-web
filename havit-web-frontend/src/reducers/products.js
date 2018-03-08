@@ -20,6 +20,8 @@ const products = (state = initialState, action) => {
       };
     case types.REQUEST_ADD_PRODUCT:
     case types.SUCCESS_ADD_PRODUCT:
+    case types.REQUEST_EDIT_PRODUCT:
+    case types.SUCCESS_EDIT_PRODUCT:
     case types.REQUEST_DEL_PRODUCT:
     case types.SUCCESS_DEL_PRODUCT:
     default:

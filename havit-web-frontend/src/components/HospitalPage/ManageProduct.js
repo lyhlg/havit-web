@@ -4,11 +4,18 @@ import 'styles/css/HospitalPage/ManageProduct.css';
 class ManageProduct extends Component {
   constructor(props) {
     super(props);
+    this.redirectProduct = this.redirectProduct.bind(this);
+    this.moveProduct = this.moveProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
   }
 
   redirectProduct(e) {
     this.props.history.push(`/products/${e.currentTarget.id}`);
+  }
+
+  moveProduct(e, id) {
+    e.stopPropagation();
+    this.props.history.push(`/hospitalPage/changeProduct/${id}`);
   }
 
   deleteProduct(e, id) {
@@ -65,7 +72,7 @@ class ManageProduct extends Component {
                         <tr
                           key={i}
                           id={product.productId}
-                          onClick={this.redirectProduct.bind(this)}
+                          onClick={this.redirectProduct}
                         >
                           <td>{type[product.type]}</td>
                           <td>{type[product.subType]}</td>
@@ -77,7 +84,9 @@ class ManageProduct extends Component {
                           <td>
                             <button
                               className="manageProduct__button"
-                              onClick={() => this.handleChangeCare({ i })}
+                              onClick={e =>
+                                this.moveProduct(e, product.productId)
+                              }
                             >
                               변경
                             </button>
