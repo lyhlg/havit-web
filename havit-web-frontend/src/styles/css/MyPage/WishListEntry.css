@@ -44,7 +44,8 @@
         color: #ffffff;
         border-radius: 2px;
         border: solid 1px #647dff;
-        background-color: #647dff; }
+        background-color: #647dff;
+        margin-left: 6px; }
       .wishList .wishList__content .wishList__right .wishList__removeBtn {
         font-size: 15px;
         text-align: center;

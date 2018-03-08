@@ -93,12 +93,6 @@ class UploadProduct extends Component {
                 <option value="lifting">리프팅</option>
               </select>
             )}
-            <h3 className="uploadProduct__label">이미지 업로드</h3>
-            <input
-              type="file"
-              className="upload__img"
-              onChange={this.fileSelectedHandler}
-            />
             <h3 className="uploadProduct__label">상품명</h3>
             <input
               type="text"
@@ -120,7 +114,13 @@ class UploadProduct extends Component {
               className="uploadProduct__input"
               placeholder="시술 금액을 입력해주세요."
             />
-            <h3 className="uploadProduct__label">제품 상세 이미지 업로드</h3>
+            <h3 className="uploadProduct__label">상품 메인 이미지 업로드</h3>
+            <input
+              type="file"
+              className="upload__img"
+              onChange={this.fileSelectedHandler}
+            />
+            <h3 className="uploadProduct__label">상품 상세 이미지 업로드</h3>
             <input
               type="file"
               className="upload__img"

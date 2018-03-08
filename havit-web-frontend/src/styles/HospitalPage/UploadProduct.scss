@@ -1,11 +1,13 @@
 .uploadProduct__title {
-  font-size: 30px;
-  color: #414d6b;
+  font-size: 25px;
+  color: #647dff;
 }
 
 .uploadProduct__label {
-  font-size: 20px;
-  color: #414d6b;
+  font-size: 15px;
+  font-weight: normal;
+  color: #869ab7;
+  margin: 40px 0 10px 0;
 }
 
 .uploadProduct__dropdown {
@@ -28,4 +30,19 @@
 	font-weight: 300;
   text-align: left;
 	border: solid 1px #dce2eb;
+}
+
+.uploadProduct__btn {
+  width: 160px;
+  height: 50px;
+  font-size: 15px;
+  border-radius: 2px;
+  background-color: #647dff;
+  border: solid 1px #647dff;
+  margin-top: 40px;
+  color: white;
+
+  .uploadProduct__btntext {
+    color: white;
+  }
 }
