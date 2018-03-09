@@ -83,7 +83,7 @@ class ManageProduct extends Component {
                           <td>{product.reviews.length}</td>
                           <td>
                             <button
-                              className="manageProduct__button"
+                              className="manageProduct__button1"
                               onClick={e =>
                                 this.moveProduct(e, product.productId)
                               }
@@ -91,7 +91,7 @@ class ManageProduct extends Component {
                               변경
                             </button>
                             <button
-                              className="manageProduct__button"
+                              className="manageProduct__button2"
                               onClick={e =>
                                 this.deleteProduct(e, product.productId)
                               }
