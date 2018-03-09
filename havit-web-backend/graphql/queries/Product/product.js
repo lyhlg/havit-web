@@ -33,7 +33,6 @@ const FIND_PRODUCT = async params => {
       return await product.findOne({ productId: obj.productId });
     }
   } else {
-    console.log("Product Args.. ");
     // 상품 상세 정보
     if (productId) return results({ productId });
 
