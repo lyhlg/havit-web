@@ -1,0 +1,17 @@
+.pagination {
+  width: 1180px;
+  height: 40px;
+  margin: 0 auto;
+  text-align: center;
+
+  .pagination__btn {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: middle;
+    border: 1px solid black;
+    margin: 0 20px;
+    text-align: center;
+  }
+}
