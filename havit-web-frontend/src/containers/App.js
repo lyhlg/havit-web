@@ -19,6 +19,7 @@ const mapStateToProps = state => ({
   events: state.events,
   payment: state.payment,
   maxPage: state.maxPage,
+  dashBoard: state.dashBoard,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -68,6 +69,10 @@ const mapDispatchToProps = dispatch => ({
 
   getMaxPage: email => {
     dispatch(actions.getMaxPage(email));
+  },
+
+  getDashBoard: email => {
+    dispatch(actions.getDashBoard(email));
   },
 
   addProduct: (

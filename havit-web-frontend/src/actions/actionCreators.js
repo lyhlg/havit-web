@@ -217,6 +217,24 @@ export const getMaxPage = email => {
   };
 };
 
+const requestGetDashBoard = () => ({
+  type: types.REQUEST_GET_DASHBOARD,
+});
+
+const successGetDashBoard = dashBoard => ({
+  type: types.SUCCESS_GET_DASHBOARD,
+  dashBoard,
+});
+
+export const getDashBoard = email => {
+  return dispatch => {
+    dispatch(requestGetDashBoard());
+    return api.getDashBoard(email).then(res => {
+      dispatch(successGetDashBoard(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddProduct = () => ({

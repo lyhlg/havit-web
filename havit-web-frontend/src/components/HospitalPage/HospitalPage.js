@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import {
   HospitalMenu,
+  DashBoard,
   CustomerInfo,
   UploadProduct,
   ManageProduct,
@@ -16,9 +17,11 @@ class HospitalPage extends Component {
   }
   componentDidMount() {
     if (localStorage.getItem('code') === '2') {
+      this.props.getDashBoard(localStorage.getItem('email'));
       this.props.getHospital(localStorage.getItem('email'));
       this.props.getPayment(localStorage.getItem('email'));
     } else if (localStorage.getItem('code') === '1') {
+      this.props.getDashBoard(localStorage.getItem('hospital'));
       this.props.getHospital(localStorage.getItem('hospital'));
       this.props.getPayment(localStorage.getItem('hospital'));
       localStorage.removeItem('hospital');
@@ -33,6 +36,10 @@ class HospitalPage extends Component {
         ) : (
           <div className="hospitalPage">
             <HospitalMenu payment={this.props.payment} />
+            <Route
+              path="/hospitalPage/dashBoard"
+              render={props => <DashBoard {...this.props} />}
+            />
             <Route
               path="/hospitalPage/customerInfo"
               render={props => <CustomerInfo {...this.props} />}

@@ -13,6 +13,7 @@ import banners from './banners';
 import events from './events';
 import payment from './payment';
 import maxPage from './maxPage';
+import dashBoard from './dashBoard';
 
 export default combineReducers({
   products,
@@ -29,4 +30,5 @@ export default combineReducers({
   events,
   payment,
   maxPage,
+  dashBoard,
 });

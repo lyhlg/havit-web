@@ -333,6 +333,29 @@ export const getMaxPage = email => {
   });
 };
 
+export const getDashBoard = email => {
+  return client.query({
+    query: gql`
+      query($email: String) {
+        SalesCount(user_id_email: $email) {
+          _id
+          total
+          purchased
+          canceled
+          fix
+          stars
+          products {
+            productName
+          }
+        }
+      }
+    `,
+    variables: {
+      email,
+    },
+  });
+};
+
 export const addProduct = (
   type,
   subType,
