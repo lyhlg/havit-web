@@ -35,6 +35,7 @@ export { default as CustomerInfo } from './HospitalPage/CustomerInfo';
 export { default as UploadProduct } from './HospitalPage/UploadProduct';
 export { default as ChangeProduct } from './HospitalPage/ChangeProduct';
 export { default as ManageProduct } from './HospitalPage/ManageProduct';
+export { default as DashBoard } from './HospitalPage/DashBoard';
 
 // AdminPage
 export { default as AdminPage } from './AdminPage/AdminPage';

@@ -90,6 +90,7 @@ class ChangeInfo extends Component {
       document.getElementById('code').value || '',
     ];
     if (
+      !data[1] ||
       (data[1] && !/^[a-zA-Z0-9]{6,20}$/.test(data[1])) ||
       data[1] !== document.getElementById('password2').value ||
       data[4] === NaN ||

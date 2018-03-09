@@ -78,7 +78,7 @@ class Header extends Component {
       header = (
         <div className="header__right">
           <NavLink
-            to="/hospitalPage/customerInfo"
+            to="/hospitalPage/dashBoard"
             className="header__link"
             activeClassName="header__link--selected"
           >

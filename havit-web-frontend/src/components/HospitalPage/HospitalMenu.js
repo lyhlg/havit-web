@@ -10,6 +10,13 @@ class HospitalMenu extends Component {
           <h2 className="hospitalMenu__name">병원관리</h2>
           <div className="hospitalMenu__tab">
             <NavLink
+              to="/hospitalPage/dashBoard"
+              className="hospitalMenu__button"
+              activeClassName="hospitalMenu__button--selected"
+            >
+              대시보드
+            </NavLink>
+            <NavLink
               to="/hospitalPage/customerInfo"
               className="hospitalMenu__button"
               activeClassName="hospitalMenu__button--selected"
