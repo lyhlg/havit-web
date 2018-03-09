@@ -18,33 +18,34 @@ const FIND_PRODUCT = async params => {
       .limit(limit);
   };
 
+  console.log(obj);
   if (obj) {
     if (obj.productId && !obj.stars) {
       // 예약 -> 제품검색
       return result({ productId: obj.productId });
     } else if (obj.code) {
       // 병원 -> 제품검색
-      const prod = await obj.products.map(async item => {
+      return await obj.products.map(async item => {
         return await product.findOne({ productId: item });
       });
-      Promise.all(prod).then(res => res.reverse());
     } else if (obj.stars) {
       // 리뷰 -> 제품검색
       return await product.findOne({ productId: obj.productId });
     }
+  } else {
+    console.log("Product Args.. ");
+    // 상품 상세 정보
+    if (productId) return results({ productId });
+
+    // type 과 subtype이 모두 넘어왔을 경우
+    if (type && subType && !productId) return results({ type, subType });
+
+    // type만 넘어올 경우
+    if (type && !productId) return results({ type: args.type });
+
+    // 전체검색
+    if (!type && !subType && !productId) return results({});
   }
-
-  // 상품 상세 정보
-  if (productId) return results({ productId });
-
-  // type 과 subtype이 모두 넘어왔을 경우
-  if (type && subType && !productId) return results({ type, subType });
-
-  // type만 넘어올 경우
-  if (type && !productId) return results({ type: args.type });
-
-  // 전체검색
-  if (!type && !subType && !productId) return results({});
 };
 
 const LIKE_PRODUCT = async params => {
