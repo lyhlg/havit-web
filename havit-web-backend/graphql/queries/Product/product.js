@@ -25,9 +25,10 @@ const FIND_PRODUCT = async params => {
       return result({ productId: obj.productId });
     } else if (obj.code) {
       // 병원 -> 제품검색
-      return await obj.products.map(async item => {
+      let prod = await obj.products.map(async item => {
         return await product.findOne({ productId: item });
       });
+      return await Promise.all(prod).then(res => res.reverse())
     } else if (obj.stars) {
       // 리뷰 -> 제품검색
       return await product.findOne({ productId: obj.productId });
