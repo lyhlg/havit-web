@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class Pagination extends Component {
   render() {
+    console.log(this.props.max);
     return (
       <div onClick={this.props.handlePage}>
         {Array(this.props.max)

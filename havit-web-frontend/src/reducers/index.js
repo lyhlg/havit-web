@@ -12,6 +12,7 @@ import notices from './notices';
 import banners from './banners';
 import events from './events';
 import payment from './payment';
+import maxPage from './maxPage';
 
 export default combineReducers({
   products,
@@ -27,4 +28,5 @@ export default combineReducers({
   banners,
   events,
   payment,
+  maxPage,
 });

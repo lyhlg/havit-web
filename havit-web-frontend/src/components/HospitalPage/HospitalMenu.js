@@ -32,10 +32,12 @@ class HospitalMenu extends Component {
             </NavLink>
             <span>
               정산 :{' '}
-              {this.props.payment.paymentList &&
-                this.props.payment.paymentList.count}건 /{' '}
-              {this.props.payment.paymentList &&
-                this.props.payment.paymentList.price}원
+              {(this.props.payment.paymentList &&
+                this.props.payment.paymentList.count) ||
+                0}건 /{' '}
+              {(this.props.payment.paymentList &&
+                this.props.payment.paymentList.price) ||
+                0}원
             </span>
           </div>
         </div>
