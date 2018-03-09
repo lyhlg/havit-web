@@ -36,6 +36,7 @@ class ProductDetail extends Component {
         localStorage.getItem('email'),
         Number(this.props.location.pathname.slice(10))
       );
+      alert('찜하기 되었습니다');
     } else {
       this.props.history.push('/login');
     }

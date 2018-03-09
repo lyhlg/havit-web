@@ -97,13 +97,7 @@ class Beauty extends Component {
             <h2 className="beauty__title">뷰티시술</h2>
           </div>
           <Product products={this.props.products.productsList} />
-          <Pagination
-            handlePage={this.handlePage}
-            max={
-              this.props.products.productsList[0] &&
-              this.props.products.productsList[0].maxPage
-            }
-          />
+          <Pagination handlePage={this.handlePage} {...this.props} />
         </main>
       </div>
     );

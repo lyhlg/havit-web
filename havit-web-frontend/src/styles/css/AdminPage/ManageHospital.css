@@ -1,3 +1,8 @@
+.manageHospital__tab::after {
+  display: block;
+  content: '';
+  clear: both; }
+
 .manageHospital__table {
   width: 1200px;
   height: auto;

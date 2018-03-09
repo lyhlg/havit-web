@@ -1,3 +1,8 @@
+.manageBanner__tab::after {
+  display: block;
+  content: "";
+  clear: both; }
+
 .manageBanner__table {
   width: 1200px;
   text-align: left;

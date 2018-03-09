@@ -65,14 +65,13 @@ class ProductInfo extends Component {
           <div>
             <UploadReview {...this.props} />
             {this.props.products.productsList[0] &&
-            this.props.products.productsList[0].reviews ? (
+            this.props.products.productsList[0].reviews.length !== 0 ? (
               this.props.products.productsList[0] &&
               this.props.products.productsList[0].reviews.map((review, i) => {
                 return <ReviewBoard review={review} key={i} />;
               })
             ) : (
               <div>
-                <UploadReview {...this.props} />
                 <div className="productInfo__empty">
                   <p>상품후기가 없습니다.</p>
                   <p>상품후기를 작성하고 크레딧을 적립하세요.</p>
