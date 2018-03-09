@@ -236,7 +236,7 @@ export const addProduct = (
   productName,
   description,
   price,
-  ProductDetail,
+  productDetail,
   options,
   callback
 ) => {
@@ -251,7 +251,7 @@ export const addProduct = (
         productName,
         description,
         price,
-        ProductDetail,
+        productDetail,
         options,
         callback
       )
@@ -278,14 +278,14 @@ export const editProduct = (
   productName,
   description,
   price,
-  ProductDetail,
+  productDetail,
   options,
   callback
 ) => {
   return dispatch => {
     dispatch(requestEditProduct());
     return api
-      .addProduct(
+      .editProduct(
         productId,
         type,
         subType,
@@ -293,7 +293,7 @@ export const editProduct = (
         productName,
         description,
         price,
-        ProductDetail,
+        productDetail,
         options,
         callback
       )

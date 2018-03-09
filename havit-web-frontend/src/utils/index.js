@@ -18,7 +18,7 @@ export const FORMAT_FILENAME = (type, fileName) => {
 
 export const AWS_IMAGE_UPLOAD = async (type, elements, callback) => {
   console.log('IMAGE UPLOAD FUNCTION ');
-  var resultUrl = [];
+
   const s3clientOptions = {
     accessKeyId: `${AWS_KEYS.accessKeyId}`,
     secretAccessKey: `${AWS_KEYS.secretAccessKey}`,
@@ -33,6 +33,15 @@ export const AWS_IMAGE_UPLOAD = async (type, elements, callback) => {
   let res = [],
     count = 0;
   file.forEach((item, idx) => {
+    if (!item) {
+      console.log('아이템이 없습니다.');
+      ++count;
+      res[idx] = '';
+      if (count === file.length) {
+        return callback(res);
+      }
+      return;
+    }
     let uploadOptions = {
       data: item,
       key: FORMAT_FILENAME(type, item.name),
