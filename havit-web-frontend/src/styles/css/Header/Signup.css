@@ -89,6 +89,9 @@
         font-weight: 300;
         text-align: center;
         color: #869ab7; }
+      .signup .signup__wrapper .signup__tab a {
+        color: #647dff;
+        font-weight: bold; }
       .signup .signup__wrapper .signup__tab .signup__btn {
         margin-top: 30px;
         text-align: center; }
