@@ -3,7 +3,7 @@ import 'styles/css/Common/Pagination.css';
 
 class Pagination extends Component {
   componentDidMount() {
-    this.props.getMaxPage();
+    this.props.getMaxPage(localStorage.getItem('email'));
   }
 
   render() {

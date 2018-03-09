@@ -66,8 +66,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.getPayment(email));
   },
 
-  getMaxPage: () => {
-    dispatch(actions.getMaxPage());
+  getMaxPage: email => {
+    dispatch(actions.getMaxPage(email));
   },
 
   addProduct: (
