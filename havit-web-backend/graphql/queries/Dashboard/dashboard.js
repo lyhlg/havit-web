@@ -4,7 +4,8 @@ const GET_DASHBOARD_COUNT = async params => {
   const [obj, args, ctx] = [...params];
   const { user_id_email } = args;
   const { hospital, product, review, reservation, salesCount } = ctx;
-  let res = {}, code;
+  let res = {},
+    code;
 
   if (Object.keys(args).length) {
     code = (await hospital.findOne({ adminAccount: user_id_email })).code;
@@ -19,6 +20,7 @@ const GET_DASHBOARD_COUNT = async params => {
   productListOfHospital.forEach(async item => {
     await salesCount.UpdateFixValue(item.productId, async res => {
       let changeFormat = Math.round(res).toString() + "%";
+
       await salesCount.update(
         { _id: item.productId },
         { $set: { fix: changeFormat } }
@@ -39,7 +41,7 @@ const GET_DASHBOARD_COUNT = async params => {
       // 아래를 안쓰면 totalVal을 사용하기 전에 promise에 들어간 값을 사용해서 값을 사용할 수가 없다.
       Promise.all(totalVal).then(async completed => {
         const res = completed.reduce((prev, curr) => prev + curr);
-        const averageStarVal = Math.ceil(res / reviews.length * 2) / 2;
+        const averageStarVal = Math.ceil(res / reviews.length);
         await salesCount.update(
           { _id: item.productId },
           { $set: { stars: averageStarVal } }
@@ -47,7 +49,10 @@ const GET_DASHBOARD_COUNT = async params => {
       });
     }
   });
-  return await salesCount.find();
+  return await productListOfHospital.map(async item => {
+    return await salesCount.findOne({_id: item.productId})
+  })
+
 };
 
 export { GET_DASHBOARD_COUNT };

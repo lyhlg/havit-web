@@ -59,7 +59,7 @@ export default {
     Events: (...params) => FIND_EVENT(params),
     Notices: (...params) => FIND_NOTICE(params),
     Banners: (...params) => GET_BANNER_LIST(params),
-    Dashboard: (...params) => GET_DASHBOARD_COUNT(params),
+    SalesCount: (...params) => GET_DASHBOARD_COUNT(params),
     Payments: (...params) => GET_PAYMENT(params),
     LikeProducts: (...params) => LIKE_PRODUCT(params),
     OpenedNumbers: (...params) => GET_OPENED_NUMBER(params),
@@ -85,6 +85,9 @@ export default {
   Event: {
     reviews: (...params) => FIND_REVIEW(params),
     options: (...params) => FIND_OPTION(params)
+  },
+  SalesCount: {
+    products: (...params) => FIND_PRODUCT(params)
   },
   Review: {
     product: (...params) => FIND_PRODUCT(params)

@@ -17,6 +17,7 @@ const FIND_PRODUCT = async params => {
       .limit(limit);
   };
 
+
   if (obj) {
     if (obj.productId && !obj.stars) {
       // 예약 -> 제품검색
@@ -27,6 +28,8 @@ const FIND_PRODUCT = async params => {
         return await product.findOne({ productId: item });
       });
       return await Promise.all(prod).then(res => res.reverse())
+    } else if ( ''+obj.purchased && ''+obj.canceled){
+      return await product.find({ productId: obj._id })
     } else if (obj.stars) {
       // 리뷰 -> 제품검색
       return await product.findOne({ productId: obj.productId });
