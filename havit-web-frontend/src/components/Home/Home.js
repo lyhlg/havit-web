@@ -9,11 +9,13 @@ class Home extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.getProducts('', '', 0, 1);
     this.props.getBanners();
   }
 
   handlePage(e) {
+    window.scrollTo(0, 0);
     this.props.getProducts('', '', 0, e.target.textContent);
   }
 
