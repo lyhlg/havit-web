@@ -19,7 +19,7 @@
     height: 80px;
     line-height: 80px;
     vertical-align: middle;
-    margin-top: 40px; }
+    margin: 40px 0; }
     .hospitalMenu .hospitalMenu__tab .hospitalMenu__button {
       font-size: 20px;
       margin-right: 40px;
