@@ -26,23 +26,23 @@
       margin-left: 60px; }
       .productDetail .productDetail__info .productDetail__text .productDetail__hospital {
         margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 20px;
+        margin-bottom: 15px;
+        font-size: 16px;
         color: #647dff; }
       .productDetail .productDetail__info .productDetail__text .productDetail__title {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 40px;
+        margin-top: 15px;
+        margin-bottom: 13px;
+        font-size: 36px;
         font-weight: bold;
         color: #414d6b; }
       .productDetail .productDetail__info .productDetail__text .productDetail__description {
-        font-size: 20px;
+        font-size: 18px;
         color: #414d6b; }
       .productDetail .productDetail__info .productDetail__text .productDetail__sales {
-        margin-top: 40px; }
+        margin-top: 70px; }
         .productDetail .productDetail__info .productDetail__text .productDetail__sales .productDetail__price {
           float: left;
-          font-size: 40px;
+          font-size: 36px;
           font-weight: bold;
           text-align: right;
           margin-right: 10px;
@@ -61,11 +61,21 @@
           content: "";
           clear: both; }
       .productDetail .productDetail__info .productDetail__text .productDetail__divider {
-        margin-top: 40px;
+        margin-top: 35px;
         width: 640px;
         height: 1px;
         border: 0.3px solid #dce2eb; }
       .productDetail .productDetail__info .productDetail__text .productDetail__option {
+<<<<<<< HEAD
+        margin-top: 85px;
+        width: 220px;
+        height: 50px;
+        padding-left: 15px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+        border-radius: 0;
+        color: #afc2db; }
+=======
         width: auto;
         height: 30px;
         margin-top: 20px;
@@ -77,8 +87,9 @@
         border: solid 1px #dce2eb;
         border-radius: 0px;
         -webkit-appearance: none; }
+>>>>>>> 00205571e89fcac3c48a162a15a6ac9644eb86b0
       .productDetail .productDetail__info .productDetail__text .productDetail__btnWrapper {
-        margin-top: 80px; }
+        margin-top: 30px; }
         .productDetail .productDetail__info .productDetail__text .productDetail__btnWrapper .productDetail__reserveBtn {
           display: inline-block;
           width: 160px;
