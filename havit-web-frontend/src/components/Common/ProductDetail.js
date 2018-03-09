@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ProductReserve, ProductInfo, Loading } from '../index';
 import { Link, Route } from 'react-router-dom';
+import { like } from 'assets/img';
 import 'styles/css/Common/ProductDetail.css';
 
 class ProductDetail extends Component {
@@ -166,7 +167,7 @@ class ProductDetail extends Component {
                     className="productDetail__likeBtn"
                     onClick={this.addLikeProduct}
                   >
-                    찜
+                    <img src={like} className="productDetail__like" alt="x" />
                   </button>
                 </div>
               </div>

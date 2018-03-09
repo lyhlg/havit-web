@@ -9,3 +9,5 @@ export { default as trash } from './trash.png';
 export { default as trash01 } from './trash01.png';
 export { default as trash02 } from './trash02.png';
 export { default as up } from './up.png';
+export { default as like } from './like.png';
+export { default as like2 } from './like2.png';
