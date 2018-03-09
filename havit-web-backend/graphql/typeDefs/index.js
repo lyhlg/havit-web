@@ -43,7 +43,7 @@ const typeDefs = `
       id: Int
     ): [Banner]
 
-    Dashboard(
+    SalesCount(
       user_id_email: String
     ) : [SalesCount]
 
@@ -158,6 +158,15 @@ const typeDefs = `
     url: String
     priority: Int
   }
+  type SalesCount {
+    _id: ID
+    total: Int
+    purchased: Int
+    canceled: Int
+    fix: String
+    stars: Float
+    products: [Product]
+  }
   type Review {
     _id: ID
     user_id_email : String
@@ -179,14 +188,6 @@ const typeDefs = `
   type Option {
     productId: Int
     type : [String]
-  }
-  type SalesCount {
-    _id: ID
-    total: Int
-    purchased: Int
-    canceled: Int
-    fix: String
-    stars: Float
   }
   type MaxPage {
     products_count: Int
