@@ -37,27 +37,27 @@
 
       .productDetail__hospital {
         margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 20px;
+        margin-bottom: 15px;
+        font-size: 16px;
         color: #647dff;
       }
       .productDetail__title {
-        margin-top: 20px;
-        margin-bottom: 20px;
-        font-size: 40px;
+        margin-top: 15px;
+        margin-bottom: 13px;
+        font-size: 36px;
         font-weight: bold;
         color: #414d6b;
       }
       .productDetail__description {
-        font-size: 20px;
+        font-size: 18px;
         color: #414d6b;
       }
       .productDetail__sales {
-        margin-top: 40px;
+        margin-top: 70px;
 
         .productDetail__price {
           float: left;
-          font-size: 40px;
+          font-size: 36px;
           font-weight: bold;
           text-align: right;
           margin-right: 10px;
@@ -82,17 +82,24 @@
         }
       }
       .productDetail__divider {
-        margin-top: 40px;
+        margin-top: 35px;
         width: 640px;
         height: 1px;
         border: 0.3px solid #dce2eb;
       }
       .productDetail__option {
-        margin-top: 20px;
+        margin-top: 85px;
+        width: 220px;
+        height: 50px;
+        padding-left: 15px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+        border-radius: 0;
+        color: #afc2db;
       }
 
       .productDetail__btnWrapper {
-        margin-top: 80px;
+        margin-top: 30px;
 
         .productDetail__reserveBtn {
           display: inline-block;
