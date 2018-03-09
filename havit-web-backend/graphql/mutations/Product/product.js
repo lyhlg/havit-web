@@ -107,11 +107,26 @@ const ADD_PRODUCT = async params => {
 };
 
 const EDIT_PRODUCT = async params => {
+  console.log( "edit_product 드러와따!!!!!!!!!!!!!");
   const [obj, args, ctx] = [...params];
-  const { productId } = args;
+  const {
+    productId,
+    type,
+    subType,
+    img,
+    productName,
+    description,
+    price,
+    productDetail,
+    options
+  } = args;
   const { product, productOption } = ctx;
 
-  const needToCngOptions = args.options;
+  if ( !img ) delete args.img;
+  if ( !productDetail ) delete args.productDetail;
+  if ( !options ) delete args.options;
+  console.log( "Edit Product :", args)
+
   if (!args.options) {
     await product.update({ productId }, { $set: args });
     return product.findOne({ productId });
@@ -119,7 +134,7 @@ const EDIT_PRODUCT = async params => {
 
   await SAVE_N_UPDATE_PRODUCT_OPTION(
     productId,
-    option,
+    options,
     productOption,
     "UPDATE"
   );
@@ -149,9 +164,16 @@ const SAVE_N_UPDATE_PRODUCT_OPTION = async (
 const DEL_PRODUCT = async params => {
   const [obj, args, ctx] = [...params];
   const { productId } = args;
-  const { reservation, hospital, productOption, salesCount, product, user } = ctx;
+  const {
+    reservation,
+    hospital,
+    productOption,
+    salesCount,
+    product,
+    user
+  } = ctx;
 
-  const findProduct = await product.findOne({productId});
+  const findProduct = await product.findOne({ productId });
   const code = findProduct.hospitalCode;
 
   // [예약] 예약에서 pid에 해당하는 것들 삭제
@@ -164,24 +186,21 @@ const DEL_PRODUCT = async params => {
     await hospital.update(
       { code },
       { $pull: { reservations: item.reserveNum } }
-    )
-  })
-  await reservation.remove({productId});
+    );
+  });
+  await reservation.remove({ productId });
 
   // [병원] 병원 테이블에 products에서 id 삭제
-  await hospital.update(
-    { code },
-    { $pull : { products: productId } }
-  );
+  await hospital.update({ code }, { $pull: { products: productId } });
 
   // [옵션] 제품 옵션 삭제
-  await productOption.remove({productId});
+  await productOption.remove({ productId });
 
   // [제품별 판매 건] 테이블 document 삭제
-  await salesCount.remove({_id: productId});
+  await salesCount.remove({ _id: productId });
 
   // [제품] product 테이블에서 해당 productId삭제
-  await product.remove({productId});
+  await product.remove({ productId });
 
   return findProduct;
 };

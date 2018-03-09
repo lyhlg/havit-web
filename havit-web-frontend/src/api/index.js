@@ -415,7 +415,7 @@ export const editProduct = (
           $productDetail: String
           $options: [String]
         ) {
-          addProduct(
+          editProduct(
             productId: $productId
             type: $type
             subType: $subType

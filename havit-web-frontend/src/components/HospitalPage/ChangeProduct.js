@@ -18,11 +18,13 @@ class ChangeProduct extends Component {
   }
 
   changeProduct() {
+    console.log(' 상품 수정 ');
     let data;
     AWS_IMAGE_UPLOAD(
       'PRODUCT',
       document.getElementsByClassName('upload__img'),
       img => {
+        console.log('[Return Image]', img, img[0], img[1]);
         data = [
           Number(window.location.pathname.slice(28)),
           document.getElementById('type').value,
@@ -34,6 +36,7 @@ class ChangeProduct extends Component {
           img[1],
           document.getElementById('options').value.split(','),
         ];
+        console.log('data ', data);
         this.props.editProduct(...data, () => {
           window.location.href = '/hospitalPage/manageProduct';
         });
@@ -169,7 +172,7 @@ class ChangeProduct extends Component {
                 className="uploadProduct__btn"
                 onClick={this.changeProduct}
               >
-                상품 등록
+                상품 수정
               </button>
               <button
                 className="uploadProduct__btn"

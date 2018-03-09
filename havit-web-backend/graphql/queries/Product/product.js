@@ -10,7 +10,6 @@ const FIND_PRODUCT = async params => {
   page ? page : 1;
 
   const results = async target => {
-    console.log("[FIND_PRUDCT] target: ", target);
     return await product
       .find(target)
       .sort({ _id: -1 })
@@ -18,7 +17,6 @@ const FIND_PRODUCT = async params => {
       .limit(limit);
   };
 
-  console.log(obj);
   if (obj) {
     if (obj.productId && !obj.stars) {
       // 예약 -> 제품검색

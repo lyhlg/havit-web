@@ -21,6 +21,9 @@ havit-web-backend/yarn.lock
 # production
 /build
 
+# aws key
+havit-web-frontend/src/utils/awskey.js
+
 # misc
 .DS_Store
 .env.local
