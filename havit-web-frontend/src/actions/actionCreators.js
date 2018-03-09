@@ -208,10 +208,10 @@ const successGetMaxPage = maxPage => ({
   maxPage,
 });
 
-export const getMaxPage = () => {
+export const getMaxPage = email => {
   return dispatch => {
     dispatch(requestGetMaxPage());
-    return api.getMaxPage().then(res => {
+    return api.getMaxPage(email).then(res => {
       dispatch(successGetMaxPage(res));
     });
   };

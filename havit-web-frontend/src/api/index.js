@@ -314,11 +314,11 @@ export const getPayment = email => {
   });
 };
 
-export const getMaxPage = () => {
+export const getMaxPage = email => {
   return client.query({
     query: gql`
-      query {
-        MaxPages {
+      query($email: String) {
+        MaxPages(email: $email) {
           products_count
           reservations_count
           hospitalAdmins_count
@@ -327,6 +327,9 @@ export const getMaxPage = () => {
         }
       }
     `,
+    variables: {
+      email,
+    },
   });
 };
 
