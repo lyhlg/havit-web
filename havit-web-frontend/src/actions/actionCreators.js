@@ -199,6 +199,24 @@ export const getPayment = email => {
   };
 };
 
+const requestGetMaxPage = () => ({
+  type: types.REQUEST_GET_MAXPAGE,
+});
+
+const successGetMaxPage = maxPage => ({
+  type: types.SUCCESS_GET_MAXPAGE,
+  maxPage,
+});
+
+export const getMaxPage = () => {
+  return dispatch => {
+    dispatch(requestGetMaxPage());
+    return api.getMaxPage().then(res => {
+      dispatch(successGetMaxPage(res));
+    });
+  };
+};
+
 // mutation
 
 const requestAddProduct = () => ({

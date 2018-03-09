@@ -26,9 +26,11 @@
   font-size: 15px;
   font-weight: 300;
   text-align: left;
+  padding-left: 10px;
   border: solid 1px #dce2eb; }
 
 .uploadProduct__btn {
+  display: inline-block;
   width: 160px;
   height: 50px;
   font-size: 15px;
@@ -36,6 +38,7 @@
   background-color: #647dff;
   border: solid 1px #647dff;
   margin-top: 40px;
+  margin-right: 10px;
   color: white; }
   .uploadProduct__btn .uploadProduct__btntext {
     color: white; }

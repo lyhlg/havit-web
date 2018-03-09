@@ -8,15 +8,19 @@ class UploadReview extends Component {
   }
 
   submitReview() {
-    this.props.addReview(
-      localStorage.getItem('email'),
-      Number(document.querySelector('input[name="star"]:checked').value),
-      document.getElementById('content').value,
-      Number(window.location.pathname.slice(10)),
-      () => {
-        window.location.reload();
-      }
-    );
+    if (localStorage.getItem('email')) {
+      this.props.addReview(
+        localStorage.getItem('email'),
+        Number(document.querySelector('input[name="star"]:checked').value),
+        document.getElementById('content').value,
+        Number(window.location.pathname.slice(10)),
+        () => {
+          window.location.reload();
+        }
+      );
+    } else {
+      this.props.history.push('/login');
+    }
   }
 
   render() {
@@ -29,7 +33,6 @@ class UploadReview extends Component {
           placeholder="시술을 완료한 고객님만 후기 등록이 가능합니다."
         />
         <div className="uploadReview__star">
-          <h3>별점</h3>
           <label>
             <input
               type="radio"

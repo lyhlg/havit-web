@@ -66,7 +66,6 @@ class UploadProduct extends Component {
       <div className="uploadProduct">
         <div className="uploadProduct__wrapper">
           <div className="uploadProduct__tab">
-            <h2 className="uploadProduct__title">상품등록</h2>
             <h3 className="uploadProduct__label">대분류</h3>
             <select
               id="type"
@@ -141,6 +140,14 @@ class UploadProduct extends Component {
                 onClick={this.uploadProduct}
               >
                 상품 등록
+              </button>
+              <button
+                className="uploadProduct__btn"
+                onClick={() =>
+                  this.props.history.push('/hospitalPage/manageProduct')
+                }
+              >
+                목록보기
               </button>
             </div>
           </div>
