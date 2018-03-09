@@ -279,8 +279,12 @@ class Signup extends Component {
             <h6 className="signup__info">
               회원가입 시{' '}
               <Link to="/Header/UserAgree" className="Signup__userAgree">
-                이용약관
-              </Link>, 개인정보 수집 및 이용에 동의로 간주합니다.
+                이용약관,
+              </Link>
+              <Link to="/Header/UserAgree" className="Signup__userAgree">
+                &nbsp;개인정보 수집
+              </Link>{' '}
+              및 이용에 동의로 간주합니다.
             </h6>
             <div className="signup__btn">
               {!this.state.check[0] &&

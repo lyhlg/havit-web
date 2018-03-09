@@ -106,12 +106,7 @@ class App extends Component {
               <ServicePage checkAuth={this.checkAuth} {...this.props} />
             )}
           />
-          <Route
-            path="/userAgree"
-            render={props => (
-              <UserAgree checkAuth={this.checkAuth} {...this.props} />
-            )}
-          />
+          <Route component={UserAgree} />
           <Route component={NotFound} />
         </Switch>
         <img
