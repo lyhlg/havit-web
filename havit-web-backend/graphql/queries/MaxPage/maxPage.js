@@ -1,18 +1,35 @@
 const MAX_PAGE = async params => {
   const [obj, args, ctx] = [...params];
+  const { email } = args;
   const { product, reservation, hospitalAdmin, event, notice, maxPage } = ctx;
   const limit = 20;
-  const products_count = Math.ceil((await product.find().count()) / limit);
-  const reservations_count = Math.ceil(
-    (await reservation.find().count()) / limit
-  );
-  const hospitalAdmins_count = Math.ceil(
+  let reservations_count,
+    products_count,
+    hospitalAdmins_count,
+    events_count,
+    notices_count;
+
+  await hospitalAdmin.findOne({ adminAccount: email }).then(async res => {
+    console.log(res);
+    if (res) {
+      console.log(res);
+      reservations_count = Math.ceil(
+        (await reservation.find({ hospitalCode: res.code }).count()) / limit
+      );
+    } else {
+      reservations_count = Math.ceil(
+        (await reservation.find({ user_id_email: email }).count()) / limit
+      );
+    }
+  });
+
+  products_count = Math.ceil((await product.find().count()) / limit);
+  hospitalAdmins_count = Math.ceil(
     (await hospitalAdmin.find().count()) / limit
   );
-  const events_count = Math.ceil((await event.find().count()) / limit);
-  const notices_count = Math.ceil((await notice.find().count()) / limit);
+  events_count = Math.ceil((await event.find().count()) / limit);
+  notices_count = Math.ceil((await notice.find().count()) / limit);
 
-  console.log(products_count, reservations_count, hospitalAdmins_count, events_count, notices_count);
 
   (await maxPage.findOne({ _id: "maxpage" }))
     ? await maxPage.update(
