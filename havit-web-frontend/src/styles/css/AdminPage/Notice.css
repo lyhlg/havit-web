@@ -1,3 +1,8 @@
+.notice__tab::after {
+  display: block;
+  content: "";
+  clear: both; }
+
 .notice__table {
   width: 1200px;
   text-align: left;

@@ -1,3 +1,9 @@
+.manageEvent__tab::after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
 .manageEvent__table {
   width: 1200px;
   text-align: left;
