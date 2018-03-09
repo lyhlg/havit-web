@@ -15,7 +15,6 @@ class ChangeBanner extends Component {
   }
 
   submitBanner() {
-    let data;
     AWS_IMAGE_UPLOAD(
       'PRODUCT',
       document.getElementsByClassName('upload__img'),

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import 'styles/css/ServicePage/ServiceFaq.css';
 
 class ServiceFaq extends Component {
@@ -22,16 +21,6 @@ class ServiceFaq extends Component {
   }
 
   render() {
-    console.log('isOpened', this.state.isOpened);
-    let dropdownText;
-    if (this.state.isOpened) {
-      dropdownText = (
-        <div>
-          네, havit은 회원제를 시행하고 있습니다. 회원가입을 하시면 다양한
-          혜택을 받으실 수 있습니다.
-        </div>
-      );
-    }
     return (
       <div className="serviceFaq">
         <div className="serviceFaq__wrapper">

@@ -17,7 +17,7 @@ class Banner extends Component {
           {this.props.banners.bannersList.map((banner, i) => {
             return (
               <div key={i} onClick={() => this.props.history.push(banner.url)}>
-                <img src={banner.img} />
+                <img src={banner.img} alt="배너" />
               </div>
             );
           })}

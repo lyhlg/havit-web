@@ -11,7 +11,6 @@ class UploadEvent extends Component {
   }
 
   submitEvent() {
-    let data;
     AWS_IMAGE_UPLOAD(
       'EVENT',
       document.getElementsByClassName('upload__img'),

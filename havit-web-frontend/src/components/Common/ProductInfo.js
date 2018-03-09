@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import UploadReview from './UploadReview';
 import ReviewBoard from './ReviewBoard';
 import 'styles/css/Common/ProductInfo.css';
@@ -59,6 +58,7 @@ class ProductInfo extends Component {
                 this.props.products.productsList[0] &&
                 this.props.products.productsList[0].productDetail
               }
+              alt="상세이미지"
             />
           </div>
         ) : (

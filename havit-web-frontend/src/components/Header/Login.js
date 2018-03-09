@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { reallogo } from 'assets/img';
-import { Route } from 'react-router-dom';
 import 'styles/css/Common/Login.css';
 import { GoogleLogin } from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';

@@ -32,7 +32,7 @@ class App extends Component {
   toTop(scrollDuration) {
     var scrollStep = -window.scrollY / (scrollDuration / 15),
       scrollInterval = setInterval(function() {
-        if (window.scrollY != 0) {
+        if (window.scrollY !== 0) {
           window.scrollBy(0, scrollStep);
         } else clearInterval(scrollInterval);
       }, 15);
@@ -115,6 +115,7 @@ class App extends Component {
             this.toTop(150);
           }}
           src={up}
+          alt="화살표"
         />
         <Footer />
       </div>
