@@ -66,6 +66,7 @@
         height: 1px;
         border: 0.3px solid #dce2eb; }
       .productDetail .productDetail__info .productDetail__text .productDetail__option {
+<<<<<<< HEAD
         width: auto;
         height: 30px;
         margin-top: 20px;
@@ -77,8 +78,18 @@
         border: solid 1px #dce2eb;
         border-radius: 0px;
         -webkit-appearance: none; }
+=======
+        margin-top: 15px;
+        width: 220px;
+        height: 50px;
+        padding-left: 15px;
+        background-color: #ffffff;
+        border: solid 1px #dce2eb;
+        border-radius: 0;
+        color: #afc2db; }
+>>>>>>> 4f6ebec3359f0ce0f303147a52e26d82e3f32f28
       .productDetail .productDetail__info .productDetail__text .productDetail__btnWrapper {
-        margin-top: 30px; }
+        margin-top: 20px; }
         .productDetail .productDetail__info .productDetail__text .productDetail__btnWrapper .productDetail__reserveBtn {
           display: inline-block;
           width: 160px;

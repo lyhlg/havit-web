@@ -1,8 +1,8 @@
 .productReserve {
   border: 1px solid #dce2eb;
   margin-top: 10px;
-  padding: 20px;
-  height: 220px;
+  padding: 10px;
+  height: 210px;
 
   .left {
     float: left;
@@ -31,20 +31,30 @@
         height: 20px;
         line-height: 20px;
         vertical-align: middle;
-        font-size: 15px;
+        font-size: 10px;
         font-weight: 300;
         text-align: center;
-        padding-left: 5px;
+        padding-left: 8px;
         margin-right: 5px;
         background-color: #ffffff;
         border: solid 1px #dce2eb;
         border-radius: 0px;
         -webkit-appearance: none;
       }
-      }
+    }
   }
   .right {
     float: right;
+    padding-top: 70px;
+    padding-right: 10px;
+    button {
+      width: 100px;
+      height: 40px;
+      margin: 0 10px;
+      border: 1px solid #647dff;
+      color: white;
+      background-color: #647dff;
+    }
   }
 
   &::after {

@@ -63,7 +63,9 @@ const typeDefs = `
 
     Options : [Option]
 
-    MaxPages : [MaxPage]
+    MaxPages(
+      email: String
+    ) : [MaxPage]
   }
 
   type User {
