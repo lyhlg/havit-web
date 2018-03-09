@@ -10,6 +10,7 @@ class Skin extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.getProducts(
       'skin',
       this.props.history.location.pathname.slice(6) || '',
@@ -20,6 +21,7 @@ class Skin extends Component {
   }
 
   handlePage(e) {
+    window.scrollTo(0, 0);
     this.props.getProducts(
       'skin',
       this.props.history.location.pathname.slice(6) || '',
@@ -120,13 +122,7 @@ class Skin extends Component {
             <h2 className="skin__title">피부시술</h2>
           </div>
           <Product products={this.props.products.productsList} />
-          <Pagination
-            handlePage={this.handlePage}
-            max={
-              this.props.products.productsList[0] &&
-              this.props.products.productsList[0].maxPage
-            }
-          />
+          <Pagination handlePage={this.handlePage} {...this.props} />
         </main>
       </div>
     );

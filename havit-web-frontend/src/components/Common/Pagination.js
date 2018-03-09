@@ -7,7 +7,6 @@ class Pagination extends Component {
   }
 
   render() {
-    console.log(this.props.maxPage.maxPage);
     return (
       <div onClick={this.props.handlePage} className="pagination">
         {Array(
@@ -17,9 +16,9 @@ class Pagination extends Component {
           .fill(1)
           .map((num, i) => {
             return (
-              <span key={i} className="pagination__btn">
+              <a key={i} className="pagination__btn">
                 {num + i}
-              </span>
+              </a>
             );
           })}
       </div>
