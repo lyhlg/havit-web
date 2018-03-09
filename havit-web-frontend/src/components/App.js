@@ -24,6 +24,19 @@ import { up } from 'assets/img';
 import 'styles/css/index.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.toTop = this.toTop.bind(this);
+  }
+
+  toTop(scrollDuration) {
+    var scrollStep = -window.scrollY / (scrollDuration / 15),
+      scrollInterval = setInterval(function() {
+        if (window.scrollY != 0) {
+          window.scrollBy(0, scrollStep);
+        } else clearInterval(scrollInterval);
+      }, 15);
+  }
   // constructor(props) {
   //   super(props);
   //   // this.checkAuth = this.checkAuth.bind(this);
@@ -104,7 +117,7 @@ class App extends Component {
         <img
           className="toTop"
           onClick={() => {
-            window.scrollTo(0, 0);
+            this.toTop(150);
           }}
           src={up}
         />
