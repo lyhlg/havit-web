@@ -1,0 +1,25 @@
+.userAgree {
+  width: 1440px;
+  height: 720px;
+  background-color: #ffffff;
+  margin: 0 auto;
+
+  .userAgree__tab {
+    width: 500px;
+    height: 1100;
+
+    .userAgree__title {
+      font-size: 20px;
+      font-weight: normal;
+      color: #647dff;
+      margin-bottom: 10px;
+    }
+
+    .userAgree__content {
+      font-size: 16px;
+      font-weight: normal;
+      color: #869ab7;
+      margin-top: 40px;
+    }
+  }
+}
