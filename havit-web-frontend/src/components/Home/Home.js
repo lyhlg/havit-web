@@ -11,7 +11,6 @@ class Home extends Component {
   componentDidMount() {
     this.props.getProducts('', '', 0, 1);
     this.props.getBanners();
-    this.props.getMaxPage();
   }
 
   handlePage(e) {
@@ -27,13 +26,7 @@ class Home extends Component {
           <h2 className="home__title">전체보기</h2>
         </div>
         <Product products={this.props.products.productsList} />
-        <Pagination
-          handlePage={this.handlePage}
-          max={
-            this.props.maxPage.maxPage[0] &&
-            this.props.maxPage.maxPage[0].products__count
-          }
-        />
+        <Pagination handlePage={this.handlePage} {...this.props} />
       </main>
     );
   }
