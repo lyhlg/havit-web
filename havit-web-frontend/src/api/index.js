@@ -3,7 +3,6 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import gql from 'graphql-tag';
 import * as url from 'utils';
-import ProductDetail from '../components/Common/ProductDetail';
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: `${url.API_DEV}/graphql` }),

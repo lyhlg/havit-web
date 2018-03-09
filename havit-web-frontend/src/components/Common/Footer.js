@@ -7,13 +7,25 @@ class Footer extends Component {
       <footer className="footer">
         <div className="footer__madeBy">
           <p>제작</p>
-          <a href="https://github.com/lyhlg" target="_blank">
+          <a
+            href="https://github.com/lyhlg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             이용현(Back-end)
           </a>
-          <a href="https://github.com/dubbsong" target="_blank">
+          <a
+            href="https://github.com/dubbsong"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             송진영(Front-end)
           </a>
-          <a href="https://github.com/JungYouTaek" target="_blank">
+          <a
+            href="https://github.com/JungYouTaek"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             정유택(Ace)
           </a>
         </div>

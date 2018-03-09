@@ -9,7 +9,6 @@ import {
   ChangeEvent,
   ManageBanner,
   ManageEvent,
-  UploadPage,
   UploadBanner,
   UploadHospital,
   UploadEvent,

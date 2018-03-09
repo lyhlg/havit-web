@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import 'styles/css/MyPage/ChangeInfo.css';
 
 class ChangeInfo extends Component {
@@ -93,10 +92,10 @@ class ChangeInfo extends Component {
       !data[1] ||
       (data[1] && !/^[a-zA-Z0-9]{6,20}$/.test(data[1])) ||
       data[1] !== document.getElementById('password2').value ||
-      data[4] === NaN ||
+      isNaN(data[4]) ||
       data[4].toString().length < 9 ||
       data[4].toString().length > 10 ||
-      data[5] === NaN ||
+      isNaN(data[5]) ||
       !data[6].length ||
       !data[7].length ||
       !data[8].length

@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route } from 'react-router-dom';
-import { logo3 } from 'assets/img';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import 'styles/css/Header/Signup.css';
 
 class Signup extends Component {
@@ -94,10 +92,10 @@ class Signup extends Component {
       !/^[a-zA-Z0-9]{6,20}$/.test(data[1]) ||
       data[1] !== document.getElementById('password2').value ||
       !data[3] ||
-      data[4] === NaN ||
+      isNaN(data[4]) ||
       data[4].toString().length < 9 ||
       data[4].toString().length > 10 ||
-      data[5] === NaN ||
+      isNaN(data[5]) ||
       !data[6].length ||
       !data[7].length ||
       !data[8].length

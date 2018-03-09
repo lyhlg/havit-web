@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { ProductReserve, ProductInfo, Loading } from '../index';
-import { Link, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { like } from 'assets/img';
 import 'styles/css/Common/ProductDetail.css';
 
@@ -16,6 +16,7 @@ class ProductDetail extends Component {
   }
 
   componentDidMount() {
+    window.scrollTo(0, 0);
     this.props.getProducts('', '', this.props.location.pathname.slice(10));
   }
 

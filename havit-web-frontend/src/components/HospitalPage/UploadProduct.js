@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import 'styles/css/HospitalPage/UploadProduct.css';
 import { AWS_IMAGE_UPLOAD } from 'utils';
 
