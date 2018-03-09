@@ -19,17 +19,25 @@ class ProductDetail extends Component {
   }
 
   handleReserve() {
-    this.setState({
-      purchase: this.state.purchase === 'none' ? 'block' : 'none',
-      purchaseBtn: this.state.purchaseBtn === 'none' ? 'block' : 'none',
-    });
+    if (localStorage.getItem('email')) {
+      this.setState({
+        purchase: this.state.purchase === 'none' ? 'block' : 'none',
+        purchaseBtn: this.state.purchaseBtn === 'none' ? 'block' : 'none',
+      });
+    } else {
+      this.props.history.push('/login');
+    }
   }
 
   addLikeProduct() {
-    this.props.addLikeProducts(
-      localStorage.getItem('email'),
-      Number(this.props.location.pathname.slice(10))
-    );
+    if (localStorage.getItem('email')) {
+      this.props.addLikeProducts(
+        localStorage.getItem('email'),
+        Number(this.props.location.pathname.slice(10))
+      );
+    } else {
+      this.props.history.push('/login');
+    }
   }
 
   render() {

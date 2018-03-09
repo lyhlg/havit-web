@@ -314,6 +314,22 @@ export const getPayment = email => {
   });
 };
 
+export const getMaxPage = () => {
+  return client.query({
+    query: gql`
+      query {
+        MaxPages {
+          products_count
+          reservations_count
+          hospitalAdmins_count
+          events_count
+          notices_count
+        }
+      }
+    `,
+  });
+};
+
 export const addProduct = (
   type,
   subType,

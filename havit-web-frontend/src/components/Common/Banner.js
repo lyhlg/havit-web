@@ -10,6 +10,7 @@ class Banner extends Component {
           showArrows={true}
           showThumbs={false}
           autoPlay={true}
+          useKeyboardArrows={true}
           infiniteLoop={true}
           interval={3000}
         >

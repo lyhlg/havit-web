@@ -11,6 +11,7 @@ class Home extends Component {
   componentDidMount() {
     this.props.getProducts('', '', 0, 1);
     this.props.getBanners();
+    this.props.getMaxPage();
   }
 
   handlePage(e) {
@@ -29,8 +30,8 @@ class Home extends Component {
         <Pagination
           handlePage={this.handlePage}
           max={
-            this.props.products.productsList[0] &&
-            this.props.products.productsList[0].maxPage
+            this.props.maxPage.maxPage[0] &&
+            this.props.maxPage.maxPage[0].products__count
           }
         />
       </main>

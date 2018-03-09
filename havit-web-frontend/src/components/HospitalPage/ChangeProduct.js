@@ -171,6 +171,14 @@ class ChangeProduct extends Component {
               >
                 상품 등록
               </button>
+              <button
+                className="uploadProduct__btn"
+                onClick={() =>
+                  this.props.history.push('/hospitalPage/manageProduct')
+                }
+              >
+                돌아가기
+              </button>
             </div>
           </div>
         </div>
