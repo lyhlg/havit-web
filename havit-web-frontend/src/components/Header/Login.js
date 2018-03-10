@@ -15,7 +15,6 @@ class Login extends Component {
   }
 
   handleKeyPress(e) {
-    console.log(e);
     if (e.key === 'Enter') this.submitLogin();
   }
 

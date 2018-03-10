@@ -16,6 +16,33 @@
     }
   }
 
+  .search {
+    display: inline-block;
+    height: 80px;
+    line-height: 80px;
+    vertical-align: middle;
+    margin-left: 300px;
+
+    .search__filter {
+      width: 80px;
+      height: 30px;
+      padding-left: 15px;
+      background-color: #ffffff;
+      border: solid 1px #dce2eb;
+
+    }
+
+    .search__input {
+      width: 200px;
+      height: 29px;
+      margin-left: 5px;
+      padding-left: 15px;
+      padding-bottom: 3px;
+      background-color: #ffffff;
+      border: solid 1px #dce2eb;
+      border-radius: 2px;
+    }
+  }
   .header__right {
     float: right;
 

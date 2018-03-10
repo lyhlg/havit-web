@@ -2,6 +2,7 @@ import * as types from 'actions/actionTypes';
 
 const initialState = {
   productsList: [],
+  keyword: [],
   loading: false,
 };
 
@@ -14,6 +15,18 @@ const products = (state = initialState, action) => {
         loading: false,
       };
     case types.REQUEST_GET_PRODUCTS:
+      return {
+        ...state,
+        loading: true,
+      };
+    case types.SUCCESS_GET_SEARCH:
+      return {
+        ...state,
+        productsList: action.search.data.Search,
+        keyword: action.keyword,
+        loading: false,
+      };
+    case types.REQUEST_GET_SEARCH:
       return {
         ...state,
         loading: true,

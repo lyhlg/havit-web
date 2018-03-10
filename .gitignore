@@ -36,3 +36,4 @@ yarn-debug.log*
 yarn-error.log*
 
 yarn.lock
+havit-web-frontend/src/utils/awskey.js

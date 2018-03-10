@@ -75,6 +75,10 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.getDashBoard(email));
   },
 
+  getSearch: (filter, keyword) => {
+    dispatch(actions.getSearch(filter, keyword));
+  },
+
   addProduct: (
     type,
     subType,
