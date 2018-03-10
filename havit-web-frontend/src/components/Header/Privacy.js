@@ -111,7 +111,7 @@ class Privacy extends Component {
       <div className="privacy">
         <div className="signup__wrapper">
           <div className="signup__tab">
-            <h2 className="signup__title">회원가입</h2>
+            <h2 className="signup__title">개인정보 입력</h2>
             <div className="signup__box">
               <div className="signup__box3">
                 <h3 className="signup__label">이름</h3>
