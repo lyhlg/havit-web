@@ -1,16 +1,16 @@
-.userAgree {
+.userAgrees {
   width: 1440px;
   height: 1100px;
   background-color: #ffffff;
   margin: 0 auto;
 
-  .userAgree__tab {
+  .userAgrees__tab {
     width: 627px;
     height: 1100;
     margin: 0 auto;
     margin-top: 130px;
 
-    .userAgree__title {
+    .userAgrees__title {
       font-size: 30px;
       font-weight: bold;
       color: #647dff;
@@ -18,7 +18,7 @@
       margin-bottom: 100px;
     }
 
-    .userAgree__numbering {
+    .userAgrees__numbering {
       font-size: 16px;
       font-weight: bold;
       margin-top: 60px;
@@ -26,7 +26,7 @@
       color: #647dff;
     }
 
-    .userAgree__content {
+    .userAgrees__content {
       font-size: 16px;
       font-weight: normal;
       color: #869ab7;
@@ -34,7 +34,7 @@
       line-height: 1.4;
     }
 
-    .userAgree__end {
+    .userAgrees__end {
       font-size: 16px;
       font-weight: normal;
       color: #869ab7;
@@ -42,12 +42,12 @@
       line-height: 1.0;
     }
 
-    .userAgree__btn {
+    .userAgrees__btn {
       margin-top: 30px;
       text-align: center;
     }
 
-    .userAgree__button {
+    .userAgrees__button {
       width: 160px;
       height: 50px;
       font-size: 15px;
@@ -57,12 +57,12 @@
       margin-top: 40px;
       color: white;
 
-      .userAgree__btntext {
+      .userAgrees__btntext {
         color: white;
       }
     }
 
-    .userAgree__alert {
+    .userAgrees__alert {
       color: #ff8282;
       font-size: 15px;
       margin-bottom: 5px;
