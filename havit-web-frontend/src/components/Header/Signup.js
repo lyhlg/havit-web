@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Popup from './Popup';
+import PopupSec from './PopupSec';
 import 'styles/css/Header/Signup.css';
 
 class Signup extends Component {
@@ -45,6 +46,7 @@ class Signup extends Component {
       ],
       check: [false, 0],
       showPopup: false,
+      showPopupSec: false,
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.submitUserInfo = this.submitUserInfo.bind(this);
@@ -115,6 +117,12 @@ class Signup extends Component {
   togglePopup() {
     this.setState({
       showPopup: !this.state.showPopup,
+    });
+  }
+
+  togglePopupSec() {
+    this.setState({
+      showPopupSec: !this.state.showPopupSec,
     });
   }
 
@@ -290,9 +298,15 @@ class Signup extends Component {
               {this.state.showPopup ? (
                 <Popup text="" closePopup={this.togglePopup.bind(this)} />
               ) : null}
-              <Link to="/Header/UserAgrees" className="Signup__userAgrees">
-                &nbsp;개인정보 수집
-              </Link>{' '}
+              <button onClick={this.togglePopupSec.bind(this)}>
+                개인정보 수집
+              </button>
+              {this.state.showPopupSec ? (
+                <PopupSec
+                  text=""
+                  closePopupSec={this.togglePopupSec.bind(this)}
+                />
+              ) : null}
               및 이용에 동의로 간주합니다.
             </h6>
             <div className="signup__btn">

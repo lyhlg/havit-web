@@ -1,4 +1,4 @@
-.popup {
+.popupSec {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -7,41 +7,53 @@
   right: 0;
   bottom: 0;
   margin: auto;
-  background-color: rgba(0, 0, 0, 0.5); }
+  background-color: rgba(0,0,0, 0.5);
+}
 
-.popup_inner {
+.popupSec_inner {
   position: absolute;
   left: 30%;
   right: 30%;
   top: 18%;
   bottom: 20%;
   margin: auto;
-  background: white; }
-  .popup_inner .popup_text {
+  background: white;
+
+  .popupSec_text {
     width: 600px;
     height: 620px;
     margin: 0 auto;
-    margin-top: 30px; }
-    .popup_inner .popup_text .popup__title {
+    margin-top: 30px;
+
+    .popupSec__title {
       font-size: 20px;
       color: #647dff;
-      margin-bottom: 40px; }
-    .popup_inner .popup_text .popup__numbering {
+      margin-bottom: 40px;
+    }
+
+    .popupSec__numbering {
       text-align: left;
       font-size: 15px;
       color: #647dff;
-      margin-bottom: 8px; }
-    .popup_inner .popup_text .popup__content {
+      margin-bottom: 8px;
+    }
+
+    .popupSec__content {
       text-align: left;
       font-size: 12px;
       color: #869ab7;
-      margin-bottom: 20px; }
-    .popup_inner .popup_text .popup__end {
+      margin-bottom: 20px;
+    }
+
+    .popupSec__end {
       font-size: 12px;
       color: #869ab7;
       margin-top: 50px;
-      margin-bottom: 12px; }
-  .popup_inner .popup__button {
+      margin-bottom: 12px;
+    }
+  }
+
+  .popupSec__button {
     width: 160px;
     height: 50px;
     font-size: 15px;
@@ -49,4 +61,6 @@
     background-color: #647dff;
     border: solid 1px #647dff;
     margin-top: 20px;
-    color: white; }
+    color: white;
+  }
+}
