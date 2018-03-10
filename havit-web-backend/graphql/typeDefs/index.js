@@ -66,6 +66,11 @@ const typeDefs = `
     MaxPages(
       email: String
     ) : [MaxPage]
+
+    Search (
+      filter: String
+      keyword: String
+    ) : [Product]
   }
 
   type User {
