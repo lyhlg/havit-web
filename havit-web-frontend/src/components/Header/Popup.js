@@ -10,7 +10,7 @@ class Popup extends Component {
             <div>
               <p className="popup__title">havit 이용약관</p>
             </div>
-            <p className="popup__numbering">이용약관 1조 목적</p>
+            <p className="popup__numbering">제1조 목적</p>
             <p className="popup__content">
               이 약관은 ㈜Nomad Donut이 운영하는 애플리케이션 havit 시스템을
               이용하는 ‘havit’ MOU체결 병의원(이하 ‘제휴병의원’)과 이용자의
