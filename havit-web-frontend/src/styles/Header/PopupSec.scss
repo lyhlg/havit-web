@@ -12,15 +12,14 @@
 
 .popupSec_inner {
   position: absolute;
-  left: 30%;
-  right: 30%;
-  top: 18%;
-  bottom: 20%;
-  margin: auto;
+  width: 700px;
+  height: 745px;
+  margin-left: 850px;
+  margin-top: 200px;
   background: white;
 
   .popupSec_text {
-    width: 600px;
+    width: 580px;
     height: 620px;
     margin: 0 auto;
     margin-top: 30px;
