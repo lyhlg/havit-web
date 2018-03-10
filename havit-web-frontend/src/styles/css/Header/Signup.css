@@ -117,7 +117,8 @@
         background-color: #647dff;
         border: solid 1px #647dff;
         margin-top: 10px;
-        color: white; }
+        color: white;
+        cursor: pointer; }
         .signup .signup__wrapper .signup__tab .signup__button .signup__btntext {
           color: white; }
       .signup .signup__wrapper .signup__tab .signup__alert {
