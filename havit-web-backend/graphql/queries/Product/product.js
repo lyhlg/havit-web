@@ -17,7 +17,6 @@ const FIND_PRODUCT = async params => {
       .limit(limit);
   };
 
-
   if (obj) {
     if (obj.productId && !obj.stars) {
       // 예약 -> 제품검색
@@ -27,9 +26,9 @@ const FIND_PRODUCT = async params => {
       let prod = await obj.products.map(async item => {
         return await product.findOne({ productId: item });
       });
-      return await Promise.all(prod).then(res => res.reverse())
-    } else if ( ''+obj.purchased && ''+obj.canceled){
-      return await product.find({ productId: obj._id })
+      return await Promise.all(prod).then(res => res.reverse());
+    } else if ("" + obj.purchased && "" + obj.canceled) {
+      return await product.find({ productId: obj._id });
     } else if (obj.stars) {
       // 리뷰 -> 제품검색
       return await product.findOne({ productId: obj.productId });
@@ -70,4 +69,14 @@ const LIKE_PRODUCT = async params => {
   }
 };
 
-export { FIND_PRODUCT, LIKE_PRODUCT };
+const SEARCH_PRODUCT = async params => {
+  const [obj, args, ctx] = [...params];
+  const { filter, keyword } = args;
+  const { product } = ctx;
+
+  return filter === "hospital"
+    ? await product.find({ hospitalName: new RegExp(keyword) })
+    : await product.find({ productName: new RegExp(keyword) });
+};
+
+export { FIND_PRODUCT, LIKE_PRODUCT, SEARCH_PRODUCT };
