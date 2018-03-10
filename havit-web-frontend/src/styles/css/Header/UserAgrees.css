@@ -1,41 +1,41 @@
-.userAgree {
+.userAgrees {
   width: 1440px;
   height: 1100px;
   background-color: #ffffff;
   margin: 0 auto; }
-  .userAgree .userAgree__tab {
+  .userAgrees .userAgrees__tab {
     width: 627px;
     height: 1100;
     margin: 0 auto;
     margin-top: 130px; }
-    .userAgree .userAgree__tab .userAgree__title {
+    .userAgrees .userAgrees__tab .userAgrees__title {
       font-size: 30px;
       font-weight: bold;
       color: #647dff;
       margin-left: 200px;
       margin-bottom: 100px; }
-    .userAgree .userAgree__tab .userAgree__numbering {
+    .userAgrees .userAgrees__tab .userAgrees__numbering {
       font-size: 16px;
       font-weight: bold;
       margin-top: 60px;
       margin-bottom: 20px;
       color: #647dff; }
-    .userAgree .userAgree__tab .userAgree__content {
+    .userAgrees .userAgrees__tab .userAgrees__content {
       font-size: 16px;
       font-weight: normal;
       color: #869ab7;
       margin-top: 20px;
       line-height: 1.4; }
-    .userAgree .userAgree__tab .userAgree__end {
+    .userAgrees .userAgrees__tab .userAgrees__end {
       font-size: 16px;
       font-weight: normal;
       color: #869ab7;
       margin-top: 50px;
       line-height: 1.0; }
-    .userAgree .userAgree__tab .userAgree__btn {
+    .userAgrees .userAgrees__tab .userAgrees__btn {
       margin-top: 30px;
       text-align: center; }
-    .userAgree .userAgree__tab .userAgree__button {
+    .userAgrees .userAgrees__tab .userAgrees__button {
       width: 160px;
       height: 50px;
       font-size: 15px;
@@ -44,9 +44,9 @@
       border: solid 1px #647dff;
       margin-top: 40px;
       color: white; }
-      .userAgree .userAgree__tab .userAgree__button .userAgree__btntext {
+      .userAgrees .userAgrees__tab .userAgrees__button .userAgrees__btntext {
         color: white; }
-    .userAgree .userAgree__tab .userAgree__alert {
+    .userAgrees .userAgrees__tab .userAgrees__alert {
       color: #ff8282;
       font-size: 15px;
       margin-bottom: 5px; }

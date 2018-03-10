@@ -281,7 +281,7 @@ class Signup extends Component {
               <Link to="/Header/UserAgree" className="Signup__userAgree">
                 이용약관,
               </Link>
-              <Link to="/Header/UserAgree" className="Signup__userAgree">
+              <Link to="/Header/UserAgrees" className="Signup__userAgrees">
                 &nbsp;개인정보 수집
               </Link>{' '}
               및 이용에 동의로 간주합니다.
