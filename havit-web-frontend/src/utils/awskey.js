@@ -1,6 +1,6 @@
 const AWS_KEYS = {
-  accessKeyId: 'AKIAJEBUBMJNRXIETHFA', // required
-  secretAccessKey: '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', // required
+  accessKeyId: 'AKIAJ23SWEOQBC73HKBA', // required
+  secretAccessKey: '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', // required
 };
 
 export { AWS_KEYS };

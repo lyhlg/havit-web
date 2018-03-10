@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import UserAgree from './UserAgree';
 import 'styles/css/Header/Signup.css';
 
 class Signup extends Component {
@@ -43,6 +44,7 @@ class Signup extends Component {
         '송파구',
       ],
       check: [false, 0],
+      showUserAgree: false,
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.submitUserInfo = this.submitUserInfo.bind(this);
@@ -108,6 +110,12 @@ class Signup extends Component {
         this.props.history.push('/signupend');
       }, ...data);
     }
+  }
+
+  toggleUserAgree() {
+    this.setState({
+      showUserAgree: !this.state.showUserAgree,
+    });
   }
 
   render() {
@@ -278,10 +286,16 @@ class Signup extends Component {
             <hr className="signup__hr" />
             <h6 className="signup__info">
               회원가입 시{' '}
-              <Link to="/Header/UserAgree" className="Signup__userAgree">
+              <button onClick={this.toggleUserAgree.bind(this)}>
                 이용약관,
-              </Link>
-              <Link to="/Header/UserAgrees" className="Signup__userAgrees">
+              </button>
+              {this.state.toggleUserAgree ? (
+                <UserAgree
+                  text="ssup"
+                  closePopup={this.toggleUserAgree.bind(this)}
+                />
+              ) : null}
+              <Link to="/Header/UserAgrees" className="signup__userAgrees">
                 &nbsp;개인정보 수집
               </Link>{' '}
               및 이용에 동의로 간주합니다.
