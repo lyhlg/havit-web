@@ -758,27 +758,28 @@ export const confirmPurchase = reserveNum => {
   });
 };
 
-export const addNotice = (title, body, author, img) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($title: String, $body: String, $author: String, $img: String) {
-        addNotice(title: $title, body: $body, author: $author, img: $img) {
-          _id
-          title
-          body
-          author
-          views
-          createdOn
+export const addNotice = (title, body, author, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($title: String, $body: String, $author: String) {
+          addNotice(title: $title, body: $body, author: $author) {
+            _id
+            title
+            body
+            author
+            views
+            createdOn
+          }
         }
-      }
-    `,
-    variables: {
-      title,
-      body,
-      author,
-      img,
-    },
-  });
+      `,
+      variables: {
+        title,
+        body,
+        author,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addBanner = (img, title, url, priority, callback) => {
@@ -822,23 +823,25 @@ export const delBanner = (id, callback) => {
     .then(res => callback(res));
 };
 
-export const addHospitalAdmin = (code, name, loc) => {
-  return client.mutate({
-    mutation: gql`
-      mutation($code: String, $name: String, $loc: String) {
-        addHospitalAdmin(code: $code, name: $name, loc: $loc) {
-          code
-          name
-          loc
+export const addHospitalAdmin = (code, name, loc, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($code: String, $name: String, $loc: String) {
+          addHospitalAdmin(code: $code, name: $name, loc: $loc) {
+            code
+            name
+            loc
+          }
         }
-      }
-    `,
-    variables: {
-      code,
-      name,
-      loc,
-    },
-  });
+      `,
+      variables: {
+        code,
+        name,
+        loc,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addEvent = (

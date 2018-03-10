@@ -41,6 +41,7 @@ class Notice extends Component {
     this.props.history.push(`/adminPage/changeNotice/${id}`);
   }
   render() {
+    console.log(this.props);
     return (
       <div className="notice">
         <div className="notice__wrapper">

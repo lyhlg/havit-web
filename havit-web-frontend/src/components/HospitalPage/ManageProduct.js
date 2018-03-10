@@ -60,7 +60,6 @@ class ManageProduct extends Component {
                     <th>상품명</th>
                     <th>시술금액</th>
                     <th>구매수</th>
-                    <th>별점수</th>
                     <th>리뷰수</th>
                     <th>변경/삭제</th>
                   </tr>
@@ -79,7 +78,6 @@ class ManageProduct extends Component {
                           <td>{product.productName}</td>
                           <td>{product.price}</td>
                           <td>{product.purchased}</td>
-                          <td>별점X</td>
                           <td>{product.reviews.length}</td>
                           <td>
                             <button

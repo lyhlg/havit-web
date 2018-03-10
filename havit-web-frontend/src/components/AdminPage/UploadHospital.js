@@ -12,11 +12,11 @@ class UploadHospital extends Component {
     this.props.addHospitalAdmin(
       document.getElementById('code').value,
       document.getElementById('name').value,
-      document.getElementById('loc').value
+      document.getElementById('loc').value,
+      () => {
+        window.location.href = '/adminPage/manageHospital';
+      }
     );
-    setTimeout(() => {
-      window.location.href = '/adminPage/manageHospital';
-    }, 1500);
   }
 
   render() {
