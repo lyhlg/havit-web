@@ -13,7 +13,7 @@ import 'styles/css/HospitalPage/HospitalPage.css';
 
 class HospitalPage extends Component {
   componentWillMount() {
-    // this.props.checkAuth(this.props.history.location.pathname);
+    this.props.checkAuth();
   }
   componentDidMount() {
     if (localStorage.getItem('code') === '2') {

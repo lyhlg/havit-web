@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Popup from './Popup';
+import PopupSec from './PopupSec';
 import 'styles/css/Header/Signup.css';
 
 class Signup extends Component {
@@ -43,6 +45,8 @@ class Signup extends Component {
         '송파구',
       ],
       check: [false, 0],
+      showPopup: false,
+      showPopupSec: false,
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.submitUserInfo = this.submitUserInfo.bind(this);
@@ -108,6 +112,18 @@ class Signup extends Component {
         this.props.history.push('/signupend');
       }, ...data);
     }
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup,
+    });
+  }
+
+  togglePopupSec() {
+    this.setState({
+      showPopupSec: !this.state.showPopupSec,
+    });
   }
 
   render() {
@@ -278,13 +294,28 @@ class Signup extends Component {
             <hr className="signup__hr" />
             <h6 className="signup__info">
               회원가입 시{' '}
-              <Link to="/Header/UserAgree" className="Signup__userAgree">
+              <button
+                onClick={this.togglePopup.bind(this)}
+                className="signup__btn1"
+              >
                 이용약관,
-              </Link>
-              <Link to="/Header/UserAgrees" className="Signup__userAgrees">
-                &nbsp;개인정보 수집
-              </Link>{' '}
-              및 이용에 동의로 간주합니다.
+              </button>
+              {this.state.showPopup ? (
+                <Popup text="" closePopup={this.togglePopup.bind(this)} />
+              ) : null}
+              <button
+                onClick={this.togglePopupSec.bind(this)}
+                className="signup__btn2"
+              >
+                개인정보 수집 및 이용
+              </button>
+              {this.state.showPopupSec ? (
+                <PopupSec
+                  text=""
+                  closePopupSec={this.togglePopupSec.bind(this)}
+                />
+              ) : null}
+              에 동의로 간주합니다.
             </h6>
             <div className="signup__btn">
               {!this.state.check[0] &&

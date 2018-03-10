@@ -4,6 +4,10 @@ import { Menu, Reserve, WishList, ChangeInfo, Loading } from '../index';
 import 'styles/css/MyPage/MyPage.css';
 
 class MyPage extends Component {
+  componentWillMount() {
+    this.props.checkAuth();
+  }
+
   componentDidMount() {
     this.props.getUserInfo(localStorage.getItem('email'));
     if (localStorage.getItem('code') === '3') {
