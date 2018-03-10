@@ -18,6 +18,7 @@ import {
   NotFound,
   Footer,
   ServicePage,
+  Search,
 } from './index';
 import { up } from 'assets/img';
 import 'styles/css/index.css';
@@ -67,6 +68,7 @@ class App extends Component {
         <Switch>
           <Route exact path="/" render={props => <Home {...this.props} />} />
           <Route path="/login" render={props => <Login {...this.props} />} />
+          <Route path="/search" render={props => <Search {...this.props} />} />
           <Route
             path="/privacy"
             render={props => <Privacy {...this.props} />}

@@ -64,7 +64,9 @@ class Reserve extends Component {
         <div className="reserve__wrapper">
           <div className="reserve__tab">
             {this.props.reservations.reservationsList.length === 0 ? (
-              <Empty />
+              <div className="empty">
+                <p>예약이 없습니다</p>
+              </div>
             ) : (
               <table className="reserve__table">
                 <thead>

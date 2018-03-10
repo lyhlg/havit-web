@@ -83,7 +83,6 @@ export const getProducts = (type, subType, productId, page) => {
           price
           purchased
           productDetail
-
           options {
             type
           }
@@ -351,6 +350,41 @@ export const getDashBoard = email => {
     `,
     variables: {
       email,
+    },
+  });
+};
+
+export const getSearch = (filter, keyword) => {
+  return client.query({
+    query: gql`
+      query($filter: String, $keyword: String) {
+        Search(filter: $filter, keyword: $keyword) {
+          type
+          subType
+          productId
+          img
+          hospitalCode
+          hospitalLoc
+          hospitalName
+          productName
+          description
+          price
+          purchased
+          productDetail
+          options {
+            type
+          }
+          reviews {
+            user_id_email
+            stars
+            comment
+          }
+        }
+      }
+    `,
+    variables: {
+      filter,
+      keyword,
     },
   });
 };
