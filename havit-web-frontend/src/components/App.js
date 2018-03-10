@@ -29,6 +29,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.toTop = this.toTop.bind(this);
+    this.checkAuth = this.checkAuth.bind(this);
   }
 
   toTop(scrollDuration) {
@@ -39,31 +40,39 @@ class App extends Component {
         } else clearInterval(scrollInterval);
       }, 15);
   }
-  // constructor(props) {
-  //   super(props);
-  //   // this.checkAuth = this.checkAuth.bind(this);
-  // }
 
-  // checkAuth(url) {
-  //   if ( url.includes('adminPage') && localStorage.getItem('code') !== 3) {
-  //     this.props.history.push('/login');
-  //   }
-  //   if ( url.includes('hospitalPage') && localStorage.getItem('code') < 2) {
-  //     this.props.history.push('/login');
-  //   }
-  //   if ( url.includes('mypage') && localStorage.getItem('code') < 1) {
-  //     this.props.history.push('/login');
-  //   }
-  //   if (!localStorage.getItem('email')) {
-  //     this.props.history.push('/login');
-  //   }
-  // }
+  checkAuth() {
+    if (
+      window.location.pathname.includes('adminPage') &&
+      localStorage.getItem('code') !== '1'
+    ) {
+      this.props.history.push('/notFound');
+    }
+    if (
+      window.location.pathname.includes('hospitalPage') &&
+      !(
+        localStorage.getItem('code') === '1' ||
+        localStorage.getItem('code') === '2'
+      )
+    ) {
+      this.props.history.push('/notFound');
+    }
+    if (
+      window.location.pathname.includes('mypage') &&
+      !(
+        localStorage.getItem('code') === '1' ||
+        localStorage.getItem('code') === '2' ||
+        localStorage.getItem('code') === '3'
+      )
+    ) {
+      this.props.history.push('/notFound');
+    }
+    if (!localStorage.getItem('email')) {
+      this.props.history.push('/login');
+    }
+  }
 
   render() {
-    // const ScrollToTop = () => {
-    //   window.scrollTo(0, 0);
-    //   return null;
-    // };
     return (
       <div>
         <Header {...this.props} />
@@ -105,9 +114,7 @@ class App extends Component {
           />
           <Route
             path="/servicePage"
-            render={props => (
-              <ServicePage checkAuth={this.checkAuth} {...this.props} />
-            )}
+            render={props => <ServicePage {...this.props} />}
           />
           <Route component={UserAgree} />
           <Route component={UserAgrees} />

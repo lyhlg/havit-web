@@ -18,6 +18,10 @@ import {
 import 'styles/css/AdminPage/AdminPage.css';
 
 class AdminPage extends Component {
+  componentWillMount() {
+    this.props.checkAuth();
+  }
+
   componentDidMount() {
     this.props.getHospitalAdmin();
     this.props.getBanners();
