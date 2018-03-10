@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import 'styles/css/Header/UserAgree.css';
 
 class UserAgree extends Component {
   render() {
     return (
       <div className="userAgree">
-        <div className="userAgree__wrapper">
-          <div className="userAgree__tab">
+        <div className="userAgree__inner">
+          <div className="userAgree__text">
             <div>
               <p className="userAgree__title">havit 이용약관</p>
             </div>
@@ -67,7 +66,12 @@ class UserAgree extends Component {
             <p className="userAgree__end">
               본 약관은 2018년 3월 14일부터 적용됩니다.
             </p>
-            <button className="userAgree__button">이용약관 확인</button>
+            <button
+              onClick={this.props.closePopup}
+              className="userAgree__button"
+            >
+              이용약관 확인
+            </button>
           </div>
         </div>
       </div>

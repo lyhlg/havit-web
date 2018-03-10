@@ -1,4 +1,4 @@
-.userAgree {
+.popup {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -9,7 +9,7 @@
   margin: auto;
   background-color: rgba(0, 0, 0, 0.5); }
 
-.userAgree_inner {
+.popup_inner {
   position: absolute;
   left: 30%;
   right: 30%;
@@ -17,12 +17,12 @@
   bottom: 20%;
   margin: auto;
   background: white; }
-  .userAgree_inner .userAgree_text {
+  .popup_inner .popup_text {
     width: 600px;
     height: 620px;
     margin: 0 auto;
     margin-top: 30px; }
-  .userAgree_inner .userAgree__button {
+  .popup_inner .popup__button {
     width: 160px;
     height: 50px;
     font-size: 15px;

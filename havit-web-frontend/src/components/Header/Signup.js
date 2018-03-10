@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Popup from './Popup';
 import 'styles/css/Header/Signup.css';
 
 class Signup extends Component {
@@ -43,6 +44,7 @@ class Signup extends Component {
         '송파구',
       ],
       check: [false, 0],
+      showPopup: false,
     };
     this.changeMonth = this.changeMonth.bind(this);
     this.submitUserInfo = this.submitUserInfo.bind(this);
@@ -108,6 +110,12 @@ class Signup extends Component {
         this.props.history.push('/signupend');
       }, ...data);
     }
+  }
+
+  togglePopup() {
+    this.setState({
+      showPopup: !this.state.showPopup,
+    });
   }
 
   render() {
@@ -278,9 +286,10 @@ class Signup extends Component {
             <hr className="signup__hr" />
             <h6 className="signup__info">
               회원가입 시{' '}
-              <Link to="/Header/UserAgree" className="Signup__userAgree">
-                이용약관,
-              </Link>
+              <button onClick={this.togglePopup.bind(this)}>이용약관,</button>
+              {this.state.showPopup ? (
+                <Popup text="ssup" closePopup={this.togglePopup.bind(this)} />
+              ) : null}
               <Link to="/Header/UserAgrees" className="Signup__userAgrees">
                 &nbsp;개인정보 수집
               </Link>{' '}

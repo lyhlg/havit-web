@@ -18,8 +18,6 @@ import {
   NotFound,
   Footer,
   ServicePage,
-  UserAgree,
-  UserAgrees,
   Search,
 } from './index';
 import { up } from 'assets/img';
@@ -116,8 +114,6 @@ class App extends Component {
             path="/servicePage"
             render={props => <ServicePage {...this.props} />}
           />
-          <Route component={UserAgree} />
-          <Route component={UserAgrees} />
           <Route component={NotFound} />
         </Switch>
         <img
