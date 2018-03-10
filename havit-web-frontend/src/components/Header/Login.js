@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { reallogo } from 'assets/img';
+import { Privacy } from '../index';
+import { Route } from 'react-router-dom';
 import 'styles/css/Common/Login.css';
 import { GoogleLogin } from 'react-google-login';
 import KakaoLogin from 'react-kakao-login';
@@ -172,6 +174,7 @@ class Login extends Component {
             </div>
           </div>
         </div>
+        <Route path="/privacy" render={props => <Privacy {...this.props} />} />
       </div>
     );
   }

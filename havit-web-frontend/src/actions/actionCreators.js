@@ -552,10 +552,10 @@ const successAddNotice = notice => ({
   notice,
 });
 
-export const addNotice = (title, body, author, url) => {
+export const addNotice = (title, body, author, callback) => {
   return dispatch => {
     dispatch(requestAddNotice());
-    return api.addNotice(title, body, author, url).then(res => {
+    return api.addNotice(title, body, author, callback).then(res => {
       dispatch(successAddNotice(res));
     });
   };
@@ -606,10 +606,10 @@ const successAddHospitalAdmin = () => ({
   addHospitalAdmin,
 });
 
-export const addHospitalAdmin = (code, url, loc) => {
+export const addHospitalAdmin = (code, url, loc, callback) => {
   return dispatch => {
     dispatch(requestAddHospitalAdmin());
-    return api.addHospitalAdmin(code, url, loc).then(res => {
+    return api.addHospitalAdmin(code, url, loc, callback).then(res => {
       dispatch(successAddHospitalAdmin(res));
     });
   };

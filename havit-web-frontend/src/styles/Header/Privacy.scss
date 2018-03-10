@@ -1,19 +1,19 @@
 .privacy {
   width: 1440px;
-  height: 1360px;
-  background-color: #4cc8e5;
+  height: 1380px;
+  background-color: #647dff;
   margin: 0 auto;
-  padding-top: 140px;
+  padding-top: 100px;
 
   .signup__title {
     font-size: 30px;
     font-weight: bold;
-    color: #4cc8e5;
+    color: #647dff;
   }
 
   .signup__wrapper {
     width: 1180px;
-    height: 1200px;
+    height: 1180px;
     background-color: #ffffff;
     box-shadow: 0 20px 20px 0 rgba(65, 77, 107, 0.3);
     margin: 0 auto;
@@ -124,14 +124,11 @@
         width: 160px;
         height: 50px;
         border-radius: 2px;
-        background-color: #4cc8e5;
-        border: solid 1px #4cc8e5;
+        background-color: #647dff;
+        border: solid 1px #647dff;
         margin-top: 10px;
         margin-left: 40px;
-
-        .signup__btntext {
-          color: white;
-        }
+        color: white;
       }
     }
   }

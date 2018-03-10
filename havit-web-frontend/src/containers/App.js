@@ -227,8 +227,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.confirmPurchase(reserveNum));
   },
 
-  addNotice: (title, body, author, img) => {
-    dispatch(actions.addNotice(title, body, author, img));
+  addNotice: (title, body, author, callback) => {
+    dispatch(actions.addNotice(title, body, author, callback));
   },
 
   addBanner: (img, title, url, priority, callback) => {
@@ -239,8 +239,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.delBanner(id, callback));
   },
 
-  addHospitalAdmin: (code, name, loc) => {
-    dispatch(actions.addHospitalAdmin(code, name, loc));
+  addHospitalAdmin: (code, name, loc, callback) => {
+    dispatch(actions.addHospitalAdmin(code, name, loc, callback));
   },
 
   addEvent: (
