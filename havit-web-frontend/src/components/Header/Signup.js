@@ -294,12 +294,20 @@ class Signup extends Component {
             <hr className="signup__hr" />
             <h6 className="signup__info">
               회원가입 시{' '}
-              <button onClick={this.togglePopup.bind(this)}>이용약관,</button>
+              <button
+                onClick={this.togglePopup.bind(this)}
+                className="signup__btn1"
+              >
+                이용약관,
+              </button>
               {this.state.showPopup ? (
                 <Popup text="" closePopup={this.togglePopup.bind(this)} />
               ) : null}
-              <button onClick={this.togglePopupSec.bind(this)}>
-                개인정보 수집
+              <button
+                onClick={this.togglePopupSec.bind(this)}
+                className="signup__btn2"
+              >
+                개인정보 수집 및 이용
               </button>
               {this.state.showPopupSec ? (
                 <PopupSec
@@ -307,7 +315,7 @@ class Signup extends Component {
                   closePopupSec={this.togglePopupSec.bind(this)}
                 />
               ) : null}
-              및 이용에 동의로 간주합니다.
+              에 동의로 간주합니다.
             </h6>
             <div className="signup__btn">
               {!this.state.check[0] &&

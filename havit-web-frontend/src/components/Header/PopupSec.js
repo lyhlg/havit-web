@@ -65,7 +65,7 @@ class PopupSec extends Component {
             onClick={this.props.closePopupSec}
             className="popupSec__button"
           >
-            이용약관 확인
+            개인정보 수집 확인
           </button>
         </div>
       </div>
