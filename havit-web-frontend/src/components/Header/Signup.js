@@ -288,7 +288,7 @@ class Signup extends Component {
               회원가입 시{' '}
               <button onClick={this.togglePopup.bind(this)}>이용약관,</button>
               {this.state.showPopup ? (
-                <Popup text="ssup" closePopup={this.togglePopup.bind(this)} />
+                <Popup text="" closePopup={this.togglePopup.bind(this)} />
               ) : null}
               <Link to="/Header/UserAgrees" className="Signup__userAgrees">
                 &nbsp;개인정보 수집
