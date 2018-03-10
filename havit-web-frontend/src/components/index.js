@@ -19,6 +19,7 @@ export { default as Signup } from './Header/Signup';
 export { default as SignupEnd } from './Header/SignupEnd';
 export { default as Privacy } from './Header/Privacy';
 export { default as UserAgree } from './Header/UserAgree';
+export { default as UserAgrees } from './Header/UserAgrees';
 
 // MyPage
 export { default as MyPage } from './MyPage/MyPage';
