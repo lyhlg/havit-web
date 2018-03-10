@@ -235,6 +235,25 @@ export const getDashBoard = email => {
   };
 };
 
+const requestGetSearch = () => ({
+  type: types.REQUEST_GET_SEARCH,
+});
+
+const successGetSearch = (search, filter, keyword) => ({
+  type: types.SUCCESS_GET_SEARCH,
+  search,
+  keyword: [filter, keyword],
+});
+
+export const getSearch = (filter, keyword) => {
+  return dispatch => {
+    dispatch(requestGetSearch());
+    return api.getSearch(filter, keyword).then(res => {
+      dispatch(successGetSearch(res, filter, keyword));
+    });
+  };
+};
+
 // mutation
 
 const requestAddProduct = () => ({

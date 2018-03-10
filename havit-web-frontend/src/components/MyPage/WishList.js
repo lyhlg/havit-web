@@ -7,7 +7,9 @@ class WishList extends Component {
       <div>
         {this.props.likeProducts &&
         this.props.likeProducts.likeProductsList.length === 0 ? (
-          <Empty />
+          <div className="empty">
+            <p>찜한 상품이 없습니다</p>
+          </div>
         ) : (
           this.props.likeProducts.likeProductsList.map((product, i) => {
             return <WishListEntry product={product} {...this.props} key={i} />;

@@ -4,6 +4,12 @@ import { logo } from 'assets/img';
 import 'styles/css/Common/Header.css';
 
 class Header extends Component {
+  constructor(props) {
+    super(props);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.getSearch = this.getSearch.bind(this);
+  }
+
   handleLogout() {
     this.props.userInfo.userInfo = [];
     this.props.newUserInfo.newUserInfo = [];
@@ -13,7 +19,18 @@ class Header extends Component {
       localStorage.removeItem('kakao_32d45b3f136b81e89905f794f933f564');
   }
 
+  getSearch(e) {
+    if (e.key === 'Enter') {
+      this.props.history.push('/search');
+      this.props.getSearch(
+        document.getElementById('filter').value,
+        document.getElementById('keyword').value
+      );
+    }
+  }
+
   render() {
+    console.log(this.props);
     let header;
     if (!localStorage.getItem('code')) {
       header = (
@@ -84,11 +101,7 @@ class Header extends Component {
           >
             병원페이지
           </NavLink>
-          <NavLink
-            to="/"
-            className="header__link"
-            onClick={this.handleLogout.bind(this)}
-          >
+          <NavLink to="/" className="header__link" onClick={this.handleLogout}>
             로그아웃
           </NavLink>
           <NavLink
@@ -141,6 +154,19 @@ class Header extends Component {
             <img src={logo} className="header__logo" alt="해빗 로고" />
           </NavLink>
         </h1>
+        <div className="search">
+          <select id="filter" className="search__filter">
+            <option value="product">상품검색</option>
+            <option value="hospital">병원검색</option>
+          </select>
+          <input
+            id="keyword"
+            className="search__input"
+            type="text"
+            onKeyPress={this.getSearch}
+            placeholder="엔터를 눌러 검색"
+          />
+        </div>
         {header}
       </header>
     );
