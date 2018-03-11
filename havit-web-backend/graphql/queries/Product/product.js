@@ -55,17 +55,19 @@ const LIKE_PRODUCT = async params => {
 
   if (obj) {
     const { user_id_email } = obj;
-    return (await user.findOne({ user_id_email })).likeProducts.map(
+    const prod = (await user.findOne({ user_id_email })).likeProducts.map(
       async productId => {
         return await product.findOne({ productId });
       }
     );
+    return await Promise.all(prod).then(res => res.reverse());
   } else {
-    return (await user.findOne({ user_id_email })).likeProducts.map(
+    const prod = (await user.findOne({ user_id_email })).likeProducts.map(
       async productId => {
         return await product.findOne({ productId });
       }
     );
+    return await Promise.all(prod).then(res => res.reverse());
   }
 };
 
