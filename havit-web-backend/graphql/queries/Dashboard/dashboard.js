@@ -49,10 +49,16 @@ const GET_DASHBOARD_COUNT = async params => {
       });
     }
   });
-  return await productListOfHospital.map(async item => {
-    return await salesCount.findOne({_id: item.productId})
-  })
-
+  const dash = await productListOfHospital.map(async item => {
+    return await salesCount.findOne({ _id: item.productId });
+  });
+  return await Promise.all(dash).then(res => {
+    return res.sort(
+      (a, b) =>
+        Number(b.fix.slice(0, b.fix.length - 1)) -
+        Number(a.fix.slice(0, a.fix.length - 1))
+    );
+  });
 };
 
 export { GET_DASHBOARD_COUNT };
