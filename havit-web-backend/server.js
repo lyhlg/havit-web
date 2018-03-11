@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 
 const app = express();
-const port = 8080;
+const port = 9000;
 
 const defaultHeader = {
   "access-control-allow-origin": "*",
@@ -57,6 +57,6 @@ app.use("/auth", authRoutes);
 app.use("/", graphqlRoutes);
 
 // Run Server
-app.listen(port, () => console.log(` Starting Server at port ${port} :) `));
+app.listen(port, "0.0.0.0", () => console.log(` Starting Server at port ${port} :) `));
 
 export default app;
