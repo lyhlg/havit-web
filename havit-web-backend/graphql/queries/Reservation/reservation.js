@@ -16,12 +16,13 @@ const FIND_RESERVATION = async params => {
 
   if (obj) {
     if (obj.adminAccount) {
-      return (await hospital.findOne(
+      const prod = (await hospital.findOne(
         { adminAccount: obj.adminAccount },
         { reservations: 1 }
       )).reservations.map(async item => {
         return await reservation.findOne({ reserveNum: item });
       });
+      return await Promise.all(prod).then(res => res.sort( (a,b) => b.reserveNum-a.reserveNum))
     }
     return await reservation
       .find({ user_id_email: obj.user_id_email })
