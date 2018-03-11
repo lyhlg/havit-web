@@ -553,10 +553,10 @@ const successConfirmPurchase = reservation => ({
   reservation,
 });
 
-export const confirmPurchase = reserveNum => {
+export const confirmPurchase = (reserveNum, callback) => {
   return dispatch => {
     dispatch(requestConfirmPurchase());
-    return api.confirmPurchase(reserveNum).then(res => {
+    return api.confirmPurchase(reserveNum, callback).then(res => {
       dispatch(successConfirmPurchase(res));
     });
   };

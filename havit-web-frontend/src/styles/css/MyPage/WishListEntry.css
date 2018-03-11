@@ -25,6 +25,7 @@
         color: #414d6b;
         padding-bottom: 15px; }
       .wishList .wishList__content .wishList__left .wishList__description {
+        width: 750px;
         font-size: 15px;
         font-weight: normal;
         color: #869ab7; }

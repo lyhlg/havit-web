@@ -768,28 +768,30 @@ export const delReservation = (email, productId, reserveNum, callback) => {
     .then(res => callback(res));
 };
 
-export const confirmPurchase = reserveNum => {
-  return client.mutate({
-    mutation: gql`
-      mutation($reserveNum: Float) {
-        confirmPurchase(reserveNum: $reserveNum) {
-          _id
-          reserveNum
-          user_id_email
-          hospitalCode
-          userName
-          phone
-          productName
-          reserveDate
-          careDate
-          status
+export const confirmPurchase = (reserveNum, callback) => {
+  return client
+    .mutate({
+      mutation: gql`
+        mutation($reserveNum: Float) {
+          confirmPurchase(reserveNum: $reserveNum) {
+            _id
+            reserveNum
+            user_id_email
+            hospitalCode
+            userName
+            phone
+            productName
+            reserveDate
+            careDate
+            status
+          }
         }
-      }
-    `,
-    variables: {
-      reserveNum,
-    },
-  });
+      `,
+      variables: {
+        reserveNum,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const addNotice = (title, body, author, callback) => {
