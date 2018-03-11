@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import { WishListEntry, Empty } from '../index';
 
 class WishList extends Component {
+  componentDidMount() {
+    this.props.getLikeProducts(localStorage.getItem('email'));
+  }
+
   render() {
     return (
       <div>
@@ -11,6 +15,7 @@ class WishList extends Component {
             <p>찜한 상품이 없습니다</p>
           </div>
         ) : (
+          this.props.likeProducts.likeProductsList &&
           this.props.likeProducts.likeProductsList.map((product, i) => {
             return <WishListEntry product={product} {...this.props} key={i} />;
           })

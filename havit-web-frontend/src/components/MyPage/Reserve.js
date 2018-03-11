@@ -14,6 +14,7 @@ class Reserve extends Component {
     this.modifyReserveDate = this.modifyReserveDate.bind(this);
     this.handleChangeCare = this.handleChangeCare.bind(this);
     this.handleCancel = this.handleCancel.bind(this);
+    this.handleConfirm = this.handleConfirm.bind(this);
   }
 
   changeMonth(e) {
@@ -58,6 +59,13 @@ class Reserve extends Component {
     }
   }
 
+  handleConfirm(num) {
+    if (window.confirm('확정하시겠습니까?')) {
+      this.props.confirmPurchase(num, () => {
+        window.location.href = '/mypage/reserve';
+      });
+    }
+  }
   render() {
     return (
       <div className="reserve">
@@ -78,11 +86,12 @@ class Reserve extends Component {
                     <th>상담예약일자/시간</th>
                     <th>시술일자/시간</th>
                     <th>상태</th>
-                    <th>예약변경/취소</th>
+                    <th>시술완료/예약변경/취소</th>
                   </tr>
                 </thead>
                 <tbody>
                   {this.props.reservations.reservationsList.map((reser, i) => {
+                    console.log(reser);
                     return (
                       <tr key={i}>
                         <td>{reser.reserveNum}</td>
@@ -225,6 +234,16 @@ class Reserve extends Component {
                         <td>{reser.status}</td>
                         {this.state.input[{ i }.i] ? (
                           <td>
+                            {reser.status !== '시술완료' && (
+                              <button
+                                className="customerInfo__button"
+                                onClick={() =>
+                                  this.handleConfirm(reser.reserveNum)
+                                }
+                              >
+                                확정
+                              </button>
+                            )}
                             <button
                               className="customerInfo__button"
                               onClick={() => this.handleChangeCare({ i })}

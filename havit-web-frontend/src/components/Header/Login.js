@@ -93,28 +93,30 @@ class Login extends Component {
   }
 
   authLoginFacebookSucc(res) {
-    this.props.addUserInfo(
-      data => {
-        const phone = data.data.addUserInfo.phone;
-        const code = data.data.addUserInfo.level;
-        if (phone) {
-          if (localStorage.getItem('email')) localStorage.removeItem('email');
-          if (localStorage.getItem('code')) localStorage.removeItem('code');
-          localStorage.setItem('email', res.email);
-          localStorage.setItem('code', code);
-          this.props.history.push('/');
-        } else {
-          if (localStorage.getItem('temp')) localStorage.removeItem('temp');
-          localStorage.setItem('temp', res.email);
-          localStorage.setItem('auth', 'facebook');
-          this.props.history.push('/privacy');
-        }
-      },
-      res.email,
-      '',
-      'facebook',
-      res.name
-    );
+    if (res.status) {
+      this.props.addUserInfo(
+        data => {
+          const phone = data.data.addUserInfo.phone;
+          const code = data.data.addUserInfo.level;
+          if (phone) {
+            if (localStorage.getItem('email')) localStorage.removeItem('email');
+            if (localStorage.getItem('code')) localStorage.removeItem('code');
+            localStorage.setItem('email', res.email);
+            localStorage.setItem('code', code);
+            this.props.history.push('/');
+          } else {
+            if (localStorage.getItem('temp')) localStorage.removeItem('temp');
+            localStorage.setItem('temp', res.email);
+            localStorage.setItem('auth', 'facebook');
+            this.props.history.push('/privacy');
+          }
+        },
+        res.email,
+        '',
+        'facebook',
+        res.name
+      );
+    }
   }
 
   render() {
