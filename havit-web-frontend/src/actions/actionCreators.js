@@ -494,12 +494,20 @@ export const modifyReservation = (
   userName,
   phone,
   reserveDate,
-  openPhoneNum
+  openPhoneNum,
+  callback
 ) => {
   return dispatch => {
     dispatch(requestModifyReservation());
     return api
-      .modifyReservation(reserveNum, userName, phone, reserveDate, openPhoneNum)
+      .modifyReservation(
+        reserveNum,
+        userName,
+        phone,
+        reserveDate,
+        openPhoneNum,
+        callback
+      )
       .then(res => {
         dispatch(successModifyReservation(res));
       });

@@ -23,17 +23,23 @@ class Reserve extends Component {
     });
   }
 
-  modifyReserveDate(i) {
+  modifyReserveDate(e, i) {
     this.props.modifyReservation(
-      this.props.reservations.reservationsList[i.i].reserveNum,
-      this.props.reservations.reservationsList[i.i].openPhoneNum,
-      `2018${document.getElementById('setTimeMonth').value}${
-        document.getElementById('setTimeDate').value
-      }${document.getElementById('start').value}${
-        document.getElementById('end').value
-      }`
+      +e.currentTarget.parentNode.parentNode.childNodes[0].textContent,
+      e.currentTarget.parentNode.parentNode.childNodes[1].textContent,
+      +e.currentTarget.parentNode.parentNode.childNodes[2].textContent,
+      Number(
+        `2018${document.getElementById('setTimeMonth').value}${
+          document.getElementById('setTimeDate').value
+        }${document.getElementById('start').value}${
+          document.getElementById('end').value
+        }`
+      ),
+      0,
+      () => {
+        window.location.href = '/mypage/reserve';
+      }
     );
-    window.location.href = '/mypage/reserve';
   }
 
   handleChangeCare(i) {
@@ -204,7 +210,7 @@ class Reserve extends Component {
                             </select>
                             <button
                               className="customerInfo__button1"
-                              onClick={() => this.modifyReserveDate({ i })}
+                              onClick={e => this.modifyReserveDate(e, { i })}
                             >
                               변경
                             </button>

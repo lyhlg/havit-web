@@ -206,7 +206,8 @@ const mapDispatchToProps = dispatch => ({
     userName,
     phone,
     reserveDate,
-    openPhoneNum
+    openPhoneNum,
+    callback
   ) => {
     dispatch(
       actions.modifyReservation(
@@ -214,7 +215,8 @@ const mapDispatchToProps = dispatch => ({
         userName,
         phone,
         reserveDate,
-        openPhoneNum
+        openPhoneNum,
+        callback
       )
     );
   },

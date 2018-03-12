@@ -24,9 +24,11 @@ class CustomerInfo extends Component {
       '',
       0,
       0,
-      1
+      1,
+      () => {
+        window.location.href = '/hospitalPage/customerInfo';
+      }
     );
-    window.location.href = '/hospitalPage/customerInfo';
   }
 
   submitCareDate(e) {

@@ -687,45 +687,48 @@ export const modifyReservation = (
   userName,
   phone,
   reserveDate,
-  openPhoneNum
+  openPhoneNum,
+  callback
 ) => {
-  return client.mutate({
-    mutation: gql`
-      mutation(
-        $reserveNum: Float
-        $userName: String
-        $phone: Int
-        $reserveDate: Float
-        $openPhoneNum: Int
-      ) {
-        modifyReservation(
-          reserveNum: $reserveNum
-          userName: $userName
-          phone: $phone
-          reserveDate: $reserveDate
-          openPhoneNum: $openPhoneNum
+  return client
+    .mutate({
+      mutation: gql`
+        mutation(
+          $reserveNum: Float
+          $userName: String
+          $phone: Int
+          $reserveDate: Float
+          $openPhoneNum: Int
         ) {
-          _id
-          reserveNum
-          user_id_email
-          openPhoneNum
-          userName
-          phone
-          productName
-          reserveDate
-          careDate
-          status
+          modifyReservation(
+            reserveNum: $reserveNum
+            userName: $userName
+            phone: $phone
+            reserveDate: $reserveDate
+            openPhoneNum: $openPhoneNum
+          ) {
+            _id
+            reserveNum
+            user_id_email
+            openPhoneNum
+            userName
+            phone
+            productName
+            reserveDate
+            careDate
+            status
+          }
         }
-      }
-    `,
-    variables: {
-      reserveNum,
-      userName,
-      phone,
-      reserveDate,
-      openPhoneNum,
-    },
-  });
+      `,
+      variables: {
+        reserveNum,
+        userName,
+        phone,
+        reserveDate,
+        openPhoneNum,
+      },
+    })
+    .then(res => callback(res));
 };
 
 export const fixReservation = (reserveNum, careDate) => {
