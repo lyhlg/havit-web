@@ -34,7 +34,7 @@
       margin-right: 40px;
       font-size: 15px; }
       .subNav__wrapper .subNav .subNav__li li {
-        color: lightgray; }
+        color: #869ab7; }
     .subNav__wrapper .subNav .subNav__li--selected li {
       color: #647dff; }
   .subNav__wrapper::after {
