@@ -24,7 +24,6 @@ class ManageEvent extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="manageEvent">
         <div className="manageEvent__wrapper">

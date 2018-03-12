@@ -3,7 +3,6 @@ import { Spinner } from '../index';
 
 class DashBoard extends Component {
   render() {
-    console.log(this.props);
     return (
       <div>
         {this.props.dashBoard.loading ? (
