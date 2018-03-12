@@ -76,9 +76,22 @@ const SEARCH_PRODUCT = async params => {
   const { filter, keyword } = args;
   const { product } = ctx;
 
+  const limit = 20;
+
+  // page 설정
+  page ? page : 1;
+
   return filter === "hospital"
-    ? await product.find({ hospitalName: new RegExp(keyword) })
-    : await product.find({ productName: new RegExp(keyword) });
+    ? await product
+      .find({ hospitalName: new RegExp(keyword) })
+      .sort({ _id: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit)
+    : await product
+      .find({ productName: new RegExp(keyword) })
+      .sort({ _id: -1 })
+      .skip((page - 1) * limit)
+      .limit(limit);
 };
 
 export { FIND_PRODUCT, LIKE_PRODUCT, SEARCH_PRODUCT };
