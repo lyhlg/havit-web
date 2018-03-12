@@ -10,6 +10,15 @@
 
 .customerInfo {
   height: auto; }
+  .customerInfo .customerInfo__openNum {
+    width: 80px;
+    height: 25px;
+    font-size: 12px;
+    color: #ffffff;
+    border-radius: 2px;
+    border: solid 1px #647dff;
+    background-color: #647dff;
+    margin-right: 4px; }
 
 .customerInfo__table {
   width: 1200px;
@@ -43,3 +52,12 @@
     .customerInfo__table .customerInfo__delete .customerInfo__trash {
       width: 30px;
       height: 30px; }
+  .customerInfo__table .customerInfo__button1 {
+    width: 40px;
+    height: 25px;
+    font-size: 12px;
+    color: #ffffff;
+    border-radius: 2px;
+    border: solid 1px #647dff;
+    background-color: #647dff;
+    margin-right: 4px; }

@@ -201,13 +201,13 @@ class Reserve extends Component {
                                 })}
                             </select>
                             <button
-                              className="customerInfo__button"
+                              className="customerInfo__button1"
                               onClick={() => this.modifyReserveDate({ i })}
                             >
                               변경
                             </button>
                             <button
-                              className="customerInfo__button"
+                              className="customerInfo__button2"
                               onClick={() => this.handleChangeCare({ i })}
                             >
                               취소
@@ -236,7 +236,7 @@ class Reserve extends Component {
                           <td>
                             {reser.status !== '시술완료' && (
                               <button
-                                className="customerInfo__button"
+                                className="customerInfo__button1"
                                 onClick={() =>
                                   this.handleConfirm(reser.reserveNum)
                                 }
@@ -245,13 +245,13 @@ class Reserve extends Component {
                               </button>
                             )}
                             <button
-                              className="customerInfo__button"
+                              className="customerInfo__button1"
                               onClick={() => this.handleChangeCare({ i })}
                             >
                               변경
                             </button>
                             <button
-                              className="customerInfo__button"
+                              className="customerInfo__button2"
                               onClick={() => this.handleCancel({ i })}
                             >
                               취소
@@ -260,7 +260,7 @@ class Reserve extends Component {
                         ) : (
                           <td style={{ textAlign: 'center' }}>
                             <button
-                              className="customerInfo__button"
+                              className="customerInfo__button2"
                               onClick={() => this.handleCancel({ i })}
                             >
                               취소
