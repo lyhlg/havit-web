@@ -26,7 +26,7 @@ class Footer extends Component {
             target="_blank"
             rel="noopener noreferrer"
           >
-            정유택(Ace)
+            정유택(Front-end)
           </a>
         </div>
         <div className="footer__description">

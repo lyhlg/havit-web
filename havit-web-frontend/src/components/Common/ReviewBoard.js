@@ -3,7 +3,6 @@ import 'styles/css/Common/ReviewBoard.css';
 
 class ReviewBoard extends Component {
   render() {
-    console.log(this.props.review);
     return (
       <div className="reviewBoard">
         <p className="reviewBoard__name">{this.props.review.comment}</p>

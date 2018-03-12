@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'styles/css/Common/Banner.css';
+
 class Banner extends Component {
   render() {
-    console.log(this.props.banners);
     return (
       <div className="banner">
         <Carousel

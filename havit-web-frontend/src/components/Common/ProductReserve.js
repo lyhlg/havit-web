@@ -49,7 +49,6 @@ class ProductReserve extends Component {
     const purchaseView = {
       display: this.props.purchase,
     };
-    console.log(this.props);
     return (
       <div className="productReserve" style={purchaseView}>
         <div className="left">

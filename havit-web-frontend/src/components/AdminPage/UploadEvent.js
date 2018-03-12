@@ -33,7 +33,6 @@ class UploadEvent extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="uploadEvent">
         <div className="uploadEvent__wrapper">
