@@ -47,7 +47,7 @@ class Reserve extends Component {
   }
 
   handleCancel(i) {
-    if (window.confirm('삭제 하시겠습니까?')) {
+    if (window.confirm('취소하시겠습니까?')) {
       this.props.delReservation(
         localStorage.getItem('email'),
         this.props.reservations.reservationsList[i.i].productId,
@@ -104,7 +104,9 @@ class Reserve extends Component {
                             )
                           }
                         >
-                          {reser.productName}
+                          {reser.productName.length > 20
+                            ? reser.productName.slice(0, 17) + '...'
+                            : reser.productName}
                         </td>
                         {this.state.input[{ i }.i] ? (
                           <td>{`${reser.reserveDate
@@ -233,8 +235,8 @@ class Reserve extends Component {
                         </td>
                         <td>{reser.status}</td>
                         {this.state.input[{ i }.i] ? (
-                          <td>
-                            {reser.status !== '시술완료' && (
+                          <td style={{ textAlign: 'center' }}>
+                            {reser.status === '시술진행중' && (
                               <button
                                 className="customerInfo__button1"
                                 onClick={() =>
@@ -244,18 +246,22 @@ class Reserve extends Component {
                                 확정
                               </button>
                             )}
-                            <button
-                              className="customerInfo__button1"
-                              onClick={() => this.handleChangeCare({ i })}
-                            >
-                              변경
-                            </button>
-                            <button
-                              className="customerInfo__button2"
-                              onClick={() => this.handleCancel({ i })}
-                            >
-                              취소
-                            </button>
+                            {reser.status !== '시술완료' && (
+                              <button
+                                className="customerInfo__button1"
+                                onClick={() => this.handleChangeCare({ i })}
+                              >
+                                변경
+                              </button>
+                            )}
+                            {reser.status !== '시술완료' && (
+                              <button
+                                className="customerInfo__button2"
+                                onClick={() => this.handleCancel({ i })}
+                              >
+                                취소
+                              </button>
+                            )}
                           </td>
                         ) : (
                           <td style={{ textAlign: 'center' }}>
