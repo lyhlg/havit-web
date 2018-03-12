@@ -325,18 +325,17 @@ class ChangeInfo extends Component {
             }
           />
           <hr className="changeInfo__hr" />
-          <h6 className="changeInfo__info">
-            회원가입 시 이용약관, 개인정보 수집 및 이용에 동의로 간주합니다.
-          </h6>
           <div className="changeInfo__btn">
+            {!this.state.check[0] &&
+              this.state.check[1] > 0 && (
+                <p className="changeInfo__alert">* 올바른 값을 입력해주세요.</p>
+              )}
             <button
               onClick={this.changeUserInfo}
               className="changeInfo__button"
             >
               회원정보 수정
             </button>
-            {!this.state.check[0] &&
-              this.state.check[1] > 0 && <p>올바른 값을 입력하세요</p>}
           </div>
         </div>
       </div>
