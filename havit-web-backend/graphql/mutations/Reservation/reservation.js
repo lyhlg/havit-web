@@ -50,17 +50,8 @@ const ADD_RESERVATION = async (params, reserveNumCal) => {
 
 const MODIFY_RESERVATION = async params => {
   const [obj, args, ctx] = [...params];
-  const {
-    reserveNum,
-    openPhoneNum,
-    reserveDate,
-    userName,
-    phone,
-  } = args;
+  const { reserveNum, openPhoneNum, reserveDate, userName, phone } = args;
   const { reservation, hospital, product } = ctx;
-
-  // img = img || delete args.img;
-  // productDetail = productDetail || delete args.productDetail;
 
   if (reserveNum && openPhoneNum) {
     await reservation.update(
@@ -69,19 +60,8 @@ const MODIFY_RESERVATION = async params => {
     );
     await ADD_BILL([obj, args, ctx]);
     return await reservation.findOne({ reserveNum: reserveNum });
-  } else {
-    reserveNum && reserveDate && userName && Phone
-      ? await reservation.update(
-          { reserveNum: reserveNum },
-          {
-            $set: {
-              reserveDate: reserveDate,
-              userName: userName,
-              phone: phone
-            }
-          }
-        )
-      : await reservation.update(
+  } else if (reserveNum && reserveDate) {
+      await reservation.update(
           { reserveNum: reserveNum },
           {
             $set: {
