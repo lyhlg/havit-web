@@ -794,12 +794,12 @@ export const confirmPurchase = (reserveNum, callback) => {
     .then(res => callback(res));
 };
 
-export const addNotice = (title, body, author, callback) => {
+export const addNotice = (title, body, author, url, callback) => {
   return client
     .mutate({
       mutation: gql`
-        mutation($title: String, $body: String, $author: String) {
-          addNotice(title: $title, body: $body, author: $author) {
+        mutation($title: String, $body: String, $author: String, $url: String) {
+          addNotice(title: $title, body: $body, author: $author, url: $url) {
             _id
             title
             body
@@ -813,6 +813,7 @@ export const addNotice = (title, body, author, callback) => {
         title,
         body,
         author,
+        url,
       },
     })
     .then(res => callback(res));

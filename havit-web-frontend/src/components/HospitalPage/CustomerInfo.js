@@ -218,12 +218,14 @@ class CustomerInfo extends Component {
                             )}
                             <td>{reserve.status}</td>
                             <td>
-                              <button
-                                className="customerInfo__button"
-                                onClick={() => this.handleChangeCare({ i })}
-                              >
-                                변경
-                              </button>
+                              {reserve.status !== '시술완료' && (
+                                <button
+                                  className="customerInfo__button"
+                                  onClick={() => this.handleChangeCare({ i })}
+                                >
+                                  변경
+                                </button>
+                              )}
                             </td>
                           </tr>
                         );

@@ -13,6 +13,7 @@ class UploadNotice extends Component {
       document.getElementById('title').value,
       document.getElementById('content').value,
       '관리자',
+      '',
       () => {
         window.location.href = '/adminPage/notice';
       }
