@@ -3,8 +3,8 @@ import s3BrowserDirectUpload from 's3-browser-direct-upload';
 import { AWS_KEYS } from 'utils/awskey';
 
 export const API_PRO = '';
-export const API_DEV = 'http://localhost:9000';
-// export const API_DEV = 'http://13.125.232.139:9000';
+// export const API_DEV = 'http://localhost:9000';
+export const API_DEV = 'http://13.125.232.139:9000';
 
 export const FORMAT_FILENAME = (type, fileName) => {
   console.log('FORMAT FILENAME : ', type, fileName);
