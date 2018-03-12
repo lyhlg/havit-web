@@ -12,6 +12,7 @@ export { default as NotFound } from './Common/NotFound';
 export { default as Footer } from './Common/Footer';
 export { default as Pagination } from './Common/Pagination';
 export { default as Search } from './Common/Search';
+export { default as Spinner } from './Common/Spinner';
 
 // Header
 export { default as Login } from './Header/Login';

@@ -19,6 +19,7 @@ import {
   Footer,
   ServicePage,
   Search,
+  Spinner,
 } from './index';
 import { up } from 'assets/img';
 import 'styles/css/index.css';
@@ -114,6 +115,7 @@ class App extends Component {
             path="/servicePage"
             render={props => <ServicePage {...this.props} />}
           />
+          <Route path="/spinner" component={Spinner} />
           <Route component={NotFound} />
         </Switch>
         <img
