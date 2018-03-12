@@ -6,6 +6,7 @@ import 'styles/css/Beauty/Beauty.css';
 class Beauty extends Component {
   constructor(props) {
     super(props);
+    this.handleCategory = this.handleCategory.bind(this);
     this.handlePage = this.handlePage.bind(this);
   }
 
@@ -19,12 +20,36 @@ class Beauty extends Component {
     this.props.getBanners();
   }
 
-  handlePage(e) {
+  handleCategory(e) {
     this.props.getProducts(
       'beauty',
-      this.props.history.location.pathname.slice(8) || '',
-      e.target.textContent
+      e.currentTarget.parentNode.pathname.slice(8),
+      0,
+      1
     );
+    document
+      .getElementsByClassName('pagination')[0]
+      .childNodes.forEach(child => {
+        child.style = 'border: 1px solid #dce2eb; color: #dce2eb';
+      });
+    document.getElementsByClassName('pagination')[0].childNodes[0].style =
+      'border: 1px solid #647dff; color: #647dff';
+  }
+
+  handlePage(e) {
+    if (e.target.tagName === 'A') {
+      window.scrollTo(0, 0);
+      this.props.getProducts(
+        'beauty',
+        this.props.history.location.pathname.slice(8) || '',
+        0,
+        e.target.textContent
+      );
+      e.currentTarget.childNodes.forEach(child => {
+        child.style = 'border: 1px solid #dce2eb; color: #dce2eb';
+      });
+      e.target.style = 'border: 1px solid #647dff; color: #647dff';
+    }
   }
 
   render() {
@@ -46,48 +71,28 @@ class Beauty extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li
-                onClick={() => this.props.getProducts('beauty', 'filler', 0, 1)}
-              >
-                필러
-              </li>
+              <li onClick={this.handleCategory}>필러</li>
             </NavLink>
             <NavLink
               to="/beauty/botox"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li
-                onClick={() => this.props.getProducts('beauty', 'botox', 0, 1)}
-              >
-                보톡스
-              </li>
+              <li onClick={this.handleCategory}>보톡스</li>
             </NavLink>
             <NavLink
               to="/beauty/outline"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li
-                onClick={() =>
-                  this.props.getProducts('beauty', 'outline', 0, 1)
-                }
-              >
-                윤곽
-              </li>
+              <li onClick={this.handleCategory}>윤곽</li>
             </NavLink>
             <NavLink
               to="/beauty/lifting"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li
-                onClick={() =>
-                  this.props.getProducts('beauty', 'lifting', 0, 1)
-                }
-              >
-                리프팅
-              </li>
+              <li onClick={this.handleCategory}>리프팅</li>
             </NavLink>
           </ul>
         </div>

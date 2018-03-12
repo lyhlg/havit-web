@@ -15,8 +15,14 @@ class Home extends Component {
   }
 
   handlePage(e) {
-    window.scrollTo(0, 0);
-    this.props.getProducts('', '', 0, e.target.textContent);
+    if (e.target.tagName === 'A') {
+      window.scrollTo(0, 0);
+      this.props.getProducts('', '', 0, e.target.textContent);
+      e.currentTarget.childNodes.forEach(child => {
+        child.style = 'border: 1px solid #dce2eb; color: #dce2eb';
+      });
+      e.target.style = 'border: 1px solid #647dff; color: #647dff';
+    }
   }
 
   render() {

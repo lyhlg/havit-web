@@ -26,6 +26,7 @@ class AdminPage extends Component {
     this.props.getHospitalAdmin();
     this.props.getBanners();
     this.props.getEvents();
+    this.props.getNotices();
   }
 
   render() {

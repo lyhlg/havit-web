@@ -6,6 +6,7 @@ import 'styles/css/Skin/Skin.css';
 class Skin extends Component {
   constructor(props) {
     super(props);
+    this.handleCategory = this.handleCategory.bind(this);
     this.handlePage = this.handlePage.bind(this);
   }
 
@@ -20,15 +21,38 @@ class Skin extends Component {
     this.props.getBanners();
   }
 
-  handlePage(e) {
-    window.scrollTo(0, 0);
+  handleCategory(e) {
     this.props.getProducts(
       'skin',
-      this.props.history.location.pathname.slice(6) || '',
+      e.currentTarget.parentNode.pathname.slice(6),
       0,
-      e.target.textContent
+      1
     );
+    document
+      .getElementsByClassName('pagination')[0]
+      .childNodes.forEach(child => {
+        child.style = 'border: 1px solid #dce2eb; color: #dce2eb';
+      });
+    document.getElementsByClassName('pagination')[0].childNodes[0].style =
+      'border: 1px solid #647dff; color: #647dff';
   }
+
+  handlePage(e) {
+    if (e.target.tagName === 'A') {
+      window.scrollTo(0, 0);
+      this.props.getProducts(
+        'skin',
+        this.props.history.location.pathname.slice(6) || '',
+        0,
+        e.target.textContent
+      );
+      e.currentTarget.childNodes.forEach(child => {
+        child.style = 'border: 1px solid #dce2eb; color: #dce2eb';
+      });
+      e.target.style = 'border: 1px solid #647dff; color: #647dff';
+    }
+  }
+
   render() {
     return (
       <div>
@@ -41,78 +65,56 @@ class Skin extends Component {
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', '', 0, 1)}>
-                전체보기
-              </li>
+              <li onClick={this.handleCategory}>전체보기</li>
             </NavLink>
             <NavLink
               to="/skin/laser"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'laser', 0, 1)}>
-                피부레이저
-              </li>
+              <li onClick={this.handleCategory}>피부레이저</li>
             </NavLink>
             <NavLink
               to="/skin/scaling"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li
-                onClick={() => this.props.getProducts('skin', 'scaling', 0, 1)}
-              >
-                스케일링
-              </li>
+              <li onClick={this.handleCategory}>스케일링</li>
             </NavLink>
             <NavLink
               to="/skin/peeling"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li
-                onClick={() => this.props.getProducts('skin', 'peeling', 0, 1)}
-              >
-                필링
-              </li>
+              <li onClick={this.handleCategory}>필링</li>
             </NavLink>
             <NavLink
               to="/skin/waxing"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li
-                onClick={() => this.props.getProducts('skin', 'waxing', 0, 1)}
-              >
-                제모
-              </li>
+              <li onClick={this.handleCategory}>제모</li>
             </NavLink>
             <NavLink
               to="/skin/semi"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'semi', 0, 1)}>
-                반영구
-              </li>
+              <li onClick={this.handleCategory}>반영구</li>
             </NavLink>
             <NavLink
               to="/skin/shot"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'shot', 0, 1)}>
-                미용주사
-              </li>
+              <li onClick={this.handleCategory}>미용주사</li>
             </NavLink>
             <NavLink
               to="/skin/acne"
               className="subNav__li"
               activeClassName="subNav__li--selected"
             >
-              <li onClick={() => this.props.getProducts('skin', 'acne', 0, 1)}>
-                여드름
-              </li>
+              <li onClick={this.handleCategory}>여드름</li>
             </NavLink>
           </ul>
         </div>

@@ -9,6 +9,7 @@ class Banner extends Component {
         <Carousel
           showArrows={true}
           showThumbs={false}
+          showStatus={false}
           autoPlay={true}
           useKeyboardArrows={true}
           infiniteLoop={true}

@@ -6,9 +6,13 @@ class Product extends Component {
   render() {
     return (
       <div className="product">
-        {this.props.products.map((product, i) => (
-          <ProductEntry product={product} key={i} />
-        ))}
+        {this.props.products.length !== 0 ? (
+          this.props.products.map((product, i) => (
+            <ProductEntry product={product} key={i} />
+          ))
+        ) : (
+          <p className="none">상품이 없습니다</p>
+        )}
       </div>
     );
   }
