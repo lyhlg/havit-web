@@ -229,8 +229,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.delReservation(email, productId, reserveNum, callback));
   },
 
-  confirmPurchase: (reserveNum, callback) => {
-    dispatch(actions.confirmPurchase(reserveNum, callback));
+  confirmPurchase: (reserveNum, productId, callback) => {
+    dispatch(actions.confirmPurchase(reserveNum, productId, callback));
   },
 
   addNotice: (title, body, author, url, callback) => {
