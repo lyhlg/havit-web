@@ -273,6 +273,7 @@ const typeDefs = `
 
     confirmPurchase(
       reserveNum : Float
+      productId : Int
     ) : Reservation
 
     addReview(

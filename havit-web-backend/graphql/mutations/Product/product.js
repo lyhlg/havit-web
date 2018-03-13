@@ -125,7 +125,6 @@ const EDIT_PRODUCT = async params => {
   if ( !img ) delete args.img;
   if ( !productDetail ) delete args.productDetail;
   if ( !options ) delete args.options;
-  console.log( "Edit Product :", args)
 
   if (!args.options) {
     await product.update({ productId }, { $set: args });

@@ -61,14 +61,14 @@ const MODIFY_RESERVATION = async params => {
     await ADD_BILL([obj, args, ctx]);
     return await reservation.findOne({ reserveNum: reserveNum });
   } else if (reserveNum && reserveDate) {
-      await reservation.update(
-          { reserveNum: reserveNum },
-          {
-            $set: {
-              reserveDate: reserveDate
-            }
-          }
-        );
+    await reservation.update(
+      { reserveNum: reserveNum },
+      {
+        $set: {
+          reserveDate: reserveDate
+        }
+      }
+    );
 
     return await reservation.findOne({ reserveNum: reserveNum });
   }
@@ -126,7 +126,8 @@ const FIX_RESERVATION = async params => {
 // 구매 확정 (고객) - 추가 변경 불가능
 const CONFIRM_PURCHASE = async params => {
   const [obj, args, ctx] = [...params];
-  const { reserveNum } = args;
+  console.log("confirm_purchase args", args);
+  const { reserveNum, productId } = args;
   const { reservation, product } = ctx;
 
   // 시술 진행 상태를 완료로 변경
@@ -134,6 +135,8 @@ const CONFIRM_PURCHASE = async params => {
     { reserveNum: reserveNum },
     { $set: { status: "시술완료" } }
   );
+
+  return await product.update({ productId }, { $inc: { purchased: 1 } });
 
   return await reservation.findOne({ reserveNum: reserveNum });
 };
