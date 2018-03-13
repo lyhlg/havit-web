@@ -7,7 +7,6 @@ const FIND_EVENT = async params => {
     code;
 
   const results = async target => {
-    console.log("target:", target);
     return await event
       .find(target)
       .sort({ priority: 1, hospitalCode : 1})

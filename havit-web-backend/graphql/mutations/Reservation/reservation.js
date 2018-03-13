@@ -142,7 +142,6 @@ const ADD_BILL = async params => {
   const [obj, args, ctx] = [...params];
   const { reserveNum } = args;
   const { hospital, product, reservation, payment, monthPayment } = ctx;
-  console.log("ADD_BILL");
   let res = {},
     code;
 

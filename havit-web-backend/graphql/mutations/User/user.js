@@ -10,9 +10,7 @@ const CHK_DB_HOSPITAL_ADMIN_CODE_AND_UPDATE_TABLE = async params => {
     args;
 
   if (pre_args.password) {
-    console.log("Local Login");
     let add_auth = { auth: "local" };
-    console.log(add_auth);
     args = Object.assign({}, pre_args, add_auth);
   } else {
     args = pre_args;
@@ -52,21 +50,24 @@ const UPDATE_DB_USER = async (params, level) => {
     level = 1;
   }
   const memberLevel = { level: level };
-  const new_args = Object.assign(args, memberLevel);
+  return await user.hasingPasswd(args.password, res => {
+    args.password = res;
+    const new_args = Object.assign(args, memberLevel);
 
-  delete args.user_id_email;
-  return await user.update(
-    { user_id_email: email },
-    { $set: new_args },
-    { upsert: 1 }
-  );
+    delete args.user_id_email;
+    return user.update(
+      { user_id_email: email },
+      { $set: new_args },
+      { upsert: 1 }
+    );
+  });
 };
 
 const UPDATE_DB_HOSPITAL = async params => {
   const [obj, { hospitalCode, user_id_email }, { hospital, hospitalAdmin }] = [
     ...params
   ];
-  console.log( hospitalCode, user_id_email)
+  console.log(hospitalCode, user_id_email);
   await UPDATE_DB_HOSPITAL_ADMIN_ACCOUNT([
     obj,
     { hospitalCode, user_id_email },
