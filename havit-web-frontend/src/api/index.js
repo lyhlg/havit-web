@@ -33,7 +33,9 @@ export const getLogin = (callback, email, password) => {
         password,
       },
     })
-    .then(res => callback(res));
+    .then(res => {
+      callback(res);
+    });
 };
 
 export const getUserInfo = (email, password) => {
