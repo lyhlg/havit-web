@@ -65,9 +65,9 @@ class Reserve extends Component {
     }
   }
 
-  handleConfirm(num) {
+  handleConfirm(num, id) {
     if (window.confirm('확정하시겠습니까?')) {
-      this.props.confirmPurchase(num, () => {
+      this.props.confirmPurchase(num, id, () => {
         window.location.href = '/mypage/reserve';
       });
     }
@@ -216,7 +216,9 @@ class Reserve extends Component {
                             </button>
                             <button
                               className="customerInfo__button2"
-                              onClick={() => this.handleChangeCare({ i })}
+                              onClick={() =>
+                                this.handleChangeCare({ i }, reser.productId)
+                              }
                             >
                               취소
                             </button>

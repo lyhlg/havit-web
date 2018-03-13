@@ -773,12 +773,12 @@ export const delReservation = (email, productId, reserveNum, callback) => {
     .then(res => callback(res));
 };
 
-export const confirmPurchase = (reserveNum, callback) => {
+export const confirmPurchase = (reserveNum, productId, callback) => {
   return client
     .mutate({
       mutation: gql`
-        mutation($reserveNum: Float) {
-          confirmPurchase(reserveNum: $reserveNum) {
+        mutation($reserveNum: Float, $productId: Int) {
+          confirmPurchase(reserveNum: $reserveNum, productId: $productId) {
             _id
             reserveNum
             user_id_email
@@ -794,6 +794,7 @@ export const confirmPurchase = (reserveNum, callback) => {
       `,
       variables: {
         reserveNum,
+        productId,
       },
     })
     .then(res => callback(res));
