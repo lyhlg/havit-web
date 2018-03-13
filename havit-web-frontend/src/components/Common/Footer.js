@@ -6,7 +6,6 @@ class Footer extends Component {
     return (
       <footer className="footer">
         <div className="footer__madeBy">
-          <p>제작</p>
           <a
             href="https://github.com/lyhlg"
             target="_blank"

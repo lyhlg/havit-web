@@ -35,7 +35,7 @@ const DEL_NOTICE = async params => {
   const [obj, { id }, { notice }] = [...params];
   const arg = { _id: id };
   const chk_dup = await CHECK_DUP_DATA([obj, arg, notice]);
-  console.log(chk_dup);
+
   if (chk_dup) {
     await notice.remove(arg);
     return chk_dup;

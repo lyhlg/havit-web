@@ -10,9 +10,7 @@ const MAX_PAGE = async params => {
     notices_count;
 
   await hospitalAdmin.findOne({ adminAccount: email }).then(async res => {
-    console.log(res);
     if (res) {
-      console.log(res);
       reservations_count = Math.ceil(
         (await reservation.find({ hospitalCode: res.code }).count()) / limit
       );
